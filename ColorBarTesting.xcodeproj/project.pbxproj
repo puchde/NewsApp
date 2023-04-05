@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E7061D0729DB6A6800405544 /* Kingfisher */; };
+		E7061D0A29DB78F100405544 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0929DB78F100405544 /* WebViewViewController.swift */; };
+		E7061D0C29DC240800405544 /* NewsAPIEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0B29DC240800405544 /* NewsAPIEnum.swift */; };
 		E71ED276292696FF00A39F3C /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71ED275292696FF00A39F3C /* LocalFileManager.swift */; };
 		E73EB51E2933627E00D1F74C /* MLModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73EB51D2933627E00D1F74C /* MLModelManager.swift */; };
 		E73EB5222933873F00D1F74C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E73EB5212933873F00D1F74C /* .gitignore */; };
@@ -16,16 +19,28 @@
 		E75555C4292A980300E35365 /* UrlExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75555C3292A980300E35365 /* UrlExtention.swift */; };
 		E75B1BAB2933544D004CA82C /* ZoomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B1BAA2933544D004CA82C /* ZoomImageView.swift */; };
 		E75B1BAD29335570004CA82C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B1BAC29335570004CA82C /* ImageViewController.swift */; };
+		E75C2F5F29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C2F5E29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift */; };
+		E75C2F6129D9F51D00FBC7B4 /* SearchNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C2F6029D9F51D00FBC7B4 /* SearchNewsViewController.swift */; };
+		E75C2F6429D9F65400FBC7B4 /* NewsAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C2F6329D9F65400FBC7B4 /* NewsAPIResponse.swift */; };
+		E75C2F6729D9F6B900FBC7B4 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C2F6629D9F6B900FBC7B4 /* APIManager.swift */; };
+		E76A86E429DD9F39008B781F /* ClassifyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76A86E229DD9F38008B781F /* ClassifyCollectionViewCell.swift */; };
+		E76A86E529DD9F39008B781F /* ClassifyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E76A86E329DD9F39008B781F /* ClassifyCollectionViewCell.xib */; };
+		E77865DB29DC344500F5ED1C /* NewsSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77865DA29DC344500F5ED1C /* NewsSettingManager.swift */; };
+		E77865DD29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77865DC29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift */; };
 		E77EF8D42906A35600EE94E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77EF8D32906A35600EE94E6 /* AppDelegate.swift */; };
 		E77EF8D62906A35600EE94E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77EF8D52906A35600EE94E6 /* SceneDelegate.swift */; };
 		E77EF8D82906A35600EE94E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77EF8D72906A35600EE94E6 /* ViewController.swift */; };
 		E77EF8DB2906A35600EE94E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77EF8D92906A35600EE94E6 /* Main.storyboard */; };
 		E77EF8DD2906A35800EE94E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E77EF8DC2906A35800EE94E6 /* Assets.xcassets */; };
 		E77EF8E02906A35800EE94E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77EF8DE2906A35800EE94E6 /* LaunchScreen.storyboard */; };
+		E7CF424129DB317D006F41C2 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CF424029DB317D006F41C2 /* NewsCell.xib */; };
+		E7CF424329DB48ED006F41C2 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CF424229DB48ED006F41C2 /* NewsCell.swift */; };
 		E7DDB4EA290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E7DDB4E9290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E7061D0929DB78F100405544 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		E7061D0B29DC240800405544 /* NewsAPIEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIEnum.swift; sourceTree = "<group>"; };
 		E71ED275292696FF00A39F3C /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		E73EB51D2933627E00D1F74C /* MLModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLModelManager.swift; sourceTree = "<group>"; };
 		E73EB5212933873F00D1F74C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -35,6 +50,14 @@
 		E75555C3292A980300E35365 /* UrlExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlExtention.swift; sourceTree = "<group>"; };
 		E75B1BAA2933544D004CA82C /* ZoomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageView.swift; sourceTree = "<group>"; };
 		E75B1BAC29335570004CA82C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		E75C2F5E29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyHeadlineViewController.swift; sourceTree = "<group>"; };
+		E75C2F6029D9F51D00FBC7B4 /* SearchNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNewsViewController.swift; sourceTree = "<group>"; };
+		E75C2F6329D9F65400FBC7B4 /* NewsAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIResponse.swift; sourceTree = "<group>"; };
+		E75C2F6629D9F6B900FBC7B4 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		E76A86E229DD9F38008B781F /* ClassifyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Classif\byCollectionViewCell.swift"; sourceTree = "<group>"; };
+		E76A86E329DD9F39008B781F /* ClassifyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassifyCollectionViewCell.xib; sourceTree = "<group>"; };
+		E77865DA29DC344500F5ED1C /* NewsSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSettingManager.swift; sourceTree = "<group>"; };
+		E77865DC29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesSettingViewController.swift; sourceTree = "<group>"; };
 		E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorBarTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E77EF8D32906A35600EE94E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E77EF8D52906A35600EE94E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +67,8 @@
 		E77EF8DF2906A35800EE94E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E77EF8E12906A35800EE94E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E77EF8E92906AAAD00EE94E6 /* ColorBarTesting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ColorBarTesting.entitlements; sourceTree = "<group>"; };
+		E7CF424029DB317D006F41C2 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		E7CF424229DB48ED006F41C2 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		E7DDB4E9290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TabbarColorClassifier1027.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,13 +77,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E73EB51F2933834E00D1F74C /* ViewController */ = {
+		E73EB51F2933834E00D1F74C /* CoreDataRoom */ = {
 			isa = PBXGroup;
 			children = (
 				E77EF8D72906A35600EE94E6 /* ViewController.swift */,
@@ -66,21 +92,44 @@
 				E751979A2931D73B00582258 /* ModelSelectViewController.swift */,
 				E75B1BAC29335570004CA82C /* ImageViewController.swift */,
 			);
-			path = ViewController;
+			path = CoreDataRoom;
 			sourceTree = "<group>";
 		};
 		E73EB5202933838A00D1F74C /* Customer */ = {
 			isa = PBXGroup;
 			children = (
+				E7CF424029DB317D006F41C2 /* NewsCell.xib */,
+				E7CF424229DB48ED006F41C2 /* NewsCell.swift */,
 				E75B1BAA2933544D004CA82C /* ZoomImageView.swift */,
+				E7061D0929DB78F100405544 /* WebViewViewController.swift */,
+				E76A86E229DD9F38008B781F /* ClassifyCollectionViewCell.swift */,
+				E76A86E329DD9F39008B781F /* ClassifyCollectionViewCell.xib */,
 			);
 			path = Customer;
+			sourceTree = "<group>";
+		};
+		E74B508229DB2F8000888EAC /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E74B508529DB313400888EAC /* News */,
+				E77EF8D92906A35600EE94E6 /* Main.storyboard */,
+				E77EF8DE2906A35800EE94E6 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		E74B508529DB313400888EAC /* News */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		E75555BF292A978C00E35365 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
 				E75555C0292A97B400E35365 /* FileType.swift */,
+				E7061D0B29DC240800405544 /* NewsAPIEnum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -98,6 +147,34 @@
 			children = (
 				E71ED275292696FF00A39F3C /* LocalFileManager.swift */,
 				E73EB51D2933627E00D1F74C /* MLModelManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		E75C2F5929D9F44200FBC7B4 /* NewsRoom */ = {
+			isa = PBXGroup;
+			children = (
+				E75C2F6529D9F68900FBC7B4 /* Manager */,
+				E75C2F5E29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift */,
+				E77865DC29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift */,
+				E75C2F6029D9F51D00FBC7B4 /* SearchNewsViewController.swift */,
+			);
+			path = NewsRoom;
+			sourceTree = "<group>";
+		};
+		E75C2F6229D9F58D00FBC7B4 /* APIResponse */ = {
+			isa = PBXGroup;
+			children = (
+				E75C2F6329D9F65400FBC7B4 /* NewsAPIResponse.swift */,
+			);
+			path = APIResponse;
+			sourceTree = "<group>";
+		};
+		E75C2F6529D9F68900FBC7B4 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E75C2F6629D9F6B900FBC7B4 /* APIManager.swift */,
+				E77865DA29DC344500F5ED1C /* NewsSettingManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -122,17 +199,18 @@
 		E77EF8D22906A35600EE94E6 /* ColorBarTesting */ = {
 			isa = PBXGroup;
 			children = (
+				E75C2F6229D9F58D00FBC7B4 /* APIResponse */,
+				E75C2F5929D9F44200FBC7B4 /* NewsRoom */,
 				E73EB5202933838A00D1F74C /* Customer */,
-				E73EB51F2933834E00D1F74C /* ViewController */,
+				E73EB51F2933834E00D1F74C /* CoreDataRoom */,
 				E75555C2292A97D200E35365 /* Extension */,
 				E75555BF292A978C00E35365 /* Enum */,
 				E75555C5292A98A200E35365 /* Manager */,
+				E74B508229DB2F8000888EAC /* Storyboard */,
 				E77EF8E92906AAAD00EE94E6 /* ColorBarTesting.entitlements */,
 				E77EF8D32906A35600EE94E6 /* AppDelegate.swift */,
 				E77EF8D52906A35600EE94E6 /* SceneDelegate.swift */,
-				E77EF8D92906A35600EE94E6 /* Main.storyboard */,
 				E77EF8DC2906A35800EE94E6 /* Assets.xcassets */,
-				E77EF8DE2906A35800EE94E6 /* LaunchScreen.storyboard */,
 				E77EF8E12906A35800EE94E6 /* Info.plist */,
 				E7DDB4E9290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel */,
 			);
@@ -155,6 +233,9 @@
 			dependencies = (
 			);
 			name = ColorBarTesting;
+			packageProductDependencies = (
+				E7061D0729DB6A6800405544 /* Kingfisher */,
+			);
 			productName = ColorBarTesting;
 			productReference = E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */;
 			productType = "com.apple.product-type.application";
@@ -183,6 +264,9 @@
 				Base,
 			);
 			mainGroup = E77EF8C72906A35600EE94E6;
+			packageReferences = (
+				E7061D0629DB6A6800405544 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = E77EF8D12906A35600EE94E6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -199,6 +283,8 @@
 			files = (
 				E73EB5222933873F00D1F74C /* .gitignore in Resources */,
 				E77EF8E02906A35800EE94E6 /* LaunchScreen.storyboard in Resources */,
+				E7CF424129DB317D006F41C2 /* NewsCell.xib in Resources */,
+				E76A86E529DD9F39008B781F /* ClassifyCollectionViewCell.xib in Resources */,
 				E77EF8DD2906A35800EE94E6 /* Assets.xcassets in Resources */,
 				E77EF8DB2906A35600EE94E6 /* Main.storyboard in Resources */,
 			);
@@ -214,15 +300,25 @@
 				E7DDB4EA290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel in Sources */,
 				E75555C1292A97B400E35365 /* FileType.swift in Sources */,
 				E75555C4292A980300E35365 /* UrlExtention.swift in Sources */,
+				E77865DB29DC344500F5ED1C /* NewsSettingManager.swift in Sources */,
 				E77EF8D82906A35600EE94E6 /* ViewController.swift in Sources */,
 				E73EB51E2933627E00D1F74C /* MLModelManager.swift in Sources */,
+				E7061D0C29DC240800405544 /* NewsAPIEnum.swift in Sources */,
 				E751979B2931D73B00582258 /* ModelSelectViewController.swift in Sources */,
 				E74D1FD32930B0270010EE8D /* SheetViewController.swift in Sources */,
+				E75C2F6429D9F65400FBC7B4 /* NewsAPIResponse.swift in Sources */,
 				E77EF8D42906A35600EE94E6 /* AppDelegate.swift in Sources */,
+				E7061D0A29DB78F100405544 /* WebViewViewController.swift in Sources */,
 				E77EF8D62906A35600EE94E6 /* SceneDelegate.swift in Sources */,
+				E76A86E429DD9F39008B781F /* ClassifyCollectionViewCell.swift in Sources */,
+				E7CF424329DB48ED006F41C2 /* NewsCell.swift in Sources */,
 				E71ED276292696FF00A39F3C /* LocalFileManager.swift in Sources */,
+				E77865DD29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift in Sources */,
+				E75C2F6729D9F6B900FBC7B4 /* APIManager.swift in Sources */,
+				E75C2F6129D9F51D00FBC7B4 /* SearchNewsViewController.swift in Sources */,
 				E75B1BAD29335570004CA82C /* ImageViewController.swift in Sources */,
 				E75B1BAB2933544D004CA82C /* ZoomImageView.swift in Sources */,
+				E75C2F5F29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KA7XQAFX2W;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ColorBarTesting/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -404,6 +501,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KA7XQAFX2W;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ColorBarTesting/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -448,6 +546,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7061D0629DB6A6800405544 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7061D0729DB6A6800405544 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7061D0629DB6A6800405544 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E77EF8C82906A35600EE94E6 /* Project object */;
 }
