@@ -34,6 +34,25 @@ enum Category: String, CaseIterable {
             return "科技"
         }
     }
+    
+    var order: Int {
+        switch self {
+        case .general:
+            return 0
+        case .business:
+            return 1
+        case .health:
+            return 2
+        case .technology:
+            return 3
+        case .science:
+            return 4
+        case .sports:
+            return 5
+        case .entertainment:
+            return 6
+        }
+    }
 }
 
 enum CountryCode: String, CaseIterable {
