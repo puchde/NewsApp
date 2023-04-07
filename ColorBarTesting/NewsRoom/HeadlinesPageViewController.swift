@@ -14,9 +14,9 @@ protocol HeadlinesDelegate {
 class HeadlinesPageViewController: UIPageViewController {
     
     private var page = 0
-    private var maxPage = Category.allCases.count
+    private var maxPage = Category.getTotal()
     var headlinesDelegate: HeadlinesDelegate?
-    var isPageAnimating = false
+    var tableVCs: [Int: HeadlinesTableViewController] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,16 +34,26 @@ extension HeadlinesPageViewController {
 }
 
 extension HeadlinesPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+    func updatePage(_ newPage: Int) {
+        page = newPage
+    }
+    
     func getContentViewController(page: Int) -> HeadlinesTableViewController? {
-        if page < 0 || page > maxPage || isPageAnimating {
+        if page < 0 || page >= maxPage {
             return nil
+        }
+        
+        if let tableVC = tableVCs[page] {
+            tableVC.page = page
+            return tableVC
         }
         
         guard let tableVC = storyboard?.instantiateViewController(withIdentifier: "headlinesTableViewController") as? HeadlinesTableViewController else {
             return nil
         }
-//        isPageAnimating = true
+
         tableVC.page = page
+        tableVCs[page] = tableVC
         return tableVC
     }
     
@@ -57,16 +67,15 @@ extension HeadlinesPageViewController: UIPageViewControllerDelegate, UIPageViewC
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if finished {
-            isPageAnimating = false
             guard let tableVC = viewControllers?.first as? HeadlinesTableViewController, let nowPage = tableVC.page else {
                 return
             }
+            
             self.page = nowPage
-            Category.allCases.forEach { category in
-                if category.order == nowPage {
-                    newsSettingManager.updateSetting(setting: category)
-                }
+            if let category = Category.fromOrder(nowPage) {
+                newsSettingManager.updateSetting(setting: category)
             }
+            
             headlinesDelegate?.updateClassify(page: page)
             print("didFinishAnimating, self.page:\(self.page)")
         }

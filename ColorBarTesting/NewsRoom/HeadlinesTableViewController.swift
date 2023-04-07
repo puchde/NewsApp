@@ -31,6 +31,10 @@ class HeadlinesTableViewController: UIViewController {
         checkYPosition(isShow: true)
         scrollToTop()
     }
+    
+    deinit {
+        print("\(String(describing: page)) is deinit")
+    }
 }
 
 //MARK: Init
@@ -60,7 +64,8 @@ extension HeadlinesTableViewController {
         }
         if !isLoadedData {
             let country = newsSettingManager.country.rawValue
-            let category = newsSettingManager.category.rawValue
+//            let category = newsSettingManager.category.rawValue
+            guard let page, let category = Category.fromOrder(page)?.rawValue else { return }
             APIManager.topHeadlines(country: country, category: category, page: headlinesPage) { result in
                 switch result {
                 case .success(let success):

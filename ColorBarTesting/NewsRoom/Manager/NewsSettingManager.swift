@@ -32,4 +32,8 @@ class NewsSettingManager {
     func changeSearchPage(page: Int) {
         searchPage = page
     }
+    
+    func getNowCategoryPage() -> Int {
+        return category.order
+    }
 }

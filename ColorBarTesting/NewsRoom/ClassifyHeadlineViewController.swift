@@ -40,12 +40,12 @@ extension ClassifyHeadlineViewController {
 //MARK: CollectionView
 extension ClassifyHeadlineViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Category.allCases.count
+        return Category.getTotal()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = classifyCollectionView.dequeueReusableCell(withReuseIdentifier: "classifyCell", for: indexPath) as? ClassifyCollectionViewCell {
-            cell.category = Category.allCases[indexPath.row]
+        if let cell = classifyCollectionView.dequeueReusableCell(withReuseIdentifier: "classifyCell", for: indexPath) as? ClassifyCollectionViewCell, let category = Category.fromOrder(indexPath.row) {
+            cell.category = category
             cell.updateCell()
             return cell
         }
@@ -53,19 +53,30 @@ extension ClassifyHeadlineViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        newsSettingManager.updateSetting(setting: Category.allCases[indexPath.row])
+        let row = indexPath.row
+        
+        if let pageVC = children.first as? HeadlinesPageViewController, let contentVC = pageVC.getContentViewController(page: row) {
+            let page = newsSettingManager.getNowCategoryPage()
+            pageVC.setViewControllers([contentVC], direction: page < row ? .forward : .reverse, animated: true)
+            pageVC.updatePage(row)
+        }
+        
+        newsSettingManager.updateSetting(setting: Category.fromOrder(row))
+        
         collectionView.visibleCells.forEach { cell in
             if let classifyCell = cell as? ClassifyCollectionViewCell {
                 classifyCell.updateCell()
             }
         }
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
     }
 }
 
 //MARK: 實作HeadlinesDelegate
 extension ClassifyHeadlineViewController: HeadlinesDelegate {
     func updateClassify(page: Int) {
+        guard page < Category.getTotal() else { return }
         let indexPath = IndexPath(row: page, section: 0)
         classifyCollectionView.reloadData()
         classifyCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)

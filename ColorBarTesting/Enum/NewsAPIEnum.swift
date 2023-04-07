@@ -53,6 +53,14 @@ enum Category: String, CaseIterable {
             return 6
         }
     }
+    
+    static func getTotal() -> Int {
+        return Category.allCases.count
+    }
+    
+    static func fromOrder(_ order: Int) -> Category? {
+        return Category.allCases.first(where: { $0.order == order })
+    }
 }
 
 enum CountryCode: String, CaseIterable {
