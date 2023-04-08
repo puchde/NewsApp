@@ -16,6 +16,16 @@ class HeadlinesTableViewController: UIViewController {
     var articles: [Article] = []
     var selectNewsUrl = ""
     var isLoadedData = false
+    var headlinesPage = 0
+    
+    var needFresh = false
+    var newsCountry: CountryCode = .TW {
+        willSet {
+            if newValue != self.newsCountry {
+                needFresh = true
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +34,12 @@ class HeadlinesTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         checkYPosition()
-        loadNewsData()
+        newsCountry = newsSettingManager.country
+        if needFresh {
+            reloadNessData()
+        } else {
+            loadNewsData()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,8 +57,10 @@ extension HeadlinesTableViewController {
     func initView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.bounces = false
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
+        let freshControl = UIRefreshControl()
+        freshControl.addTarget(self, action: #selector(reloadNessData), for: .valueChanged)
+        tableView.refreshControl = freshControl
     }
 }
 
@@ -55,18 +72,27 @@ extension HeadlinesTableViewController {
         }
     }
     
+    @objc func reloadNessData() {
+        if newsCountry != newsSettingManager.country {
+            newsCountry = newsSettingManager.country
+            reloadNessData()
+            return
+        }
+        needFresh = false
+        headlinesPage = 0
+        isLoadedData = false
+        articles.removeAll()
+        loadNewsData()
+    }
+    
     func loadNewsData(loadMorePage: Bool = false) {
-        var headlinesPage = newsSettingManager.headlinesPage
         if loadMorePage && articles.count == headlinesPage * 20 {
             headlinesPage += 1
-            newsSettingManager.changeHeadlinesPage(page: headlinesPage)
             isLoadedData = false
         }
         if !isLoadedData {
-            let country = newsSettingManager.country.rawValue
-//            let category = newsSettingManager.category.rawValue
             guard let page, let category = Category.fromOrder(page)?.rawValue else { return }
-            APIManager.topHeadlines(country: country, category: category, page: headlinesPage) { result in
+            APIManager.topHeadlines(country: newsCountry.rawValue, category: category, page: headlinesPage) { result in
                 switch result {
                 case .success(let success):
                     if success.status == "ok" {
@@ -76,11 +102,14 @@ extension HeadlinesTableViewController {
                         }
                         self.tableView.reloadData()
                         self.isLoadedData = true
+                        self.tableView.refreshControl?.endRefreshing()
                     } else {
                         print(success.status)
+                        self.tableView.refreshControl?.endRefreshing()
                     }
                 case .failure(let failure):
                     print(failure)
+                    self.tableView.refreshControl?.endRefreshing()
                 }
             }
         }
@@ -94,8 +123,8 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let newsData = articles[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell, !articles.isEmpty {
+            let newsData = articles[indexPath.row]
             let newsDate = String(newsData.publishedAt.prefix(10))
             cell.updateArticleInfo(author: newsData.author ?? "News啦", title: newsData.title, newsDate: newsDate, newsUrl: newsData.url)
             cell.updateImage()

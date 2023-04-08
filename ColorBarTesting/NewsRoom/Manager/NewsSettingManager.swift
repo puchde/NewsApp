@@ -10,7 +10,6 @@ import Foundation
 class NewsSettingManager {
     var country: CountryCode = .TW
     var category: Category = .general
-    var headlinesPage = 1
     var searchPage = 1
     
     static let shared = NewsSettingManager()
@@ -24,11 +23,7 @@ class NewsSettingManager {
             print("category Didset: \(category)")
         }
     }
-    
-    func changeHeadlinesPage(page: Int) {
-        headlinesPage = page
-    }
-    
+        
     func changeSearchPage(page: Int) {
         searchPage = page
     }

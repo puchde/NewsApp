@@ -38,6 +38,7 @@
 		E7CF424129DB317D006F41C2 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CF424029DB317D006F41C2 /* NewsCell.xib */; };
 		E7CF424329DB48ED006F41C2 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CF424229DB48ED006F41C2 /* NewsCell.swift */; };
 		E7DDB4EA290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E7DDB4E9290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel */; };
+		E7F38BF429E0F570003E7E6F /* CustomVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F38BF329E0F570003E7E6F /* CustomVIew.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		E7CF424029DB317D006F41C2 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		E7CF424229DB48ED006F41C2 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		E7DDB4E9290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TabbarColorClassifier1027.mlmodel; sourceTree = "<group>"; };
+		E7F38BF329E0F570003E7E6F /* CustomVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVIew.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				E7061D0929DB78F100405544 /* WebViewViewController.swift */,
 				E76A86E229DD9F38008B781F /* ClassifyCollectionViewCell.swift */,
 				E76A86E329DD9F39008B781F /* ClassifyCollectionViewCell.xib */,
+				E7F38BF329E0F570003E7E6F /* CustomVIew.swift */,
 			);
 			path = Customer;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				E73EB51E2933627E00D1F74C /* MLModelManager.swift in Sources */,
 				E7061D0C29DC240800405544 /* NewsAPIEnum.swift in Sources */,
 				E751979B2931D73B00582258 /* ModelSelectViewController.swift in Sources */,
+				E7F38BF429E0F570003E7E6F /* CustomVIew.swift in Sources */,
 				E74D1FD32930B0270010EE8D /* SheetViewController.swift in Sources */,
 				E75C2F6429D9F65400FBC7B4 /* NewsAPIResponse.swift in Sources */,
 				E74A0AE929DF188E00585387 /* HeadlinesPageViewController.swift in Sources */,

@@ -212,7 +212,7 @@
         <scene sceneID="zIk-zx-Dnr">
             <objects>
                 <viewController id="sxf-OO-35T" customClass="HeadlinesSettingViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="s2I-Fh-L8Y">
+                    <view key="view" contentMode="scaleToFill" id="s2I-Fh-L8Y" customClass="CustomVIew" customModule="ColorBarTesting" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -525,11 +525,11 @@
             </objects>
             <point key="canvasLocation" x="2226.1538461538462" y="-1398.341232227488"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="ecj-Lo-SKo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9bu-v1-STb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="house" catalog="system" id="RbF-tT-0yT"/>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="RbF-tT-0yT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4ph-rb-gD0">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
