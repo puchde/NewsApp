@@ -11,12 +11,35 @@ class HeadlinesTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
+    private let displayMode: DisplayMode = newsSettingManager.getDisplayMode()
+    private let articlesQueue = DispatchQueue(label: "com.example.articlesQueue", attributes: .concurrent)
+    private var _articles: [Article] = []
+    var articles: [Article] {
+        get {
+            return articlesQueue.sync {
+                return self._articles
+            }
+        }
+        set {
+            articlesQueue.async(flags: .barrier) {
+                self._articles = newValue
+            }
+        }
+    }
+
     var page: Int?
     var articlesNumber = 0
-    var articles: [Article] = []
     var selectNewsUrl = ""
     var isLoadedData = false
-    var headlinesPage = 0
+    var dataPage = 1
+    var dataPageCount: Int {
+        switch displayMode {
+        case .headline:
+            return 20
+        case .search:
+            return 50
+        }
+    }
     
     var needFresh = false
     var newsCountry: CountryCode = .TW {
@@ -24,6 +47,11 @@ class HeadlinesTableViewController: UIViewController {
             if newValue != self.newsCountry {
                 needFresh = true
             }
+        }
+    }
+    var searchQuery: String {
+        get {
+            newsSettingManager.getSearchQuery()
         }
     }
 
@@ -34,9 +62,9 @@ class HeadlinesTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         checkYPosition()
-        newsCountry = newsSettingManager.country
+        newsCountry = newsSettingManager.getCountry()
         if needFresh {
-            reloadNessData()
+            reloadNewsData()
         } else {
             loadNewsData()
         }
@@ -59,7 +87,7 @@ extension HeadlinesTableViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         let freshControl = UIRefreshControl()
-        freshControl.addTarget(self, action: #selector(reloadNessData), for: .valueChanged)
+        freshControl.addTarget(self, action: #selector(reloadNewsDataAction), for: .valueChanged)
         tableView.refreshControl = freshControl
     }
 }
@@ -71,46 +99,91 @@ extension HeadlinesTableViewController {
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }
     }
-    
-    @objc func reloadNessData() {
-        if newsCountry != newsSettingManager.country {
-            newsCountry = newsSettingManager.country
-            reloadNessData()
-            return
+
+    @objc func reloadNewsDataAction() {
+        switch displayMode {
+        case .headline:
+            reloadNewsData()
+        case .search:
+            let searchString = newsSettingManager.getSearchQuery()
+            reloadNewsData(searchString: searchString)
+        }
+    }
+
+    func reloadNewsData(searchString: String = "") {
+        switch displayMode {
+        case .headline:
+            if newsCountry != newsSettingManager.getCountry() {
+                newsCountry = newsSettingManager.getCountry()
+                reloadNewsData()
+                return
+            }
+            break
+        case .search:
+            newsSettingManager.updateSearchQuery(searchString)
+            break
         }
         needFresh = false
-        headlinesPage = 0
+        dataPage = 1
         isLoadedData = false
         articles.removeAll()
         loadNewsData()
     }
     
     func loadNewsData(loadMorePage: Bool = false) {
-        if loadMorePage && articles.count == headlinesPage * 20 {
-            headlinesPage += 1
-            isLoadedData = false
+        if loadMorePage {
+            if articles.count == dataPage * dataPageCount {
+                dataPage += 1
+                isLoadedData = false
+            }
         }
         if !isLoadedData {
-            guard let page, let category = Category.fromOrder(page)?.rawValue else { return }
-            APIManager.topHeadlines(country: newsCountry.rawValue, category: category, page: headlinesPage) { result in
-                switch result {
-                case .success(let success):
-                    if success.status == "ok" {
-                        self.articlesNumber = success.totalResults
-                        success.articles.forEach { article in
-                            self.articles.append(article)
+            switch displayMode {
+            case .headline:
+                guard let page, let category = Category.fromOrder(page)?.rawValue else { return }
+                APIManager.topHeadlines(country: newsCountry.rawValue, category: category, page: dataPage) { result in
+                    switch result {
+                    case .success(let success):
+                        if success.status == "ok" {
+                            self.articlesNumber = success.totalResults
+                            success.articles.forEach { article in
+                                self.articles.append(article)
+                            }
+                            self.tableView.reloadData()
+                            self.isLoadedData = true
+                            self.tableView.refreshControl?.endRefreshing()
+                        } else {
+                            print(success.status)
+                            self.tableView.refreshControl?.endRefreshing()
                         }
-                        self.tableView.reloadData()
-                        self.isLoadedData = true
-                        self.tableView.refreshControl?.endRefreshing()
-                    } else {
-                        print(success.status)
+                    case .failure(let failure):
+                        print(failure)
                         self.tableView.refreshControl?.endRefreshing()
                     }
-                case .failure(let failure):
-                    print(failure)
-                    self.tableView.refreshControl?.endRefreshing()
                 }
+                break
+            case .search:
+                APIManager.searchNews(query: searchQuery, language: "zh", page: dataPage) { result in
+                    switch result {
+                    case .success(let success):
+                        if success.status == "ok" {
+                            self.articlesNumber = success.totalResults
+                            success.articles.forEach { article in
+                                self.articles.append(article)
+                            }
+                            self.tableView.reloadData()
+                            self.isLoadedData = true
+                            self.tableView.refreshControl?.endRefreshing()
+                        } else {
+                            print(success.status)
+                            self.tableView.refreshControl?.endRefreshing()
+                        }
+                    case .failure(let failure):
+                        print(failure)
+                        self.tableView.refreshControl?.endRefreshing()
+                    }
+                }
+                break
             }
         }
     }
@@ -126,8 +199,7 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell, !articles.isEmpty {
             let newsData = articles[indexPath.row]
             let newsDate = String(newsData.publishedAt.prefix(10))
-            cell.updateArticleInfo(author: newsData.author ?? "News啦", title: newsData.title, newsDate: newsDate, newsUrl: newsData.url)
-            cell.updateImage()
+            cell.updateArticleInfo(author: newsData.author ?? "News啦", title: newsData.title, newsDate: newsDate, newsImageUrl: newsData.urlToImage ?? "")
             tableView.deselectRow(at: indexPath, animated: false)
             return cell
         }

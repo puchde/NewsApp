@@ -12,9 +12,19 @@ protocol HeadlinesDelegate {
 }
 
 class HeadlinesPageViewController: UIPageViewController {
-    
+
+    private let displayMode: DisplayMode = newsSettingManager.getDisplayMode()
     private var page = 0
-    private var maxPage = Category.getTotal()
+    private var maxPage: Int {
+        get {
+            switch displayMode {
+            case .headline:
+                return Category.getTotal()
+            case .search:
+                return 1
+            }
+        }
+    }
     var headlinesDelegate: HeadlinesDelegate?
     var tableVCs: [Int: HeadlinesTableViewController] = [:]
 
@@ -24,15 +34,24 @@ class HeadlinesPageViewController: UIPageViewController {
     }
 }
 
+//MARK: Init
 extension HeadlinesPageViewController {
     func initView() {
         self.dataSource = self
         self.delegate = self
         guard let tableVC = getContentViewController(page: page) else { return }
         self.setViewControllers([tableVC], direction: .forward, animated: false)
+        if displayMode == .search {
+            for subview in self.view.subviews {
+                if let scrollView = subview as? UIScrollView {
+                    scrollView.bounces = false
+                }
+            }
+        }
     }
 }
 
+//MARK: PageView Setting
 extension HeadlinesPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     func updatePage(_ newPage: Int) {
         page = newPage

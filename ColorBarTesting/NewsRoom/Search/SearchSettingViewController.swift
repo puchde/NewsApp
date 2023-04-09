@@ -1,13 +1,13 @@
 //
-//  SearchNewsViewController.swift
+//  SearchSettingViewController.swift
 //  ColorBarTesting
 //
-//  Created by ZHIWEI XU on 2023/4/3.
+//  Created by ZHIWEI XU on 2023/4/9.
 //
 
 import UIKit
 
-class SearchNewsViewController: UIViewController {
+class SearchSettingViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

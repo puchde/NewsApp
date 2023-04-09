@@ -17,11 +17,14 @@ struct APIManager {
         var request = URLRequest(url: URL(string: router.path)!)
         request.httpMethod = router.httpMethod
         if let query = router.queryParameter {
-            request.url?.append(queryItems: query)
+            let filterQuery = query.filter { item in
+                !item.value!.isEmpty
+            }
+            request.url?.append(queryItems: filterQuery)
         }
         
         // 檢查是否已經有相同的 request 正在進行
-         if let task = self.shared.requests[request] {
+        if self.shared.requests[request] != nil {
              print("Request in progress: \(router.path)")
              self.shared.semaphore.signal()
              return
@@ -64,18 +67,22 @@ extension APIManager {
         APIManager.DataRequest(router: NewsRouter.topHeadlines(country: country, category: category, page: page), completion: completion)
     }
     
-    static func getNews(query: String, searchIn: String = "", from: String = "", to: String = "", language: String = "", pageSize: Int = 50, page: Int = 1, sortBy: String = "", completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
-        APIManager.DataRequest(router: NewsRouter.getNews(query: query, searchIn: searchIn, from: from, to: to, language: language, pageSize: pageSize, page: page, sortBy: sortBy), completion: completion)
+    static func searchNews(query: String, language: String = "", pageSize: Int = 50, page: Int = 1, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
+        let searchIn = newsSettingManager.getSearchIn(isForApi: true)
+        let searchDate = newsSettingManager.getSearchDate()
+        let sortBy = newsSettingManager.getSearchSortBy(isForApi: true)
+        APIManager.DataRequest(router: NewsRouter.searchNews(query: query, searchIn: searchIn, from: searchDate.0, to: searchDate.1, language: language, pageSize: pageSize, page: page, sortBy: sortBy), completion: completion)
     }
 }
 
 enum NewsRouter: APIClientConfig {
-    case getNews(query: String, searchIn: String = "", from: String = "", to: String = "", language: String = "", pageSize: Int = 50, page: Int = 1, sortBy: String = "")
+    case searchNews(query: String, searchIn: String, from: String, to: String, language: String, pageSize: Int, page: Int, sortBy: String)
     case topHeadlines(country: String, category: String, page: Int)
     
     var apiKey: String {
         // your NewsAPI key
-        return ""
+//        return "cbe29cc43e2544fda19aa684517aadd4"
+        return "b6a92da50ecb45fdbe56aaf376cc2f39"
     }
     
     var httpMethod: String {
@@ -100,7 +107,7 @@ enum NewsRouter: APIClientConfig {
     
     var urlPrefix: String {
         switch self {
-        case .getNews:
+        case .searchNews:
             return "/v2/everything"
         case .topHeadlines:
             return "/v2/top-headlines"
@@ -116,7 +123,7 @@ enum NewsRouter: APIClientConfig {
     
     var queryParameter: [URLQueryItem]? {
         switch self {
-        case .getNews(let query, let searchIn, let from, let to, let language, let pageSize, let page, let sortBy):
+        case .searchNews(let query, let searchIn, let from, let to, let language, let pageSize, let page, let sortBy):
             let queryItems = [URLQueryItem(name: QueryKey.q, value: query),
                               URLQueryItem(name: QueryKey.apiKey, value: self.apiKey),
                               URLQueryItem(name: QueryKey.searchIn, value: searchIn),
@@ -126,20 +133,14 @@ enum NewsRouter: APIClientConfig {
                               URLQueryItem(name: QueryKey.pageSize, value: "\(pageSize)"),
                               URLQueryItem(name: QueryKey.page, value: "\(page)"),
                               URLQueryItem(name: QueryKey.sortBy, value: sortBy)]
-            
-            return queryItems.filter { item in
-                !item.value!.isEmpty
-            }
+            return queryItems
             
         case .topHeadlines(country: let country, let category, page: let page):
             let queryItems = [URLQueryItem(name: QueryKey.country, value: country),
                               URLQueryItem(name: QueryKey.apiKey, value: self.apiKey),
                               URLQueryItem(name: QueryKey.category, value: category),
                               URLQueryItem(name: QueryKey.page, value: "\(page)")]
-            
-            return queryItems.filter { item in
-                !item.value!.isEmpty
-            }
+            return queryItems
         }
     }
 }

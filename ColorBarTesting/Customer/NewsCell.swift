@@ -33,7 +33,7 @@ class NewsCell: UITableViewCell {
         }
     }
     
-    var newsUrl: String = "" {
+    var newsImageUrl: String = "" {
         didSet {
             updateImage()
         }
@@ -58,17 +58,20 @@ class NewsCell: UITableViewCell {
     //        super.init(style: .default, reuseIdentifier: "NewsCell")
     //    }
     
-    func updateArticleInfo(author: String, title: String, newsDate: String, newsUrl: String) {
+    func updateArticleInfo(author: String, title: String, newsDate: String, newsImageUrl: String) {
         self.author = author
         self.title = title
         self.newsDate = newsDate
-        self.newsUrl = newsUrl
+        self.newsImageUrl = newsImageUrl
     }
     
     func updateImage() {
-        guard let url = URL(string: newsUrl) else { return }
+        let placeholderImage = UIImage(named: "noPhoto")
+        cellImage.image = placeholderImage
+        guard let url = URL(string: newsImageUrl) else { return }
+        
         cellImage.kf.indicatorType = .activity
-        cellImage.kf.setImage(with: url, placeholder: UIImage(named: "noPhoto"))
+        cellImage.kf.setImage(with: url, placeholder: placeholderImage)
     }
 
 }

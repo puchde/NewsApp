@@ -19,7 +19,7 @@ class ClassifyCollectionViewCell: UICollectionViewCell {
         
     func updateCell() {
         self.textLabel.text = self.category.chineseName
-        if self.category == newsSettingManager.category {
+        if self.category == newsSettingManager.getCategory() {
             self.textLabel.textColor = UIColor.label
             self.lineImageView.backgroundColor = UIColor.label
         } else {

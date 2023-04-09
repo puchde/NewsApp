@@ -23,8 +23,8 @@ class HeadlinesSettingViewController: UIViewController {
         countryPickerView.dataSource = self
         categoryPickerView .delegate = self
         categoryPickerView.dataSource = self
-        countryPickerView.selectRow(countrys.firstIndex(of: newsSettingManager.country) ?? 0, inComponent: 0, animated: false)
-        categoryPickerView.selectRow(category.firstIndex(of: newsSettingManager.category) ?? 0, inComponent: 0, animated: false)
+        countryPickerView.selectRow(countrys.firstIndex(of: newsSettingManager.getCountry()) ?? 0, inComponent: 0, animated: false)
+        categoryPickerView.selectRow(category.firstIndex(of: newsSettingManager.getCategory()) ?? 0, inComponent: 0, animated: false)
     }
     
     override func viewDidLayoutSubviews() {
