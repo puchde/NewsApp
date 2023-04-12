@@ -55,8 +55,13 @@ class NewsSettingManager {
                 searchStringChi += "\(search.chineseName),"
             }
             searchString.removeLast()
-            return searchString
+            searchStringChi.removeLast()
+            return isForApi ? searchString : searchStringChi
         }
+    }
+
+    func getSearchInArray() -> [SearchIn] {
+        return searchIn
     }
 
     func getSearchSortBy(isForApi: Bool = true) -> String {
@@ -106,6 +111,7 @@ class NewsSettingManager {
     }
 
     func updateSearchIn(_ newSearchIn: [SearchIn]) {
+        print("old: \(searchIn), new: \(newSearchIn)")
         searchIn = newSearchIn
     }
     

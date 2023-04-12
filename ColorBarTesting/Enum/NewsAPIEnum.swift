@@ -146,7 +146,7 @@ enum DisplayMode: String {
     case search
 }
 
-enum SearchLanguage {
+enum SearchLanguage: CaseIterable {
     case zh
     case ar
     case de

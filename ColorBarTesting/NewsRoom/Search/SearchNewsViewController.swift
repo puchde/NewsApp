@@ -135,13 +135,21 @@ extension SearchNewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension SearchNewsViewController: searchSettingDelegate {
+    func reloadView() {
+        searchSettingTableView.reloadData()
+    }
+}
 //MARK: Prepare to next view
 extension SearchNewsViewController {
     @objc func showSearchSettingVC() {
         guard let SearchSettingVC = storyboard?.instantiateViewController(withIdentifier: "SearchSettingViewController") as? SearchSettingViewController else {
             return
         }
-        self.present(SearchSettingVC, animated: true)
+        SearchSettingVC.delegate = self
+        DispatchQueue.main.async {
+            self.present(SearchSettingVC, animated: true)
+        }
     }
 
     func showNewsTableVC(indexPath: IndexPath) {

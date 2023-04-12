@@ -31,6 +31,7 @@
 		E75C2F6729D9F6B900FBC7B4 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C2F6629D9F6B900FBC7B4 /* APIManager.swift */; };
 		E76A86E429DD9F39008B781F /* ClassifyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76A86E229DD9F38008B781F /* ClassifyCollectionViewCell.swift */; };
 		E76A86E529DD9F39008B781F /* ClassifyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E76A86E329DD9F39008B781F /* ClassifyCollectionViewCell.xib */; };
+		E774013A29E5C2A40052C577 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774013929E5C2A40052C577 /* UIButtonExtension.swift */; };
 		E77865DB29DC344500F5ED1C /* NewsSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77865DA29DC344500F5ED1C /* NewsSettingManager.swift */; };
 		E77865DD29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77865DC29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift */; };
 		E77EF8D42906A35600EE94E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77EF8D32906A35600EE94E6 /* AppDelegate.swift */; };
@@ -69,6 +70,7 @@
 		E75C2F6629D9F6B900FBC7B4 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E76A86E229DD9F38008B781F /* ClassifyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Classif\byCollectionViewCell.swift"; sourceTree = "<group>"; };
 		E76A86E329DD9F39008B781F /* ClassifyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassifyCollectionViewCell.xib; sourceTree = "<group>"; };
+		E774013929E5C2A40052C577 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		E77865DA29DC344500F5ED1C /* NewsSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSettingManager.swift; sourceTree = "<group>"; };
 		E77865DC29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesSettingViewController.swift; sourceTree = "<group>"; };
 		E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorBarTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				E75555C3292A980300E35365 /* UrlExtention.swift */,
+				E774013929E5C2A40052C577 /* UIButtonExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				E74D1FD32930B0270010EE8D /* SheetViewController.swift in Sources */,
 				E75C2F6429D9F65400FBC7B4 /* NewsAPIResponse.swift in Sources */,
 				E74A0AE929DF188E00585387 /* HeadlinesPageViewController.swift in Sources */,
+				E774013A29E5C2A40052C577 /* UIButtonExtension.swift in Sources */,
 				E77EF8D42906A35600EE94E6 /* AppDelegate.swift in Sources */,
 				E7061D0A29DB78F100405544 /* WebViewViewController.swift in Sources */,
 				E74A0AEB29DF18CC00585387 /* HeadlinesTableViewController.swift in Sources */,
