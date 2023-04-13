@@ -132,9 +132,9 @@ enum SearchSortBy: String {
     var chineseName: String {
         switch self {
         case .relevancy:
-            return "相關度最高"
+            return "相關度"
         case .popularity:
-            return "最熱門排序"
+            return "熱門排序"
         case .publishedAt:
             return "最新排序"
         }
@@ -146,7 +146,7 @@ enum DisplayMode: String {
     case search
 }
 
-enum SearchLanguage: CaseIterable {
+enum SearchLanguage: String, CaseIterable {
     case zh
     case ar
     case de

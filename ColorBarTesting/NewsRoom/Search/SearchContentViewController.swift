@@ -23,10 +23,10 @@ class SearchContentViewController: ClassifyHeadlineViewController {
 //MARK: SearchBar
 extension SearchContentViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchString = searchBar.searchTextField.text else { return }
+        guard let searchString = searchBar.searchTextField.text, searchString != newsSettingManager.getSearchQuery() else { return }
         newsSettingManager.updateSearchQuery(searchString)
         if let pageVC = children.first as? HeadlinesPageViewController, let contentVC = pageVC.getContentViewController(page: 0) {
-            contentVC.reloadNewsData(searchString: searchString)
+            contentVC.reloadData(searchString: searchString)
         }
     }
 }

@@ -67,11 +67,12 @@ class NewsCell: UITableViewCell {
     
     func updateImage() {
         let placeholderImage = UIImage(named: "noPhoto")
-        cellImage.image = placeholderImage
+        let placeholderColorImage = placeholderImage?.withTintColor(.secondaryLabel)
+        cellImage.image = placeholderColorImage
         guard let url = URL(string: newsImageUrl) else { return }
         
         cellImage.kf.indicatorType = .activity
-        cellImage.kf.setImage(with: url, placeholder: placeholderImage)
+        cellImage.kf.setImage(with: url, placeholder: placeholderColorImage)
     }
 
 }

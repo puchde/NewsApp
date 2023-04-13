@@ -26,6 +26,7 @@ class SearchSettingViewController: UIViewController {
 
     var searchInValue = [SearchIn]()
     let searchLanguage = SearchLanguage.allCases
+    var searchSortBy = newsSettingManager.getSearchSortBy()
     var delegate: searchSettingDelegate?
     var isFirstHeightSetting = true
 
@@ -54,9 +55,6 @@ class SearchSettingViewController: UIViewController {
         }
     }
 
-    @IBAction func sortByButtonClick(_ sender: UIButton) {
-
-    }
 }
 
 extension SearchSettingViewController {
@@ -98,6 +96,16 @@ extension SearchSettingViewController {
                 searchInValue.append(.description)
                 searchInValue.append(.content)
             }
+        }
+
+        let sortBy = newsSettingManager.getSearchSortBy()
+        switch sortBy {
+        case .relevancy:
+            relevancyButton.isSelected = true
+        case .popularity:
+            popularityButton.isSelected = true
+        case .publishedAt:
+            publishedAtButton.isSelected = true
         }
     }
 }
@@ -176,5 +184,25 @@ extension SearchSettingViewController {
             newsSettingManager.updateSearchIn(searchInValue)
             sender.isSelected = !sender.isSelected // 切換選中狀態
         }
+    }
+
+    @IBAction func sortByButtonClick(_ sender: UIButton) {
+        relevancyButton.isSelected = false
+        popularityButton.isSelected = false
+        publishedAtButton.isSelected = false
+        switch sender {
+        case relevancyButton:
+            searchSortBy = .relevancy
+            newsSettingManager.updateSearchSortBy(.relevancy)
+        case popularityButton:
+            searchSortBy = .popularity
+            newsSettingManager.updateSearchSortBy(.popularity)
+        case publishedAtButton:
+            searchSortBy = .publishedAt
+            newsSettingManager.updateSearchSortBy(.publishedAt)
+        default:
+            break
+        }
+        sender.isSelected = !sender.isSelected
     }
 }

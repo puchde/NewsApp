@@ -7,30 +7,20 @@
 
 import UIKit
 
+protocol HeadlinesTableViewDelegate {
+    func reloadData()
+}
+
 class HeadlinesTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
     private let displayMode: DisplayMode = newsSettingManager.getDisplayMode()
-    private let articlesQueue = DispatchQueue(label: "com.example.articlesQueue", attributes: .concurrent)
-    private var _articles: [Article] = []
-    var articles: [Article] {
-        get {
-            return articlesQueue.sync {
-                return self._articles
-            }
-        }
-        set {
-            articlesQueue.async(flags: .barrier) {
-                self._articles = newValue
-            }
-        }
-    }
-
+    var articles = [Article]()
     var page: Int?
     var articlesNumber = 0
     var selectNewsUrl = ""
-    var isLoadedData = false
+    var isLoading = false
     var dataPage = 1
     var dataPageCount: Int {
         switch displayMode {
@@ -40,9 +30,8 @@ class HeadlinesTableViewController: UIViewController {
             return 50
         }
     }
-    
     var needFresh = false
-    var newsCountry: CountryCode = .TW {
+    var newsCountry: CountryCode = newsSettingManager.getCountry() {
         willSet {
             if newValue != self.newsCountry {
                 needFresh = true
@@ -54,6 +43,7 @@ class HeadlinesTableViewController: UIViewController {
             newsSettingManager.getSearchQuery()
         }
     }
+    var apiLoading = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,12 +52,8 @@ class HeadlinesTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         checkYPosition()
-        newsCountry = newsSettingManager.getCountry()
-        if needFresh {
-            reloadNewsData()
-        } else {
-            loadNewsData()
-        }
+        reloadNews()
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,35 +73,42 @@ extension HeadlinesTableViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         let freshControl = UIRefreshControl()
-        freshControl.addTarget(self, action: #selector(reloadNewsDataAction), for: .valueChanged)
+        freshControl.addTarget(self, action: #selector(reloadDataAct), for: .valueChanged)
         tableView.refreshControl = freshControl
+        let keyboardTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(keyboardTap)
     }
 }
 
 //MARK: TableView Data
 extension HeadlinesTableViewController {
-    func scrollToTop() {
-        if !articles.isEmpty {
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+
+
+    func reloadNews() {
+        newsCountry = newsSettingManager.getCountry()
+        if needFresh {
+            reloadNews()
+        } else {
+            loadNewsData()
         }
     }
 
-    @objc func reloadNewsDataAction() {
+    @objc func reloadDataAct() {
         switch displayMode {
         case .headline:
-            reloadNewsData()
+            reloadNews()
         case .search:
             let searchString = newsSettingManager.getSearchQuery()
-            reloadNewsData(searchString: searchString)
+            reloadData(searchString: searchString)
         }
     }
 
-    func reloadNewsData(searchString: String = "") {
+    func reloadData(searchString: String = "") {
         switch displayMode {
         case .headline:
             if newsCountry != newsSettingManager.getCountry() {
                 newsCountry = newsSettingManager.getCountry()
-                reloadNewsData()
+                reloadNews()
                 return
             }
             break
@@ -123,68 +116,59 @@ extension HeadlinesTableViewController {
             newsSettingManager.updateSearchQuery(searchString)
             break
         }
-        needFresh = false
         dataPage = 1
-        isLoadedData = false
+        needFresh = false
         articles.removeAll()
         loadNewsData()
     }
     
-    func loadNewsData(loadMorePage: Bool = false) {
-        if loadMorePage {
-            if articles.count == dataPage * dataPageCount {
-                dataPage += 1
-                isLoadedData = false
+    func loadNewsData() {
+        if isLoading {
+            print("Loading啦")
+            return
+        } else {
+            if articles.count < articlesNumber || articles.count == 0 {
+                isLoading = true
+                switch displayMode {
+                case .headline:
+                    guard let page, let category = Category.fromOrder(page)?.rawValue else { return }
+                    APIManager.topHeadlines(country: newsCountry.rawValue, category: category, page: dataPage) { result in
+                        self.resultCompletion(result: result)
+                    }
+                    break
+                case .search:
+                    let language = newsSettingManager.getSearchLanguage().rawValue
+                    APIManager.searchNews(query: searchQuery, language: language, page: dataPage) { result in
+                        self.resultCompletion(result: result)
+                    }
+                    break
+                }
             }
         }
-        if !isLoadedData {
-            switch displayMode {
-            case .headline:
-                guard let page, let category = Category.fromOrder(page)?.rawValue else { return }
-                APIManager.topHeadlines(country: newsCountry.rawValue, category: category, page: dataPage) { result in
-                    switch result {
-                    case .success(let success):
-                        if success.status == "ok" {
-                            self.articlesNumber = success.totalResults
-                            success.articles.forEach { article in
-                                self.articles.append(article)
-                            }
-                            self.tableView.reloadData()
-                            self.isLoadedData = true
-                            self.tableView.refreshControl?.endRefreshing()
-                        } else {
-                            print(success.status)
-                            self.tableView.refreshControl?.endRefreshing()
-                        }
-                    case .failure(let failure):
-                        print(failure)
-                        self.tableView.refreshControl?.endRefreshing()
-                    }
+    }
+
+    func resultCompletion(result: (Result<NewsAPIResponse, Error>)) -> Void {
+        switch result {
+        case .success(let success):
+            if success.status == "ok" {
+                self.articlesNumber = success.totalResults
+                success.articles.forEach { article in
+                    self.articles.append(article)
                 }
-                break
-            case .search:
-                APIManager.searchNews(query: searchQuery, language: "zh", page: dataPage) { result in
-                    switch result {
-                    case .success(let success):
-                        if success.status == "ok" {
-                            self.articlesNumber = success.totalResults
-                            success.articles.forEach { article in
-                                self.articles.append(article)
-                            }
-                            self.tableView.reloadData()
-                            self.isLoadedData = true
-                            self.tableView.refreshControl?.endRefreshing()
-                        } else {
-                            print(success.status)
-                            self.tableView.refreshControl?.endRefreshing()
-                        }
-                    case .failure(let failure):
-                        print(failure)
-                        self.tableView.refreshControl?.endRefreshing()
-                    }
+                if self.articles.count < success.totalResults {
+                    self.dataPage += 1
                 }
-                break
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            } else {
+                print(success.status)
+                self.tableView.refreshControl?.endRefreshing()
             }
+            self.isLoading = false
+        case .failure(let failure):
+            print(failure)
+            self.tableView.refreshControl?.endRefreshing()
+            self.isLoading = false
         }
     }
 }
@@ -211,6 +195,12 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
         selectNewsUrl = articles[indexPath.row].url
         performSegue(withIdentifier: "toWebView", sender: self)
     }
+
+    func scrollToTop() {
+        if !articles.isEmpty {
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }
+    }
 }
 
 //MARK: ScrollView
@@ -222,7 +212,7 @@ extension HeadlinesTableViewController {
         let contentHeight = scrollView.contentSize.height
         if contentHeight != 0 && offsetY + screenHeight > (contentHeight) {
             print("一半啦")
-            loadNewsData(loadMorePage: true)
+            loadNewsData()
         }
     }
     
@@ -248,5 +238,12 @@ extension HeadlinesTableViewController {
         if segue.identifier == "toWebView", let webView = segue.destination as? WebViewViewController {
             webView.urlString = selectNewsUrl
         }
+    }
+}
+
+// MARK: Keyboard
+extension HeadlinesTableViewController {
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

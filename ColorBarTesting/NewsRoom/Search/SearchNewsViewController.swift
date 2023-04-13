@@ -14,7 +14,7 @@ class SearchNewsViewController: UIViewController {
     @IBOutlet weak var searchRecordTableView: UITableView!
     @IBOutlet weak var leftButtonItem: UIBarButtonItem!
     
-    var searchSettingHeader = ["搜尋內容", "搜尋時間", "搜尋排序"]
+    var searchSettingHeader = ["搜尋內容", "搜尋語言地區", "搜尋排序"]
     var searchIn = ""
     var searchRecord: [String] = []
     
@@ -22,7 +22,7 @@ class SearchNewsViewController: UIViewController {
         super.viewDidLoad()
         viewInit()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         searchSettingTableView.reloadData()
         searchRecordTableView.reloadData()
@@ -44,6 +44,8 @@ extension SearchNewsViewController {
         searchSettingTableView.addGestureRecognizer(tap)
         searchRecordTableView.delegate = self
         searchRecordTableView.dataSource = self
+        let keyboardTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(keyboardTap)
     }
 }
 
@@ -56,6 +58,10 @@ extension SearchNewsViewController: UISearchBarDelegate {
         }
         newsSettingManager.updateSearchQuery(searchString)
         self.navigationController?.pushViewController(SearchContentVC, animated: true)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -106,13 +112,9 @@ extension SearchNewsViewController: UITableViewDelegate, UITableViewDataSource {
             case 0:
                 cellConfig.text = newsSettingManager.getSearchIn(isForApi: false)
             case 1:
-                if newsSettingManager.getSearchDate().0.isEmpty {
-                    cellConfig.text = "一個月內"
-                } else {
-                    cellConfig.text = "\(newsSettingManager.getSearchDate().0) ～ \(newsSettingManager.getSearchDate().1)"
-                }
+                cellConfig.text = newsSettingManager.getSearchLanguage().chineseName
             case 2:
-                cellConfig.text = newsSettingManager.getSearchSortBy(isForApi: false)
+                cellConfig.text = newsSettingManager.getSearchSortBy().chineseName
             default:
                 break
             }
@@ -142,6 +144,10 @@ extension SearchNewsViewController: searchSettingDelegate {
 }
 //MARK: Prepare to next view
 extension SearchNewsViewController {
+    @IBAction func settingButtonClick(_ sender: Any) {
+        showSearchSettingVC()
+    }
+    
     @objc func showSearchSettingVC() {
         guard let SearchSettingVC = storyboard?.instantiateViewController(withIdentifier: "SearchSettingViewController") as? SearchSettingViewController else {
             return

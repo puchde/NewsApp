@@ -64,12 +64,8 @@ class NewsSettingManager {
         return searchIn
     }
 
-    func getSearchSortBy(isForApi: Bool = true) -> String {
-        if isForApi {
-            return searchSortBy.rawValue
-        } else {
-            return searchSortBy.chineseName
-        }
+    func getSearchSortBy() -> SearchSortBy {
+        return searchSortBy
     }
     
     func getSearchDate() -> (String, String) {
@@ -116,10 +112,12 @@ class NewsSettingManager {
     }
     
     func updateSearchSortBy(_ newSearchSortBy: SearchSortBy) {
+        print("old: \(searchSortBy), new: \(newSearchSortBy)")
         searchSortBy = newSearchSortBy
     }
 
     func updateSearchLanguage(_ newSearchLanguage: SearchLanguage) {
+        print("old: \(searchLanguage), new: \(newSearchLanguage)")
         searchLanguage = newSearchLanguage
     }
 

@@ -67,10 +67,11 @@ extension APIManager {
         APIManager.DataRequest(router: NewsRouter.topHeadlines(country: country, category: category, page: page), completion: completion)
     }
     
-    static func searchNews(query: String, language: String = "", pageSize: Int = 50, page: Int = 1, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
+    static func searchNews(query: String, language: String, pageSize: Int = 50, page: Int = 1, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
         let searchIn = newsSettingManager.getSearchIn(isForApi: true)
         let searchDate = newsSettingManager.getSearchDate()
-        let sortBy = newsSettingManager.getSearchSortBy(isForApi: true)
+        let language = newsSettingManager.getSearchLanguage().rawValue
+        let sortBy = newsSettingManager.getSearchSortBy().rawValue
         APIManager.DataRequest(router: NewsRouter.searchNews(query: query, searchIn: searchIn, from: searchDate.0, to: searchDate.1, language: language, pageSize: pageSize, page: page, sortBy: sortBy), completion: completion)
     }
 }
