@@ -24,6 +24,10 @@ class SearchNewsViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        if let querys = userDefaults.stringArray(forKey: UserdefaultKey.searchQuery.rawValue) {
+            searchRecord = querys
+        }
+        searchBar.text = newsSettingManager.getSearchQuery()
         searchSettingTableView.reloadData()
         searchRecordTableView.reloadData()
     }
@@ -51,11 +55,10 @@ extension SearchNewsViewController {
 extension SearchNewsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchClick")
-        guard let SearchContentVC = storyboard?.instantiateViewController(withIdentifier: "SearchContentViewController") as? SearchContentViewController, let searchString = searchBar.searchTextField.text else {
+        guard let searchString = searchBar.searchTextField.text else {
             return
         }
-        newsSettingManager.updateSearchQuery(searchString)
-        self.navigationController?.pushViewController(SearchContentVC, animated: true)
+        showNewsTableVC(searchString: searchString)
         view.endEditing(true)
     }
 
@@ -118,8 +121,7 @@ extension SearchNewsViewController: UITableViewDelegate, UITableViewDataSource {
                 break
             }
         } else if tableView == searchRecordTableView {
-            // TODO: 搜尋紀錄
-            cellConfig.text = "Record"
+            cellConfig.text = searchRecord.reversed()[indexPath.row]
         }
         cell.contentConfiguration = cellConfig
         return cell
@@ -131,7 +133,8 @@ extension SearchNewsViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == searchSettingTableView {
             showSearchSettingVC()
         } else if tableView == searchRecordTableView {
-            showNewsTableVC(indexPath: indexPath)
+            let searchString = searchRecord.reversed()[indexPath.row]
+            showNewsTableVC(searchString: searchString)
         }
     }
 }
@@ -157,11 +160,21 @@ extension SearchNewsViewController {
         }
     }
 
-    func showNewsTableVC(indexPath: IndexPath) {
+    func showNewsTableVC(searchString: String) {
         guard let SearchContentVC = storyboard?.instantiateViewController(withIdentifier: "SearchContentViewController") as? SearchContentViewController else {
             return
         }
-        let searchString = searchRecord[indexPath.row]
+        var query = userDefaults.stringArray(forKey: UserdefaultKey.searchQuery.rawValue) ?? []
+        if query.contains(searchString) {
+            let index = query.firstIndex(of: searchString) ?? 0
+            query.remove(at: index)
+        }
+        query.append(searchString)
+        if query.count > 5 {
+            query.removeFirst()
+        }
+        userDefaults.setValue(query, forKey: UserdefaultKey.searchQuery.rawValue)
+
         newsSettingManager.updateSearchQuery(searchString)
         self.navigationController?.pushViewController(SearchContentVC, animated: true)
     }
