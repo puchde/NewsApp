@@ -10,6 +10,7 @@ import UIKit
 let localFileManager = LocalFileManager.shared
 let mlModelManager = MLModelManager.shared
 let newsSettingManager = NewsSettingManager.shared
+let userDefaults = UserDefaults.standard
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
