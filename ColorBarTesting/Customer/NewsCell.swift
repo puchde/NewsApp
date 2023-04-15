@@ -14,7 +14,9 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var NewsDateLabel: UILabel!
     @IBOutlet weak var cellImage: UIImageView!
-    
+
+    var activeVC: UIViewController?
+    var newsUrl: String = ""
     var author: String {
         didSet {
             authorLabel.text = author
@@ -58,7 +60,9 @@ class NewsCell: UITableViewCell {
     //        super.init(style: .default, reuseIdentifier: "NewsCell")
     //    }
     
-    func updateArticleInfo(author: String, title: String, newsDate: String, newsImageUrl: String) {
+    func updateArticleInfo(activeVC: UIViewController, newsUrl: String, author: String, title: String, newsDate: String, newsImageUrl: String) {
+        self.activeVC = activeVC
+        self.newsUrl = newsUrl
         self.author = author
         self.title = title
         self.newsDate = newsDate
@@ -75,4 +79,17 @@ class NewsCell: UITableViewCell {
         cellImage.kf.setImage(with: url, placeholder: placeholderColorImage)
     }
 
+    @IBAction func saveNews(_ sender: Any) {
+    }
+    @IBAction func shareNews(_ sender: Any) {
+        let textToShare = title
+        let urlToShare = URL(string: newsUrl)
+        let objectsToShare = [textToShare, urlToShare!] as [Any]
+        let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop]
+        guard let activeVC else { return }
+        activityViewController.popoverPresentationController?.sourceView = activeVC.view
+        activeVC.present(activityViewController, animated: true, completion: nil)
+
+    }
 }

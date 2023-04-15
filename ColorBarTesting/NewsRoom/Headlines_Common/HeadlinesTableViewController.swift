@@ -183,7 +183,7 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell, !articles.isEmpty {
             let newsData = articles[indexPath.row]
             let newsDate = String(newsData.publishedAt.prefix(10))
-            cell.updateArticleInfo(author: newsData.author ?? "News啦", title: newsData.title, newsDate: newsDate, newsImageUrl: newsData.urlToImage ?? "")
+            cell.updateArticleInfo(activeVC: self, newsUrl: newsData.url, author: newsData.author ?? "News啦", title: newsData.title, newsDate: newsDate, newsImageUrl: newsData.urlToImage ?? "")
             tableView.deselectRow(at: indexPath, animated: false)
             return cell
         }
