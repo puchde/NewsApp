@@ -75,8 +75,6 @@ extension HeadlinesTableViewController {
         let freshControl = UIRefreshControl()
         freshControl.addTarget(self, action: #selector(reloadDataAct), for: .valueChanged)
         tableView.refreshControl = freshControl
-        let keyboardTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(keyboardTap)
     }
 }
 
@@ -238,12 +236,5 @@ extension HeadlinesTableViewController {
         if segue.identifier == "toWebView", let webView = segue.destination as? WebViewViewController {
             webView.urlString = selectNewsUrl
         }
-    }
-}
-
-// MARK: Keyboard
-extension HeadlinesTableViewController {
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }

@@ -28,5 +28,10 @@ extension SearchContentViewController: UISearchBarDelegate {
         if let pageVC = children.first as? HeadlinesPageViewController, let contentVC = pageVC.getContentViewController(page: 0) {
             contentVC.reloadData(searchString: searchString)
         }
+        view.endEditing(true)
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
 }

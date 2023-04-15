@@ -44,8 +44,6 @@ extension SearchNewsViewController {
         searchSettingTableView.addGestureRecognizer(tap)
         searchRecordTableView.delegate = self
         searchRecordTableView.dataSource = self
-        let keyboardTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(keyboardTap)
     }
 }
 
@@ -58,9 +56,10 @@ extension SearchNewsViewController: UISearchBarDelegate {
         }
         newsSettingManager.updateSearchQuery(searchString)
         self.navigationController?.pushViewController(SearchContentVC, animated: true)
+        view.endEditing(true)
     }
 
-    @objc func dismissKeyboard() {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
 }
