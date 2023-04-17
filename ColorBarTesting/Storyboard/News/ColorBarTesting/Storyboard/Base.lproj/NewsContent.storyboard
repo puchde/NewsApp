@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwM-yV-jWi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5690.7692307692305" y="-2101.4218009478673"/>
+            <point key="canvasLocation" x="4623" y="-2075"/>
         </scene>
         <!--Headlines Page View Controller-->
         <scene sceneID="VNk-yg-ySg">
@@ -92,7 +92,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Pjf-io-REM" customClass="HeadlinesPageViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWM-tb-iqh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4843.0769230769229" y="-2021.4454976303316"/>
+            <point key="canvasLocation" x="3775" y="-1995"/>
         </scene>
         <!--Headlines Table View Controller-->
         <scene sceneID="Bej-Vt-ojw">
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAb-pz-ucS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272" y="-2809"/>
+            <point key="canvasLocation" x="3154" y="-2842"/>
         </scene>
         <!--Classify Headline View Controller-->
         <scene sceneID="nOd-XO-AFx">
@@ -218,7 +218,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" style="browser" id="ANV-yl-APU">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="OLm-ju-GL7"/>
+                        <barButtonItem key="leftBarButtonItem" title="Headlines" id="OLm-ju-GL7"/>
                         <barButtonItem key="rightBarButtonItem" title="item" image="gearshape" catalog="system" id="aKK-Xc-JEt">
                             <connections>
                                 <segue destination="sxf-OO-35T" kind="popoverPresentation" popoverAnchorBarButtonItem="aKK-Xc-JEt" id="qrq-oe-GvJ">
@@ -236,18 +236,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s66-3D-0ez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4086.1538461538462" y="-2101.4218009478673"/>
+            <point key="canvasLocation" x="3018" y="-2075"/>
         </scene>
         <!--Web View View Controller-->
         <scene sceneID="Poo-9A-v6Z">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="24s-99-IvH" customClass="WebViewViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nUi-L1-Q1z">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwq-D5-WJP">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
+                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -271,12 +271,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JdL-WH-POf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2089" y="-2809"/>
+            <point key="canvasLocation" x="3971" y="-2842"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MRq-qq-R5s">
             <objects>
-                <navigationController storyboardIdentifier="UINavigationController-JpI-dS-aZm" automaticallyAdjustsScrollViewInsets="NO" id="JpI-dS-aZm" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="toNewsSearch" automaticallyAdjustsScrollViewInsets="NO" id="JpI-dS-aZm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="bmY-gg-Svp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-7f-pEV">
@@ -295,8 +295,8 @@
         <!--Navigation Controller-->
         <scene sceneID="ecj-Lo-SKo">
             <objects>
-                <navigationController storyboardIdentifier="UINavigationController-9bu-v1-STb" automaticallyAdjustsScrollViewInsets="NO" id="9bu-v1-STb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="RbF-tT-0yT"/>
+                <navigationController storyboardIdentifier="toNewsHeadlines" automaticallyAdjustsScrollViewInsets="NO" id="9bu-v1-STb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="text.line.first.and.arrowtriangle.forward" catalog="system" id="RbF-tT-0yT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4ph-rb-gD0">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -310,7 +310,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daL-eG-QOY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3153.8461538461538" y="-2101.4218009478673"/>
+            <point key="canvasLocation" x="2086" y="-2075"/>
         </scene>
         <!--Search News View Controller-->
         <scene sceneID="IPT-L2-tJJ">
@@ -757,12 +757,83 @@
             </objects>
             <point key="canvasLocation" x="4040" y="-1381.2796208530806"/>
         </scene>
+        <!--Mark List View Controller-->
+        <scene sceneID="PYB-bz-Z6m">
+            <objects>
+                <viewController id="qNE-Yv-G59" customClass="MarkListViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wba-tQ-7ic">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="daN-B4-2kv">
+                                <rect key="frame" x="0.0" y="147" width="390" height="663"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="yTv-Dt-ZdP">
+                                <rect key="frame" x="0.0" y="91" width="390" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qNE-Yv-G59" id="HBd-rN-WOd"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HgX-h3-drg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yTv-Dt-ZdP" firstAttribute="trailing" secondItem="HgX-h3-drg" secondAttribute="trailing" id="6T8-06-MCf"/>
+                            <constraint firstItem="daN-B4-2kv" firstAttribute="leading" secondItem="HgX-h3-drg" secondAttribute="leading" id="BWe-gX-6lQ"/>
+                            <constraint firstItem="yTv-Dt-ZdP" firstAttribute="top" secondItem="HgX-h3-drg" secondAttribute="top" id="Cu9-py-rO0"/>
+                            <constraint firstItem="HgX-h3-drg" firstAttribute="trailing" secondItem="daN-B4-2kv" secondAttribute="trailing" id="HUW-4O-KtG"/>
+                            <constraint firstItem="daN-B4-2kv" firstAttribute="top" secondItem="yTv-Dt-ZdP" secondAttribute="bottom" id="IlR-gP-Fwq"/>
+                            <constraint firstItem="HgX-h3-drg" firstAttribute="bottom" secondItem="daN-B4-2kv" secondAttribute="bottom" id="ImT-E1-6qU"/>
+                            <constraint firstItem="yTv-Dt-ZdP" firstAttribute="leading" secondItem="HgX-h3-drg" secondAttribute="leading" id="hlS-2O-E1V"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <navigationItem key="navigationItem" style="browser" id="Ncg-mV-cdK">
+                        <barButtonItem key="leftBarButtonItem" title="Mark List" id="ruD-WD-xG5"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="item" image="gearshape" catalog="system" id="2NL-T3-bQn"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftButtonItem" destination="ruD-WD-xG5" id="4F0-FF-RG4"/>
+                        <outlet property="searchBar" destination="yTv-Dt-ZdP" id="RDY-an-LwL"/>
+                        <outlet property="tableView" destination="daN-B4-2kv" id="kdP-h2-htG"/>
+                        <segue destination="24s-99-IvH" kind="show" identifier="toWebView" id="3aA-ug-hW0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYQ-w8-njv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3098" y="-727"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GOe-Ir-ZKg">
+            <objects>
+                <navigationController storyboardIdentifier="toNewsList" automaticallyAdjustsScrollViewInsets="NO" id="vG6-ED-fLE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="bookmark.circle" catalog="system" id="8lT-Y1-edG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="doJ-vw-bwT">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qNE-Yv-G59" kind="relationship" relationship="rootViewController" id="xbm-Cb-mPX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yll-rG-anV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2169" y="-727"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3aA-ug-hW0"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
+        <image name="bookmark.circle" catalog="system" width="128" height="123"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
-        <image name="house" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="text.line.first.and.arrowtriangle.forward" catalog="system" width="128" height="97"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

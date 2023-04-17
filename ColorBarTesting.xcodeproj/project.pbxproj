@@ -25,6 +25,7 @@
 		E7528DEE29E2EDD8001169F0 /* SearchSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7528DED29E2EDD8001169F0 /* SearchSettingViewController.swift */; };
 		E75555C1292A97B400E35365 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75555C0292A97B400E35365 /* FileType.swift */; };
 		E75555C4292A980300E35365 /* UrlExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75555C3292A980300E35365 /* UrlExtention.swift */; };
+		E75654A229EC506C009A123B /* MarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75654A129EC506C009A123B /* MarkListViewController.swift */; };
 		E75B1BAB2933544D004CA82C /* ZoomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B1BAA2933544D004CA82C /* ZoomImageView.swift */; };
 		E75B1BAD29335570004CA82C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B1BAC29335570004CA82C /* ImageViewController.swift */; };
 		E75C2F5F29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C2F5E29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift */; };
@@ -66,6 +67,7 @@
 		E7528DED29E2EDD8001169F0 /* SearchSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingViewController.swift; sourceTree = "<group>"; };
 		E75555C0292A97B400E35365 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		E75555C3292A980300E35365 /* UrlExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlExtention.swift; sourceTree = "<group>"; };
+		E75654A129EC506C009A123B /* MarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkListViewController.swift; sourceTree = "<group>"; };
 		E75B1BAA2933544D004CA82C /* ZoomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageView.swift; sourceTree = "<group>"; };
 		E75B1BAC29335570004CA82C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		E75C2F5E29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyHeadlineViewController.swift; sourceTree = "<group>"; };
@@ -197,9 +199,18 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		E75654A029EC504A009A123B /* MarkList */ = {
+			isa = PBXGroup;
+			children = (
+				E75654A129EC506C009A123B /* MarkListViewController.swift */,
+			);
+			path = MarkList;
+			sourceTree = "<group>";
+		};
 		E75C2F5929D9F44200FBC7B4 /* NewsRoom */ = {
 			isa = PBXGroup;
 			children = (
+				E75654A029EC504A009A123B /* MarkList */,
 				E7528DEF29E2FAFB001169F0 /* Search */,
 				E7528DE329E1D8FD001169F0 /* Headlines_Common */,
 				E75C2F6529D9F68900FBC7B4 /* Manager */,
@@ -373,6 +384,7 @@
 				E75C2F6129D9F51D00FBC7B4 /* SearchNewsViewController.swift in Sources */,
 				E75B1BAD29335570004CA82C /* ImageViewController.swift in Sources */,
 				E706448929EACCAC009F8C64 /* UserDefaultsKeyEnum.swift in Sources */,
+				E75654A229EC506C009A123B /* MarkListViewController.swift in Sources */,
 				E75B1BAB2933544D004CA82C /* ZoomImageView.swift in Sources */,
 				E75C2F5F29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift in Sources */,
 			);

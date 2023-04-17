@@ -53,17 +53,30 @@ extension SearchNewsViewController {
 
 //MARK: SearchBar
 extension SearchNewsViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = true
+        return true
+    }
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchClick")
-        guard let searchString = searchBar.searchTextField.text else {
+        guard let searchString = searchBar.searchTextField.text, !searchString.isEmpty else {
             return
         }
         showNewsTableVC(searchString: searchString)
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
         view.endEditing(true)
     }
 
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        view.endEditing(true)
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchBar.resignFirstResponder()
     }
 }
 
@@ -135,6 +148,7 @@ extension SearchNewsViewController: UITableViewDelegate, UITableViewDataSource {
         } else if tableView == searchRecordTableView {
             let searchString = searchRecord.reversed()[indexPath.row]
             showNewsTableVC(searchString: searchString)
+            searchBar.resignFirstResponder()
         }
     }
 }

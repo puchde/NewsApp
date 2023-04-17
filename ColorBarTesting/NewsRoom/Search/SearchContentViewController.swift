@@ -22,8 +22,13 @@ class SearchContentViewController: ClassifyHeadlineViewController {
 
 //MARK: SearchBar
 extension SearchContentViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = true
+        return true
+    }
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchString = searchBar.searchTextField.text, searchString != newsSettingManager.getSearchQuery() else { return }
+        guard let searchString = searchBar.searchTextField.text, searchString != newsSettingManager.getSearchQuery(), !searchString.isEmpty else { return }
         newsSettingManager.updateSearchQuery(searchString)
         var query = userDefaults.stringArray(forKey: UserdefaultKey.searchQuery.rawValue) ?? []
         if query.contains(searchString) {
@@ -39,10 +44,18 @@ extension SearchContentViewController: UISearchBarDelegate {
         if let pageVC = children.first as? HeadlinesPageViewController, let contentVC = pageVC.getContentViewController(page: 0) {
             contentVC.reloadData(searchString: searchString)
         }
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
         view.endEditing(true)
     }
 
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        view.endEditing(true)
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchBar.resignFirstResponder()
     }
 }

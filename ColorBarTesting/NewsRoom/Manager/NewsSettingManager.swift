@@ -22,6 +22,21 @@ class NewsSettingManager {
     private var searchDateTo: Date = .now
     private var searchSortBy: SearchSortBy = .publishedAt
 
+    //MARK: List
+    private var newsMarkList: [Article] {
+        get {
+            let list = userDefaults.getCodableObject([Article].self, with: UserdefaultKey.articles.rawValue) ?? []
+//            print("list: \(list.count)")
+            return list
+        }
+        set {
+            DispatchQueue.global().sync {
+//                print("newList: \(newValue.count)")
+                userDefaults.setCodableObject(newValue, forKey: UserdefaultKey.articles.rawValue)
+            }
+        }
+    }
+
     //MARK: Display Mode
     private var displayMode: DisplayMode = .headline
     
@@ -86,7 +101,16 @@ class NewsSettingManager {
     func getDisplayMode() -> DisplayMode {
         return displayMode
     }
-    
+
+    func getNewsMarkList() -> [Article] {
+        return newsMarkList
+    }
+
+    func isMark(news: Article) -> Bool {
+        return newsMarkList.contains { article in
+            article == news
+        }
+    }
     //MARK: Update Setting
     func updateSetting<T>(setting: T) {
         if let newCountry = setting as? CountryCode {
@@ -128,5 +152,14 @@ class NewsSettingManager {
 
     func updateDisplayMode(_ mode: DisplayMode) {
         displayMode = mode
+    }
+
+    func updateNewsMarkList(_ news: Article) {
+        newsMarkList.append(news)
+    }
+
+    func deleteNewsMarkList(_ article: Article) {
+        guard let index = newsMarkList.firstIndex(of: article) else { return }
+        newsMarkList.remove(at: index)
     }
 }

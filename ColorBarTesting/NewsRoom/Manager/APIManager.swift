@@ -82,8 +82,8 @@ enum NewsRouter: APIClientConfig {
     
     var apiKey: String {
         // your NewsAPI key
-//        return "cbe29cc43e2544fda19aa684517aadd4"
-        return "b6a92da50ecb45fdbe56aaf376cc2f39"
+        return "cbe29cc43e2544fda19aa684517aadd4"
+//        return "b6a92da50ecb45fdbe56aaf376cc2f39"
     }
     
     var httpMethod: String {

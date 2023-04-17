@@ -114,6 +114,8 @@
                 <outlet property="NewsDateLabel" destination="bmM-Sp-Zyi" id="fli-5z-2M9"/>
                 <outlet property="authorLabel" destination="EdY-KA-RKY" id="kwp-ei-hht"/>
                 <outlet property="cellImage" destination="Lid-sP-0Ou" id="Lbw-6e-Iyv"/>
+                <outlet property="markButton" destination="wHs-WJ-ctQ" id="HLS-rZ-dw3"/>
+                <outlet property="shareButton" destination="Pg8-Fx-VSm" id="tno-84-b26"/>
                 <outlet property="titleLabel" destination="Edy-m5-aM1" id="LkP-zg-7de"/>
             </connections>
             <point key="canvasLocation" x="210.68702290076334" y="-154.22535211267606"/>

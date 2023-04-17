@@ -14,7 +14,11 @@ struct NewsAPIResponse: Codable {
     let articles: [Article]
 }
 
-struct Article: Codable {
+struct Article: Codable, Equatable {
+    static func == (lhs: Article, rhs: Article) -> Bool {
+        lhs.url == rhs.url
+    }
+
     let source: Source
     let author: String?
     let title: String

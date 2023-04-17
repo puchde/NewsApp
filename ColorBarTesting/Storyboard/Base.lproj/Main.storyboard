@@ -227,7 +227,6 @@
         <!--News Tab Bar View Controller-->
         <scene sceneID="eWn-Pi-Wbw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IKU-5k-ISO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="PBw-Ih-joU" customClass="NewsTabBarViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KLJ-Gw-nbi">
@@ -238,25 +237,37 @@
                     <connections>
                         <segue destination="YeF-4l-JeY" kind="relationship" relationship="viewControllers" id="QAe-rz-0Ge"/>
                         <segue destination="Ixg-VB-Gqy" kind="relationship" relationship="viewControllers" id="Wsa-w5-U0f"/>
+                        <segue destination="u8c-mk-5ic" kind="relationship" relationship="viewControllers" id="Uow-bi-jSw"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IKU-5k-ISO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1296.9230769230769" y="-1775.8293838862558"/>
         </scene>
-        <!--UINavigationController-9bu-v1-STb-->
+        <!--toNewsHeadlines-->
         <scene sceneID="Kaj-X5-Zb7">
             <objects>
-                <viewControllerPlaceholder storyboardName="NewsContent" referencedIdentifier="UINavigationController-9bu-v1-STb" id="YeF-4l-JeY" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="NewsContent" referencedIdentifier="toNewsHeadlines" id="YeF-4l-JeY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="dhx-J3-K10"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGa-pl-GXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2226" y="-2101"/>
         </scene>
-        <!--UINavigationController-JpI-dS-aZm-->
+        <!--toNewsList-->
+        <scene sceneID="Aaw-EB-g2S">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewsContent" referencedIdentifier="toNewsList" id="u8c-mk-5ic" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="R0K-Hl-cMY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="606-lv-Ny1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2066" y="-1621"/>
+        </scene>
+        <!--toNewsSearch-->
         <scene sceneID="12e-vb-ztf">
             <objects>
-                <viewControllerPlaceholder storyboardName="NewsContent" referencedIdentifier="UINavigationController-JpI-dS-aZm" id="Ixg-VB-Gqy" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="NewsContent" referencedIdentifier="toNewsSearch" id="Ixg-VB-Gqy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="44I-md-njS"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDH-tB-VIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

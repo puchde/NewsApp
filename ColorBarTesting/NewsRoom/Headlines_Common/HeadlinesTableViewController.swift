@@ -53,7 +53,7 @@ class HeadlinesTableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         checkYPosition()
         reloadNews()
-
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -120,12 +120,12 @@ extension HeadlinesTableViewController {
         loadNewsData()
     }
     
-    func loadNewsData() {
+    func loadNewsData(scrollingLoading: Bool = false) {
         if isLoading {
             print("Loading啦")
             return
         } else {
-            if articles.count < articlesNumber || articles.count == 0 {
+            if (scrollingLoading && articles.count < articlesNumber) || articles.count == 0 {
                 isLoading = true
                 switch displayMode {
                 case .headline:
@@ -141,6 +141,8 @@ extension HeadlinesTableViewController {
                     }
                     break
                 }
+            } else {
+                self.tableView.refreshControl?.endRefreshing()
             }
         }
     }
@@ -180,8 +182,7 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell, !articles.isEmpty {
             let newsData = articles[indexPath.row]
-            let newsDate = String(newsData.publishedAt.prefix(10))
-            cell.updateArticleInfo(activeVC: self, newsUrl: newsData.url, author: newsData.author ?? "News啦", title: newsData.title, newsDate: newsDate, newsImageUrl: newsData.urlToImage ?? "")
+            cell.updateArticleInfo(activeVC: self, article: newsData)
             tableView.deselectRow(at: indexPath, animated: false)
             return cell
         }
@@ -201,6 +202,13 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
+//MARK: News Cell Delegate
+extension HeadlinesTableViewController: NewsCellDelegate {
+    func reloadCell() {
+        tableView.reloadData()
+    }
+}
+
 //MARK: ScrollView
 extension HeadlinesTableViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -210,7 +218,7 @@ extension HeadlinesTableViewController {
         let contentHeight = scrollView.contentSize.height
         if contentHeight != 0 && offsetY + screenHeight > (contentHeight) {
             print("一半啦")
-            loadNewsData()
+            loadNewsData(scrollingLoading: true)
         }
     }
     
