@@ -16,6 +16,7 @@ class HeadlinesTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private let displayMode: DisplayMode = newsSettingManager.getDisplayMode()
+    let freshControl = UIRefreshControl()
     var articles = [Article]()
     var page: Int?
     var articlesNumber = 0
@@ -52,7 +53,7 @@ class HeadlinesTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         checkYPosition()
-        reloadNews()
+        loadNewsData()
         tableView.reloadData()
     }
     
@@ -72,8 +73,6 @@ extension HeadlinesTableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
-        let freshControl = UIRefreshControl()
-        freshControl.addTarget(self, action: #selector(reloadDataAct), for: .valueChanged)
         tableView.refreshControl = freshControl
     }
 }
@@ -81,32 +80,22 @@ extension HeadlinesTableViewController {
 //MARK: TableView Data
 extension HeadlinesTableViewController {
 
-
-    func reloadNews() {
-        newsCountry = newsSettingManager.getCountry()
-        if needFresh {
-            reloadNews()
-        } else {
-            loadNewsData()
-        }
-    }
-
     @objc func reloadDataAct() {
         switch displayMode {
         case .headline:
-            reloadNews()
+            updateReloadSetting()
         case .search:
             let searchString = newsSettingManager.getSearchQuery()
-            reloadData(searchString: searchString)
+            updateReloadSetting(searchString: searchString)
         }
     }
 
-    func reloadData(searchString: String = "") {
+    func updateReloadSetting(searchString: String = "") {
         switch displayMode {
         case .headline:
             if newsCountry != newsSettingManager.getCountry() {
                 newsCountry = newsSettingManager.getCountry()
-                reloadNews()
+                updateReloadSetting()
                 return
             }
             break
@@ -159,15 +148,21 @@ extension HeadlinesTableViewController {
                     self.dataPage += 1
                 }
                 self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.tableView.refreshControl?.endRefreshing()
+                }
             } else {
                 print(success.status)
-                self.tableView.refreshControl?.endRefreshing()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.tableView.refreshControl?.endRefreshing()
+                }
             }
             self.isLoading = false
         case .failure(let failure):
             print(failure)
-            self.tableView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.tableView.refreshControl?.endRefreshing()
+            }
             self.isLoading = false
         }
     }
@@ -234,6 +229,12 @@ extension HeadlinesTableViewController {
                 navigationController?.setNavigationBarHidden(false, animated: true)
                 navigationController?.navigationBar.sizeToFit()
             }
+        }
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if freshControl.isRefreshing {
+            reloadDataAct()
         }
     }
 }

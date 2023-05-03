@@ -12,6 +12,7 @@ class MarkListViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var leftButtonItem: UIBarButtonItem!
+    let freshControl = UIRefreshControl()
     var newsList = newsSettingManager.getNewsMarkList()
     var selectNewsUrl = ""
     override func viewDidLoad() {
@@ -39,8 +40,6 @@ extension MarkListViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
-        let freshControl = UIRefreshControl()
-        freshControl.addTarget(self, action: #selector(reloadDataAct), for: .valueChanged)
         tableView.refreshControl = freshControl
     }
 }
@@ -138,7 +137,9 @@ extension MarkListViewController {
     @objc func reloadDataAct() {
         newsList = newsSettingManager.getNewsMarkList()
         tableView.reloadData()
-        self.tableView.refreshControl?.endRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
 }
 
@@ -160,6 +161,12 @@ extension MarkListViewController {
                 navigationController?.setNavigationBarHidden(false, animated: true)
                 navigationController?.navigationBar.sizeToFit()
             }
+        }
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if freshControl.isRefreshing {
+            reloadDataAct()
         }
     }
 }

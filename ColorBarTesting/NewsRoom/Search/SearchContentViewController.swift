@@ -42,7 +42,7 @@ extension SearchContentViewController: UISearchBarDelegate {
         }
         userDefaults.setValue(query, forKey: UserdefaultKey.searchQuery.rawValue)
         if let pageVC = children.first as? HeadlinesPageViewController, let contentVC = pageVC.getContentViewController(page: 0) {
-            contentVC.reloadData(searchString: searchString)
+            contentVC.updateReloadSetting(searchString: searchString)
         }
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
