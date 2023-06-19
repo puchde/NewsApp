@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class MarkListViewController: UIViewController {
 
@@ -85,7 +86,14 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
         selectNewsUrl = newsList[indexPath.row].url
-        performSegue(withIdentifier: "toWebView", sender: self)
+//        performSegue(withIdentifier: "toWebView", sender: self)
+        if let url = URL(string: selectNewsUrl) {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            let safariViewController = SFSafariViewController(url: url, configuration: config)
+            self.present(safariViewController, animated: true)
+            self.modalPresentationStyle = .fullScreen
+        }
         searchBar.resignFirstResponder()
     }
 }

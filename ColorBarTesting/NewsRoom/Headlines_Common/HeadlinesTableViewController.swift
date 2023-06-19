@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol HeadlinesTableViewDelegate {
     func reloadData()
@@ -187,7 +188,16 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
         selectNewsUrl = articles[indexPath.row].url
-        performSegue(withIdentifier: "toWebView", sender: self)
+//        performSegue(withIdentifier: "toWebView", sender: self)
+        if let url = URL(string: selectNewsUrl) {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            let safariViewController = SFSafariViewController(url: url, configuration: config)
+            safariViewController.delegate = self
+            self.present(safariViewController, animated: true)
+            self.modalPresentationStyle = .fullScreen
+        }
+
     }
 
     func scrollToTop() {
@@ -245,5 +255,11 @@ extension HeadlinesTableViewController {
         if segue.identifier == "toWebView", let webView = segue.destination as? WebViewViewController {
             webView.urlString = selectNewsUrl
         }
+    }
+}
+
+extension HeadlinesTableViewController: SFSafariViewControllerDelegate {
+    func safariViewController(_ controller: SFSafariViewController, activityItemsFor URL: URL, title: String?) -> [UIActivity] {
+        return []
     }
 }
