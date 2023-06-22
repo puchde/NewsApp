@@ -33,7 +33,7 @@ class MarkListViewController: UIViewController {
 }
 
 //MARK: Init
-extension MarkListViewController {
+extension MarkListViewController: UIGestureRecognizerDelegate {
     func initView() {
         leftButtonItem.setTitleTextAttributes([.font: UIFont.boldSystemFont(ofSize: 25), .foregroundColor: UIColor.label], for: .disabled)
         leftButtonItem.isEnabled = false
@@ -42,6 +42,15 @@ extension MarkListViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         tableView.refreshControl = freshControl
+
+        let keyboardTap = UITapGestureRecognizer(target: self, action: #selector(resignKeyboard))
+        keyboardTap.delegate = self
+        keyboardTap.cancelsTouchesInView = false
+        view.addGestureRecognizer(keyboardTap)
+    }
+
+    @objc func resignKeyboard() {
+        searchBar.resignFirstResponder()
     }
 }
 

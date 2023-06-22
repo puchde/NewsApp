@@ -34,7 +34,7 @@ class SearchNewsViewController: UIViewController {
 }
 
 //MARK: Init
-extension SearchNewsViewController {
+extension SearchNewsViewController: UIGestureRecognizerDelegate {
     func viewInit() {
         leftButtonItem.setTitleTextAttributes([.font: UIFont.boldSystemFont(ofSize: 25), .foregroundColor: UIColor.label], for: .disabled)
         leftButtonItem.isEnabled = false
@@ -48,6 +48,15 @@ extension SearchNewsViewController {
         searchSettingTableView.addGestureRecognizer(tap)
         searchRecordTableView.delegate = self
         searchRecordTableView.dataSource = self
+
+        let keyboardTap = UITapGestureRecognizer(target: self, action: #selector(resignKeyboard))
+        keyboardTap.delegate = self
+        keyboardTap.cancelsTouchesInView = false
+        view.addGestureRecognizer(keyboardTap)
+    }
+
+    @objc func resignKeyboard() {
+        searchBar.resignFirstResponder()
     }
 }
 
