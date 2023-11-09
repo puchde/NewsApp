@@ -59,8 +59,7 @@ class HeadlinesTableViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        checkYPosition(isShow: true)
-        scrollToTop()
+
     }
     
     deinit {
@@ -75,6 +74,8 @@ extension HeadlinesTableViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         tableView.refreshControl = freshControl
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(scrollToTop), name: Notification.Name("\(displayMode) - ScrollToTop"), object: nil)
     }
 }
 
@@ -200,9 +201,9 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
 
     }
 
-    func scrollToTop() {
+    @objc func scrollToTop() {
         if !articles.isEmpty {
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
     }
 }
@@ -227,18 +228,12 @@ extension HeadlinesTableViewController {
         }
     }
     
-    func checkYPosition(isShow: Bool = false) {
-        if isShow {
+    func checkYPosition() {
+        if tableView.contentOffset.y > 0 {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
             navigationController?.setNavigationBarHidden(false, animated: true)
             navigationController?.navigationBar.sizeToFit()
-            return
-        } else {
-            if tableView.contentOffset.y > 0 {
-                navigationController?.setNavigationBarHidden(true, animated: true)
-            } else {
-                navigationController?.setNavigationBarHidden(false, animated: true)
-                navigationController?.navigationBar.sizeToFit()
-            }
         }
     }
 

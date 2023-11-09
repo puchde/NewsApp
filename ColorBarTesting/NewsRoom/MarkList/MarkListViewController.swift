@@ -28,7 +28,7 @@ class MarkListViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        checkYPosition(isShow: true)
+
     }
 }
 
@@ -166,18 +166,12 @@ extension MarkListViewController {
         checkYPosition()
     }
 
-    func checkYPosition(isShow: Bool = false) {
-        if isShow {
+    func checkYPosition() {
+        if tableView.contentOffset.y > 0 {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
             navigationController?.setNavigationBarHidden(false, animated: true)
             navigationController?.navigationBar.sizeToFit()
-            return
-        } else {
-            if tableView.contentOffset.y > 0 {
-                navigationController?.setNavigationBarHidden(true, animated: true)
-            } else {
-                navigationController?.setNavigationBarHidden(false, animated: true)
-                navigationController?.navigationBar.sizeToFit()
-            }
         }
     }
 
