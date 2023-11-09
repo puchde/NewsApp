@@ -14,6 +14,10 @@ class SearchContentViewController: ClassifyHeadlineViewController {
         super.viewDidLoad()
         searchBar.searchTextField.text = newsSettingManager.getSearchQuery()
         searchBar.delegate = self
+        
+        let popSwipe = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(backButtonClick))
+        popSwipe.edges = .left
+        self.view.addGestureRecognizer(popSwipe)
     }
     @IBAction func backButtonClick(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
