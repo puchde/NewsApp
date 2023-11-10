@@ -85,7 +85,7 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             let news = newsList[indexPath.row]
             newsSettingManager.deleteNewsMarkList(news)
-            newsList = newsSettingManager.getNewsMarkList()
+            reloadNewsList()
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
@@ -110,7 +110,7 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: News Cell Delegate
 extension MarkListViewController: NewsCellDelegate {
     func reloadCell() {
-        newsList = newsSettingManager.getNewsMarkList()
+        reloadNewsList()
         tableView.reloadData()
     }
 }
@@ -124,21 +124,14 @@ extension MarkListViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchClick")
-        guard let searchString = searchBar.searchTextField.text else {
-            return
-        }
-        if !searchString.isEmpty {
-            newsList = newsSettingManager.getNewsMarkList().filter({$0.author?.contains(searchString) ?? false || $0.content?.contains(searchString) ?? false || $0.description?.contains(searchString) ?? false || $0.title.contains(searchString)})
-        } else {
-            newsList = newsSettingManager.getNewsMarkList()
-        }
+        reloadNewsList()
         tableView.reloadData()
         searchBar.showsCancelButton = false
         view.endEditing(true)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        newsList = newsSettingManager.getNewsMarkList()
+        reloadNewsList()
         tableView.reloadData()
         searchBar.text = ""
         searchBar.showsCancelButton = false
@@ -152,7 +145,7 @@ extension MarkListViewController: UISearchBarDelegate {
 
 extension MarkListViewController {
     @objc func reloadDataAct() {
-        newsList = newsSettingManager.getNewsMarkList()
+        reloadNewsList()
         tableView.reloadData()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.tableView.refreshControl?.endRefreshing()
@@ -178,6 +171,17 @@ extension MarkListViewController {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if freshControl.isRefreshing {
             reloadDataAct()
+        }
+    }
+}
+
+//MARK: Model
+extension MarkListViewController {
+    func reloadNewsList() {
+        if let searchString = searchBar.searchTextField.text, !searchString.isEmpty {
+            newsList = newsSettingManager.getNewsMarkList().filter({$0.author?.contains(searchString) ?? false || $0.content?.contains(searchString) ?? false || $0.description?.contains(searchString) ?? false || $0.title.contains(searchString)})
+        } else {
+            newsList = newsSettingManager.getNewsMarkList()
         }
     }
 }
