@@ -70,9 +70,9 @@ extension HeadlinesSettingViewController: UIPickerViewDelegate, UIPickerViewData
         print("Row: \(row)")
 
         if pickerView == countryPickerView {
-            newsSettingManager.updateSetting(setting: countrys[row])
+            newsSettingManager.updateSettingStorage(data: countrys[row])
         } else if pickerView == categoryPickerView {
-            newsSettingManager.updateSetting(setting: category[row])
+            newsSettingManager.updateSettingStorage(data: category[row])
         }
     }
     

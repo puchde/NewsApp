@@ -124,7 +124,7 @@ extension SearchSettingViewController: UIPickerViewDelegate, UIPickerViewDataSou
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        newsSettingManager.updateSearchLanguage(searchLanguage[row])
+        newsSettingManager.updateSettingStorage(data: searchLanguage[row])
     }
 }
 
@@ -139,7 +139,7 @@ extension SearchSettingViewController {
         titleButton.isSelected = false
         contentButton.isSelected = false
         descrbtionButton.isSelected = false
-        newsSettingManager.updateSearchIn([.all])
+        newsSettingManager.updateSettingStorage(data: [SearchIn.all])
     }
 
     @IBAction func searchInSelectClick(_ sender: UIButton) {
@@ -178,10 +178,10 @@ extension SearchSettingViewController {
             titleButton.isSelected = false
             contentButton.isSelected = false
             descrbtionButton.isSelected = false
-            newsSettingManager.updateSearchIn([.all])
+            newsSettingManager.updateSettingStorage(data: [SearchIn.all])
         } else {
             allSelectButton.isSelected = false
-            newsSettingManager.updateSearchIn(searchInValue)
+            newsSettingManager.updateSettingStorage(data: searchInValue)
             sender.isSelected = !sender.isSelected // 切換選中狀態
         }
     }
@@ -193,13 +193,13 @@ extension SearchSettingViewController {
         switch sender {
         case relevancyButton:
             searchSortBy = .relevancy
-            newsSettingManager.updateSearchSortBy(.relevancy)
+            newsSettingManager.updateSettingStorage(data: SearchSortBy.relevancy)
         case popularityButton:
             searchSortBy = .popularity
-            newsSettingManager.updateSearchSortBy(.popularity)
+            newsSettingManager.updateSettingStorage(data: SearchSortBy.popularity)
         case publishedAtButton:
             searchSortBy = .publishedAt
-            newsSettingManager.updateSearchSortBy(.publishedAt)
+            newsSettingManager.updateSettingStorage(data: SearchSortBy.publishedAt)
         default:
             break
         }

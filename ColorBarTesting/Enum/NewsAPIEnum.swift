@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Category: String, CaseIterable {
+enum Category: String, CaseIterable, Codable {
     case general
     case business
     case health
@@ -63,7 +63,7 @@ enum Category: String, CaseIterable {
     }
 }
 
-enum CountryCode: String, CaseIterable {
+enum CountryCode: String, CaseIterable, Codable {
     case BR // 巴西
     case CN // 中國
     case DE // 德國
@@ -104,7 +104,7 @@ enum CountryCode: String, CaseIterable {
     }
 }
 
-enum SearchIn: String {
+enum SearchIn: String, Codable {
     case title
     case description
     case content
@@ -124,7 +124,7 @@ enum SearchIn: String {
     }
 }
 
-enum SearchSortBy: String {
+enum SearchSortBy: String, Codable {
     case relevancy
     case popularity
     case publishedAt
@@ -146,7 +146,7 @@ enum DisplayMode: String {
     case search
 }
 
-enum SearchLanguage: String, CaseIterable {
+enum SearchLanguage: String, CaseIterable, Codable {
     case zh
     case ar
     case de

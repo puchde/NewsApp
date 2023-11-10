@@ -9,29 +9,59 @@ import Foundation
 
 class NewsSettingManager {
     //MARK: Common Setting
-    private var country: CountryCode = .TW
-    private var category: Category = .general
+    private var country = {
+        if let country = userDefaults.getCodableObject(CountryCode.self, with: UserdefaultKey.settingCountryCode.rawValue) {
+            return country
+        } else {
+            return .TW
+        }
+    }()
+    
+    private var category = {
+        if let category = userDefaults.getCodableObject(Category.self, with: UserdefaultKey.settingCategory.rawValue) {
+            return category
+        } else {
+            return .general
+        }
+    }()
+    
     private var searchPage = 1
     
     //MARK: Search Setting
     private var searchQuery = ""
-    private var searchIn: [SearchIn] = [.all]
-    private var searchLanguage: SearchLanguage = .zh
+    private var searchIn = {
+        if let searchIn = userDefaults.getCodableObject([SearchIn].self, with: UserdefaultKey.settingSearchIn.rawValue) {
+            return searchIn
+        } else {
+            return [SearchIn.all]
+        }
+    }()
+    private var searchLanguage = {
+        if let language = userDefaults.getCodableObject(SearchLanguage.self, with: UserdefaultKey.settingSearchLanguage.rawValue) {
+            return language
+        } else {
+            return .zh
+        }
+    }()
     private var searchDateFrom: Date?
 //    Calendar.current.date(byAdding: .month, value: -1, to: .now)
     private var searchDateTo: Date = .now
-    private var searchSortBy: SearchSortBy = .publishedAt
+    private var searchSortBy = {
+        if let sortBy = userDefaults.getCodableObject(SearchSortBy.self, with: UserdefaultKey.settingSearchSortBy.rawValue) {
+            return sortBy
+        } else {
+            return .publishedAt
+        }
+    }()
 
-    //MARK: List
+    //MARK: MarkList
     private var newsMarkList: [Article] {
         get {
             let list = userDefaults.getCodableObject([Article].self, with: UserdefaultKey.articles.rawValue) ?? []
-//            print("list: \(list.count)")
             return list
         }
         set {
             DispatchQueue.global().sync {
-//                print("newList: \(newValue.count)")
                 userDefaults.setCodableObject(newValue, forKey: UserdefaultKey.articles.rawValue)
             }
         }
@@ -111,14 +141,30 @@ class NewsSettingManager {
             article == news
         }
     }
+    
+    
     //MARK: Update Setting
-    func updateSetting<T>(setting: T) {
-        if let newCountry = setting as? CountryCode {
-            country = newCountry
+    func updateSettingStorage<T>(data: T) {
+        switch data {
+        case let newCountryCode as CountryCode:
+            country = newCountryCode
+            userDefaults.setCodableObject(newCountryCode, forKey: UserdefaultKey.settingCountryCode.rawValue)
             print("country Didset: \(country)")
-        } else if let newCategory = setting as? Category {
+        case let newCategory as Category:
             category = newCategory
+            userDefaults.setCodableObject(newCategory, forKey: UserdefaultKey.settingCategory.rawValue)
             print("category Didset: \(category)")
+        case let newLanguage as SearchLanguage:
+            searchLanguage = newLanguage
+            userDefaults.setCodableObject(newLanguage, forKey: UserdefaultKey.settingSearchLanguage.rawValue)
+        case let newSearchIn as [SearchIn]:
+            searchIn = newSearchIn
+            userDefaults.setCodableObject(newSearchIn, forKey: UserdefaultKey.settingSearchIn.rawValue)
+        case let newSearchSortBy as SearchSortBy:
+            searchSortBy = newSearchSortBy
+            userDefaults.setCodableObject(newSearchSortBy, forKey: UserdefaultKey.settingSearchSortBy.rawValue)
+        default:
+            break
         }
     }
         
@@ -130,20 +176,21 @@ class NewsSettingManager {
         searchQuery = query
     }
 
-    func updateSearchIn(_ newSearchIn: [SearchIn]) {
-        print("old: \(searchIn), new: \(newSearchIn)")
-        searchIn = newSearchIn
-    }
+    /// MARK - 部分搜尋設置 -> updateSettingStorage
+//    func updateSearchIn(_ newSearchIn: [SearchIn]) {
+//        print("old: \(searchIn), new: \(newSearchIn)")
+//        searchIn = newSearchIn
+//    }
     
-    func updateSearchSortBy(_ newSearchSortBy: SearchSortBy) {
-        print("old: \(searchSortBy), new: \(newSearchSortBy)")
-        searchSortBy = newSearchSortBy
-    }
+//    func updateSearchSortBy(_ newSearchSortBy: SearchSortBy) {
+//        print("old: \(searchSortBy), new: \(newSearchSortBy)")
+//        searchSortBy = newSearchSortBy
+//    }
 
-    func updateSearchLanguage(_ newSearchLanguage: SearchLanguage) {
-        print("old: \(searchLanguage), new: \(newSearchLanguage)")
-        searchLanguage = newSearchLanguage
-    }
+//    func updateSearchLanguage(_ newSearchLanguage: SearchLanguage) {
+//        print("old: \(searchLanguage), new: \(newSearchLanguage)")
+//        searchLanguage = newSearchLanguage
+//    }
 
     func updateSearchDate(DateTuple: (Date, Date)) {
         searchDateFrom = DateTuple.0

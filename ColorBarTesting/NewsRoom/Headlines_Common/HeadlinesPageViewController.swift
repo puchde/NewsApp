@@ -14,7 +14,14 @@ protocol HeadlinesDelegate {
 class HeadlinesPageViewController: UIPageViewController {
 
     private let displayMode: DisplayMode = newsSettingManager.getDisplayMode()
-    private var page = 0
+    private var page = {
+        switch newsSettingManager.getDisplayMode() {
+        case .headline:
+            return newsSettingManager.getCategory().order
+        case .search:
+            return 0
+        }
+    }()
     private var maxPage: Int {
         get {
             switch displayMode {
@@ -31,6 +38,10 @@ class HeadlinesPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        headlinesDelegate?.updateClassify(page: page)
     }
 }
 
@@ -92,7 +103,7 @@ extension HeadlinesPageViewController: UIPageViewControllerDelegate, UIPageViewC
             
             self.page = nowPage
             if let category = Category.fromOrder(nowPage) {
-                newsSettingManager.updateSetting(setting: category)
+                newsSettingManager.updateSettingStorage(data: category)
             }
             
             headlinesDelegate?.updateClassify(page: page)

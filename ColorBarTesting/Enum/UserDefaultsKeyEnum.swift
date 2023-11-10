@@ -8,6 +8,11 @@
 import Foundation
 
 enum UserdefaultKey: String {
-    case articles
-    case searchQuery
+    case settingCountryCode = "settingCountryCode"
+    case settingCategory = "settingCategory"
+    case settingSearchLanguage = "settingSearchLanguage"
+    case settingSearchIn = "settingSearchIn"
+    case settingSearchSortBy = "settingSearchSortBy"
+    case articles = "articles"
+    case searchQuery = "searchQuery"
 }

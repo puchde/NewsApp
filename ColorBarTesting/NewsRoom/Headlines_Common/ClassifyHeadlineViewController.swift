@@ -70,7 +70,7 @@ extension ClassifyHeadlineViewController: UICollectionViewDelegate, UICollection
             pageVC.updatePage(row)
         }
         
-        newsSettingManager.updateSetting(setting: Category.fromOrder(row))
+        newsSettingManager.updateSettingStorage(data: Category.fromOrder(row))
         
         collectionView.visibleCells.forEach { cell in
             if let classifyCell = cell as? ClassifyCollectionViewCell {
