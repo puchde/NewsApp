@@ -23,6 +23,7 @@ class SearchNewsViewController: UIViewController {
         viewInit()
     }
 
+
     override func viewWillAppear(_ animated: Bool) {
         if let querys = userDefaults.stringArray(forKey: UserdefaultKey.searchQuery.rawValue) {
             searchRecord = querys
@@ -169,8 +170,12 @@ extension SearchNewsViewController: searchSettingDelegate {
 }
 //MARK: Prepare to next view
 extension SearchNewsViewController {
-    @IBAction func settingButtonClick(_ sender: Any) {
+    @IBAction func searchOptionsButtonClick(_ sender: Any) {
         showSearchSettingVC()
+    }
+    
+    @IBAction func settingButtonTap(_ sender: UIBarButtonItem) {
+        
     }
     
     @objc func showSearchSettingVC() {

@@ -16,6 +16,9 @@ class ClassifyHeadlineViewController: UIViewController {
 
     var selectNewsUrl = ""
     
+    @IBAction func settingButtonTap(_ sender: UIBarButtonItem) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
