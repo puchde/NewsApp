@@ -34,6 +34,15 @@ extension ClassifyHeadlineViewController {
         if let pageVC = children.first as? HeadlinesPageViewController {
             pageVC.headlinesDelegate = self
         }
+
+        /// - Container Layout
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: classifyCollectionView.bottomAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
     }
 }
 
