@@ -79,6 +79,8 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         case (1, 1):
             content.image = UIImage(systemName: "hand.raised")
             let switchButton = UISwitch()
+            switchButton.isOn = newsSettingManager.isAutoRead()
+            switchButton.addTarget(self, action: #selector(setAutoRead), for: .valueChanged)
             cell.accessoryView = switchButton
         case (1, 2):
             content.image = UIImage(systemName: "xmark.diamond")
@@ -99,6 +101,17 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         switch (indexPath.section, indexPath.row) {
         case (1, 0):
             print("api")
+        case (1, 2):
+            let confirmAct = UIAlertAction(title: "清空", style: .destructive) { _ in
+                newsSettingManager.deleteNewsMarkLists()
+            }
+            let cancelAct = UIAlertAction(title: "取消", style: .cancel) { _ in
+                self.dismiss(animated: true)
+            }
+            let alert = UIAlertController(title: "清空Mark列表", message: "此動作會清空所有已標記的新聞", preferredStyle: .alert)
+            alert.addAction(cancelAct)
+            alert.addAction(confirmAct)
+            self.present(alert, animated: true)
         default:
             return
         }
@@ -111,5 +124,10 @@ extension SettingTableViewController {
         accessView.text = desc
         accessView.sizeToFit()
         return accessView
+    }
+    
+    @objc
+    func setAutoRead(sender: UISwitch) {
+        newsSettingManager.updateAutoReadMode(isAuto: sender.isOn)
     }
 }
