@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PBw-Ih-joU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PBw-Ih-joU">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -238,6 +238,7 @@
                         <segue destination="YeF-4l-JeY" kind="relationship" relationship="viewControllers" id="QAe-rz-0Ge"/>
                         <segue destination="Ixg-VB-Gqy" kind="relationship" relationship="viewControllers" id="Wsa-w5-U0f"/>
                         <segue destination="u8c-mk-5ic" kind="relationship" relationship="viewControllers" id="Uow-bi-jSw"/>
+                        <segue destination="suN-8f-p1K" kind="relationship" relationship="viewControllers" id="MWD-OZ-1UT"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IKU-5k-ISO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -263,6 +264,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="606-lv-Ny1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2066" y="-1621"/>
+        </scene>
+        <!--toNewsSetting-->
+        <scene sceneID="RBv-gW-lFS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewsContent" referencedIdentifier="toNewsSetting" id="suN-8f-p1K" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="v03-xC-d6D"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="of1-e0-ZXd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1982" y="-1317"/>
         </scene>
         <!--toNewsSearch-->
         <scene sceneID="12e-vb-ztf">

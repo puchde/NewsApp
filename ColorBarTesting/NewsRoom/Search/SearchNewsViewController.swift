@@ -174,10 +174,6 @@ extension SearchNewsViewController {
         showSearchSettingVC()
     }
     
-    @IBAction func settingButtonTap(_ sender: UIBarButtonItem) {
-        
-    }
-    
     @objc func showSearchSettingVC() {
         guard let SearchSettingVC = storyboard?.instantiateViewController(withIdentifier: "SearchSettingViewController") as? SearchSettingViewController else {
             return

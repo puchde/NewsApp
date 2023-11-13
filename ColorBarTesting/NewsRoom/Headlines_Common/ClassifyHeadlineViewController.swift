@@ -16,9 +16,6 @@ class ClassifyHeadlineViewController: UIViewController {
 
     var selectNewsUrl = ""
     
-    @IBAction func settingButtonTap(_ sender: UIBarButtonItem) {
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -37,6 +34,8 @@ extension ClassifyHeadlineViewController {
         if let pageVC = children.first as? HeadlinesPageViewController {
             pageVC.headlinesDelegate = self
         }
+        
+        self.navigationItem.largeTitleDisplayMode = .always
 
         /// - Container Layout
         containerView.translatesAutoresizingMaskIntoConstraints = false

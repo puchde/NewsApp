@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -14,14 +15,14 @@
             <objects>
                 <viewController id="sxf-OO-35T" customClass="HeadlinesSettingViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s2I-Fh-L8Y" customClass="CustomVIew" customModule="ColorBarTesting" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7b-y7-bHe">
-                                <rect key="frame" x="0.0" y="419" width="390" height="216"/>
+                                <rect key="frame" x="0.0" y="372" width="390" height="216"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新聞地區" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ira-cz-MOq">
-                                <rect key="frame" x="0.0" y="103" width="390" height="40"/>
+                                <rect key="frame" x="0.0" y="56" width="390" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="23U-I6-Hfm"/>
@@ -31,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新聞分類" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJ2-zR-qSf">
-                                <rect key="frame" x="0.0" y="379" width="390" height="40"/>
+                                <rect key="frame" x="0.0" y="332" width="390" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="uws-7J-QeV"/>
@@ -41,10 +42,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tcy-nJ-Q45">
-                                <rect key="frame" x="0.0" y="143" width="390" height="216"/>
+                                <rect key="frame" x="0.0" y="96" width="390" height="216"/>
                             </pickerView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0Z-ig-8fg">
-                                <rect key="frame" x="0.0" y="47" width="390" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                                 <items>
                                     <navigationItem title="頭條顯示設定" id="s20-Qc-MWJ">
                                         <barButtonItem key="rightBarButtonItem" title="完成" id="0hM-Dh-3cO">
@@ -218,20 +219,13 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" style="browser" id="ANV-yl-APU">
                         <barButtonItem key="leftBarButtonItem" title="Headlines" id="OLm-ju-GL7"/>
-                        <rightBarButtonItems>
-                            <barButtonItem image="gearshape" catalog="system" id="FfJ-qS-YEl">
-                                <connections>
-                                    <action selector="settingButtonTap:" destination="lFj-Ci-1j7" id="hKb-fL-2v5"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="item" image="filemenu.and.selection" catalog="system" id="aKK-Xc-JEt">
-                                <connections>
-                                    <segue destination="sxf-OO-35T" kind="popoverPresentation" popoverAnchorBarButtonItem="aKK-Xc-JEt" id="qrq-oe-GvJ">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="item" image="filemenu.and.selection" catalog="system" id="aKK-Xc-JEt">
+                            <connections>
+                                <segue destination="sxf-OO-35T" kind="popoverPresentation" popoverAnchorBarButtonItem="aKK-Xc-JEt" id="qrq-oe-GvJ">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="classifyCollectionView" destination="HVl-B0-lXD" id="elK-jO-7up"/>
@@ -406,18 +400,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="dui-bW-neo">
                         <barButtonItem key="leftBarButtonItem" title="Search" id="cai-Je-gqW"/>
-                        <rightBarButtonItems>
-                            <barButtonItem image="gearshape" catalog="system" id="ktN-XN-VOA">
-                                <connections>
-                                    <action selector="settingButtonTap:" destination="rTz-Mg-7ga" id="6PM-Hu-Zax"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="filemenu.and.selection" catalog="system" id="hkB-sI-hBc">
-                                <connections>
-                                    <action selector="searchOptionsButtonClick:" destination="rTz-Mg-7ga" id="sOY-x8-70k"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="filemenu.and.selection" catalog="system" id="hkB-sI-hBc">
+                            <connections>
+                                <action selector="searchOptionsButtonClick:" destination="rTz-Mg-7ga" id="sOY-x8-70k"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="leftButtonItem" destination="cai-Je-gqW" id="8cT-EX-Gek"/>
@@ -436,11 +423,11 @@
             <objects>
                 <viewController storyboardIdentifier="SearchSettingViewController" id="Chb-le-6Yh" customClass="SearchSettingViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bGr-ib-NBs" customClass="CustomVIew" customModule="ColorBarTesting" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋語系" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1L-Hl-Ys3">
-                                <rect key="frame" x="15" y="535.33333333333337" width="360" height="40"/>
+                                <rect key="frame" x="15" y="488.33333333333331" width="360" height="39.999999999999943"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cIu-75-Ecq"/>
@@ -455,7 +442,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yy-QX-VUd">
-                                <rect key="frame" x="15" y="291.66666666666669" width="360" height="40"/>
+                                <rect key="frame" x="15" y="244.66666666666663" width="360" height="40"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TFc-JJ-Vhg"/>
@@ -470,7 +457,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIx-ME-LGb">
-                                <rect key="frame" x="95" y="346.66666666666669" width="200" height="34.333333333333314"/>
+                                <rect key="frame" x="95" y="299.66666666666669" width="200" height="34.333333333333314"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="g7t-Y2-qS5"/>
@@ -488,7 +475,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋內容" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWv-Kn-WB9">
-                                <rect key="frame" x="15" y="118" width="360" height="40"/>
+                                <rect key="frame" x="15" y="71" width="360" height="40"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rD0-qz-bRr"/>
@@ -503,10 +490,10 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyT-8g-p38">
-                                <rect key="frame" x="0.0" y="575.33333333333337" width="390" height="216"/>
+                                <rect key="frame" x="0.0" y="528.33333333333337" width="390" height="216"/>
                             </pickerView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hz5-47-Op1">
-                                <rect key="frame" x="0.0" y="47" width="390" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                                 <items>
                                     <navigationItem title="搜尋內容設定" id="6k0-QY-nbC">
                                         <barButtonItem key="rightBarButtonItem" title="完成" id="6YL-2l-R2O">
@@ -518,7 +505,7 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BxJ-ik-Zh0">
-                                <rect key="frame" x="25" y="178" width="340" height="83.666666666666686"/>
+                                <rect key="frame" x="25" y="131" width="340" height="83.666666666666686"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVz-hT-8fj">
                                         <rect key="frame" x="0.0" y="0.0" width="340" height="34.333333333333336"/>
@@ -568,7 +555,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QtV-PW-EIq">
-                                <rect key="frame" x="25" y="471" width="340" height="34.333333333333314"/>
+                                <rect key="frame" x="25" y="424" width="340" height="34.333333333333314"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K75-90-bBI">
                                         <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="34.333333333333336"/>
@@ -603,7 +590,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋排序" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0h-Py-ueS">
-                                <rect key="frame" x="15" y="411" width="360" height="40"/>
+                                <rect key="frame" x="15" y="364" width="360" height="40"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="uyH-m6-S1B"/>
@@ -805,7 +792,6 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" style="browser" id="Ncg-mV-cdK">
                         <barButtonItem key="leftBarButtonItem" title="Mark List" id="ruD-WD-xG5"/>
-                        <barButtonItem key="rightBarButtonItem" title="item" image="gearshape" catalog="system" id="2NL-T3-bQn"/>
                     </navigationItem>
                     <connections>
                         <outlet property="leftButtonItem" destination="ruD-WD-xG5" id="4F0-FF-RG4"/>
@@ -817,6 +803,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYQ-w8-njv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3098" y="-727"/>
+        </scene>
+        <!--Setting Table View Controller-->
+        <scene sceneID="MN1-PU-Twt">
+            <objects>
+                <viewController storyboardIdentifier="SettingTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PKS-sY-9X3" customClass="SettingTableViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jpu-Ew-H6V">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oDB-Yq-0dA">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingCell" editingAccessoryType="detailButton" id="kKD-vE-FQt">
+                                        <rect key="frame" x="20" y="55.333332061767578" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kKD-vE-FQt" id="uTD-ML-3EI">
+                                            <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YDB-nW-hOU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oDB-Yq-0dA" firstAttribute="top" secondItem="YDB-nW-hOU" secondAttribute="top" id="9Vp-Y5-bNj"/>
+                            <constraint firstItem="YDB-nW-hOU" firstAttribute="bottom" secondItem="oDB-Yq-0dA" secondAttribute="bottom" id="ARn-fA-jEJ"/>
+                            <constraint firstItem="oDB-Yq-0dA" firstAttribute="leading" secondItem="YDB-nW-hOU" secondAttribute="leading" id="OJQ-Pa-3oi"/>
+                            <constraint firstItem="YDB-nW-hOU" firstAttribute="trailing" secondItem="oDB-Yq-0dA" secondAttribute="trailing" id="ewF-Jj-7FA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="T9z-uo-rnl"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="settingTableView" destination="oDB-Yq-0dA" id="EpS-v2-1UO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ryy-Ov-etF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3098" y="-50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GOe-Ir-ZKg">
@@ -836,6 +865,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yll-rG-anV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2169" y="-727"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="drB-NR-KGQ">
+            <objects>
+                <navigationController storyboardIdentifier="toNewsSetting" automaticallyAdjustsScrollViewInsets="NO" id="3zG-sy-lwr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="gearshape" catalog="system" id="ZT7-zZ-cMC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zGN-GN-gB8">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PKS-sY-9X3" kind="relationship" relationship="rootViewController" id="Oqk-Tr-zRq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DR1-M7-5mz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2168" y="-50"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
