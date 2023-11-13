@@ -66,6 +66,11 @@ class NewsSettingManager {
             }
         }
     }
+    
+    // MARK: - Setting
+    private var isAutoReadMode = {
+        return userDefaults.bool(forKey: UserdefaultKey.settingAutoReadMode.rawValue)
+    }()
 
     //MARK: Display Mode
     private var displayMode: DisplayMode = .headline
@@ -142,6 +147,10 @@ class NewsSettingManager {
         }
     }
     
+    func isAutoRead() -> Bool {
+        return isAutoReadMode
+    }
+    
     
     //MARK: Update Setting
     func updateSettingStorage<T>(data: T) {
@@ -208,5 +217,14 @@ class NewsSettingManager {
     func deleteNewsMarkList(_ article: Article) {
         guard let index = newsMarkList.firstIndex(of: article) else { return }
         newsMarkList.remove(at: index)
+    }
+    
+    func deleteNewsMarkLists() {
+        newsMarkList = []
+    }
+    
+    func updateAutoReadMode(isAuto: Bool) {
+        isAutoReadMode = isAuto
+        userDefaults.setValue(isAuto, forKey: UserdefaultKey.settingAutoReadMode.rawValue)
     }
 }

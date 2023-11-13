@@ -98,7 +98,7 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
 //        performSegue(withIdentifier: "toWebView", sender: self)
         if let url = URL(string: selectNewsUrl) {
             let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = true
+            config.entersReaderIfAvailable = newsSettingManager.isAutoRead()
             let safariViewController = SFSafariViewController(url: url, configuration: config)
             self.present(safariViewController, animated: true)
             self.modalPresentationStyle = .fullScreen

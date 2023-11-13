@@ -192,7 +192,7 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
 //        performSegue(withIdentifier: "toWebView", sender: self)
         if let url = URL(string: selectNewsUrl) {
             let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = true
+            config.entersReaderIfAvailable = newsSettingManager.isAutoRead()
             let safariViewController = SFSafariViewController(url: url, configuration: config)
             safariViewController.delegate = self
             self.present(safariViewController, animated: true)
