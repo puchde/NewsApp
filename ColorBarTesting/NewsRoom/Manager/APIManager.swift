@@ -80,10 +80,20 @@ enum NewsRouter: APIClientConfig {
     case searchNews(query: String, searchIn: String, from: String, to: String, language: String, pageSize: Int, page: Int, sortBy: String)
     case topHeadlines(country: String, category: String, page: Int)
     
+    static var apiDefaultKey = {
+        return [
+            "cbe29cc43e2544fda19aa684517aadd4",
+            "b6a92da50ecb45fdbe56aaf376cc2f39"
+        ].randomElement()!
+    }()
+    
     var apiKey: String {
-        // your NewsAPI key
-        return "cbe29cc43e2544fda19aa684517aadd4"
-//        return "b6a92da50ecb45fdbe56aaf376cc2f39"
+        if let apiKey = newsSettingManager.getApiKey(), !apiKey.isEmpty {
+            // your NewsAPI key
+            return apiKey
+        } else {
+            return NewsRouter.apiDefaultKey
+        }
     }
     
     var httpMethod: String {

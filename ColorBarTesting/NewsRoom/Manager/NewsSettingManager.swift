@@ -68,6 +68,10 @@ class NewsSettingManager {
     }
     
     // MARK: - Setting
+    private var apiKey = {
+        return userDefaults.string(forKey: UserdefaultKey.settingApiKey.rawValue)
+    }()
+    
     private var isAutoReadMode = {
         return userDefaults.bool(forKey: UserdefaultKey.settingAutoReadMode.rawValue)
     }()
@@ -149,6 +153,10 @@ class NewsSettingManager {
     
     func isAutoRead() -> Bool {
         return isAutoReadMode
+    }
+    
+    func getApiKey() -> String? {
+        return apiKey
     }
     
     

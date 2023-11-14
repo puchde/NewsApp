@@ -14,6 +14,7 @@ enum UserdefaultKey: String {
     case settingSearchIn = "settingSearchIn"
     case settingSearchSortBy = "settingSearchSortBy"
     case settingAutoReadMode = "settingAutoReadMode"
+    case settingApiKey = "settingApiKey"
     case articles = "articles"
     case searchQuery = "searchQuery"
 }

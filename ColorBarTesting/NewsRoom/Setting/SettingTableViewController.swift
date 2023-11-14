@@ -75,7 +75,11 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             cell.accessoryView = getAccessLabel(desc: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
         case (1, 0):
             content.image = UIImage(systemName: "key")
-            cell.accessoryView = getAccessLabel(desc: appOptions[indexPath.row])
+            if let apiKey = newsSettingManager.getApiKey() {
+                cell.accessoryView = getAccessLabel(desc: String("\(apiKey.prefix(5))..."))
+            } else {
+                cell.accessoryView = getAccessLabel(desc: "預設")
+            }
         case (1, 1):
             content.image = UIImage(systemName: "hand.raised")
             let switchButton = UISwitch()
