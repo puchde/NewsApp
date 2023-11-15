@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,6 +16,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="618" height="248"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wee-Ba-znt">
+                        <rect key="frame" x="0.0" y="62" width="618" height="124"/>
+                    </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="g2Z-pP-YDZ">
                         <rect key="frame" x="20" y="10" width="588" height="228"/>
                         <subviews>
@@ -107,6 +110,10 @@
                     <constraint firstAttribute="trailing" secondItem="g2Z-pP-YDZ" secondAttribute="trailing" constant="10" id="C9e-XT-QC9"/>
                     <constraint firstAttribute="bottom" secondItem="g2Z-pP-YDZ" secondAttribute="bottom" constant="10" id="E8B-Nh-iC9"/>
                     <constraint firstItem="g2Z-pP-YDZ" firstAttribute="top" secondItem="zFF-98-v0Q" secondAttribute="top" constant="10" id="Q8r-xz-LIV"/>
+                    <constraint firstItem="wee-Ba-znt" firstAttribute="height" secondItem="zFF-98-v0Q" secondAttribute="height" multiplier="0.5" priority="250" id="jfV-oj-qdq"/>
+                    <constraint firstItem="wee-Ba-znt" firstAttribute="width" secondItem="zFF-98-v0Q" secondAttribute="width" priority="250" id="lqa-qn-Kcc"/>
+                    <constraint firstItem="wee-Ba-znt" firstAttribute="centerY" secondItem="zFF-98-v0Q" secondAttribute="centerY" id="vJv-9O-0rc"/>
+                    <constraint firstItem="wee-Ba-znt" firstAttribute="centerX" secondItem="zFF-98-v0Q" secondAttribute="centerX" id="wSq-FO-YxK"/>
                     <constraint firstItem="g2Z-pP-YDZ" firstAttribute="leading" secondItem="zFF-98-v0Q" secondAttribute="leading" constant="20" id="xdV-eT-qws"/>
                 </constraints>
             </tableViewCellContentView>
@@ -115,6 +122,7 @@
                 <outlet property="authorLabel" destination="EdY-KA-RKY" id="kwp-ei-hht"/>
                 <outlet property="cellImage" destination="Lid-sP-0Ou" id="Lbw-6e-Iyv"/>
                 <outlet property="markButton" destination="wHs-WJ-ctQ" id="HLS-rZ-dw3"/>
+                <outlet property="previewImage" destination="wee-Ba-znt" id="0vH-da-f8n"/>
                 <outlet property="shareButton" destination="Pg8-Fx-VSm" id="tno-84-b26"/>
                 <outlet property="titleLabel" destination="Edy-m5-aM1" id="LkP-zg-7de"/>
             </connections>
@@ -123,6 +131,6 @@
     </objects>
     <resources>
         <image name="bookmark" catalog="system" width="110" height="128"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
     </resources>
 </document>

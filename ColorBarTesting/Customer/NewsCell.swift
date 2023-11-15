@@ -21,6 +21,8 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var cellImage: UIImageView!
 
+    @IBOutlet weak var previewImage: UIImageView!
+    
     var article: Article? {
         didSet {
             newsUrl = article!.url
@@ -90,6 +92,7 @@ class NewsCell: UITableViewCell {
         
         cellImage.kf.indicatorType = .activity
         cellImage.kf.setImage(with: url, placeholder: placeholderColorImage)
+        previewImage.kf.setImage(with: url, placeholder: placeholderColorImage)
     }
 
     @IBAction func saveNews(_ sender: Any) {
@@ -110,6 +113,9 @@ class NewsCell: UITableViewCell {
         } else {
             newsSettingManager.updateNewsMarkList(self.article!)
             delegate?.reloadCell()
+            if (activeVC?.sheetPresentationController) != nil {
+                activeVC?.dismiss(animated: true)
+            }
         }
     }
 
@@ -126,9 +132,10 @@ class NewsCell: UITableViewCell {
     }
 
     func updateMarkIcon() {
+        previewImage.alpha = 0.1
         self.isMark = newsSettingManager.isMark(news: self.article!)
         if isMark {
-            markButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            markButton.setImage(UIImage(systemName: "bookmark.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal), for: .normal)
         } else {
             markButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
         }
