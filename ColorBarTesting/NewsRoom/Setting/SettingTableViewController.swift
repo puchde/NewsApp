@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import MessageUI
 
-class SettingTableViewController: UIViewController {
+class SettingTableViewController: UIViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var settingTableView: UITableView!
     
     let settingSections = ["版本資訊", "功能選項", "其他"]
     let appInfos = ["版本"]
     let appOptions = ["News API Key", "自動開啟閱讀器模式", "清空已標記的新聞"]
     let otherOptions = ["寫評論", "信件詢問"]
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     
     
     override func viewDidLoad() {
@@ -72,7 +74,7 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             content.image = UIImage(systemName: "info.circle")
-            cell.accessoryView = getAccessLabel(desc: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
+            cell.accessoryView = getAccessLabel(desc: appVersion)
         case (1, 0):
             content.image = UIImage(systemName: "key")
             if let apiKey = newsSettingManager.getApiKey() {
@@ -116,12 +118,15 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             alert.addAction(cancelAct)
             alert.addAction(confirmAct)
             self.present(alert, animated: true)
+        case (2, 1):
+            presentMailVC()
         default:
             return
         }
     }
 }
 
+// MARK: - Cell Access
 extension SettingTableViewController {
     func getAccessLabel(desc: String) -> UILabel {
         let accessView = UILabel()
@@ -129,9 +134,48 @@ extension SettingTableViewController {
         accessView.sizeToFit()
         return accessView
     }
-    
+}
+
+// MARK: - Cell Action
+extension SettingTableViewController {
     @objc
     func setAutoRead(sender: UISwitch) {
         newsSettingManager.updateAutoReadMode(isAuto: sender.isOn)
+    }
+    
+    @objc
+    func presentMailVC() {
+        guard MFMailComposeViewController.canSendMail() else {
+            return
+        }
+        let mailVC = MFMailComposeViewController()
+        mailVC.mailComposeDelegate = self
+        mailVC.delegate = self
+        mailVC.setToRecipients(["puch40435@gmail.com"])
+        mailVC.setSubject("關於APP")
+        mailVC.setMessageBody("description２５５／２: \n\n\n\nVersion: \(appVersion)\nDevice Info: \(UIDevice().type) \(UIDevice.current.systemVersion)", isHTML: false)
+        present(mailVC, animated: true)
+    }
+}
+
+extension SettingTableViewController {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            dismiss(animated: true)
+        case .saved:
+            dismiss(animated: true)
+        case .sent:
+            dismiss(animated: true)
+        case .failed:
+            let errorAlert = UIAlertController(title: "發送失敗", message: error?.localizedDescription, preferredStyle: .alert)
+            controller.present(errorAlert, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                errorAlert.dismiss(animated: true)
+            }
+            return
+        default:
+            dismiss(animated: true)
+        }
     }
 }

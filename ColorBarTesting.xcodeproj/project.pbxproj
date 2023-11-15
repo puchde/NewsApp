@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
 		3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */; };
 		3FF497682B01B21F007DA1DB /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
 		3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TableViewPreview.swift"; sourceTree = "<group>"; };
 		3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewProtocal.swift; sourceTree = "<group>"; };
 		3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				E75555C0292A97B400E35365 /* FileType.swift */,
 				E7061D0B29DC240800405544 /* NewsAPIEnum.swift */,
 				E706448829EACCAC009F8C64 /* UserDefaultsKeyEnum.swift */,
+				3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				E77865DD29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift in Sources */,
 				E7528DEE29E2EDD8001169F0 /* SearchSettingViewController.swift in Sources */,
 				E7528DEC29E29749001169F0 /* NewsTabBarViewController.swift in Sources */,
+				3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */,
 				E75C2F6729D9F6B900FBC7B4 /* APIManager.swift in Sources */,
 				E75C2F6129D9F51D00FBC7B4 /* SearchNewsViewController.swift in Sources */,
 				E75B1BAD29335570004CA82C /* ImageViewController.swift in Sources */,
