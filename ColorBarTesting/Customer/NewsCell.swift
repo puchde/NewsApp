@@ -21,6 +21,7 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var cellImage: UIImageView!
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var previewImage: UIImageView!
     
     var article: Article? {
@@ -62,6 +63,8 @@ class NewsCell: UITableViewCell {
 
     var delegate: NewsCellDelegate?
     
+    var deleteMarkAlert = UIAlertController()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -92,28 +95,32 @@ class NewsCell: UITableViewCell {
         
         cellImage.kf.indicatorType = .activity
         cellImage.kf.setImage(with: url, placeholder: placeholderColorImage)
+        backgroundImageView.kf.setImage(with: url, placeholder: placeholderColorImage)
         previewImage.kf.setImage(with: url, placeholder: placeholderColorImage)
     }
 
     @IBAction func saveNews(_ sender: Any) {
         if isMark {
-            let alert = UIAlertController(title: "刪除標籤", message: "", preferredStyle: .alert)
+            deleteMarkAlert = UIAlertController(title: "刪除標籤", message: "", preferredStyle: .alert)
             let cancelAct = UIAlertAction(title: "取消", style: .cancel) { _ in
-                alert.dismiss(animated: true)
+                self.deleteMarkAlert.dismiss(animated: true)
             }
             let comfirm = UIAlertAction(title: "刪除", style: .destructive) { _ in
                 newsSettingManager.deleteNewsMarkList(self.article!)
                 self.updateMarkIcon()
                 self.delegate?.reloadCell()
             }
-            alert.addAction(cancelAct)
-            alert.addAction(comfirm)
-            activeVC?.present(alert, animated: true)
+            deleteMarkAlert.addAction(cancelAct)
+            deleteMarkAlert.addAction(comfirm)
+            activeVC?.present(deleteMarkAlert, animated: true, completion: {
+                self.deleteMarkAlert.view.superview?.isUserInteractionEnabled = true
+                self.deleteMarkAlert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissTap)))
+            })
 
         } else {
             newsSettingManager.updateNewsMarkList(self.article!)
             delegate?.reloadCell()
-            if (activeVC?.sheetPresentationController) != nil {
+            if (activeVC?.presentedViewController) != nil {
                 activeVC?.dismiss(animated: true)
             }
         }
@@ -132,12 +139,15 @@ class NewsCell: UITableViewCell {
     }
 
     func updateMarkIcon() {
-        previewImage.alpha = 0.1
         self.isMark = newsSettingManager.isMark(news: self.article!)
         if isMark {
             markButton.setImage(UIImage(systemName: "bookmark.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal), for: .normal)
         } else {
             markButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
         }
+    }
+    
+    @objc func dismissTap(_ gesture: UITapGestureRecognizer) {
+        deleteMarkAlert.dismiss(animated: true, completion: nil)
     }
 }

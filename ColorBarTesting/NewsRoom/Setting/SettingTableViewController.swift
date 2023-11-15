@@ -153,7 +153,7 @@ extension SettingTableViewController {
         mailVC.delegate = self
         mailVC.setToRecipients(["puch40435@gmail.com"])
         mailVC.setSubject("關於APP")
-        mailVC.setMessageBody("description２５５／２: \n\n\n\nVersion: \(appVersion)\nDevice Info: \(UIDevice().type) \(UIDevice.current.systemVersion)", isHTML: false)
+        mailVC.setMessageBody("description: \n\n\n\nVersion: \(appVersion)\nDevice Info: \(UIDevice().type) \(UIDevice.current.systemVersion)", isHTML: false)
         present(mailVC, animated: true)
     }
 }
