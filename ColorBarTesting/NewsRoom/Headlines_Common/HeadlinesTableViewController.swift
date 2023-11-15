@@ -191,20 +191,37 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
         selectNewsUrl = articles[indexPath.row].url
 //        performSegue(withIdentifier: "toWebView", sender: self)
         if let url = URL(string: selectNewsUrl) {
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = newsSettingManager.isAutoRead()
-            let safariViewController = SFSafariViewController(url: url, configuration: config)
-            safariViewController.delegate = self
-            self.present(safariViewController, animated: true)
+            let vc = getSafariVC(url: url, delegateVC: self)
+            self.present(vc, animated: true)
             self.modalPresentationStyle = .fullScreen
         }
-
     }
-
+    
     @objc func scrollToTop() {
         if !articles.isEmpty {
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
+    }
+}
+
+// MARK: - TableView Cell Preview
+extension HeadlinesTableViewController: NewsTableViewProtocal {
+    var newsTableView: UITableView {
+        self.tableView
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { _ in
+            self.makePreviewMenu(indexPath: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        return makeTargetedPreview(for: configuration, isShow: true)
+    }
+
+    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        return makeTargetedPreview(for: configuration, isShow: false)
     }
 }
 

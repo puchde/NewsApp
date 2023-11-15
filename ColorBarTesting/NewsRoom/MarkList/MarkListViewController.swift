@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-class MarkListViewController: UIViewController {
+class MarkListViewController: UIViewController, SFSafariViewControllerDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -97,13 +97,32 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
         selectNewsUrl = newsList[indexPath.row].url
 //        performSegue(withIdentifier: "toWebView", sender: self)
         if let url = URL(string: selectNewsUrl) {
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = newsSettingManager.isAutoRead()
-            let safariViewController = SFSafariViewController(url: url, configuration: config)
-            self.present(safariViewController, animated: true)
+            let vc = getSafariVC(url: url, delegateVC: self)
+            self.present(vc, animated: true)
             self.modalPresentationStyle = .fullScreen
         }
         searchBar.resignFirstResponder()
+    }
+}
+
+// MARK: - TableView Cell Preview
+extension MarkListViewController: NewsTableViewProtocal {
+    var newsTableView: UITableView {
+        self.tableView
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { _ in
+            self.makePreviewMenu(indexPath: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        return makeTargetedPreview(for: configuration, isShow: true)
+    }
+
+    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        return makeTargetedPreview(for: configuration, isShow: false)
     }
 }
 
