@@ -63,8 +63,6 @@ class NewsCell: UITableViewCell {
 
     var delegate: NewsCellDelegate?
     
-    var deleteMarkAlert = UIAlertController()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -101,22 +99,15 @@ class NewsCell: UITableViewCell {
 
     @IBAction func saveNews(_ sender: Any) {
         if isMark {
-            deleteMarkAlert = UIAlertController(title: "刪除標籤", message: "", preferredStyle: .alert)
             let cancelAct = UIAlertAction(title: "取消", style: .cancel) { _ in
-                self.deleteMarkAlert.dismiss(animated: true)
+                self.activeVC?.presentAlertDismiss()
             }
             let comfirm = UIAlertAction(title: "刪除", style: .destructive) { _ in
                 newsSettingManager.deleteNewsMarkList(self.article!)
                 self.updateMarkIcon()
                 self.delegate?.reloadCell()
             }
-            deleteMarkAlert.addAction(cancelAct)
-            deleteMarkAlert.addAction(comfirm)
-            activeVC?.present(deleteMarkAlert, animated: true, completion: {
-                self.deleteMarkAlert.view.superview?.isUserInteractionEnabled = true
-                self.deleteMarkAlert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissTap)))
-            })
-
+            activeVC?.presentAlert(title: "刪除標籤", message: "", action: [cancelAct, comfirm])
         } else {
             newsSettingManager.updateNewsMarkList(self.article!)
             delegate?.reloadCell()
@@ -146,8 +137,33 @@ class NewsCell: UITableViewCell {
             markButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
         }
     }
+}
+
+extension UIViewController {
+    func presentAlert(title: String = "", message: String = "", action: [UIAlertAction] = []) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        action.forEach { act in
+            alert.addAction(act)
+        }
+        
+        self.present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.presentAlertDismiss)))
+        })
+    }
     
-    @objc func dismissTap(_ gesture: UITapGestureRecognizer) {
-        deleteMarkAlert.dismiss(animated: true, completion: nil)
+    @objc func presentAlertDismiss() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func presentConfirmAlert(title: String = "", message: String = "") {
+        let confirm = UIAlertAction(title: "確定", style: .default) { _ in
+            self.dismiss(animated: true)
+        }
+        presentAlert(title: title, message: message, action: [confirm])
+    }
+    
+    func presentNoActionAlert(title: String = "", message: String = "") {
+        presentAlert(title: title, message: message, action: [])
     }
 }

@@ -107,6 +107,8 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         switch (indexPath.section, indexPath.row) {
         case (1, 0):
             print("api")
+        case (1, 1):
+            self.presentNoActionAlert(title: "Safari閱讀器模式", message: "\n閱讀器模式可提供簡潔網頁版面，使閱讀更專注並改善文章排版。\n\n若部分複雜網頁顯示不完整，請關閉此選項。")
         case (1, 2):
             let confirmAct = UIAlertAction(title: "清空", style: .destructive) { _ in
                 newsSettingManager.deleteNewsMarkLists()
