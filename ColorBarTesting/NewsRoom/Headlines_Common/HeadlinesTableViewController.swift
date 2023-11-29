@@ -121,7 +121,7 @@ extension HeadlinesTableViewController {
                 switch displayMode {
                 case .headline:
                     guard let page, let category = Category.fromOrder(page)?.rawValue else { return }
-                    APIManager.topHeadlines(country: newsCountry.rawValue, category: category, page: dataPage) { result in
+                    APIManager.topHeadlines(country: newsCountry.rawValue, category: category) { result in
                         self.resultCompletion(result: result)
                     }
                     break
@@ -141,7 +141,7 @@ extension HeadlinesTableViewController {
     func resultCompletion(result: (Result<NewsAPIResponse, Error>)) -> Void {
         switch result {
         case .success(let success):
-            if success.status == "ok" {
+            if success.status == "OK" {
                 self.articlesNumber = success.totalResults
                 success.articles.forEach { article in
                     self.articles.append(article)

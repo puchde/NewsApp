@@ -12,7 +12,6 @@ enum Category: String, CaseIterable, Codable {
     case business
     case health
     case technology
-    case science
     case sports
     case entertainment
     
@@ -26,8 +25,6 @@ enum Category: String, CaseIterable, Codable {
             return "一般"
         case .health:
             return "健康"
-        case .science:
-            return "科學"
         case .sports:
             return "體育"
         case .technology:
@@ -45,12 +42,10 @@ enum Category: String, CaseIterable, Codable {
             return 2
         case .technology:
             return 3
-        case .science:
-            return 4
         case .sports:
-            return 5
+            return 4
         case .entertainment:
-            return 6
+            return 5
         }
     }
     

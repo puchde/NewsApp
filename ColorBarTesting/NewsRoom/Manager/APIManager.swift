@@ -63,8 +63,8 @@ struct APIManager {
 }
 
 extension APIManager {
-    static func topHeadlines(country: String, category: String, page: Int, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
-        APIManager.DataRequest(router: NewsRouter.topHeadlines(country: country, category: category, page: page), completion: completion)
+    static func topHeadlines(country: String, category: String, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
+        APIManager.DataRequest(router: NewsRouter.topHeadlines(type: "topics", country: country, category: category), completion: completion)
     }
     
     static func searchNews(query: String, language: String, pageSize: Int = 50, page: Int = 1, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
@@ -72,29 +72,15 @@ extension APIManager {
         let searchDate = newsSettingManager.getSearchDate()
         let language = newsSettingManager.getSearchLanguage().rawValue
         let sortBy = newsSettingManager.getSearchSortBy().rawValue
-        APIManager.DataRequest(router: NewsRouter.searchNews(query: query, searchIn: searchIn, from: searchDate.0, to: searchDate.1, language: language, pageSize: pageSize, page: page, sortBy: sortBy), completion: completion)
+        APIManager.DataRequest(router: NewsRouter.searchNews(type: "search", query: query, searchIn: searchIn, from: searchDate.0, to: searchDate.1, language: language, pageSize: pageSize, page: page, sortBy: sortBy), completion: completion)
     }
 }
 
 enum NewsRouter: APIClientConfig {
-    case searchNews(query: String, searchIn: String, from: String, to: String, language: String, pageSize: Int, page: Int, sortBy: String)
-    case topHeadlines(country: String, category: String, page: Int)
+    case searchNews(type: String, query: String, searchIn: String, from: String, to: String, language: String, pageSize: Int, page: Int, sortBy: String)
+    case topHeadlines(type: String,country: String, category: String)
     
-    static var apiDefaultKey = {
-        return [
-            "cbe29cc43e2544fda19aa684517aadd4",
-            "b6a92da50ecb45fdbe56aaf376cc2f39"
-        ].randomElement()!
-    }()
-    
-    var apiKey: String {
-        if let apiKey = newsSettingManager.getApiKey(), !apiKey.isEmpty {
-            // your NewsAPI key
-            return apiKey
-        } else {
-            return NewsRouter.apiDefaultKey
-        }
-    }
+    static var apiDomain: APIDomainEnum = .debug
     
     var httpMethod: String {
         switch self {
@@ -103,25 +89,27 @@ enum NewsRouter: APIClientConfig {
     }
     
     var schema: String {
-        switch self {
-        default:
+        switch NewsRouter.apiDomain {
+        case .prod:
             return "https"
+        case .debug:
+            return "http"
         }
     }
     
     var host: String {
-        switch self {
-        default:
-            return "newsapi.org"
+        switch NewsRouter.apiDomain {
+        case .prod:
+            return ""
+        case .debug:
+            return "127.0.0.1:8080"
         }
     }
     
     var urlPrefix: String {
         switch self {
-        case .searchNews:
-            return "/v2/everything"
-        case .topHeadlines:
-            return "/v2/top-headlines"
+        default:
+            return "/googlenews"
         }
     }
     
@@ -134,9 +122,9 @@ enum NewsRouter: APIClientConfig {
     
     var queryParameter: [URLQueryItem]? {
         switch self {
-        case .searchNews(let query, let searchIn, let from, let to, let language, let pageSize, let page, let sortBy):
-            let queryItems = [URLQueryItem(name: QueryKey.q, value: query),
-                              URLQueryItem(name: QueryKey.apiKey, value: self.apiKey),
+        case .searchNews(let type, let query, let searchIn, let from, let to, let language, let pageSize, let page, let sortBy):
+            let queryItems = [URLQueryItem(name: QueryKey.type, value: type),
+                              URLQueryItem(name: QueryKey.q, value: query),
                               URLQueryItem(name: QueryKey.searchIn, value: searchIn),
                               URLQueryItem(name: QueryKey.from, value: from),
                               URLQueryItem(name: QueryKey.to, value: to),
@@ -146,11 +134,10 @@ enum NewsRouter: APIClientConfig {
                               URLQueryItem(name: QueryKey.sortBy, value: sortBy)]
             return queryItems
             
-        case .topHeadlines(country: let country, let category, page: let page):
-            let queryItems = [URLQueryItem(name: QueryKey.country, value: country),
-                              URLQueryItem(name: QueryKey.apiKey, value: self.apiKey),
-                              URLQueryItem(name: QueryKey.category, value: category),
-                              URLQueryItem(name: QueryKey.page, value: "\(page)")]
+        case .topHeadlines(let type, country: let country, let category):
+            let queryItems = [URLQueryItem(name: QueryKey.type, value: type),
+                              URLQueryItem(name: QueryKey.country, value: country),
+                              URLQueryItem(name: QueryKey.category, value: category)]
             return queryItems
         }
     }
@@ -169,6 +156,7 @@ struct QueryKey {
     static let sortBy = "sortBy"
     static let country = "country"
     static let category = "category"
+    static let type = "type"
 }
 
 protocol APIClientConfig {
