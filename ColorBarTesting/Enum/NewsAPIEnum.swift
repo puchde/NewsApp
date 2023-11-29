@@ -69,7 +69,6 @@ enum CountryCode: String, CaseIterable, Codable {
     case JP // 日本
     case MX // 墨西哥
     case US // 美國
-    case none = ""
     
     var chineseName: String {
         switch self {
@@ -93,8 +92,6 @@ enum CountryCode: String, CaseIterable, Codable {
             return "墨西哥"
         case .US:
             return "美國"
-        case .none:
-            return "未選擇"
         }
     }
 }
@@ -142,51 +139,39 @@ enum DisplayMode: String {
 }
 
 enum SearchLanguage: String, CaseIterable, Codable {
-    case zh
-    case ar
-    case de
-    case en
-    case es
-    case fr
-    case hi
-    case it
-    case nl
-    case no
-    case pt
-    case ru
-    case sv
-    case ur
-
+    case BR // 巴西
+    case CN // 中國
+    case DE // 德國
+    case FR // 法國
+    case GB // 英國
+    case IN // 印度
+    case TW // 意大利
+    case JP // 日本
+    case MX // 墨西哥
+    case US // 美國
+    
     var chineseName: String {
         switch self {
-        case .zh:
-            return "中文"
-        case .ar:
-            return "阿拉伯語"
-        case .de:
-            return "德語"
-        case .en:
-            return "英語"
-        case .es:
-            return "西班牙語"
-        case .fr:
-            return "法語"
-        case .hi:
-            return "印地語"
-        case .it:
-            return "意大利語"
-        case .nl:
-            return "荷蘭語"
-        case .no:
-            return "挪威語"
-        case .pt:
-            return "葡萄牙語"
-        case .ru:
-            return "俄語"
-        case .sv:
-            return "瑞典語"
-        case .ur:
-            return "烏爾都語"
+        case .BR:
+            return "巴西"
+        case .CN:
+            return "中國"
+        case .DE:
+            return "德國"
+        case .FR:
+            return "法國"
+        case .GB:
+            return "英國"
+        case .IN:
+            return "印度"
+        case .TW:
+            return "台灣"
+        case .JP:
+            return "日本"
+        case .MX:
+            return "墨西哥"
+        case .US:
+            return "美國"
         }
     }
 }

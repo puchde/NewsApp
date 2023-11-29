@@ -67,17 +67,15 @@ extension APIManager {
         APIManager.DataRequest(router: NewsRouter.topHeadlines(type: "topics", country: country, category: category), completion: completion)
     }
     
-    static func searchNews(query: String, language: String, pageSize: Int = 50, page: Int = 1, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
-        let searchIn = newsSettingManager.getSearchIn(isForApi: true)
+    static func searchNews(query: String, language: String, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
         let searchDate = newsSettingManager.getSearchDate()
         let language = newsSettingManager.getSearchLanguage().rawValue
-        let sortBy = newsSettingManager.getSearchSortBy().rawValue
-        APIManager.DataRequest(router: NewsRouter.searchNews(type: "search", query: query, searchIn: searchIn, from: searchDate.0, to: searchDate.1, language: language, pageSize: pageSize, page: page, sortBy: sortBy), completion: completion)
+        APIManager.DataRequest(router: NewsRouter.searchNews(type: "search", query: query, language: language), completion: completion)
     }
 }
 
 enum NewsRouter: APIClientConfig {
-    case searchNews(type: String, query: String, searchIn: String, from: String, to: String, language: String, pageSize: Int, page: Int, sortBy: String)
+    case searchNews(type: String, query: String, language: String)
     case topHeadlines(type: String,country: String, category: String)
     
     static var apiDomain: APIDomainEnum = .debug
@@ -122,16 +120,10 @@ enum NewsRouter: APIClientConfig {
     
     var queryParameter: [URLQueryItem]? {
         switch self {
-        case .searchNews(let type, let query, let searchIn, let from, let to, let language, let pageSize, let page, let sortBy):
+        case .searchNews(let type, let query, let language):
             let queryItems = [URLQueryItem(name: QueryKey.type, value: type),
                               URLQueryItem(name: QueryKey.q, value: query),
-                              URLQueryItem(name: QueryKey.searchIn, value: searchIn),
-                              URLQueryItem(name: QueryKey.from, value: from),
-                              URLQueryItem(name: QueryKey.to, value: to),
-                              URLQueryItem(name: QueryKey.language, value: language),
-                              URLQueryItem(name: QueryKey.pageSize, value: "\(pageSize)"),
-                              URLQueryItem(name: QueryKey.page, value: "\(page)"),
-                              URLQueryItem(name: QueryKey.sortBy, value: sortBy)]
+                              URLQueryItem(name: QueryKey.country, value: language)]
             return queryItems
             
         case .topHeadlines(let type, country: let country, let category):

@@ -127,7 +127,7 @@ extension HeadlinesTableViewController {
                     break
                 case .search:
                     let language = newsSettingManager.getSearchLanguage().rawValue
-                    APIManager.searchNews(query: searchQuery, language: language, page: dataPage) { result in
+                    APIManager.searchNews(query: searchQuery, language: language) { result in
                         self.resultCompletion(result: result)
                     }
                     break

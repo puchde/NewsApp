@@ -427,7 +427,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋語系" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1L-Hl-Ys3">
-                                <rect key="frame" x="15" y="488.33333333333331" width="360" height="39.999999999999943"/>
+                                <rect key="frame" x="15" y="195.33333333333334" width="360" height="40"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cIu-75-Ecq"/>
@@ -442,7 +442,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yy-QX-VUd">
-                                <rect key="frame" x="15" y="244.66666666666663" width="360" height="40"/>
+                                <rect key="frame" x="15" y="195.33333333333334" width="360" height="40"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TFc-JJ-Vhg"/>
@@ -457,7 +457,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIx-ME-LGb">
-                                <rect key="frame" x="95" y="299.66666666666669" width="200" height="34.333333333333314"/>
+                                <rect key="frame" x="95" y="250.33333333333334" width="200" height="34.333333333333343"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="g7t-Y2-qS5"/>
@@ -490,7 +490,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyT-8g-p38">
-                                <rect key="frame" x="0.0" y="528.33333333333337" width="390" height="216"/>
+                                <rect key="frame" x="0.0" y="235.33333333333337" width="390" height="216"/>
                             </pickerView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hz5-47-Op1">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
@@ -505,7 +505,7 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BxJ-ik-Zh0">
-                                <rect key="frame" x="25" y="131" width="340" height="83.666666666666686"/>
+                                <rect key="frame" x="25" y="131" width="340" height="34.333333333333343"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVz-hT-8fj">
                                         <rect key="frame" x="0.0" y="0.0" width="340" height="34.333333333333336"/>
@@ -517,11 +517,11 @@
                                             <action selector="allSelectClick:" destination="Chb-le-6Yh" eventType="touchUpInside" id="v19-Fe-EOf"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zrP-V1-t4Z">
-                                        <rect key="frame" x="0.0" y="49.333333333333343" width="340" height="34.333333333333343"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zrP-V1-t4Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="340" height="0.0"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bem-xn-zkV">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="34.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                 <state key="normal" title="Button"/>
@@ -531,7 +531,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ3-z8-1DS">
-                                                <rect key="frame" x="118.33333333333334" y="0.0" width="103.33333333333334" height="34.333333333333336"/>
+                                                <rect key="frame" x="118.33333333333334" y="0.0" width="103.33333333333334" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                 <state key="normal" title="Button"/>
@@ -541,7 +541,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSl-Qm-o1t">
-                                                <rect key="frame" x="236.66666666666671" y="0.0" width="103.33333333333334" height="34.333333333333336"/>
+                                                <rect key="frame" x="236.66666666666671" y="0.0" width="103.33333333333334" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                 <state key="normal" title="Button"/>
@@ -555,7 +555,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QtV-PW-EIq">
-                                <rect key="frame" x="25" y="424" width="340" height="34.333333333333314"/>
+                                <rect key="frame" x="25" y="374.66666666666669" width="340" height="34.333333333333314"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K75-90-bBI">
                                         <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="34.333333333333336"/>
@@ -590,7 +590,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋排序" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0h-Py-ueS">
-                                <rect key="frame" x="15" y="364" width="360" height="40"/>
+                                <rect key="frame" x="15" y="314.66666666666669" width="360" height="40"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="uyH-m6-S1B"/>
@@ -618,6 +618,7 @@
                             <constraint firstItem="Hz5-47-Op1" firstAttribute="top" secondItem="OWz-Ja-mTi" secondAttribute="top" id="Rfe-uv-vht"/>
                             <constraint firstItem="OWz-Ja-mTi" firstAttribute="trailing" secondItem="QtV-PW-EIq" secondAttribute="trailing" constant="25" id="VAI-EZ-Ccp"/>
                             <constraint firstItem="BxJ-ik-Zh0" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="25" id="YZ4-Ee-Kn4"/>
+                            <constraint firstItem="o1L-Hl-Ys3" firstAttribute="top" secondItem="BxJ-ik-Zh0" secondAttribute="bottom" constant="30" id="ZkT-rs-78u"/>
                             <constraint firstItem="PyT-8g-p38" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" id="Zot-AF-AS0"/>
                             <constraint firstItem="Hz5-47-Op1" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" id="cdD-hh-DQi"/>
                             <constraint firstItem="l0h-Py-ueS" firstAttribute="trailing" secondItem="OWz-Ja-mTi" secondAttribute="trailing" constant="-15" id="dxB-xN-PFZ"/>
@@ -636,6 +637,14 @@
                             <constraint firstItem="PyT-8g-p38" firstAttribute="top" secondItem="o1L-Hl-Ys3" secondAttribute="bottom" id="y64-Kk-zV2"/>
                             <constraint firstItem="QtV-PW-EIq" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="25" id="yVs-FN-c1Q"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="0yy-QX-VUd"/>
+                                <exclude reference="tIx-ME-LGb"/>
+                                <exclude reference="QtV-PW-EIq"/>
+                                <exclude reference="l0h-Py-ueS"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="allSelectButton" destination="iVz-hT-8fj" id="ZuK-E7-dtw"/>
