@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3F079BFF2B16E4AF0076DA20 /* APIDomainEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */; };
+		3F079C022B172C820076DA20 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C012B172C820076DA20 /* NVActivityIndicatorView */; };
+		3F079C042B172C820076DA20 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C032B172C820076DA20 /* NVActivityIndicatorViewExtended */; };
 		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
 		3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */; };
@@ -109,6 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F079C042B172C820076DA20 /* NVActivityIndicatorViewExtended in Frameworks */,
+				3F079C022B172C820076DA20 /* NVActivityIndicatorView in Frameworks */,
 				E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +327,8 @@
 			name = ColorBarTesting;
 			packageProductDependencies = (
 				E7061D0729DB6A6800405544 /* Kingfisher */,
+				3F079C012B172C820076DA20 /* NVActivityIndicatorView */,
+				3F079C032B172C820076DA20 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = ColorBarTesting;
 			productReference = E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */;
@@ -354,6 +360,7 @@
 			mainGroup = E77EF8C72906A35600EE94E6;
 			packageReferences = (
 				E7061D0629DB6A6800405544 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3F079C002B172C810076DA20 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = E77EF8D12906A35600EE94E6 /* Products */;
 			projectDirPath = "";
@@ -660,6 +667,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3F079C002B172C810076DA20 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 		E7061D0629DB6A6800405544 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -671,6 +686,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3F079C012B172C820076DA20 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F079C002B172C810076DA20 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		3F079C032B172C820076DA20 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F079C002B172C810076DA20 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
+		};
 		E7061D0729DB6A6800405544 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E7061D0629DB6A6800405544 /* XCRemoteSwiftPackageReference "Kingfisher" */;

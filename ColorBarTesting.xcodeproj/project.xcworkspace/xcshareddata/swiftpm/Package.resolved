@@ -8,6 +8,15 @@
         "revision" : "af4be924ad984cf4d16f4ae4df424e79a443d435",
         "version" : "7.6.2"
       }
+    },
+    {
+      "identity" : "nvactivityindicatorview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ninjaprox/NVActivityIndicatorView.git",
+      "state" : {
+        "revision" : "bcb52371f2259254bac6690f92bb474a61768c47",
+        "version" : "5.1.1"
+      }
     }
   ],
   "version" : 2

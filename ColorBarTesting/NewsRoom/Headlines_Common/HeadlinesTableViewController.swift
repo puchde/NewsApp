@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import NVActivityIndicatorView
 
 protocol HeadlinesTableViewDelegate {
     func reloadData()
@@ -46,6 +47,8 @@ class HeadlinesTableViewController: UIViewController {
         }
     }
     var apiLoading = false
+    
+    var loadingCover: NVActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +57,13 @@ class HeadlinesTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         checkYPosition()
+        setupLoadingView()
         loadNewsData()
         tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-
+        loadingCoverAction(start: false)
     }
     
     deinit {
@@ -73,9 +77,24 @@ extension HeadlinesTableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
+        freshControl.tintColor = .clear
         tableView.refreshControl = freshControl
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollToTop), name: Notification.Name("\(displayMode) - ScrollToTop"), object: nil)
+    }
+    
+    func setupLoadingView() {
+        loadingCover = NVActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (UIScreen.main.bounds.size.width / 2) - 50, y: (UIScreen.main.bounds.size.height / 2) - 100), size: CGSize(width: 100, height: 100)), type: .ballRotateChase, color: .gray)
+        self.view.addSubview(loadingCover!)
+    }
+    
+    func loadingCoverAction(start: Bool) {
+        if start {
+            loadingCover?.startAnimating()
+        } else {
+            loadingCover?.stopAnimating()
+        }
+        tableView.isUserInteractionEnabled = start ? false : true
     }
 }
 
@@ -114,25 +133,36 @@ extension HeadlinesTableViewController {
     func loadNewsData(scrollingLoading: Bool = false) {
         if isLoading {
             print("Loading啦")
+            loadingCoverAction(start: true)
             return
         } else {
             if (scrollingLoading && articles.count < articlesNumber) || articles.count == 0 {
                 isLoading = true
+                
+                self.tableView.refreshControl?.endRefreshing()
+                loadingCoverAction(start: true)
+                
                 switch displayMode {
                 case .headline:
-                    guard let page, let category = Category.fromOrder(page)?.rawValue else { return }
+                    guard let page, let category = Category.fromOrder(page)?.rawValue else {
+                        loadingCoverAction(start: false)
+                        return
+                    }
                     APIManager.topHeadlines(country: newsCountry.rawValue, category: category) { result in
                         self.resultCompletion(result: result)
+                        self.loadingCoverAction(start: false)
                     }
                     break
                 case .search:
                     let language = newsSettingManager.getSearchLanguage().rawValue
                     APIManager.searchNews(query: searchQuery, language: language) { result in
                         self.resultCompletion(result: result)
+                        self.loadingCoverAction(start: false)
                     }
                     break
                 }
             } else {
+                loadingCoverAction(start: false)
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
