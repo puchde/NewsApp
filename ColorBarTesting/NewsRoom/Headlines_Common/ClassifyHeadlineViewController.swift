@@ -7,6 +7,10 @@
 
 import UIKit
 
+#if DEBUG
+import FLEX
+#endif
+
 class ClassifyHeadlineViewController: UIViewController {
 
     @IBOutlet weak var classifyCollectionView: UICollectionView!
@@ -19,6 +23,10 @@ class ClassifyHeadlineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        
+#if DEBUG
+        FLEXManager.shared.showExplorer()
+#endif
     }
 }
 
