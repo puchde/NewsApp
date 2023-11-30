@@ -88,13 +88,23 @@ class NewsCell: UITableViewCell {
     func updateImage() {
         let placeholderImage = UIImage(named: "noPhoto")
         let placeholderColorImage = placeholderImage?.withTintColor(.secondaryLabel)
-        cellImage.image = placeholderColorImage
-        guard let url = URL(string: newsImageUrl) else { return }
+        guard let url = URL(string: newsImageUrl) else {
+            cellImage.image = placeholderColorImage
+            backgroundImageView.image = nil
+            previewImage.image = nil
+            return
+        }
         
         cellImage.kf.indicatorType = .activity
-        cellImage.kf.setImage(with: url, placeholder: placeholderColorImage)
-        backgroundImageView.kf.setImage(with: url, placeholder: placeholderColorImage)
-        previewImage.kf.setImage(with: url, placeholder: placeholderColorImage)
+        cellImage.kf.setImage(with: url, placeholder: placeholderColorImage) { result in
+            switch result {
+            case .success(_):
+                self.backgroundImageView.kf.setImage(with: url, placeholder: placeholderColorImage)
+                self.previewImage.kf.setImage(with: url, placeholder: placeholderColorImage)
+            case .failure(let error):
+                print("News Image Download error: \(error)")
+            }
+        }
     }
 
     @IBAction func saveNews(_ sender: Any) {
