@@ -48,6 +48,7 @@ class HeadlinesTableViewController: UIViewController {
     }
     var apiLoading = false
     
+    var backgroundView: UIView?
     var loadingCover: NVActivityIndicatorView?
 
     override func viewDidLoad() {
@@ -85,6 +86,11 @@ extension HeadlinesTableViewController {
     func setupLoadingView() {
         loadingCover = NVActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (UIScreen.main.bounds.size.width / 2) - 50, y: (UIScreen.main.bounds.size.height / 2) - 100), size: CGSize(width: 100, height: 100)), type: .ballRotateChase, color: .gray)
         self.view.addSubview(loadingCover!)
+        backgroundView = UIView(frame: tableView.frame)
+        backgroundView?.backgroundColor = .white
+        backgroundView?.addSubview(loadingCover!)
+        backgroundView?.isHidden = true
+        self.view.addSubview(backgroundView!)
     }
     
     func loadingCoverAction(start: Bool) {
@@ -93,7 +99,8 @@ extension HeadlinesTableViewController {
         } else {
             loadingCover?.stopAnimating()
         }
-        tableView.isUserInteractionEnabled = start ? false : true
+        tableView.isScrollEnabled = start ? false : true
+        backgroundView?.isHidden = start ? false : true
     }
 }
 
@@ -178,24 +185,15 @@ extension HeadlinesTableViewController {
                 if self.articles.count < success.totalResults {
                     self.dataPage += 1
                 }
-                self.tableView.reloadData()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    self.tableView.refreshControl?.endRefreshing()
-                }
             } else {
                 print(success.status)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    self.tableView.refreshControl?.endRefreshing()
-                }
             }
             self.isLoading = false
         case .failure(let failure):
             print(failure)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                self.tableView.refreshControl?.endRefreshing()
-            }
             self.isLoading = false
         }
+        self.tableView.reloadData()
     }
 }
 
