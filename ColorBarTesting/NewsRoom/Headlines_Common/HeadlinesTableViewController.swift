@@ -56,7 +56,6 @@ class HeadlinesTableViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        checkYPosition()
         setupLoadingView()
         loadNewsData()
         tableView.reloadData()
@@ -265,22 +264,12 @@ extension HeadlinesTableViewController: NewsCellDelegate {
 //MARK: ScrollView
 extension HeadlinesTableViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        checkYPosition()
         let offsetY = scrollView.contentOffset.y
         let screenHeight = scrollView.frame.size.height
         let contentHeight = scrollView.contentSize.height
         if contentHeight != 0 && offsetY + screenHeight > (contentHeight) {
             print("一半啦")
             loadNewsData(scrollingLoading: true)
-        }
-    }
-    
-    func checkYPosition() {
-        if tableView.contentOffset.y > 0 {
-            navigationController?.setNavigationBarHidden(true, animated: true)
-        } else {
-            navigationController?.setNavigationBarHidden(false, animated: true)
-            navigationController?.navigationBar.sizeToFit()
         }
     }
 
