@@ -78,7 +78,7 @@ enum NewsRouter: APIClientConfig {
     case searchNews(type: String, query: String, language: String)
     case topHeadlines(type: String,country: String, category: String)
     
-    static var apiDomain: APIDomainEnum = .debug
+    static var apiDomain: APIDomainEnum = .prod
     
     var httpMethod: String {
         switch self {
@@ -98,7 +98,7 @@ enum NewsRouter: APIClientConfig {
     var host: String {
         switch NewsRouter.apiDomain {
         case .prod:
-            return ""
+            return "gnapi-servicer.onrender.com"
         case .debug:
             return "127.0.0.1:8080"
         }
