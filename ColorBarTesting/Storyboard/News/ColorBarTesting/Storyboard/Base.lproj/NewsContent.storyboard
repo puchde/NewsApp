@@ -133,24 +133,52 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWy-c2-92j">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前無資料" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kQ-P5-xQ8">
+                                        <rect key="frame" x="151.66666666666666" y="411.66666666666669" width="86.666666666666657" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.line" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7WK-Nu-3Ye">
+                                        <rect key="frame" x="151.66666666666666" y="381.33333333333331" width="86.666666666666657" height="29.333333333333314"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="1kQ-P5-xQ8" firstAttribute="centerY" secondItem="dWy-c2-92j" secondAttribute="centerY" id="7rY-Op-a8A"/>
+                                    <constraint firstItem="1kQ-P5-xQ8" firstAttribute="centerX" secondItem="dWy-c2-92j" secondAttribute="centerX" id="MNJ-vE-V7m"/>
+                                    <constraint firstItem="7WK-Nu-3Ye" firstAttribute="centerX" secondItem="dWy-c2-92j" secondAttribute="centerX" id="VXi-As-xbt"/>
+                                    <constraint firstItem="7WK-Nu-3Ye" firstAttribute="height" secondItem="1kQ-P5-xQ8" secondAttribute="height" multiplier="1.5" id="akH-z6-1n7"/>
+                                    <constraint firstItem="1kQ-P5-xQ8" firstAttribute="top" secondItem="7WK-Nu-3Ye" secondAttribute="bottom" id="eV8-Nn-S3O"/>
+                                    <constraint firstItem="7WK-Nu-3Ye" firstAttribute="width" secondItem="1kQ-P5-xQ8" secondAttribute="width" id="iN7-1k-FnA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hvb-8h-3KQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lbB-QS-e5O" firstAttribute="top" secondItem="vHO-xH-rKb" secondAttribute="top" id="1Jn-Qa-aPB"/>
+                            <constraint firstItem="dWy-c2-92j" firstAttribute="trailing" secondItem="hvb-8h-3KQ" secondAttribute="trailing" id="1QN-UT-8Gi"/>
                             <constraint firstAttribute="bottom" secondItem="lbB-QS-e5O" secondAttribute="bottom" id="6Bz-mQ-ETf"/>
+                            <constraint firstItem="dWy-c2-92j" firstAttribute="top" secondItem="vHO-xH-rKb" secondAttribute="top" id="6h8-WH-5UE"/>
+                            <constraint firstAttribute="bottom" secondItem="dWy-c2-92j" secondAttribute="bottom" id="9I5-0B-y6x"/>
                             <constraint firstItem="lbB-QS-e5O" firstAttribute="leading" secondItem="vHO-xH-rKb" secondAttribute="leading" id="aco-mW-K0T"/>
+                            <constraint firstItem="dWy-c2-92j" firstAttribute="leading" secondItem="hvb-8h-3KQ" secondAttribute="leading" id="l5L-DN-8n7"/>
                             <constraint firstAttribute="trailing" secondItem="lbB-QS-e5O" secondAttribute="trailing" id="q71-q2-aKR"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="defualtCoverView" destination="dWy-c2-92j" id="Iaa-ZS-4Kw"/>
                         <outlet property="tableView" destination="lbB-QS-e5O" id="jaY-bN-Syj"/>
                         <segue destination="24s-99-IvH" kind="show" identifier="toWebView" id="a7D-Xe-EFX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAb-pz-ucS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3154" y="-2842"/>
+            <point key="canvasLocation" x="3153.8461538461538" y="-2842.1800947867296"/>
         </scene>
         <!--Classify Headline View Controller-->
         <scene sceneID="nOd-XO-AFx">
@@ -243,11 +271,11 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="24s-99-IvH" customClass="WebViewViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nUi-L1-Q1z">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwq-D5-WJP">
-                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -897,7 +925,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3aA-ug-hW0"/>
+        <segue reference="a7D-Xe-EFX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
@@ -905,24 +933,25 @@
         <image name="filemenu.and.selection" catalog="system" width="128" height="93"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="pencil.line" catalog="system" width="128" height="117"/>
         <image name="text.line.first.and.arrowtriangle.forward" catalog="system" width="128" height="97"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -16,7 +16,7 @@ protocol HeadlinesTableViewDelegate {
 class HeadlinesTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var defualtCoverView: UIView!
     private let displayMode: DisplayMode = newsSettingManager.getDisplayMode()
     let freshControl = UIRefreshControl()
     var articles = [Article]()
@@ -147,6 +147,7 @@ extension HeadlinesTableViewController {
                 
                 self.tableView.refreshControl?.endRefreshing()
                 loadingCoverAction(start: true)
+                self.defualtCoverView.isHidden = true
                 
                 switch displayMode {
                 case .headline:
@@ -185,6 +186,7 @@ extension HeadlinesTableViewController {
                 if self.articles.count < success.totalResults {
                     self.dataPage += 1
                 }
+                self.defualtCoverView.isHidden = self.articles.isEmpty ? false : true
             } else {
                 print(success.status)
             }
