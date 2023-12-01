@@ -13,6 +13,7 @@
 		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
 		3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */; };
+		3FF0BF9D2B19B91E00FC84D1 /* PrintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */; };
 		3FF491222B1864B300CB4B5D /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF491212B1864B300CB4B5D /* FLEX */; };
 		3FF497682B01B21F007DA1DB /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */; };
 		E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E7061D0729DB6A6800405544 /* Kingfisher */; };
@@ -62,6 +63,7 @@
 		3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
 		3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TableViewPreview.swift"; sourceTree = "<group>"; };
 		3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewProtocal.swift; sourceTree = "<group>"; };
+		3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintExtension.swift; sourceTree = "<group>"; };
 		3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		E7061D0929DB78F100405544 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		E7061D0B29DC240800405544 /* NewsAPIEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIEnum.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				E774013929E5C2A40052C577 /* UIButtonExtension.swift */,
 				E706448529EACBF5009F8C64 /* UserDefaultsExtension.swift */,
 				3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */,
+				3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				E774013A29E5C2A40052C577 /* UIButtonExtension.swift in Sources */,
 				E77EF8D42906A35600EE94E6 /* AppDelegate.swift in Sources */,
 				E7061D0A29DB78F100405544 /* WebViewViewController.swift in Sources */,
+				3FF0BF9D2B19B91E00FC84D1 /* PrintExtension.swift in Sources */,
 				E74A0AEB29DF18CC00585387 /* HeadlinesTableViewController.swift in Sources */,
 				3FF497682B01B21F007DA1DB /* SettingTableViewController.swift in Sources */,
 				3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */,
