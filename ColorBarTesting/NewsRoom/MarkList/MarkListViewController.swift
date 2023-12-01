@@ -24,7 +24,6 @@ class MarkListViewController: UIViewController, SFSafariViewControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         reloadDataAct()
         tableView.reloadData()
-        checkYPosition()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -174,19 +173,6 @@ extension MarkListViewController {
 
 //MARK: ScrollView
 extension MarkListViewController {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        checkYPosition()
-    }
-
-    func checkYPosition() {
-        if tableView.contentOffset.y > 0 {
-            navigationController?.setNavigationBarHidden(true, animated: true)
-        } else {
-            navigationController?.setNavigationBarHidden(false, animated: true)
-            navigationController?.navigationBar.sizeToFit()
-        }
-    }
-
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if freshControl.isRefreshing {
             reloadDataAct()

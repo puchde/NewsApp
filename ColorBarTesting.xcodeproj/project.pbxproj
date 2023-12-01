@@ -13,6 +13,7 @@
 		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
 		3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */; };
+		3FF0BF9B2B19B6AF00FC84D1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF0BF9A2B19B6AF00FC84D1 /* Toast */; };
 		3FF0BF9D2B19B91E00FC84D1 /* PrintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */; };
 		3FF491222B1864B300CB4B5D /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF491212B1864B300CB4B5D /* FLEX */; };
 		3FF497682B01B21F007DA1DB /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */; };
@@ -117,6 +118,7 @@
 				3F079C042B172C820076DA20 /* NVActivityIndicatorViewExtended in Frameworks */,
 				3F079C022B172C820076DA20 /* NVActivityIndicatorView in Frameworks */,
 				E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */,
+				3FF0BF9B2B19B6AF00FC84D1 /* Toast in Frameworks */,
 				3FF491222B1864B300CB4B5D /* FLEX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +337,7 @@
 				3F079C012B172C820076DA20 /* NVActivityIndicatorView */,
 				3F079C032B172C820076DA20 /* NVActivityIndicatorViewExtended */,
 				3FF491212B1864B300CB4B5D /* FLEX */,
+				3FF0BF9A2B19B6AF00FC84D1 /* Toast */,
 			);
 			productName = ColorBarTesting;
 			productReference = E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */;
@@ -368,6 +371,7 @@
 				E7061D0629DB6A6800405544 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				3F079C002B172C810076DA20 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				3FF491202B1864B300CB4B5D /* XCRemoteSwiftPackageReference "FLEX" */,
+				3FF0BF992B19B6AF00FC84D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = E77EF8D12906A35600EE94E6 /* Products */;
 			projectDirPath = "";
@@ -683,6 +687,14 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		3FF0BF992B19B6AF00FC84D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		3FF491202B1864B300CB4B5D /* XCRemoteSwiftPackageReference "FLEX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/FLEXTool/FLEX";
@@ -711,6 +723,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F079C002B172C810076DA20 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
 			productName = NVActivityIndicatorViewExtended;
+		};
+		3FF0BF9A2B19B6AF00FC84D1 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FF0BF992B19B6AF00FC84D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		3FF491212B1864B300CB4B5D /* FLEX */ = {
 			isa = XCSwiftPackageProductDependency;

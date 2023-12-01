@@ -8,6 +8,7 @@
 import UIKit
 import SafariServices
 import NVActivityIndicatorView
+import Toast
 
 protocol HeadlinesTableViewDelegate {
     func reloadData()
@@ -183,17 +184,15 @@ extension HeadlinesTableViewController {
                 success.articles.forEach { article in
                     self.articles.append(article)
                 }
-                if self.articles.count < success.totalResults {
-                    self.dataPage += 1
-                }
                 self.defualtCoverView.isHidden = self.articles.isEmpty ? false : true
             } else {
-                print(success.status)
+                self.view.makeToast("取得資料錯誤")
             }
             self.isLoading = false
         case .failure(let failure):
             print(failure)
             self.isLoading = false
+            self.view.makeToast("取得資料失敗")
         }
         self.tableView.reloadData()
     }

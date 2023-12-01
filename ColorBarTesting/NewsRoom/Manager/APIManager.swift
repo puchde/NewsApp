@@ -68,7 +68,6 @@ extension APIManager {
     }
     
     static func searchNews(query: String, language: String, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
-        let searchDate = newsSettingManager.getSearchDate()
         let language = newsSettingManager.getSearchLanguage().rawValue
         APIManager.DataRequest(router: NewsRouter.searchNews(type: "search", query: query, language: language), completion: completion)
     }
