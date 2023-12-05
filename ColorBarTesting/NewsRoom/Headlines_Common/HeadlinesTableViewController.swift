@@ -52,6 +52,8 @@ class HeadlinesTableViewController: UIViewController {
     
     var backgroundView: UIView?
     var loadingCover: NVActivityIndicatorView?
+    
+    var dataReloadTime: Date = Date()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,10 +124,15 @@ extension HeadlinesTableViewController {
     func updateReloadSetting(searchString: String = "") {
         switch displayMode {
         case .headline:
-            if newsCountry != newsSettingManager.getCountry() {
+            if newsCountry == newsSettingManager.getCountry() {
+                if Date.now < dataReloadTime.addingTimeInterval(3 * 60) {
+                    print("reload time return")
+                    self.tableView.refreshControl?.endRefreshing()
+                    return
+                }
+            } else {
                 newsCountry = newsSettingManager.getCountry()
                 updateReloadSetting()
-                return
             }
             break
         case .search:
@@ -193,6 +200,7 @@ extension HeadlinesTableViewController {
                     print(error)
                 }
                 self.defualtCoverView.isHidden = self.articles.isEmpty ? false : true
+                dataReloadTime = Date.now
             } else {
                 self.view.makeToast("取得資料錯誤")
             }
