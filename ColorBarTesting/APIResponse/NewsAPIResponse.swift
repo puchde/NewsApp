@@ -33,3 +33,9 @@ struct Source: Codable {
     let id: String?
     let name: String
 }
+
+struct NewsAPIProtobufResponse: Codable {
+    let status: String
+    let totalResults: Int
+    let articles: Data
+}

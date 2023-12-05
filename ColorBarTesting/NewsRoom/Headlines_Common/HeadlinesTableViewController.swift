@@ -9,6 +9,7 @@ import UIKit
 import SafariServices
 import NVActivityIndicatorView
 import Toast
+import SwiftProtobuf
 
 protocol HeadlinesTableViewDelegate {
     func reloadData()
@@ -176,13 +177,20 @@ extension HeadlinesTableViewController {
         }
     }
 
-    func resultCompletion(result: (Result<NewsAPIResponse, Error>)) -> Void {
+    func resultCompletion(result: (Result<NewsAPIProtobufResponse, Error>)) -> Void {
         switch result {
         case .success(let success):
             if success.status == "OK" {
                 self.articlesNumber = success.totalResults
-                success.articles.forEach { article in
-                    self.articles.append(article)
+                do {
+                    let articles = try ArticlesTotalProtobuf(serializedData: success.articles)
+                    articles.articles.forEach { a in
+                        let source = Source(id: a.source.id, name: a.source.name)
+                        let article = Article(source: source, author: a.author, title: a.title, description: a.description_p, url: a.url, urlToImage: a.urlToImage, publishedAt: a.publishedAt, content: a.content)
+                        self.articles.append(article)
+                    }
+                } catch {
+                    print(error)
                 }
                 self.defualtCoverView.isHidden = self.articles.isEmpty ? false : true
             } else {

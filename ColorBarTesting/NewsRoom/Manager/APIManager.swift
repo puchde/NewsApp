@@ -63,11 +63,11 @@ struct APIManager {
 }
 
 extension APIManager {
-    static func topHeadlines(country: String, category: String, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
+    static func topHeadlines(country: String, category: String, completion: @escaping (Result<NewsAPIProtobufResponse, Error>) -> Void) {
         APIManager.DataRequest(router: NewsRouter.topHeadlines(type: "topics", country: country, category: category), completion: completion)
     }
     
-    static func searchNews(query: String, language: String, completion: @escaping (Result<NewsAPIResponse, Error>) -> Void) {
+    static func searchNews(query: String, language: String, completion: @escaping (Result<NewsAPIProtobufResponse, Error>) -> Void) {
         let language = newsSettingManager.getSearchLanguage().rawValue
         APIManager.DataRequest(router: NewsRouter.searchNews(type: "search", query: query, language: language), completion: completion)
     }
@@ -81,7 +81,7 @@ enum NewsRouter: APIClientConfig {
     
     var httpMethod: String {
         switch self {
-        default: return "GET"
+        default: return "POST"
         }
     }
     
@@ -106,7 +106,7 @@ enum NewsRouter: APIClientConfig {
     var urlPrefix: String {
         switch self {
         default:
-            return "/googlenews"
+            return "/googlenews/protobuf"
         }
     }
     
