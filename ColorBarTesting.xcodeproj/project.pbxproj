@@ -10,6 +10,10 @@
 		3F079BFF2B16E4AF0076DA20 /* APIDomainEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */; };
 		3F079C022B172C820076DA20 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C012B172C820076DA20 /* NVActivityIndicatorView */; };
 		3F079C042B172C820076DA20 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C032B172C820076DA20 /* NVActivityIndicatorViewExtended */; };
+		3F3522582B1EF7FD00457346 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3522572B1EF7FD00457346 /* SwiftProtobuf */; };
+		3F35225A2B1EF7FD00457346 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3522592B1EF7FD00457346 /* SwiftProtobufPluginLibrary */; };
+		3F35225C2B1EF7FD00457346 /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F35225B2B1EF7FD00457346 /* protoc-gen-swift */; };
+		3F35225F2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35225E2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift */; };
 		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
 		3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */; };
@@ -61,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDomainEnum.swift; sourceTree = "<group>"; };
+		3F35225E2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesTotalProtobuf.pb.swift; sourceTree = "<group>"; };
 		3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
 		3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TableViewPreview.swift"; sourceTree = "<group>"; };
 		3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewProtocal.swift; sourceTree = "<group>"; };
@@ -115,17 +120,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F35225C2B1EF7FD00457346 /* protoc-gen-swift in Frameworks */,
 				3F079C042B172C820076DA20 /* NVActivityIndicatorViewExtended in Frameworks */,
 				3F079C022B172C820076DA20 /* NVActivityIndicatorView in Frameworks */,
+				3F35225A2B1EF7FD00457346 /* SwiftProtobufPluginLibrary in Frameworks */,
 				E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */,
 				3FF0BF9B2B19B6AF00FC84D1 /* Toast in Frameworks */,
 				3FF491222B1864B300CB4B5D /* FLEX in Frameworks */,
+				3F3522582B1EF7FD00457346 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F35225D2B1EF82900457346 /* Protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				3F35225E2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift */,
+			);
+			path = Protobuf;
+			sourceTree = "<group>";
+		};
 		3FE5F01E2B0376FB0078D08F /* Protocal */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +313,7 @@
 		E77EF8D22906A35600EE94E6 /* ColorBarTesting */ = {
 			isa = PBXGroup;
 			children = (
+				3F35225D2B1EF82900457346 /* Protobuf */,
 				3FE5F01E2B0376FB0078D08F /* Protocal */,
 				E75C2F6229D9F58D00FBC7B4 /* APIResponse */,
 				E75C2F5929D9F44200FBC7B4 /* NewsRoom */,
@@ -338,6 +355,9 @@
 				3F079C032B172C820076DA20 /* NVActivityIndicatorViewExtended */,
 				3FF491212B1864B300CB4B5D /* FLEX */,
 				3FF0BF9A2B19B6AF00FC84D1 /* Toast */,
+				3F3522572B1EF7FD00457346 /* SwiftProtobuf */,
+				3F3522592B1EF7FD00457346 /* SwiftProtobufPluginLibrary */,
+				3F35225B2B1EF7FD00457346 /* protoc-gen-swift */,
 			);
 			productName = ColorBarTesting;
 			productReference = E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */;
@@ -372,6 +392,7 @@
 				3F079C002B172C810076DA20 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				3FF491202B1864B300CB4B5D /* XCRemoteSwiftPackageReference "FLEX" */,
 				3FF0BF992B19B6AF00FC84D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				3F3522562B1EF7FD00457346 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
 			);
 			productRefGroup = E77EF8D12906A35600EE94E6 /* Products */;
 			projectDirPath = "";
@@ -404,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F35225F2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift in Sources */,
 				E7DDB4EA290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel in Sources */,
 				E75555C1292A97B400E35365 /* FileType.swift in Sources */,
 				E7528DEA29E28C9B001169F0 /* SearchContentViewController.swift in Sources */,
@@ -687,6 +709,14 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		3F3522562B1EF7FD00457346 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.25.2;
+			};
+		};
 		3FF0BF992B19B6AF00FC84D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -723,6 +753,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F079C002B172C810076DA20 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
 			productName = NVActivityIndicatorViewExtended;
+		};
+		3F3522572B1EF7FD00457346 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3522562B1EF7FD00457346 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		3F3522592B1EF7FD00457346 /* SwiftProtobufPluginLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3522562B1EF7FD00457346 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobufPluginLibrary;
+		};
+		3F35225B2B1EF7FD00457346 /* protoc-gen-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3522562B1EF7FD00457346 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = "protoc-gen-swift";
 		};
 		3FF0BF9A2B19B6AF00FC84D1 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
