@@ -83,6 +83,7 @@ extension HeadlinesTableViewController {
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         freshControl.tintColor = .clear
         tableView.refreshControl = freshControl
+        defualtCoverView.isUserInteractionEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollToTop), name: Notification.Name("\(displayMode) - ScrollToTop"), object: nil)
     }
