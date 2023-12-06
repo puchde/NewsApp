@@ -89,10 +89,10 @@ extension HeadlinesTableViewController {
     }
     
     func setupLoadingView() {
-        loadingCover = NVActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (UIScreen.main.bounds.size.width / 2) - 50, y: (UIScreen.main.bounds.size.height / 2) - 100), size: CGSize(width: 100, height: 100)), type: .ballRotateChase, color: .gray)
+        loadingCover = NVActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (UIScreen.main.bounds.size.width / 2) - 50, y: (UIScreen.main.bounds.size.height / 2) - 100), size: CGSize(width: 100, height: 100)), type: .ballRotateChase, color: traitCollection.userInterfaceStyle == .dark ? .white : .gray)
         self.view.addSubview(loadingCover!)
         backgroundView = UIView(frame: tableView.frame)
-        backgroundView?.backgroundColor = .white
+        backgroundView?.backgroundColor = .systemBackground
         backgroundView?.addSubview(loadingCover!)
         backgroundView?.isHidden = true
         self.view.addSubview(backgroundView!)
