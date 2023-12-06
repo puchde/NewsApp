@@ -14,6 +14,8 @@
 		3F35225A2B1EF7FD00457346 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3522592B1EF7FD00457346 /* SwiftProtobufPluginLibrary */; };
 		3F35225C2B1EF7FD00457346 /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F35225B2B1EF7FD00457346 /* protoc-gen-swift */; };
 		3F35225F2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35225E2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift */; };
+		3F3E88B82B2019F700883A55 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3E88B72B2019F700883A55 /* RswiftLibrary */; };
+		3F3E88BA2B2019F700883A55 /* rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3E88B92B2019F700883A55 /* rswift */; };
 		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
 		3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */; };
@@ -125,9 +127,11 @@
 				3F079C022B172C820076DA20 /* NVActivityIndicatorView in Frameworks */,
 				3F35225A2B1EF7FD00457346 /* SwiftProtobufPluginLibrary in Frameworks */,
 				E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */,
+				3F3E88BA2B2019F700883A55 /* rswift in Frameworks */,
 				3FF0BF9B2B19B6AF00FC84D1 /* Toast in Frameworks */,
 				3FF491222B1864B300CB4B5D /* FLEX in Frameworks */,
 				3F3522582B1EF7FD00457346 /* SwiftProtobuf in Frameworks */,
+				3F3E88B82B2019F700883A55 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +351,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3F3E88BC2B201A8100883A55 /* PBXTargetDependency */,
 			);
 			name = ColorBarTesting;
 			packageProductDependencies = (
@@ -358,6 +363,8 @@
 				3F3522572B1EF7FD00457346 /* SwiftProtobuf */,
 				3F3522592B1EF7FD00457346 /* SwiftProtobufPluginLibrary */,
 				3F35225B2B1EF7FD00457346 /* protoc-gen-swift */,
+				3F3E88B72B2019F700883A55 /* RswiftLibrary */,
+				3F3E88B92B2019F700883A55 /* rswift */,
 			);
 			productName = ColorBarTesting;
 			productReference = E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */;
@@ -393,6 +400,7 @@
 				3FF491202B1864B300CB4B5D /* XCRemoteSwiftPackageReference "FLEX" */,
 				3FF0BF992B19B6AF00FC84D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				3F3522562B1EF7FD00457346 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+				3F3E88B62B2019F700883A55 /* XCRemoteSwiftPackageReference "R" */,
 			);
 			productRefGroup = E77EF8D12906A35600EE94E6 /* Products */;
 			projectDirPath = "";
@@ -468,6 +476,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F3E88BC2B201A8100883A55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 3F3E88BB2B201A8100883A55 /* RswiftGenerateInternalResources */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E7528DE629E1DCD6001169F0 /* NewsContent.storyboard */ = {
@@ -717,6 +732,14 @@
 				minimumVersion = 1.25.2;
 			};
 		};
+		3F3E88B62B2019F700883A55 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.4.0;
+			};
+		};
 		3FF0BF992B19B6AF00FC84D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -768,6 +791,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F3522562B1EF7FD00457346 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
 			productName = "protoc-gen-swift";
+		};
+		3F3E88B72B2019F700883A55 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3E88B62B2019F700883A55 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		3F3E88B92B2019F700883A55 /* rswift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3E88B62B2019F700883A55 /* XCRemoteSwiftPackageReference "R" */;
+			productName = rswift;
+		};
+		3F3E88BB2B201A8100883A55 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3E88B62B2019F700883A55 /* XCRemoteSwiftPackageReference "R" */;
+			productName = "plugin:RswiftGenerateInternalResources";
 		};
 		3FF0BF9A2B19B6AF00FC84D1 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
