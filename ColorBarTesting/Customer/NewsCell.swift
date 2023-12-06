@@ -109,15 +109,15 @@ class NewsCell: UITableViewCell {
 
     @IBAction func saveNews(_ sender: Any) {
         if isMark {
-            let cancelAct = UIAlertAction(title: "取消", style: .cancel) { _ in
+            let cancelAct = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel) { _ in
                 self.activeVC?.presentAlertDismiss()
             }
-            let comfirm = UIAlertAction(title: "刪除", style: .destructive) { _ in
+            let comfirm = UIAlertAction(title: R.string.localizable.delete(), style: .destructive) { _ in
                 newsSettingManager.deleteNewsMarkList(self.article!)
                 self.updateMarkIcon()
                 self.delegate?.reloadCell()
             }
-            activeVC?.presentAlert(title: "刪除標籤", message: "", action: [cancelAct, comfirm])
+            activeVC?.presentAlert(title: R.string.localizable.deleteMark(), message: "", action: [cancelAct, comfirm])
         } else {
             newsSettingManager.updateNewsMarkList(self.article!)
             delegate?.reloadCell()

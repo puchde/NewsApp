@@ -1,0 +1,30 @@
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "44I-md-njS"; */
+"44I-md-njS.title" = "Item";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "6PJ-ic-p8y"; */
+"6PJ-ic-p8y.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6PJ-ic-p8y"; */
+"6PJ-ic-p8y.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "搜尋內容設定"; ObjectID = "6k0-QY-nbC"; */
+"6k0-QY-nbC.title" = "搜尋內容設定";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LVB-lo-Wrk"; */
+"LVB-lo-Wrk.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "R0K-Hl-cMY"; */
+"R0K-Hl-cMY.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "dhx-J3-K10"; */
+"dhx-J3-K10.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "dtn-TR-7zV"; */
+"dtn-TR-7zV.title" = "Item";
+
+/*  */
+"searchContent" = "搜尋內容";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "v03-xC-d6D"; */
+"v03-xC-d6D.title" = "Item";

@@ -14,7 +14,9 @@ class SearchNewsViewController: UIViewController {
     @IBOutlet weak var searchRecordTableView: UITableView!
     @IBOutlet weak var leftButtonItem: UIBarButtonItem!
     
-    var searchSettingHeader = ["搜尋內容", "搜尋語言地區", "搜尋排序"]
+    var searchSettingHeader = [R.string.localizable.searchContent(),
+                               R.string.localizable.searchLocation(),
+                               R.string.localizable.searchOrder()]
     var searchIn = ""
     var searchRecord: [String] = []
     

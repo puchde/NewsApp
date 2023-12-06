@@ -1,0 +1,154 @@
+"Setting" = "設定";
+
+/*  */
+"Setting.NewsAPIKey" = "APIキー";
+
+/*  */
+"Setting.appVersion" = "バージョン";
+
+/*  */
+"Setting.appVersionInfo" = "バージョン情報";
+
+/*  */
+"Setting.autoReaderMode" = "自動リーダーモードの有効化";
+
+/*  */
+"Setting.cleanMarkedDesc" = "この操作は、すべてのマークされたニュースをクリアします";
+
+/*  */
+"Setting.cleanMarkedNews" = "マークされたニュースをクリア";
+
+/*  */
+"Setting.cleanMarkedTitle" = "マークリストをクリア";
+
+/*  */
+"Setting.cleanUp" = "クリア";
+
+/*  */
+"Setting.defualt" = "デフォルト";
+
+/*  */
+"Setting.option" = "オプション";
+
+/*  */
+"Setting.other" = "その他";
+
+/*  */
+"Setting.readerModeDesc" = "\nリーダーモードは、洗練されたWebページレイアウトを提供し、読書をより集中的にし、記事のレイアウトを改善します。\n\n一部の複雑なWebページが完全に表示されない場合は、このオプションを無効にしてください。";
+
+/*  */
+"Setting.readerModeTitle" = "Safari リーダーモード";
+
+/*  */
+"Setting.sendEmail" = "メールで問い合わせ";
+
+/*  */
+"Setting.sendEmailFail" = "送信に失敗しました";
+
+/*  */
+"Setting.writeComment" = "コメントを書く";
+
+/*  */
+"addMark" = "マークを追加";
+
+/*  */
+"allContent" = "すべてのコンテンツ";
+
+/*  */
+"cancel" = "キャンセル";
+
+/*  */
+"classify.business" = "ビジネス";
+
+/*  */
+"classify.entertainment" = "エンターテイメント";
+
+/*  */
+"classify.general" = "一般";
+
+/*  */
+"classify.health" = "健康";
+
+/*  */
+"classify.sports" = "スポーツ";
+
+/*  */
+"classify.technology" = "テクノロジー";
+
+/*  */
+"content" = "コンテンツ";
+
+/*  */
+"country.br" = "ブラジル";
+
+/*  */
+"country.cn" = "中国";
+
+/*  */
+"country.de" = "ドイツ";
+
+/*  */
+"country.fr" = "フランス";
+
+/*  */
+"country.gb" = "イギリス";
+
+/*  */
+"country.in" = "インド";
+
+/*  */
+"country.jp" = "日本";
+
+/*  */
+"country.mx" = "メキシコ";
+
+/*  */
+"country.tw" = "台湾";
+
+/*  */
+"country.us" = "アメリカ";
+
+/*  */
+"delete" = "削除";
+
+/*  */
+"deleteMark" = "タグを削除";
+
+/*  */
+"description" = "説明";
+
+/*  */
+"finish" = "完了";
+
+/*  */
+"haedlineLocation" = "ニュースの地域";
+
+/*  */
+"headlineSetting" = "ヘッドライン表示設定";
+
+/*  */
+"list" = "リスト";
+
+/*  */
+"popularity" = "人気順";
+
+/*  */
+"publishedAt" = "新着順";
+
+/*  */
+"relevancy" = "関連度";
+
+/*  */
+"searchContent" = "検索コンテンツ";
+
+/*  */
+"searchLocation" = "検索地域";
+
+/*  */
+"searchOrder" = "検索順序";
+
+/*  */
+"share" = "共有";
+
+/*  */
+"title" = "タイトル";

@@ -1,0 +1,162 @@
+
+/* 
+  Localizable.strings
+  ColorBarTesting
+
+  Created by Willy on 2023/12/6.
+  
+ */
+"Setting" = "設定";
+
+/*  */
+"Setting.NewsAPIKey" = "API密鑰";
+
+/*  */
+"Setting.appVersion" = "版本";
+
+/*  */
+"Setting.appVersionInfo" = "版本資訊";
+
+/*  */
+"Setting.autoReaderMode" = "自動開啟閱讀器模式";
+
+/*  */
+"Setting.cleanMarkedDesc" = "此動作會清空所有已標記的新聞";
+
+/*  */
+"Setting.cleanMarkedNews" = "清空已標記的新聞";
+
+/*  */
+"Setting.cleanMarkedTitle" = "清空Mark列表";
+
+/*  */
+"Setting.cleanUp" = "清空";
+
+/*  */
+"Setting.defualt" = "預設";
+
+/*  */
+"Setting.option" = "功能選項";
+
+/*  */
+"Setting.other" = "其他";
+
+/*  */
+"Setting.readerModeDesc" = "\n閱讀器模式可提供簡潔網頁版面，使閱讀更專注並改善文章排版。\n\n若部分複雜網頁顯示不完整，請關閉此選項。";
+
+/*  */
+"Setting.readerModeTitle" = "Safari閱讀器模式";
+
+/*  */
+"Setting.sendEmail" = "信件詢問";
+
+/*  */
+"Setting.sendEmailFail" = "發送失敗";
+
+/*  */
+"Setting.writeComment" = "寫評論";
+
+/*  */
+"addMark" = "新增標記";
+
+/*  */
+"allContent" = "全部內容";
+
+/*  */
+"cancel" = "取消";
+
+/*  */
+"classify.business" = "商業";
+
+/*  */
+"classify.entertainment" = "娛樂";
+
+/*  */
+"classify.general" = "一般";
+
+/*  */
+"classify.health" = "健康";
+
+/*  */
+"classify.sports" = "體育";
+
+/*  */
+"classify.technology" = "科技";
+
+/*  */
+"content" = "內容";
+
+/*  */
+"country.br" = "巴西";
+
+/*  */
+"country.cn" = "中國";
+
+/*  */
+"country.de" = "德國";
+
+/*  */
+"country.fr" = "法國";
+
+/*  */
+"country.gb" = "英國";
+
+/*  */
+"country.in" = "印度";
+
+/*  */
+"country.jp" = "日本";
+
+/*  */
+"country.mx" = "墨西哥";
+
+/*  */
+"country.tw" = "台灣";
+
+/*  */
+"country.us" = "美國";
+
+
+"delete" = "刪除";
+
+/*  */
+"deleteMark" = "刪除標籤";
+
+/*  */
+"description" = "簡述";
+
+/*  */
+"finish" = "完成";
+
+/*  */
+"haedlineLocation" = "新聞地區";
+
+/*  */
+"headlineSetting" = "頭條顯示設定";
+
+/*  */
+"list" = "選單";
+
+/*  */
+"popularity" = "熱門排序";
+
+/*  */
+"publishedAt" = "最新排序";
+
+/*  */
+"relevancy" = "相關度";
+
+/*  */
+"searchContent" = "搜尋內容";
+
+/*  */
+"searchLocation" = "搜尋地區";
+
+/*  */
+"searchOrder" = "搜尋排序";
+
+/*  */
+"share" = "分享";
+
+/*  */
+"title" = "標題";

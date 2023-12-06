@@ -26,11 +26,11 @@ extension NewsTableViewProtocal {
         if let newsCell = newsTableView.cellForRow(at: indexPath) as? NewsCell {
             let markIcon = UIImage(systemName: "bookmark.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal)
             
-            return UIMenu(title: "選單", children: [
-                UIAction(title: "分享", image: UIImage(systemName: "square.and.arrow.up")) { action in
+            return UIMenu(title: R.string.localizable.list(), children: [
+                UIAction(title: R.string.localizable.share(), image: UIImage(systemName: "square.and.arrow.up")) { action in
                     newsCell.shareNews(self)
                 },
-                UIAction(title: newsCell.isMark ? "刪除標記" : "加標記", image: newsCell.isMark ? UIImage(systemName: "minus.circle") : markIcon, attributes: newsCell.isMark ? .destructive : .keepsMenuPresented) { action in
+                UIAction(title: newsCell.isMark ? R.string.localizable.deleteMark() : R.string.localizable.addMark(), image: newsCell.isMark ? UIImage(systemName: "minus.circle") : markIcon, attributes: newsCell.isMark ? .destructive : .keepsMenuPresented) { action in
                     newsCell.saveNews(self)
                     return
                 }

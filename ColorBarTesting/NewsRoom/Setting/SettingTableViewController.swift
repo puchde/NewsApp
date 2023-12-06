@@ -11,10 +11,16 @@ import MessageUI
 class SettingTableViewController: UIViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var settingTableView: UITableView!
     
-    let settingSections = ["版本資訊", "功能選項", "其他"]
-    let appInfos = ["版本"]
-    let appOptions = ["News API Key", "自動開啟閱讀器模式", "清空已標記的新聞"]
-    let otherOptions = ["寫評論", "信件詢問"]
+    let settingSections = [R.string.localizable.settingAppVersionInfo(),
+                           R.string.localizable.settingOption(),
+                           R.string.localizable.settingOther()
+    ]
+    let appInfos = [R.string.localizable.settingAppVersion(),]
+    let appOptions = [R.string.localizable.settingNewsAPIKey(),
+                      R.string.localizable.settingAutoReaderMode(),
+                      R.string.localizable.settingCleanMarkedNews()]
+    let otherOptions = [R.string.localizable.settingWriteComment(),
+                        R.string.localizable.settingSendEmail()]
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     
     
@@ -80,7 +86,7 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             if let apiKey = newsSettingManager.getApiKey() {
                 cell.accessoryView = getAccessLabel(desc: String("\(apiKey.prefix(5))..."))
             } else {
-                cell.accessoryView = getAccessLabel(desc: "預設")
+                cell.accessoryView = getAccessLabel(desc: R.string.localizable.settingDefualt())
             }
         case (1, 1):
             content.image = UIImage(systemName: "hand.raised")
@@ -108,15 +114,15 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         case (1, 0):
             print("api")
         case (1, 1):
-            self.presentNoActionAlert(title: "Safari閱讀器模式", message: "\n閱讀器模式可提供簡潔網頁版面，使閱讀更專注並改善文章排版。\n\n若部分複雜網頁顯示不完整，請關閉此選項。")
+            self.presentNoActionAlert(title: R.string.localizable.settingReaderModeTitle(), message: R.string.localizable.settingReaderModeDesc())
         case (1, 2):
-            let confirmAct = UIAlertAction(title: "清空", style: .destructive) { _ in
+            let confirmAct = UIAlertAction(title: R.string.localizable.settingCleanUp(), style: .destructive) { _ in
                 newsSettingManager.deleteNewsMarkLists()
             }
-            let cancelAct = UIAlertAction(title: "取消", style: .cancel) { _ in
+            let cancelAct = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel) { _ in
                 self.dismiss(animated: true)
             }
-            let alert = UIAlertController(title: "清空Mark列表", message: "此動作會清空所有已標記的新聞", preferredStyle: .alert)
+            let alert = UIAlertController(title: R.string.localizable.settingCleanMarkedTitle(), message: R.string.localizable.settingCleanMarkedDesc(), preferredStyle: .alert)
             alert.addAction(cancelAct)
             alert.addAction(confirmAct)
             self.present(alert, animated: true)
@@ -170,7 +176,7 @@ extension SettingTableViewController {
         case .sent:
             dismiss(animated: true)
         case .failed:
-            let errorAlert = UIAlertController(title: "發送失敗", message: error?.localizedDescription, preferredStyle: .alert)
+            let errorAlert = UIAlertController(title: R.string.localizable.settingSendEmailFail(), message: error?.localizedDescription, preferredStyle: .alert)
             controller.present(errorAlert, animated: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 errorAlert.dismiss(animated: true)

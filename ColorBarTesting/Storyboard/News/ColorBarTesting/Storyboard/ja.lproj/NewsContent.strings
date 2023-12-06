@@ -1,0 +1,116 @@
+/* Class = "UIBarButtonItem"; title = "完成"; ObjectID = "0hM-Dh-3cO"; */
+"0hM-Dh-3cO.title" = "完了";
+
+/* Class = "UILabel"; text = "搜尋時間"; ObjectID = "0yy-QX-VUd"; */
+"0yy-QX-VUd.text" = "検索時間";
+
+/* Class = "UILabel"; text = "目前無資料"; ObjectID = "1kQ-P5-xQ8"; */
+"1kQ-P5-xQ8.text" = "現在データなし";
+
+/* Class = "UIBarButtonItem"; title = "完成"; ObjectID = "6YL-2l-R2O"; */
+"6YL-2l-R2O.title" = "完了";
+
+/* Class = "UINavigationItem"; title = "搜尋內容設定"; ObjectID = "6k0-QY-nbC"; */
+"6k0-QY-nbC.title" = "検索コンテンツ設定";
+
+/* Class = "UILabel"; text = "新聞分類"; ObjectID = "GJ2-zR-qSf"; */
+"GJ2-zR-qSf.text" = "ニュース分類";
+
+/* Class = "UILabel"; text = "新聞地區"; ObjectID = "Ira-cz-MOq"; */
+"Ira-cz-MOq.text" = "ニュース地域";
+
+/* Class = "UIBarButtonItem"; title = "item"; ObjectID = "JHC-UF-U7g"; */
+"JHC-UF-U7g.title" = "アイテム";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "JqI-4M-WMn"; */
+"JqI-4M-WMn.text" = "タイトル";
+
+/* Class = "UIButton"; configuration.title = "相關度"; ObjectID = "K75-90-bBI"; */
+"K75-90-bBI.configuration.title" = "関連度";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "K75-90-bBI"; */
+"K75-90-bBI.normalTitle" = "ボタン";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "LI6-qr-g7U"; */
+"LI6-qr-g7U.text" = "詳細";
+
+/* Class = "UIBarButtonItem"; title = "Headlines"; ObjectID = "OLm-ju-GL7"; */
+"OLm-ju-GL7.title" = "ヘッドライン";
+
+/* Class = "UIButton"; configuration.title = "熱門排序"; ObjectID = "ZL5-Yx-S2O"; */
+"ZL5-Yx-S2O.configuration.title" = "人気の並べ替え";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ZL5-Yx-S2O"; */
+"ZL5-Yx-S2O.normalTitle" = "ボタン";
+
+/* Class = "UIButton"; configuration.title = "內容"; ObjectID = "aJ3-z8-1DS"; */
+"aJ3-z8-1DS.configuration.title" = "コンテンツ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "aJ3-z8-1DS"; */
+"aJ3-z8-1DS.normalTitle" = "ボタン";
+
+/* Class = "UIBarButtonItem"; title = "item"; ObjectID = "aKK-Xc-JEt"; */
+"aKK-Xc-JEt.title" = "アイテム";
+
+/* Class = "UIButton"; configuration.title = "標題"; ObjectID = "bem-xn-zkV"; */
+"bem-xn-zkV.configuration.title" = "タイトル";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "bem-xn-zkV"; */
+"bem-xn-zkV.normalTitle" = "ボタン";
+
+/* Class = "UIBarButtonItem"; title = "Search"; ObjectID = "cai-Je-gqW"; */
+"cai-Je-gqW.title" = "検索";
+
+/* Class = "UIButton"; configuration.title = "最新排序"; ObjectID = "dUZ-5N-DmV"; */
+"dUZ-5N-DmV.configuration.title" = "最新の並べ替え";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dUZ-5N-DmV"; */
+"dUZ-5N-DmV.normalTitle" = "ボタン";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "eWI-xX-any"; */
+"eWI-xX-any.text" = "サブタイトル";
+
+/* Class = "UILabel"; text = "搜尋內容"; ObjectID = "hWv-Kn-WB9"; */
+"hWv-Kn-WB9.text" = "検索内容";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "hkB-sI-hBc"; */
+"hkB-sI-hBc.title" = "アイテム";
+
+/* Class = "UIButton"; configuration.title = "全部內容"; ObjectID = "iVz-hT-8fj"; */
+"iVz-hT-8fj.configuration.title" = "すべてのコンテンツ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "iVz-hT-8fj"; */
+"iVz-hT-8fj.normalTitle" = "ボタン";
+
+/* Class = "UILabel"; text = "搜尋排序"; ObjectID = "l0h-Py-ueS"; */
+"l0h-Py-ueS.text" = "検索の並べ替え";
+
+/* Class = "UIBarButtonItem"; title = "Search"; ObjectID = "lII-NB-5JK"; */
+"lII-NB-5JK.title" = "検索";
+
+/* Class = "UILabel"; text = "搜尋語系"; ObjectID = "o1L-Hl-Ys3"; */
+"o1L-Hl-Ys3.text" = "言語検索";
+
+/* Class = "UIButton"; configuration.title = "簡述"; ObjectID = "pSl-Qm-o1t"; */
+"pSl-Qm-o1t.configuration.title" = "簡要";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "pSl-Qm-o1t"; */
+"pSl-Qm-o1t.normalTitle" = "ボタン";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "rQW-av-JxX"; */
+"rQW-av-JxX.text" = "タイトル";
+
+/* Class = "UIBarButtonItem"; title = "Mark List"; ObjectID = "ruD-WD-xG5"; */
+"ruD-WD-xG5.title" = "マークリスト";
+
+/* Class = "UINavigationItem"; title = "頭條顯示設定"; ObjectID = "s20-Qc-MWJ"; */
+"s20-Qc-MWJ.title" = "ヘッドライン表示設定";
+
+/* Class = "UIButton"; configuration.title = "一個月內"; ObjectID = "tIx-ME-LGb"; */
+"tIx-ME-LGb.configuration.title" = "1ヶ月以内";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "tIx-ME-LGb"; */
+"tIx-ME-LGb.normalTitle" = "ボタン";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "tfv-rf-una"; */
+"tfv-rf-una.text" = "タイトル";

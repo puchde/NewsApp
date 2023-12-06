@@ -1,0 +1,155 @@
+"Setting" = "Settings";
+
+/*  */
+"Setting.NewsAPIKey" = "API Key";
+
+/*  */
+"Setting.appVersion" = "Version";
+
+/*  */
+"Setting.appVersionInfo" = "Version Information";
+
+/*  */
+"Setting.autoReaderMode" = "Automatically Open Reader Mode";
+
+/*  */
+"Setting.cleanMarkedDesc" = "This action will clear all marked news";
+
+/*  */
+"Setting.cleanMarkedNews" = "Clear Marked News";
+
+/*  */
+"Setting.cleanMarkedTitle" = "Clear Mark List";
+
+/*  */
+"Setting.cleanUp" = "Clear";
+
+/*  */
+"Setting.defualt" = "Default";
+
+/*  */
+"Setting.option" = "Options";
+
+/*  */
+"Setting.other" = "Other";
+
+/*  */
+"Setting.readerModeDesc" = "\nReader mode provides a clean webpage layout, enhancing focus and improving article formatting.\n\nIf some complex webpages do not display properly, please disable this option.";
+
+/*  */
+"Setting.readerModeTitle" = "Safari Reader Mode";
+
+/*  */
+"Setting.sendEmail" = "Email Inquiry";
+
+/*  */
+"Setting.sendEmailFail" = "Sending Failed";
+
+/*  */
+"Setting.writeComment" = "Write Comment";
+
+/*  */
+"addMark" = "Add Tag";
+
+/*  */
+"allContent" = "All Content";
+
+/*  */
+"cancel" = "Cancel";
+
+/*  */
+"classify.business" = "Business";
+
+/*  */
+"classify.entertainment" = "Entertainment";
+
+/*  */
+"classify.general" = "General";
+
+/*  */
+"classify.health" = "Health";
+
+/*  */
+"classify.sports" = "Sports";
+
+/*  */
+"classify.technology" = "Technology";
+
+/*  */
+"content" = "Content";
+
+/*  */
+"country.br" = "Brazil";
+
+/*  */
+"country.cn" = "China";
+
+/*  */
+"country.de" = "Germany";
+
+/*  */
+"country.fr" = "France";
+
+/*  */
+"country.gb" = "United Kingdom";
+
+/*  */
+"country.in" = "India";
+
+/*  */
+"country.jp" = "Japan";
+
+/*  */
+"country.mx" = "Mexico";
+
+/*  */
+"country.tw" = "Taiwan";
+
+/*  */
+"country.us" = "United States";
+
+/*  */
+"delete" = "Delete";
+
+/*  */
+"deleteMark" = "Delete Tag";
+
+/*  */
+"description" = "Description";
+
+/*  */
+"finish" = "Finish";
+
+/*  */
+"haedlineLocation" = "News Region";
+
+/*  */
+"headlineSetting" = "Headline Display Settings";
+
+/*  */
+"list" = "List";
+
+/*  */
+"popularity" = "Popular Sorting";
+
+/*  */
+"publishedAt" = "Latest Sorting";
+
+/*  */
+"relevancy" = "Relevancy";
+
+/*  */
+"searchContent" = "Search Content";
+
+/*  */
+"searchLocation" = "Search Region";
+
+/*  */
+"searchOrder" = "Search Sorting";
+
+/*  */
+"share" = "Share";
+
+/*  */
+"title" = "Title";
+

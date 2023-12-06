@@ -18,17 +18,17 @@ enum Category: String, CaseIterable, Codable {
     var chineseName: String {
         switch self {
         case .business:
-            return "商業"
+            return R.string.localizable.classifyBusiness()
         case .entertainment:
-            return "娛樂"
+            return R.string.localizable.classifyEntertainment()
         case .general:
-            return "一般"
+            return R.string.localizable.classifyGeneral()
         case .health:
-            return "健康"
+            return R.string.localizable.classifyHealth()
         case .sports:
-            return "體育"
+            return R.string.localizable.classifySports()
         case .technology:
-            return "科技"
+            return R.string.localizable.classifyTechnology()
         }
     }
     
@@ -73,25 +73,25 @@ enum CountryCode: String, CaseIterable, Codable {
     var chineseName: String {
         switch self {
         case .BR:
-            return "巴西"
+            return R.string.localizable.countryBr()
         case .CN:
-            return "中國"
+            return R.string.localizable.countryCn()
         case .DE:
-            return "德國"
+            return R.string.localizable.countryDe()
         case .FR:
-            return "法國"
+            return R.string.localizable.countryFr()
         case .GB:
-            return "英國"
+            return R.string.localizable.countryGb()
         case .IN:
-            return "印度"
+            return R.string.localizable.countryIn()
         case .TW:
-            return "台灣"
+            return R.string.localizable.countryTw()
         case .JP:
-            return "日本"
+            return R.string.localizable.countryJp()
         case .MX:
-            return "墨西哥"
+            return R.string.localizable.countryMx()
         case .US:
-            return "美國"
+            return R.string.localizable.countryUs()
         }
     }
 }
@@ -105,13 +105,13 @@ enum SearchIn: String, Codable {
     var chineseName: String {
         switch self {
         case .title:
-            return "標題"
+            return R.string.localizable.title()
         case .description:
-            return "簡述"
+            return R.string.localizable.description()
         case .content:
-            return "內容"
+            return R.string.localizable.content()
         case .all:
-            return "全部內容"
+            return R.string.localizable.allContent()
         }
     }
 }
@@ -124,11 +124,11 @@ enum SearchSortBy: String, Codable {
     var chineseName: String {
         switch self {
         case .relevancy:
-            return "相關度"
+            return R.string.localizable.relevancy()
         case .popularity:
-            return "熱門排序"
+            return R.string.localizable.popularity()
         case .publishedAt:
-            return "最新排序"
+            return R.string.localizable.publishedAt()
         }
     }
 }
@@ -153,25 +153,25 @@ enum SearchLanguage: String, CaseIterable, Codable {
     var chineseName: String {
         switch self {
         case .BR:
-            return "巴西"
+            return R.string.localizable.countryBr()
         case .CN:
-            return "中國"
+            return R.string.localizable.countryCn()
         case .DE:
-            return "德國"
+            return R.string.localizable.countryDe()
         case .FR:
-            return "法國"
+            return R.string.localizable.countryFr()
         case .GB:
-            return "英國"
+            return R.string.localizable.countryGb()
         case .IN:
-            return "印度"
+            return R.string.localizable.countryIn()
         case .TW:
-            return "台灣"
+            return R.string.localizable.countryTw()
         case .JP:
-            return "日本"
+            return R.string.localizable.countryJp()
         case .MX:
-            return "墨西哥"
+            return R.string.localizable.countryMx()
         case .US:
-            return "美國"
+            return R.string.localizable.countryUs()
         }
     }
 }
