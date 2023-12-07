@@ -21,6 +21,8 @@ class HeadlinesTableViewController: UIViewController {
     @IBOutlet weak var defualtCoverView: UIView!
     private let displayMode: DisplayMode = newsSettingManager.getDisplayMode()
     let freshControl = UIRefreshControl()
+    var customFreshControl: UIView!
+    var freshControlAct = false
     var articles = [Article]()
     var page: Int?
     var articlesNumber = 0
@@ -82,14 +84,25 @@ extension HeadlinesTableViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         freshControl.tintColor = .clear
+        freshControl.backgroundColor = .clear
         tableView.refreshControl = freshControl
+        loadCustomRefresh()
         defualtCoverView.isUserInteractionEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollToTop), name: Notification.Name("\(displayMode) - ScrollToTop"), object: nil)
     }
     
+    func loadCustomRefresh() {
+        customFreshControl = UIView(frame: freshControl.frame)
+        let arrowUpImage = UIImageView(frame: CGRect(x: freshControl.frame.width * (0.5 - 0.1), y: freshControl.frame.width * 0.2, width: freshControl.frame.width * 0.2, height: freshControl.frame.width * 0.2))
+        arrowUpImage.image = UIImage(systemName: "arrow.clockwise")?.withTintColor(.systemGray3, renderingMode: .alwaysOriginal)
+        customFreshControl.addSubview(arrowUpImage)
+        freshControl.addSubview(customFreshControl)
+        freshControl.clipsToBounds = true
+    }
+    
     func setupLoadingView() {
-        loadingCover = NVActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (UIScreen.main.bounds.size.width / 2) - 50, y: (UIScreen.main.bounds.size.height / 2) - 100), size: CGSize(width: 100, height: 100)), type: .ballRotateChase, color: traitCollection.userInterfaceStyle == .dark ? .white : .gray)
+        loadingCover = NVActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (UIScreen.main.bounds.size.width / 2) - 50, y: (UIScreen.main.bounds.size.height / 2) - 100), size: CGSize(width: 100, height: 100)), type: .ballRotateChase, color: traitCollection.userInterfaceStyle == .dark ? .white : .systemGray3)
         self.view.addSubview(loadingCover!)
         backgroundView = UIView(frame: tableView.frame)
         backgroundView?.backgroundColor = .systemBackground
@@ -283,15 +296,39 @@ extension HeadlinesTableViewController {
         let offsetY = scrollView.contentOffset.y
         let screenHeight = scrollView.frame.size.height
         let contentHeight = scrollView.contentSize.height
-        if contentHeight != 0 && offsetY + screenHeight > (contentHeight) {
-            print("一半啦")
-            loadNewsData(scrollingLoading: true)
+        
+        if offsetY < 0 && !freshControlAct {
+            // MARK: - 下拉動畫
+            customFreshAnimation(offsetY: offsetY)
+        } else if -1 <= offsetY && freshControlAct {
+            // MARK: - 動畫結束重設參數
+            freshControlAct = false
+        } else {
+            if contentHeight != 0 && offsetY + screenHeight > (contentHeight) {
+                print("一半啦")
+                loadNewsData(scrollingLoading: true)
+            }
         }
     }
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if freshControl.isRefreshing {
             reloadDataAct()
+            customFreshAnimation()
+            freshControlAct = true
+        }
+    }
+    
+    func customFreshAnimation(offsetY: CGFloat = 0) {
+        let viewHeight = self.customFreshControl.frame.height
+        let viewTranslationY = -viewHeight < offsetY ? offsetY : -viewHeight
+        let isSwipe = offsetY == 0.0 ? false : true
+        let arrowView = self.customFreshControl.subviews[0]
+        let originCenter = arrowView.center
+        let width = freshControl.frame.width * 0.2
+        UIView.animate(withDuration: 0.15) {
+            arrowView.transform = CGAffineTransform(translationX: 0, y: isSwipe ? viewTranslationY : 0)
+            self.customFreshControl.subviews[0].alpha = isSwipe ? 1 : 0
         }
     }
 }
