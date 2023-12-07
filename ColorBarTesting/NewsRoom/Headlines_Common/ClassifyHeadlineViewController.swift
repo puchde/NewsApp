@@ -57,7 +57,7 @@ extension ClassifyHeadlineViewController {
 }
 
 //MARK: CollectionView
-extension ClassifyHeadlineViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ClassifyHeadlineViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Category.getTotal()
     }
@@ -89,6 +89,19 @@ extension ClassifyHeadlineViewController: UICollectionViewDelegate, UICollection
         }
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if let textString = Category.fromOrder(indexPath.row)?.chineseName {
+            let size = getSizeFromString(string: textString, withFont: UIFont.systemFont(ofSize: 15))
+            return CGSize(width: size.width + 5, height: 45)
+        }
+        return CGSize(width: 60, height: 45)
+    }
+    
+    func getSizeFromString(string:String, withFont font:UIFont)->CGSize{
+        let textSize = string.size(withAttributes: [ NSAttributedString.Key.font:font ])
+        return textSize
     }
 }
 
