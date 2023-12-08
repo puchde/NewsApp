@@ -19,10 +19,12 @@ class ClassifyHeadlineViewController: UIViewController {
     @IBOutlet weak var leftButtonItem: UIBarButtonItem!
 
     var selectNewsUrl = ""
+    var classifyLabelWidths = [CGFloat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        setupClassifyWidths()
         
 #if DEBUG
         FLEXManager.shared.showExplorer()
@@ -53,6 +55,24 @@ extension ClassifyHeadlineViewController {
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+    }
+    
+    func setupClassifyWidths() {
+        var labelTotalWidth = CGFloat(0)
+        for category in Category.allCases {
+            let size = getSizeFromString(string: category.chineseName, withFont: UIFont.systemFont(ofSize: 15))
+            labelTotalWidth += (size.width + 5)
+            classifyLabelWidths.append((size.width + 5))
+        }
+        
+        if labelTotalWidth < self.view.frame.width {
+            let padding = (self.view.frame.width - labelTotalWidth) / CGFloat(classifyLabelWidths.count)
+            var widths = [CGFloat]()
+            classifyLabelWidths.forEach { w in
+                widths.append(w + padding)
+            }
+            classifyLabelWidths = widths
+        }
     }
 }
 
@@ -92,11 +112,7 @@ extension ClassifyHeadlineViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let textString = Category.fromOrder(indexPath.row)?.chineseName {
-            let size = getSizeFromString(string: textString, withFont: UIFont.systemFont(ofSize: 15))
-            return CGSize(width: size.width + 5, height: 45)
-        }
-        return CGSize(width: 60, height: 45)
+        return CGSize(width: classifyLabelWidths[indexPath.row], height: 45)
     }
     
     func getSizeFromString(string:String, withFont font:UIFont)->CGSize{
