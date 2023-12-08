@@ -75,6 +75,12 @@ class NewsSettingManager {
     private var isAutoReadMode = {
         return userDefaults.bool(forKey: UserdefaultKey.settingAutoReadMode.rawValue)
     }()
+    
+    private var blockedSource: Set<String> = {
+        let arr = userDefaults.array(forKey: UserdefaultKey.settingBlockedSource.rawValue) as? [String] ?? []
+        let set: Set<String> = Set(arr)
+        return set
+    }()
 
     //MARK: Display Mode
     private var displayMode: DisplayMode = .headline
@@ -159,6 +165,10 @@ class NewsSettingManager {
         return apiKey
     }
     
+    func getBlockedSource() -> Set<String> {
+        return blockedSource
+    }
+    
     
     //MARK: Update Setting
     func updateSettingStorage<T>(data: T) {
@@ -234,5 +244,15 @@ class NewsSettingManager {
     func updateAutoReadMode(isAuto: Bool) {
         isAutoReadMode = isAuto
         userDefaults.setValue(isAuto, forKey: UserdefaultKey.settingAutoReadMode.rawValue)
+    }
+    
+    func updateInsertBlockedSource(source: String) {
+        blockedSource.insert(source)
+        userDefaults.setValue(Array(blockedSource), forKey: UserdefaultKey.settingBlockedSource.rawValue)
+    }
+    
+    func updateReplaceBlockedSource(source: [String]) {
+        blockedSource = Set(source)
+        userDefaults.setValue(Array(blockedSource), forKey: UserdefaultKey.settingBlockedSource.rawValue)
     }
 }
