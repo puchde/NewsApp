@@ -16,7 +16,8 @@ extension NewsTableViewProtocal {
     func makeTargetedPreview(for configuration: UIContextMenuConfiguration, isShow: Bool) -> UITargetedPreview? {
         guard let indexPath = configuration.identifier as? IndexPath else { return nil }
         guard let cell = newsTableView.cellForRow(at: indexPath) as? NewsCell else { return nil }
-        
+        guard let image = cell.previewImage.image else { return nil }
+
         let parameters = UIPreviewParameters()
         parameters.backgroundColor = .clear
         return UITargetedPreview(view: cell.previewImage, parameters: parameters)
