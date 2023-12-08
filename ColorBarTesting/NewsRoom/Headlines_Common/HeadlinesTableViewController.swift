@@ -144,6 +144,7 @@ extension HeadlinesTableViewController {
                 if Date.now < dataReloadTime.addingTimeInterval(3 * 60) {
                     print("reload time return")
                     filterBlockedSource()
+                    self.tableView.reloadData()
                     self.tableView.refreshControl?.endRefreshing()
                     return
                 }
