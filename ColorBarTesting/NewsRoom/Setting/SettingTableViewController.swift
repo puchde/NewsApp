@@ -18,7 +18,8 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
     let appInfos = [R.string.localizable.settingAppVersion(),]
     let appOptions = [R.string.localizable.settingNewsAPIKey(),
                       R.string.localizable.settingAutoReaderMode(),
-                      R.string.localizable.settingCleanMarkedNews()]
+                      R.string.localizable.settingCleanMarkedNews(),
+                      R.string.localizable.settingBlockPublisherSources()]
     let otherOptions = [R.string.localizable.settingWriteComment(),
                         R.string.localizable.settingSendEmail()]
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
@@ -28,7 +29,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
         super.viewDidLoad()
         settingTableView.delegate = self
         settingTableView.dataSource = self
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationItem.title = R.string.localizable.setting()
     }
 }
 
@@ -96,6 +97,8 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             cell.accessoryView = switchButton
         case (1, 2):
             content.image = UIImage(systemName: "xmark.diamond")
+        case (1, 3):
+            content.image = UIImage(systemName: "slash.circle")
         case (2, 0):
             content.image = UIImage(systemName: "star")
         case (2, 1):
@@ -126,6 +129,11 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             alert.addAction(cancelAct)
             alert.addAction(confirmAct)
             self.present(alert, animated: true)
+        case (1, 3):
+            print("blocked:\(newsSettingManager.getBlockedSource())")
+            if let vc = R.storyboard.newsContent.settingBlockedSourceViewController() {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         case (2, 1):
             presentMailVC()
         default:

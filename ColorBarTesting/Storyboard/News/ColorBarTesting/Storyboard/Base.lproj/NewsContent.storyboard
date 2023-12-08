@@ -878,11 +878,52 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="settingTableView" destination="oDB-Yq-0dA" id="EpS-v2-1UO"/>
+                        <segue destination="6yL-B7-J6f" kind="show" id="Pf1-Yf-2CK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryy-Ov-etF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3098" y="-50"/>
+        </scene>
+        <!--Setting Blocked Source View Controller-->
+        <scene sceneID="21U-dL-b5p">
+            <objects>
+                <viewController storyboardIdentifier="SettingBlockedSourceViewController" id="6yL-B7-J6f" customClass="SettingBlockedSourceViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k4l-vn-hdS">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1VC-1x-SOE">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockedCell" id="MXd-Pn-SwJ">
+                                        <rect key="frame" x="20" y="55.333332061767578" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MXd-Pn-SwJ" id="dBx-Vl-5kr">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EzX-Yd-7tm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EzX-Yd-7tm" firstAttribute="trailing" secondItem="1VC-1x-SOE" secondAttribute="trailing" id="9hz-jh-KPB"/>
+                            <constraint firstItem="1VC-1x-SOE" firstAttribute="top" secondItem="EzX-Yd-7tm" secondAttribute="top" id="NOs-lM-ACb"/>
+                            <constraint firstItem="1VC-1x-SOE" firstAttribute="leading" secondItem="EzX-Yd-7tm" secondAttribute="leading" id="XMy-ge-COV"/>
+                            <constraint firstItem="EzX-Yd-7tm" firstAttribute="bottom" secondItem="1VC-1x-SOE" secondAttribute="bottom" id="bkf-h7-T10"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Sf2-6i-EHg"/>
+                    <connections>
+                        <outlet property="tableView" destination="1VC-1x-SOE" id="gwG-n7-9cC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jKM-EF-jkB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3832" y="-50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GOe-Ir-ZKg">
