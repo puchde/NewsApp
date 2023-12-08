@@ -86,7 +86,7 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             if let apiKey = newsSettingManager.getApiKey() {
                 cell.accessoryView = getAccessLabel(desc: String("\(apiKey.prefix(5))..."))
             } else {
-                cell.accessoryView = getAccessLabel(desc: R.string.localizable.settingDefualt())
+                cell.accessoryView = getAccessLabel(desc: R.string.localizable.settingDefault())
             }
         case (1, 1):
             content.image = UIImage(systemName: "hand.raised")

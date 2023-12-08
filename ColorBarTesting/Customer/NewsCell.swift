@@ -167,7 +167,7 @@ extension UIViewController {
     }
     
     func presentConfirmAlert(title: String = "", message: String = "") {
-        let confirm = UIAlertAction(title: "確定", style: .default) { _ in
+        let confirm = UIAlertAction(title: R.string.localizable.confirm(), style: .default) { _ in
             self.dismiss(animated: true)
         }
         presentAlert(title: title, message: message, action: [confirm])

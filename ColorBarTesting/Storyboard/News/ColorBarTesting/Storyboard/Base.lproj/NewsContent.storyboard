@@ -171,7 +171,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="defualtCoverView" destination="dWy-c2-92j" id="Iaa-ZS-4Kw"/>
+                        <outlet property="defaultCoverView" destination="dWy-c2-92j" id="Iaa-ZS-4Kw"/>
                         <outlet property="tableView" destination="lbB-QS-e5O" id="jaY-bN-Syj"/>
                         <segue destination="24s-99-IvH" kind="show" identifier="toWebView" id="a7D-Xe-EFX"/>
                     </connections>

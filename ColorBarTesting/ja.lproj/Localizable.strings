@@ -1,3 +1,5 @@
+
+
 "Setting" = "設定";
 
 /*  */
@@ -10,10 +12,13 @@
 "Setting.appVersionInfo" = "バージョン情報";
 
 /*  */
-"Setting.autoReaderMode" = "自動リーダーモードの有効化";
+"Setting.autoReaderMode" = "自動でリーダーモードを開く";
 
 /*  */
-"Setting.cleanMarkedDesc" = "この操作は、すべてのマークされたニュースをクリアします";
+"Setting.blockPublisherSources" = "ブロック済みニュースソースの調整";
+
+/*  */
+"Setting.cleanMarkedDesc" = "このアクションはすべてのマークされたニュースをクリアします";
 
 /*  */
 "Setting.cleanMarkedNews" = "マークされたニュースをクリア";
@@ -25,25 +30,25 @@
 "Setting.cleanUp" = "クリア";
 
 /*  */
-"Setting.defualt" = "デフォルト";
+"Setting.default" = "デフォルト";
 
 /*  */
-"Setting.option" = "オプション";
+"Setting.option" = "機能オプション";
 
 /*  */
 "Setting.other" = "その他";
 
 /*  */
-"Setting.readerModeDesc" = "\nリーダーモードは、洗練されたWebページレイアウトを提供し、読書をより集中的にし、記事のレイアウトを改善します。\n\n一部の複雑なWebページが完全に表示されない場合は、このオプションを無効にしてください。";
+"Setting.readerModeDesc" = "\nリーダーモードは、クリーンなウェブページのレイアウトを提供し、より集中して読書し、記事のフォーマットを向上させます。\n\n一部の複雑なウェブページが完全に表示されない場合は、このオプションを無効にしてください。";
 
 /*  */
-"Setting.readerModeTitle" = "Safari リーダーモード";
+"Setting.readerModeTitle" = "Safariリーダーモード";
 
 /*  */
 "Setting.sendEmail" = "メールで問い合わせ";
 
 /*  */
-"Setting.sendEmailFail" = "送信に失敗しました";
+"Setting.sendEmailFail" = "送信に失敗";
 
 /*  */
 "Setting.writeComment" = "コメントを書く";
@@ -53,6 +58,9 @@
 
 /*  */
 "allContent" = "すべてのコンテンツ";
+
+/*  */
+"blockPublisherSources" = "このソースのニュースをブロック";
 
 /*  */
 "cancel" = "キャンセル";
@@ -74,6 +82,9 @@
 
 /*  */
 "classify.technology" = "テクノロジー";
+
+/*  */
+"confirm" = "確認";
 
 /*  */
 "content" = "コンテンツ";
@@ -108,7 +119,7 @@
 /*  */
 "country.us" = "アメリカ";
 
-/*  */
+
 "delete" = "削除";
 
 /*  */
@@ -121,34 +132,49 @@
 "finish" = "完了";
 
 /*  */
-"haedlineLocation" = "ニュースの地域";
+"haedlineLocation" = "ニュース地域";
 
 /*  */
 "headlineSetting" = "ヘッドライン表示設定";
 
 /*  */
-"list" = "リスト";
+"list" = "メニュー";
 
 /*  */
-"popularity" = "人気順";
+"more" = "もっと見る";
 
 /*  */
-"publishedAt" = "新着順";
+"popularity" = "人気のある順";
 
 /*  */
-"relevancy" = "関連度";
+"publishedAt" = "最新の並び替え";
 
 /*  */
-"searchContent" = "検索コンテンツ";
+"relevancy" = "関連性";
 
 /*  */
-"searchLocation" = "検索地域";
+"searchContent" = "コンテンツを検索";
 
 /*  */
-"searchOrder" = "検索順序";
+"searchLocation" = "地域を検索";
+
+/*  */
+"searchOrder" = "検索の順序";
 
 /*  */
 "share" = "共有";
 
 /*  */
 "title" = "タイトル";
+
+/*  */
+"unblock" = "ブロック解除";
+
+/*  */
+"unblockAlertDesc" = "ソースのブロックを解除すると、そのユニットのニュースが再表示されます";
+
+/*  */
+"unblockAlertTitle" = "ソースのブロック解除";
+
+/*  */
+"unblockDesc" = "ブロックされたニュースソースの管理";

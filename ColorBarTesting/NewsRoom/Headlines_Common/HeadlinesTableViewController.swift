@@ -18,7 +18,7 @@ protocol HeadlinesTableViewDelegate {
 class HeadlinesTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var defualtCoverView: UIView!
+    @IBOutlet weak var defaultCoverView: UIView!
     private let displayMode: DisplayMode = newsSettingManager.getDisplayMode()
     let freshControl = UIRefreshControl()
     var customFreshControl: UIView!
@@ -87,7 +87,7 @@ extension HeadlinesTableViewController {
         freshControl.backgroundColor = .clear
         tableView.refreshControl = freshControl
         loadCustomRefresh()
-        defualtCoverView.isUserInteractionEnabled = false
+        defaultCoverView.isUserInteractionEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollToTop), name: Notification.Name("\(displayMode) - ScrollToTop"), object: nil)
     }
@@ -171,7 +171,7 @@ extension HeadlinesTableViewController {
                 
                 self.tableView.refreshControl?.endRefreshing()
                 loadingCoverAction(start: true)
-                self.defualtCoverView.isHidden = true
+                self.defaultCoverView.isHidden = true
                 
                 switch displayMode {
                 case .headline:
@@ -214,7 +214,7 @@ extension HeadlinesTableViewController {
                 } catch {
                     print(error)
                 }
-                self.defualtCoverView.isHidden = self.articles.isEmpty ? false : true
+                self.defaultCoverView.isHidden = self.articles.isEmpty ? false : true
                 dataReloadTime = Date.now
             } else {
                 self.view.makeToast("取得資料錯誤")
@@ -325,8 +325,6 @@ extension HeadlinesTableViewController {
         let viewTranslationY = -viewHeight < offsetY ? offsetY : -viewHeight
         let isSwipe = offsetY == 0.0 ? false : true
         let arrowView = self.customFreshControl.subviews[0]
-        let originCenter = arrowView.center
-        let width = freshControl.frame.width * 0.2
         UIView.animate(withDuration: 0.15) {
             arrowView.transform = CGAffineTransform(translationX: 0, y: isSwipe ? viewTranslationY : 0)
             self.customFreshControl.subviews[0].alpha = isSwipe ? 1 : 0

@@ -1,3 +1,5 @@
+
+
 "Setting" = "Settings";
 
 /*  */
@@ -10,10 +12,13 @@
 "Setting.appVersionInfo" = "Version Information";
 
 /*  */
-"Setting.autoReaderMode" = "Automatically Open Reader Mode";
+"Setting.autoReaderMode" = "Automatically Enable Reader Mode";
 
 /*  */
-"Setting.cleanMarkedDesc" = "This action will clear all marked news";
+"Setting.blockPublisherSources" = "Adjust Blocked News Sources";
+
+/*  */
+"Setting.cleanMarkedDesc" = "This action will clear all marked news.";
 
 /*  */
 "Setting.cleanMarkedNews" = "Clear Marked News";
@@ -25,22 +30,22 @@
 "Setting.cleanUp" = "Clear";
 
 /*  */
-"Setting.defualt" = "Default";
+"Setting.default" = "Default";
 
 /*  */
-"Setting.option" = "Options";
+"Setting.option" = "Feature Options";
 
 /*  */
 "Setting.other" = "Other";
 
 /*  */
-"Setting.readerModeDesc" = "\nReader mode provides a clean webpage layout, enhancing focus and improving article formatting.\n\nIf some complex webpages do not display properly, please disable this option.";
+"Setting.readerModeDesc" = "\nReader Mode provides a clean webpage layout for a more focused reading experience and improved article formatting.\n\nIf some complex web pages display incompletely, please disable this option.";
 
 /*  */
 "Setting.readerModeTitle" = "Safari Reader Mode";
 
 /*  */
-"Setting.sendEmail" = "Email Inquiry";
+"Setting.sendEmail" = "Send Email Inquiry";
 
 /*  */
 "Setting.sendEmailFail" = "Sending Failed";
@@ -49,10 +54,13 @@
 "Setting.writeComment" = "Write Comment";
 
 /*  */
-"addMark" = "Add Tag";
+"addMark" = "Add Mark";
 
 /*  */
 "allContent" = "All Content";
+
+/*  */
+"blockPublisherSources" = "Block News from this Source";
 
 /*  */
 "cancel" = "Cancel";
@@ -74,6 +82,9 @@
 
 /*  */
 "classify.technology" = "Technology";
+
+/*  */
+"confirm" = "Confirm";
 
 /*  */
 "content" = "Content";
@@ -108,7 +119,7 @@
 /*  */
 "country.us" = "United States";
 
-/*  */
+
 "delete" = "Delete";
 
 /*  */
@@ -121,19 +132,22 @@
 "finish" = "Finish";
 
 /*  */
-"haedlineLocation" = "News Region";
+"headlineLocation" = "News Region";
 
 /*  */
 "headlineSetting" = "Headline Display Settings";
 
 /*  */
-"list" = "List";
+"list" = "Menu";
 
 /*  */
-"popularity" = "Popular Sorting";
+"more" = "More";
 
 /*  */
-"publishedAt" = "Latest Sorting";
+"popularity" = "Popularity Sort";
+
+/*  */
+"publishedAt" = "Latest Sort";
 
 /*  */
 "relevancy" = "Relevancy";
@@ -145,7 +159,7 @@
 "searchLocation" = "Search Region";
 
 /*  */
-"searchOrder" = "Search Sorting";
+"searchOrder" = "Search Sort";
 
 /*  */
 "share" = "Share";
@@ -153,3 +167,14 @@
 /*  */
 "title" = "Title";
 
+/*  */
+"unblock" = "Unblock";
+
+/*  */
+"unblockAlertDesc" = "After unblocking the source, the news from that unit will be displayed again.";
+
+/*  */
+"unblockAlertTitle" = "Unblock News Source";
+
+/*  */
+"unblockDesc" = "Manage Blocked News Sources";

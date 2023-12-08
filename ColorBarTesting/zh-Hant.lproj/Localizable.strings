@@ -21,6 +21,9 @@
 "Setting.autoReaderMode" = "自動開啟閱讀器模式";
 
 /*  */
+"Setting.blockPublisherSources" = "調整已阻擋的新聞來源";
+
+/*  */
 "Setting.cleanMarkedDesc" = "此動作會清空所有已標記的新聞";
 
 /*  */
@@ -33,7 +36,7 @@
 "Setting.cleanUp" = "清空";
 
 /*  */
-"Setting.defualt" = "預設";
+"Setting.default" = "預設";
 
 /*  */
 "Setting.option" = "功能選項";
@@ -63,6 +66,9 @@
 "allContent" = "全部內容";
 
 /*  */
+"blockPublisherSources" = "阻擋此來源的新聞";
+
+/*  */
 "cancel" = "取消";
 
 /*  */
@@ -82,6 +88,9 @@
 
 /*  */
 "classify.technology" = "科技";
+
+/*  */
+"confirm" = "確認";
 
 /*  */
 "content" = "內容";
@@ -138,6 +147,9 @@
 "list" = "選單";
 
 /*  */
+"more" = "更多";
+
+/*  */
 "popularity" = "熱門排序";
 
 /*  */
@@ -160,3 +172,15 @@
 
 /*  */
 "title" = "標題";
+
+/*  */
+"unblock" = "解除";
+
+/*  */
+"unblockAlertDesc" = "解除阻擋來源後即可重新顯示該單位新聞";
+
+/*  */
+"unblockAlertTitle" = "解除阻擋來源";
+
+/*  */
+"unblockDesc" = "管理阻擋新聞來源";
