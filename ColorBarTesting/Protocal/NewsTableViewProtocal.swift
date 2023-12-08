@@ -33,7 +33,12 @@ extension NewsTableViewProtocal {
                 UIAction(title: newsCell.isMark ? R.string.localizable.deleteMark() : R.string.localizable.addMark(), image: newsCell.isMark ? UIImage(systemName: "minus.circle") : markIcon, attributes: newsCell.isMark ? .destructive : .keepsMenuPresented) { action in
                     newsCell.saveNews(self)
                     return
-                }
+                },
+                UIMenu(title: R.string.localizable.more(), image: UIImage(systemName: "ellipsis.circle"), children: [
+                    UIAction(title: R.string.localizable.blockPublisherSources(), image: UIImage(systemName: "slash.circle"), attributes: .destructive, handler: { action in
+                        newsCell.blockSource()
+                    })
+                ])
             ])
         } else {
             return UIMenu()

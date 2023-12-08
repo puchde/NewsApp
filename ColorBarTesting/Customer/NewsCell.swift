@@ -136,7 +136,12 @@ class NewsCell: UITableViewCell {
         guard let activeVC else { return }
         activityViewController.popoverPresentationController?.sourceView = activeVC.view
         activeVC.present(activityViewController, animated: true, completion: nil)
-
+    }
+    
+    @IBAction func blockSource() {
+        guard let author = article?.author else { return }
+        newsSettingManager.updateInsertBlockedSource(source: author)
+        delegate?.reloadCell()
     }
 
     func updateMarkIcon() {

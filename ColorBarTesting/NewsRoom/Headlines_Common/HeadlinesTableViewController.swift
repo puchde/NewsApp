@@ -24,6 +24,7 @@ class HeadlinesTableViewController: UIViewController {
     var customFreshControl: UIView!
     var freshControlAct = false
     var articles = [Article]()
+    var filterArticles = [Article]()
     var page: Int?
     var articlesNumber = 0
     var selectNewsUrl = ""
@@ -142,6 +143,7 @@ extension HeadlinesTableViewController {
             if newsCountry == newsSettingManager.getCountry() {
                 if Date.now < dataReloadTime.addingTimeInterval(3 * 60) {
                     print("reload time return")
+                    filterBlockedSource()
                     self.tableView.refreshControl?.endRefreshing()
                     return
                 }
@@ -211,6 +213,7 @@ extension HeadlinesTableViewController {
                         let article = Article(source: source, author: a.author, title: a.title, description: a.description_p, url: a.url, urlToImage: a.urlToImage, publishedAt: a.publishedAt, content: a.content)
                         self.articles.append(article)
                     }
+                    filterBlockedSource()
                 } catch {
                     print(error)
                 }
@@ -227,17 +230,22 @@ extension HeadlinesTableViewController {
         }
         self.tableView.reloadData()
     }
+    
+    func filterBlockedSource() {
+        let source = newsSettingManager.getBlockedSource()
+        filterArticles = articles.filter{!source.contains($0.author ?? "")}
+    }
 }
 
 //MARK: TableView
 extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articles.count
+        return filterArticles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell, !articles.isEmpty {
-            let newsData = articles[indexPath.row]
+            let newsData = filterArticles[indexPath.row]
             cell.updateArticleInfo(activeVC: self, article: newsData)
             tableView.deselectRow(at: indexPath, animated: false)
             return cell
@@ -247,7 +255,7 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        selectNewsUrl = articles[indexPath.row].url
+        selectNewsUrl = filterArticles[indexPath.row].url
 //        performSegue(withIdentifier: "toWebView", sender: self)
         if let url = URL(string: selectNewsUrl) {
             let vc = getSafariVC(url: url, delegateVC: self)
@@ -287,6 +295,7 @@ extension HeadlinesTableViewController: NewsTableViewProtocal {
 //MARK: News Cell Delegate
 extension HeadlinesTableViewController: NewsCellDelegate {
     func reloadCell() {
+        filterBlockedSource()
         tableView.reloadData()
     }
 }
