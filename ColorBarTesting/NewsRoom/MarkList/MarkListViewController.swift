@@ -17,12 +17,24 @@ class MarkListViewController: UIViewController, SFSafariViewControllerDelegate {
     var newsList = newsSettingManager.getNewsMarkList() {
         didSet {
             newsList.sort {
-                print("\($0.mark.point), \($1.mark.point)")
                 return $0.mark.point < $1.mark.point
             }
+            normalList = newsList.filter({$0.mark.point == Mark.critical.point})
+            attentionList = newsList.filter({$0.mark.point == Mark.criticality.point})
+            importantList = newsList.filter({$0.mark.point == Mark.significantCriticality.point})
         }
     }
+    var normalList = [MarkedArticle]()
+    var attentionList = [MarkedArticle]()
+    var importantList = [MarkedArticle]()
+    var normalListHide = false
+    var attentionListHide = false
+    var importantListHide = false
+
     var selectNewsUrl = ""
+
+    let headerHeight = CGFloat(35)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -48,6 +60,7 @@ extension MarkListViewController: UIGestureRecognizerDelegate {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         tableView.refreshControl = freshControl
+        tableView.sectionHeaderTopPadding = 8
 
         let keyboardTap = UITapGestureRecognizer(target: self, action: #selector(resignKeyboard))
         keyboardTap.delegate = self
@@ -60,15 +73,120 @@ extension MarkListViewController: UIGestureRecognizerDelegate {
     }
 }
 
+//MARK: TableView Header
+extension MarkListViewController {
+    @objc
+    func toggleImportantListHide(section: Int) {
+        importantListHide.toggle()
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.beginUpdates()
+            self.tableView.reloadSections(IndexSet(integer: 0), with: .right)
+            self.tableView.endUpdates()
+        }
+    }
+
+    @objc
+    func toggleAttentionListHide(section: Int) {
+        attentionListHide.toggle()
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.beginUpdates()
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .right)
+            self.tableView.endUpdates()
+        }
+    }
+
+    @objc
+    func togglenormalListHide(section: Int) {
+        normalListHide.toggle()
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.beginUpdates()
+            self.tableView.reloadSections(IndexSet(integer: 2), with: .right)
+            self.tableView.endUpdates()
+        }
+    }
+
+    func setupHeader(section: Int) -> UIView? {
+        let backView = UIView()
+        let headerView = UILabel(frame: CGRect(x: 10, y: 0, width: self.view.frame.width - (2 * 10), height: headerHeight))
+        let filterView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: headerHeight))
+        let label = UILabel(frame: CGRect(x: 30, y: 0, width: self.view.frame.width, height: headerHeight))
+
+        backView.addSubview(headerView)
+        headerView.addSubview(filterView)
+        headerView.clipsToBounds = true
+        headerView.layer.cornerRadius = headerHeight * 0.25
+        filterView.backgroundColor = .white.withAlphaComponent(0.75)
+        filterView.addSubview(label)
+        label.textColor = .secondaryLabel
+        switch section {
+        case 0:
+            label.text = R.string.localizable.important()
+            headerView.backgroundColor = Mark.significantCriticality.color
+            let tap = UITapGestureRecognizer(target: self, action: #selector(toggleImportantListHide))
+            tap.delegate = self
+            backView.addGestureRecognizer(tap)
+            return importantList.isEmpty ? nil : backView
+        case 1:
+            label.text = R.string.localizable.attention()
+            headerView.backgroundColor = Mark.criticality.color
+            let tap = UITapGestureRecognizer(target: self, action: #selector(toggleAttentionListHide))
+            tap.delegate = self
+            backView.addGestureRecognizer(tap)
+            return attentionList.isEmpty ? nil : backView
+        case 2:
+            label.text = R.string.localizable.normal()
+            headerView.backgroundColor = Mark.critical.color
+            let tap = UITapGestureRecognizer(target: self, action: #selector(togglenormalListHide))
+            tap.delegate = self
+            backView.addGestureRecognizer(tap)
+            return normalList.isEmpty ? nil : backView
+        default:
+            return nil
+        }
+    }
+}
+
 //MARK: TableView
 extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Mark.allCases.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        headerHeight
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        setupHeader(section: section)
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        newsList.count
+        switch section {
+        case 0:
+            return importantListHide ? 0 : importantList.count
+        case 1:
+            return attentionListHide ? 0 : attentionList.count
+        case 2:
+            return normalListHide ? 0 : normalList.count
+        default:
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell{
-            let newsData = newsList[indexPath.row]
+            let newsData: MarkedArticle = {
+                switch indexPath.section {
+                case 0:
+                    return importantList[indexPath.row]
+                case 1:
+                    return attentionList[indexPath.row]
+                case 2:
+                    return normalList[indexPath.row]
+                default:
+                    return newsList[indexPath.row]
+                }
+            }()
             cell.updateArticleInfo(activeVC: self, article: newsData.article)
             tableView.deselectRow(at: indexPath, animated: false)
             return cell
@@ -100,8 +218,10 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        selectNewsUrl = newsList[indexPath.row].article.url
-//        performSegue(withIdentifier: "toWebView", sender: self)
+        if let cell = tableView.cellForRow(at: indexPath) as? NewsCell,
+           let article = cell.article {
+            selectNewsUrl = article.url
+        }
         if let url = URL(string: selectNewsUrl) {
             let vc = getSafariVC(url: url, delegateVC: self)
             self.present(vc, animated: true)

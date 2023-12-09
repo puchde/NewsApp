@@ -177,7 +177,7 @@ enum SearchLanguage: String, CaseIterable, Codable {
     }
 }
 
-enum Mark: Codable {
+enum Mark: Codable, CaseIterable {
     case critical
     case criticality
     case significantCriticality
