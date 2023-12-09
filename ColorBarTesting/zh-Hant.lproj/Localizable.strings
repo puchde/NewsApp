@@ -1,4 +1,7 @@
 
+/*  */
+"Important" = "重要";
+
 /* 
   Localizable.strings
   ColorBarTesting
@@ -66,10 +69,16 @@
 "allContent" = "全部內容";
 
 /*  */
+"attention" = "關注";
+
+/*  */
 "blockPublisherSources" = "阻擋此來源的新聞";
 
 /*  */
 "cancel" = "取消";
+
+/*  */
+"changeMark" = "變換標記";
 
 /*  */
 "classify.business" = "商業";
@@ -129,7 +138,7 @@
 "delete" = "刪除";
 
 /*  */
-"deleteMark" = "刪除標籤";
+"deleteMark" = "刪除標記";
 
 /*  */
 "description" = "簡述";
@@ -148,6 +157,9 @@
 
 /*  */
 "more" = "更多";
+
+/*  */
+"normal" = "一般";
 
 /*  */
 "popularity" = "熱門排序";

@@ -54,7 +54,7 @@
 "Setting.writeComment" = "Write Comment";
 
 /*  */
-"addMark" = "Add Mark";
+"addMark" = "Add Tag";
 
 /*  */
 "allContent" = "All Content";
@@ -123,7 +123,7 @@
 "delete" = "Delete";
 
 /*  */
-"deleteMark" = "Delete Tag";
+"deleteMark" = "Remove Tag";
 
 /*  */
 "description" = "Description";
@@ -178,3 +178,11 @@
 
 /*  */
 "unblockDesc" = "Manage Blocked News Sources";
+
+"normal" = "Normal";
+
+"attention" = "Attention";
+
+"Important" = "Important";
+
+"changeMark" = "Change Tag";
