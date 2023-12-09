@@ -35,6 +35,13 @@ class NewsCell: UITableViewCell {
         }
     }
     var isMark = false
+    var mark: Mark?
+    var markedArticle: MarkedArticle? {
+        get {
+            guard let mark = mark, let article = article else { return nil }
+            return MarkedArticle(mark: mark, article: article)
+        }
+    }
     var activeVC: UIViewController?
     var newsUrl: String = ""
     var author: String = "" {
@@ -62,9 +69,22 @@ class NewsCell: UITableViewCell {
     }
 
     var delegate: NewsCellDelegate?
-    
+
+    lazy var criticalMenuItem = UIAction(title: R.string.localizable.normal(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.critical.color, renderingMode: .alwaysOriginal)) { _ in
+        self.changeMark(mark: .critical)
+    }
+
+    lazy var criticalityMenuItem = UIAction(title: R.string.localizable.attention(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.criticality.color, renderingMode: .alwaysOriginal)) { _ in
+        self.changeMark(mark: .criticality)
+    }
+
+    lazy var significantCriticalityMenuItem = UIAction(title: R.string.localizable.important(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.significantCriticality.color, renderingMode: .alwaysOriginal)) { _ in
+        self.changeMark(mark: .significantCriticality)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        updateMarkMenu()
     }
   
     required init?(coder aDecoder: NSCoder) {
@@ -113,14 +133,15 @@ class NewsCell: UITableViewCell {
                 self.activeVC?.presentAlertDismiss()
             }
             let comfirm = UIAlertAction(title: R.string.localizable.delete(), style: .destructive) { _ in
-                newsSettingManager.deleteNewsMarkList(self.article!)
+                guard let markedArticle = self.markedArticle else { return }
+                newsSettingManager.deleteNewsMarkList(markedArticle)
+                self.mark = nil
                 self.updateMarkIcon()
                 self.delegate?.reloadCell()
             }
             activeVC?.presentAlert(title: R.string.localizable.deleteMark(), message: "", action: [cancelAct, comfirm])
         } else {
-            newsSettingManager.updateNewsMarkList(self.article!)
-            delegate?.reloadCell()
+            changeMark(mark: .critical)
             if (activeVC?.presentedViewController) != nil {
                 activeVC?.dismiss(animated: true)
             }
@@ -145,12 +166,43 @@ class NewsCell: UITableViewCell {
     }
 
     func updateMarkIcon() {
-        self.isMark = newsSettingManager.isMark(news: self.article!)
+        let article = newsSettingManager.isMarkedArticleTuple(news: self.article!)
+        self.isMark = article.isMark
+        self.mark = article.mark
         if isMark {
-            markButton.setImage(UIImage(systemName: "bookmark.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal), for: .normal)
+            markButton.setImage(UIImage(systemName: "bookmark.fill")?.withTintColor(mark!.color, renderingMode: .alwaysOriginal), for: .normal)
         } else {
             markButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
         }
+        updateMarkMenu()
+    }
+
+    //MARK: Change Mark
+    func updateMarkMenu() {
+        var menuActions: [UIAction] = []
+        switch mark {
+        case .critical:
+            menuActions.append(criticalityMenuItem)
+            menuActions.append(significantCriticalityMenuItem)
+        case .criticality:
+            menuActions.append(criticalMenuItem)
+            menuActions.append(significantCriticalityMenuItem)
+        case .significantCriticality:
+            menuActions.append(criticalMenuItem)
+            menuActions.append(criticalityMenuItem)
+        case nil:
+            menuActions.append(criticalMenuItem)
+            menuActions.append(criticalityMenuItem)
+            menuActions.append(significantCriticalityMenuItem)
+        }
+        markButton.menu = UIMenu(children: menuActions)
+    }
+
+    func changeMark(mark: Mark) {
+        self.mark = mark
+        guard let markedArticle = self.markedArticle else { return }
+        newsSettingManager.updateNewsMarkList(markedArticle)
+        delegate?.reloadCell()
     }
 }
 

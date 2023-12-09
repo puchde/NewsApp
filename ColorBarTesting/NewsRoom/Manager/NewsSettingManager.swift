@@ -55,9 +55,9 @@ class NewsSettingManager {
     }()
 
     //MARK: MarkList
-    private var newsMarkList: [Article] {
+    private var newsMarkList: [MarkedArticle] {
         get {
-            let list = userDefaults.getCodableObject([Article].self, with: UserdefaultKey.articles.rawValue) ?? []
+            let list = userDefaults.getCodableObject([MarkedArticle].self, with: UserdefaultKey.articles.rawValue) ?? []
             return list
         }
         set {
@@ -147,14 +147,18 @@ class NewsSettingManager {
         return displayMode
     }
 
-    func getNewsMarkList() -> [Article] {
+    func getNewsMarkList() -> [MarkedArticle] {
         return newsMarkList
     }
 
-    func isMark(news: Article) -> Bool {
-        return newsMarkList.contains { article in
-            article == news
+    func isMarkedArticleTuple(news: Article) -> (isMark: Bool, mark: Mark?) {
+        if let markedArticle = newsMarkList.first(where: { article in
+            article.article == news
+        }) {
+            return (true, markedArticle.mark)
         }
+
+        return (false, nil)
     }
     
     func isAutoRead() -> Bool {
@@ -228,11 +232,18 @@ class NewsSettingManager {
         displayMode = mode
     }
 
-    func updateNewsMarkList(_ news: Article) {
+    func updateNewsMarkList(_ news: MarkedArticle) {
+        if !newsMarkList.filter({ mArticle in
+            mArticle.article == news.article
+        }).isEmpty {
+            if let index = newsMarkList.firstIndex(where: {$0.article == news.article}) {
+                newsMarkList.remove(at: index)
+            }
+        }
         newsMarkList.append(news)
     }
 
-    func deleteNewsMarkList(_ article: Article) {
+    func deleteNewsMarkList(_ article: MarkedArticle) {
         guard let index = newsMarkList.firstIndex(of: article) else { return }
         newsMarkList.remove(at: index)
     }

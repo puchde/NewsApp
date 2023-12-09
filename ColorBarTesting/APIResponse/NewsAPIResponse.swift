@@ -39,3 +39,9 @@ struct NewsAPIProtobufResponse: Codable {
     let totalResults: Int
     let articles: Data
 }
+
+//MARK: 
+struct MarkedArticle: Codable, Equatable {
+    let mark: Mark
+    let article: Article
+}

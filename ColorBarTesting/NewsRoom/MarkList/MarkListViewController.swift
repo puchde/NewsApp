@@ -14,7 +14,14 @@ class MarkListViewController: UIViewController, SFSafariViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var leftButtonItem: UIBarButtonItem!
     let freshControl = UIRefreshControl()
-    var newsList = newsSettingManager.getNewsMarkList()
+    var newsList = newsSettingManager.getNewsMarkList() {
+        didSet {
+            newsList.sort {
+                print("\($0.mark.point), \($1.mark.point)")
+                return $0.mark.point < $1.mark.point
+            }
+        }
+    }
     var selectNewsUrl = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +69,7 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell{
             let newsData = newsList[indexPath.row]
-            cell.updateArticleInfo(activeVC: self, article: newsData)
+            cell.updateArticleInfo(activeVC: self, article: newsData.article)
             tableView.deselectRow(at: indexPath, animated: false)
             return cell
         }
@@ -93,7 +100,7 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        selectNewsUrl = newsList[indexPath.row].url
+        selectNewsUrl = newsList[indexPath.row].article.url
 //        performSegue(withIdentifier: "toWebView", sender: self)
         if let url = URL(string: selectNewsUrl) {
             let vc = getSafariVC(url: url, delegateVC: self)
@@ -184,7 +191,9 @@ extension MarkListViewController {
 extension MarkListViewController {
     func reloadNewsList() {
         if let searchString = searchBar.searchTextField.text, !searchString.isEmpty {
-            newsList = newsSettingManager.getNewsMarkList().filter({$0.author?.contains(searchString) ?? false || $0.content?.contains(searchString) ?? false || $0.description?.contains(searchString) ?? false || $0.title.contains(searchString)})
+            newsList = newsSettingManager.getNewsMarkList().filter({
+                $0.article.author?.contains(searchString) ?? false || $0.article.content?.contains(searchString) ?? false || $0.article.description?.contains(searchString) ?? false || $0.article.title.contains(searchString)
+            })
         } else {
             newsList = newsSettingManager.getNewsMarkList()
         }
