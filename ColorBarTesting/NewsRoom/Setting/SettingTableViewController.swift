@@ -134,6 +134,10 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             if let vc = R.storyboard.newsContent.settingBlockedSourceViewController() {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+        case (2, 0):
+            if let url = URL(string: "itms-apps://itunes.apple.com/app/id6474076097") {
+                UIApplication.shared.open(url)
+            }
         case (2, 1):
             presentMailVC()
         default:

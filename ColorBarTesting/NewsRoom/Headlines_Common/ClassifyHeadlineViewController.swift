@@ -8,7 +8,9 @@
 import UIKit
 
 #if DEBUG
+#if ColorBarTesting
 import FLEX
+#endif
 #endif
 
 class ClassifyHeadlineViewController: UIViewController {
@@ -27,7 +29,9 @@ class ClassifyHeadlineViewController: UIViewController {
         setupClassifyWidths()
         
 #if DEBUG
+#if ColorBarTesting
         FLEXManager.shared.showExplorer()
+#endif
 #endif
     }
 }

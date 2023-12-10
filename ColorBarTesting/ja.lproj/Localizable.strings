@@ -1,3 +1,8 @@
+
+
+"Important" = "重要";
+
+
 "Setting" = "設定";
 
 /*  */
@@ -57,11 +62,17 @@
 /*  */
 "allContent" = "すべてのコンテンツ";
 
+
+"attention" = "注意";
+
 /*  */
 "blockPublisherSources" = "このソースからのニュースをブロック";
 
 /*  */
 "cancel" = "キャンセル";
+
+
+"changeMark" = "タグを変更";
 
 /*  */
 "classify.business" = "ビジネス";
@@ -130,9 +141,6 @@
 "finish" = "完了";
 
 /*  */
-"headlineLocation" = "ニュース地域";
-
-/*  */
 "headlineSetting" = "ヘッドライン表示設定";
 
 /*  */
@@ -140,6 +148,9 @@
 
 /*  */
 "more" = "詳細";
+
+
+"normal" = "通常";
 
 /*  */
 "popularity" = "人気順";
@@ -176,11 +187,3 @@
 
 /*  */
 "unblockDesc" = "ブロックされたニュースソースを管理";
-
-"normal" = "通常";
-
-"attention" = "注意";
-
-"Important" = "重要";
-
-"changeMark" = "タグを変更";

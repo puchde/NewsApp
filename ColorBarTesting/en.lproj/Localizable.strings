@@ -1,5 +1,8 @@
 
 
+"Important" = "Important";
+
+
 "Setting" = "Settings";
 
 /*  */
@@ -59,11 +62,17 @@
 /*  */
 "allContent" = "All Content";
 
+
+"attention" = "Attention";
+
 /*  */
 "blockPublisherSources" = "Block News from this Source";
 
 /*  */
 "cancel" = "Cancel";
+
+
+"changeMark" = "Change Tag";
 
 /*  */
 "classify.business" = "Business";
@@ -132,9 +141,6 @@
 "finish" = "Finish";
 
 /*  */
-"headlineLocation" = "News Region";
-
-/*  */
 "headlineSetting" = "Headline Display Settings";
 
 /*  */
@@ -142,6 +148,9 @@
 
 /*  */
 "more" = "More";
+
+
+"normal" = "Normal";
 
 /*  */
 "popularity" = "Popularity Sort";
@@ -178,11 +187,3 @@
 
 /*  */
 "unblockDesc" = "Manage Blocked News Sources";
-
-"normal" = "Normal";
-
-"attention" = "Attention";
-
-"Important" = "Important";
-
-"changeMark" = "Change Tag";
