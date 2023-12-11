@@ -1,12 +1,19 @@
-
-
+/*  */
 "Important" = "重要";
 
-
+/*
+ 
+ */
 "Setting" = "設定";
 
 /*  */
 "Setting.NewsAPIKey" = "APIキー";
+
+/*  */
+"Setting.SyncMarkCheckDesc" = "発見した記録\nこの操作は現在のマークリストを上書きします。\n\n記録時間\n%s";
+
+/*  */
+"Setting.SyncMarkCheckTitle" = "マークリストを同期";
 
 /*  */
 "Setting.appVersion" = "バージョン";
@@ -15,13 +22,13 @@
 "Setting.appVersionInfo" = "バージョン情報";
 
 /*  */
-"Setting.autoReaderMode" = "自動でリーダーモードを有効にする";
+"Setting.autoReaderMode" = "自動的にリーダーモードを有効にする";
 
 /*  */
-"Setting.blockPublisherSources" = "ブロックされたニュースソースを調整";
+"Setting.blockPublisherSources" = "ブロックしたニュースソースを調整";
 
 /*  */
-"Setting.cleanMarkedDesc" = "この操作はすべてのマークされたニュースをクリアします。";
+"Setting.cleanMarkedDesc" = "この操作ですべてのマークされたニュースがクリアされます。";
 
 /*  */
 "Setting.cleanMarkedNews" = "マークされたニュースをクリア";
@@ -36,22 +43,52 @@
 "Setting.default" = "デフォルト";
 
 /*  */
+"Setting.downloadMark" = "ダウンロードしてマークリストを上書き";
+
+/*  */
+"Setting.downloadMarkFailure" = "記録の取得に失敗しました";
+
+/*  */
+"Setting.downloadMarkSuccess" = "ダウンロード完了";
+
+/*  */
+"Setting.iCloudBackup" = "iCloud バックアップ マークリスト";
+
+/*  */
+"Setting.icloudDesc" = "";
+
+/*  */
+"Setting.icloudTitle" = "iCloud 記録";
+
+/*  */
+"Setting.icloudToSettingDesc" = "次に進んでください\n設定 > Apple ID > iCloud でこのアプリに対する権限を有効にします。";
+
+/*  */
+"Setting.icloudToSettingTitle" = "失敗";
+
+/*  */
 "Setting.option" = "機能オプション";
 
 /*  */
 "Setting.other" = "その他";
 
 /*  */
-"Setting.readerModeDesc" = "\nリーダーモードは、より集中して読書できるようにするためのクリーンなウェブページレイアウトを提供します。いくつかの複雑なウェブページが不完全に表示される場合は、このオプションを無効にしてください。";
+"Setting.readerModeDesc" = "\nリーダーモードは、より集中した読書体験と改善された記事の書式のためのクリーンなウェブページレイアウトを提供します。\n\nいくつかの複雑なウェブページが完全に表示されない場合は、このオプションを無効にしてください。";
 
 /*  */
 "Setting.readerModeTitle" = "Safari リーダーモード";
 
 /*  */
-"Setting.sendEmail" = "メールで問い合わせる";
+"Setting.sendEmail" = "メールでの問い合わせ";
 
 /*  */
 "Setting.sendEmailFail" = "送信に失敗しました";
+
+/*  */
+"Setting.uploadMark" = "アップロード";
+
+/*  */
+"Setting.uploadMarkSuccess" = "アップロード完了";
 
 /*  */
 "Setting.writeComment" = "コメントを書く";
@@ -62,7 +99,7 @@
 /*  */
 "allContent" = "すべてのコンテンツ";
 
-
+/*  */
 "attention" = "注意";
 
 /*  */
@@ -71,14 +108,14 @@
 /*  */
 "cancel" = "キャンセル";
 
-
+/*  */
 "changeMark" = "タグを変更";
 
 /*  */
 "classify.business" = "ビジネス";
 
 /*  */
-"classify.entertainment" = "エンターテインメント";
+"classify.entertainment" = "エンターテイメント";
 
 /*  */
 "classify.general" = "一般";
@@ -131,7 +168,7 @@
 /*  */
 "country.us" = "アメリカ";
 
-
+/*  */
 "delete" = "削除";
 
 /*  */
@@ -144,7 +181,10 @@
 "finish" = "完了";
 
 /*  */
-"headlineLocation" = "ニュース地域";
+"go" = "進む";
+
+/*  */
+"haedlineLocation" = "ニュース地域";
 
 /*  */
 "headlineSetting" = "ヘッドライン表示設定";
@@ -155,14 +195,14 @@
 /*  */
 "more" = "詳細";
 
-
+/*  */
 "normal" = "通常";
 
 /*  */
-"popularity" = "人気順";
+"popularity" = "人気の並び替え";
 
 /*  */
-"publishedAt" = "最新順";
+"publishedAt" = "最新の並び替え";
 
 /*  */
 "relevancy" = "関連性";
@@ -171,10 +211,10 @@
 "searchContent" = "コンテンツを検索";
 
 /*  */
-"searchLocation" = "検索地域";
+"searchLocation" = "地域を検索";
 
 /*  */
-"searchOrder" = "検索順";
+"searchOrder" = "検索の並び替え";
 
 /*  */
 "share" = "共有";
@@ -186,10 +226,11 @@
 "unblock" = "ブロック解除";
 
 /*  */
-"unblockAlertDesc" = "ソースをブロック解除した後、そのユニットからのニュースが再表示されます。";
+"unblockAlertDesc" = "ソースのブロックを解除すると、そのユニットからのニュースが再表示されます。";
 
 /*  */
 "unblockAlertTitle" = "ニュースソースのブロック解除";
 
 /*  */
-"unblockDesc" = "ブロックされたニュースソースを管理";
+"unblockDesc" = "ブロックされたニュースソースの管理";
+}
