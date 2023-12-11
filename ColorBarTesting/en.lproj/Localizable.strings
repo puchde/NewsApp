@@ -82,6 +82,7 @@
 
 /*  */
 "classify.technology" = "Technology";
+"classify.science" = "Science";
 
 /*  */
 "confirm" = "Confirm";
