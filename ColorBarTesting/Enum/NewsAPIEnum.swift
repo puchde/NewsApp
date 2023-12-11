@@ -12,6 +12,7 @@ enum Category: String, CaseIterable, Codable {
     case general
     case business
     case health
+    case science
     case technology
     case sports
     case entertainment
@@ -30,6 +31,8 @@ enum Category: String, CaseIterable, Codable {
             return R.string.localizable.classifySports()
         case .technology:
             return R.string.localizable.classifyTechnology()
+        case .science:
+            return R.string.localizable.classifyScience()
         }
     }
     
@@ -41,12 +44,14 @@ enum Category: String, CaseIterable, Codable {
             return 1
         case .health:
             return 2
-        case .technology:
+        case .science:
             return 3
-        case .sports:
+        case .technology:
             return 4
-        case .entertainment:
+        case .sports:
             return 5
+        case .entertainment:
+            return 6
         }
     }
     
