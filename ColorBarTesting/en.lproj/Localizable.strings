@@ -1,12 +1,19 @@
-
-
+/*  */
 "Important" = "Important";
 
-
+/*
+ 
+ */
 "Setting" = "Settings";
 
 /*  */
 "Setting.NewsAPIKey" = "API Key";
+
+/*  */
+"Setting.SyncMarkCheckDesc" = "Discovery Records\nThis operation will overwrite the current Mark list.\n\nRecord Time\n%s";
+
+/*  */
+"Setting.SyncMarkCheckTitle" = "Sync Mark List";
 
 /*  */
 "Setting.appVersion" = "Version";
@@ -36,6 +43,30 @@
 "Setting.default" = "Default";
 
 /*  */
+"Setting.downloadMark" = "Download and Overwrite Mark List";
+
+/*  */
+"Setting.downloadMarkFailure" = "Failed to Retrieve Records";
+
+/*  */
+"Setting.downloadMarkSuccess" = "Download Completed";
+
+/*  */
+"Setting.iCloudBackup" = "iCloud Backup Mark List";
+
+/*  */
+"Setting.icloudDesc" = "";
+
+/*  */
+"Setting.icloudTitle" = "iCloud Records";
+
+/*  */
+"Setting.icloudToSettingDesc" = "Please go to\nSettings > Apple ID > iCloud to enable permissions for this app.";
+
+/*  */
+"Setting.icloudToSettingTitle" = "Failed";
+
+/*  */
 "Setting.option" = "Feature Options";
 
 /*  */
@@ -54,6 +85,12 @@
 "Setting.sendEmailFail" = "Sending Failed";
 
 /*  */
+"Setting.uploadMark" = "Upload";
+
+/*  */
+"Setting.uploadMarkSuccess" = "Upload Completed";
+
+/*  */
 "Setting.writeComment" = "Write Comment";
 
 /*  */
@@ -62,7 +99,7 @@
 /*  */
 "allContent" = "All Content";
 
-
+/*  */
 "attention" = "Attention";
 
 /*  */
@@ -71,7 +108,7 @@
 /*  */
 "cancel" = "Cancel";
 
-
+/*  */
 "changeMark" = "Change Tag";
 
 /*  */
@@ -87,11 +124,13 @@
 "classify.health" = "Health";
 
 /*  */
+"classify.science" = "Science";
+
+/*  */
 "classify.sports" = "Sports";
 
 /*  */
 "classify.technology" = "Technology";
-"classify.science" = "Science";
 
 /*  */
 "confirm" = "Confirm";
@@ -129,7 +168,7 @@
 /*  */
 "country.us" = "United States";
 
-
+/*  */
 "delete" = "Delete";
 
 /*  */
@@ -142,6 +181,12 @@
 "finish" = "Finish";
 
 /*  */
+"go" = "Go";
+
+/*  */
+"haedlineLocation" = "News Region";
+
+/*  */
 "headlineSetting" = "Headline Display Settings";
 
 /*  */
@@ -150,7 +195,7 @@
 /*  */
 "more" = "More";
 
-
+/*  */
 "normal" = "Normal";
 
 /*  */
@@ -188,3 +233,4 @@
 
 /*  */
 "unblockDesc" = "Manage Blocked News Sources";
+}

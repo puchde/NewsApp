@@ -15,6 +15,12 @@
 "Setting.NewsAPIKey" = "API密鑰";
 
 /*  */
+"Setting.SyncMarkCheckDesc" = "發現紀錄\n此操作會覆蓋目前Mark列表\n\n紀錄時間\n%s";
+
+/*  */
+"Setting.SyncMarkCheckTitle" = "同步Mark列表";
+
+/*  */
 "Setting.appVersion" = "版本";
 
 /*  */
@@ -42,6 +48,30 @@
 "Setting.default" = "預設";
 
 /*  */
+"Setting.downloadMark" = "下載並覆蓋Mark列表";
+
+/*  */
+"Setting.downloadMarkFailure" = "無法取得紀錄";
+
+/*  */
+"Setting.downloadMarkSuccess" = "下載完成";
+
+/*  */
+"Setting.iCloudBackup" = "iCloud備份Mark列表";
+
+/*  */
+"Setting.icloudDesc" = "";
+
+/*  */
+"Setting.icloudTitle" = "iCloud紀錄";
+
+/*  */
+"Setting.icloudToSettingDesc" = "請至\n設定> AppleID > iCloud開啟此APP權限";
+
+/*  */
+"Setting.icloudToSettingTitle" = "失敗";
+
+/*  */
 "Setting.option" = "功能選項";
 
 /*  */
@@ -58,6 +88,12 @@
 
 /*  */
 "Setting.sendEmailFail" = "發送失敗";
+
+/*  */
+"Setting.uploadMark" = "上傳";
+
+/*  */
+"Setting.uploadMarkSuccess" = "上傳完成";
 
 /*  */
 "Setting.writeComment" = "寫評論";
@@ -148,6 +184,9 @@
 
 /*  */
 "finish" = "完成";
+
+/*  */
+"go" = "前往設置";
 
 /*  */
 "haedlineLocation" = "新聞地區";
