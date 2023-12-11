@@ -244,6 +244,10 @@ class NewsSettingManager {
         }
         newsMarkList.append(news)
     }
+    
+    func overwriteNewsMarkList(_ articles: [MarkedArticle]) {
+        newsMarkList = articles
+    }
 
     func deleteNewsMarkList(_ article: MarkedArticle) {
         guard let index = newsMarkList.firstIndex(of: article) else { return }
