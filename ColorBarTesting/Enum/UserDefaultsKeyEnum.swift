@@ -18,4 +18,8 @@ enum UserdefaultKey: String {
     case articles = "articles"
     case searchQuery = "searchQuery"
     case settingBlockedSource = "settingBlockedSource"
+    
+    //MARK: iCloud use
+    case icloudMarkList = "icloudMarkList"
+    case icloudMarkListDate = "icloudMarkListDate"
 }

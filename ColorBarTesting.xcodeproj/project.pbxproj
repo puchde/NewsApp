@@ -17,6 +17,7 @@
 		3F3E88B82B2019F700883A55 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3E88B72B2019F700883A55 /* RswiftLibrary */; };
 		3F3E88BA2B2019F700883A55 /* rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3E88B92B2019F700883A55 /* rswift */; };
 		3F3E88C12B201C9D00883A55 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F3E88C32B201C9D00883A55 /* Localizable.strings */; };
+		3FD2630B2B26F35400F5E962 /* UIViewController+Icloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */; };
 		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
 		3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */; };
@@ -82,6 +83,7 @@
 		3F3E88CF2B205AA300883A55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		3F3E88D02B205AA400883A55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3F3E88D12B205AA400883A55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Icloud.swift"; sourceTree = "<group>"; };
 		3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
 		3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TableViewPreview.swift"; sourceTree = "<group>"; };
 		3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewProtocal.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				E706448529EACBF5009F8C64 /* UserDefaultsExtension.swift */,
 				3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */,
 				3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */,
+				3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				E7528DEE29E2EDD8001169F0 /* SearchSettingViewController.swift in Sources */,
 				E7528DEC29E29749001169F0 /* NewsTabBarViewController.swift in Sources */,
 				3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */,
+				3FD2630B2B26F35400F5E962 /* UIViewController+Icloud.swift in Sources */,
 				E75C2F6729D9F6B900FBC7B4 /* APIManager.swift in Sources */,
 				E75C2F6129D9F51D00FBC7B4 /* SearchNewsViewController.swift in Sources */,
 				E75B1BAD29335570004CA82C /* ImageViewController.swift in Sources */,
@@ -846,7 +850,6 @@
 		};
 		3F3E88BB2B201A8100883A55 /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3F3E88B62B2019F700883A55 /* XCRemoteSwiftPackageReference "R" */;
 			productName = "plugin:RswiftGenerateInternalResources";
 		};
 		3FF0BF9A2B19B6AF00FC84D1 /* Toast */ = {
