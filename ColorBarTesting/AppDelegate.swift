@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import CloudKit
 
 let localFileManager = LocalFileManager.shared
 let mlModelManager = MLModelManager.shared
 let newsSettingManager = NewsSettingManager.shared
 let userDefaults = UserDefaults.standard
+let cloudDefaults = NSUbiquitousKeyValueStore.default
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        cloudDefaults.synchronize()
+        checkIcloudState()
+        
         return true
     }
 

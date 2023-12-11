@@ -81,6 +81,8 @@ class NewsSettingManager {
         let set: Set<String> = Set(arr)
         return set
     }()
+    
+    var icloudState = false
 
     //MARK: Display Mode
     private var displayMode: DisplayMode = .headline
