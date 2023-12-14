@@ -16,8 +16,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
                            R.string.localizable.settingOther()
     ]
     let appInfos = [R.string.localizable.settingAppVersion(),]
-    let appOptions = [R.string.localizable.settingNewsAPIKey(),
-                      R.string.localizable.settingAutoReaderMode(),
+    let appOptions = [ R.string.localizable.settingAutoReaderMode(),
                       R.string.localizable.settingCleanMarkedNews(),
                       R.string.localizable.settingBlockPublisherSources(),
                       R.string.localizable.settingICloudBackup()]
@@ -86,23 +85,16 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             content.image = UIImage(systemName: "info.circle")
             cell.accessoryView = getAccessLabel(desc: appVersion)
         case (1, 0):
-            content.image = UIImage(systemName: "key")
-            if let apiKey = newsSettingManager.getApiKey() {
-                cell.accessoryView = getAccessLabel(desc: String("\(apiKey.prefix(5))..."))
-            } else {
-                cell.accessoryView = getAccessLabel(desc: R.string.localizable.settingDefault())
-            }
-        case (1, 1):
             content.image = UIImage(systemName: "hand.raised")
             let switchButton = UISwitch()
             switchButton.isOn = newsSettingManager.isAutoRead()
             switchButton.addTarget(self, action: #selector(setAutoRead), for: .valueChanged)
             cell.accessoryView = switchButton
-        case (1, 2):
+        case (1, 1):
             content.image = UIImage(systemName: "xmark.diamond")
-        case (1, 3):
+        case (1, 2):
             content.image = UIImage(systemName: "slash.circle")
-        case (1, 4):
+        case (1, 3):
             content.image = UIImage(systemName: "checkmark.icloud")
         case (2, 0):
             content.image = UIImage(systemName: "star")
@@ -120,10 +112,8 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (1, 0):
-            print("api")
-        case (1, 1):
             self.presentNoActionAlert(title: R.string.localizable.settingReaderModeTitle(), message: R.string.localizable.settingReaderModeDesc())
-        case (1, 2):
+        case (1, 1):
             let confirmAct = UIAlertAction(title: R.string.localizable.settingCleanUp(), style: .destructive) { _ in
                 newsSettingManager.deleteNewsMarkLists()
             }
@@ -134,12 +124,12 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             alert.addAction(cancelAct)
             alert.addAction(confirmAct)
             self.present(alert, animated: true)
-        case (1, 3):
+        case (1, 2):
             print("blocked:\(newsSettingManager.getBlockedSource())")
             if let vc = R.storyboard.newsContent.settingBlockedSourceViewController() {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-        case (1, 4):
+        case (1, 3):
             let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel)
             if newsSettingManager.icloudState {
                 let uploadAction = UIAlertAction(title: R.string.localizable.settingUploadMark(), style: .default) { _ in
