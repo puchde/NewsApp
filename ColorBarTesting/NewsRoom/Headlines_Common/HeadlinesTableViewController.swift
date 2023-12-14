@@ -91,6 +91,7 @@ extension HeadlinesTableViewController {
         defaultCoverView.isUserInteractionEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollToTop), name: Notification.Name("\(displayMode) - ScrollToTop"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataAct), name: Notification.Name("ReloadNewsData"), object: nil)
     }
     
     func loadCustomRefresh() {
