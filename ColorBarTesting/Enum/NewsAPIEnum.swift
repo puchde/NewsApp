@@ -182,6 +182,59 @@ enum SearchLanguage: String, CaseIterable, Codable {
     }
 }
 
+enum SearchTime: Codable {
+    case hour1
+    case hour6
+    case hour12
+    case day1
+    case day7
+    case month1
+    case month3
+    case none
+    
+    var name: String {
+        switch self {
+        case .hour1:
+            return R.string.localizable.hour1()
+        case .hour6:
+            return R.string.localizable.hour6()
+        case .hour12:
+            return R.string.localizable.hour12()
+        case .day1:
+            return R.string.localizable.day1()
+        case .day7:
+            return R.string.localizable.day7()
+        case .month1:
+            return R.string.localizable.month1()
+        case .month3:
+            return R.string.localizable.month3()
+        case .none:
+            return R.string.localizable.settingDefault()
+        }
+    }
+    
+    var apiParameter: String {
+        switch self {
+        case .hour1:
+            return "1h"
+        case .hour6:
+            return "6h"
+        case .hour12:
+            return "12h"
+        case .day1:
+            return "1d"
+        case .day7:
+            return "7d"
+        case .month1:
+            return "30d"
+        case .month3:
+            return "90d"
+        case .none:
+            return ""
+        }
+    }
+}
+
 enum Mark: Codable, CaseIterable {
     case critical
     case criticality
