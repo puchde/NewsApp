@@ -53,6 +53,8 @@ class NewsSettingManager {
             return .publishedAt
         }
     }()
+    
+    private var searchTime: SearchTime = .none
 
     //MARK: MarkList
     private var newsMarkList: [MarkedArticle] {
@@ -144,6 +146,10 @@ class NewsSettingManager {
     func getSearchLanguage() -> SearchLanguage {
         return searchLanguage
     }
+    
+    func getSearchTime() -> SearchTime {
+        return searchTime
+    }
 
     func getDisplayMode() -> DisplayMode {
         return displayMode
@@ -228,6 +234,10 @@ class NewsSettingManager {
     func updateSearchDate(DateTuple: (Date, Date)) {
         searchDateFrom = DateTuple.0
         searchDateTo = DateTuple.1
+    }
+    
+    func updateSearchTime(searchTime: SearchTime) {
+        self.searchTime = searchTime
     }
 
     func updateDisplayMode(_ mode: DisplayMode) {
