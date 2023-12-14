@@ -69,12 +69,13 @@ extension APIManager {
     
     static func searchNews(query: String, language: String, completion: @escaping (Result<NewsAPIProtobufResponse, Error>) -> Void) {
         let language = newsSettingManager.getSearchLanguage().rawValue
-        APIManager.DataRequest(router: NewsRouter.searchNews(type: "search", query: query, language: language), completion: completion)
+        let searchTime = newsSettingManager.getSearchTime().apiParameter
+        APIManager.DataRequest(router: NewsRouter.searchNews(type: "search", query: query, language: language, searchTime: searchTime), completion: completion)
     }
 }
 
 enum NewsRouter: APIClientConfig {
-    case searchNews(type: String, query: String, language: String)
+    case searchNews(type: String, query: String, language: String, searchTime: String)
     case topHeadlines(type: String,country: String, category: String)
     
     static var apiDomain: APIDomainEnum = .prod
@@ -119,10 +120,11 @@ enum NewsRouter: APIClientConfig {
     
     var queryParameter: [URLQueryItem]? {
         switch self {
-        case .searchNews(let type, let query, let language):
+        case .searchNews(let type, let query, let language, let searchTime):
             let queryItems = [URLQueryItem(name: QueryKey.type, value: type),
                               URLQueryItem(name: QueryKey.q, value: query),
-                              URLQueryItem(name: QueryKey.country, value: language)]
+                              URLQueryItem(name: QueryKey.country, value: language),
+                              URLQueryItem(name: QueryKey.searchTime, value: searchTime)]
             return queryItems
             
         case .topHeadlines(let type, country: let country, let category):
@@ -148,6 +150,7 @@ struct QueryKey {
     static let country = "country"
     static let category = "category"
     static let type = "type"
+    static let searchTime = "searchTime"
 }
 
 protocol APIClientConfig {
