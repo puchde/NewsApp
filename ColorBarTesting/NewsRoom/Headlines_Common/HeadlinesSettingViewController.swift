@@ -16,6 +16,7 @@ class HeadlinesSettingViewController: UIViewController {
     var category = Category.allCases
     
     var isFirstHeightSetting = true
+    var reloadNotificationPost = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +39,17 @@ class HeadlinesSettingViewController: UIViewController {
             isFirstHeightSetting = false
         }
     }
+    
     @IBAction func finishedButtonClick(_ sender: Any) {
         self.dismiss(animated: true)
+        NotificationCenter.default.post(name: Notification.Name("ReloadNewsData"), object: nil)
+        reloadNotificationPost = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if !reloadNotificationPost {
+            NotificationCenter.default.post(name: Notification.Name("ReloadNewsData"), object: nil)
+        }
     }
 }
 
