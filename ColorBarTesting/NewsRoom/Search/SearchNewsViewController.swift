@@ -14,7 +14,7 @@ class SearchNewsViewController: UIViewController {
     @IBOutlet weak var searchRecordTableView: UITableView!
     @IBOutlet weak var leftButtonItem: UIBarButtonItem!
     
-    var searchSettingHeader = [R.string.localizable.searchContent(),
+    var searchSettingHeader = [R.string.localizable.searchTime(),
                                R.string.localizable.searchLocation(),
                                R.string.localizable.searchOrder()]
     var searchIn = ""
@@ -137,7 +137,7 @@ extension SearchNewsViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == searchSettingTableView {
             switch indexPath.section {
             case 0:
-                cellConfig.text = newsSettingManager.getSearchIn(isForApi: false)
+                cellConfig.text = newsSettingManager.getSearchTime().name
             case 1:
                 cellConfig.text = newsSettingManager.getSearchLanguage().chineseName
             case 2:
