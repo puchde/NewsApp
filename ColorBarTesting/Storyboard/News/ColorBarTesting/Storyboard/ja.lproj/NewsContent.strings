@@ -71,7 +71,7 @@
 "eWI-xX-any.text" = "サブタイトル";
 
 /* Class = "UILabel"; text = "搜尋內容"; ObjectID = "hWv-Kn-WB9"; */
-"hWv-Kn-WB9.text" = "検索内容";
+"hWv-Kn-WB9.text" = "検索時間";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "hkB-sI-hBc"; */
 "hkB-sI-hBc.title" = "アイテム";

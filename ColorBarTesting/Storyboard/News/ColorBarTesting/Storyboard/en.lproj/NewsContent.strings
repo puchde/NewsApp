@@ -72,7 +72,7 @@
 "eWI-xX-any.text" = "Subtitle";
 
 /* Class = "UILabel"; text = "Search Content"; ObjectID = "hWv-Kn-WB9"; */
-"hWv-Kn-WB9.text" = "Search Content";
+"hWv-Kn-WB9.text" = "Search Time";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "hkB-sI-hBc"; */
 "hkB-sI-hBc.title" = "Item";
