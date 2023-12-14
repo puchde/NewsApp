@@ -233,4 +233,16 @@
 
 /*  */
 "unblockDesc" = "Manage Blocked News Sources";
-}
+
+"hour1" = "within 1 hour";
+"hour6" = "within 6 hours";
+"hour12" = "within 12 hours";
+"day1" = "within 1 day";
+"day7" = "within 7 days";
+"month1" = "within 1 month";
+"month3" = "within 3 months";
+"none" = "none";
+"hour" = "Hour";
+"day" = "Day";
+"month" = "Month";
+"searchTime" = "Search Time";
