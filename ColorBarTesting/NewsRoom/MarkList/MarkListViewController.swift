@@ -155,14 +155,14 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return importantList.isEmpty ? 0 :headerHeight
+            return importantList.isEmpty ? 0 : headerHeight
         case 1:
-            return attentionList.isEmpty ? 0 :headerHeight
+            return attentionList.isEmpty ? 0 : headerHeight
         case 2:
-            return normalList.isEmpty ? 0 :headerHeight
+            return normalList.isEmpty ? 0 : headerHeight
         default:
             return 0
-        }
+        }        
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
