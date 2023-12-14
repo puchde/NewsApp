@@ -24,7 +24,7 @@ class SettingBlockedSourceViewController: UIViewController {
         initView()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         self.navigationController?.popViewController(animated: false)
     }
 }
