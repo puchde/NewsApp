@@ -13,12 +13,7 @@ protocol searchSettingDelegate {
 
 class SearchSettingViewController: UIViewController {
 
-    @IBOutlet weak var allSelectButton: UIButton!
-    @IBOutlet weak var titleButton: UIButton!
-    @IBOutlet weak var contentButton: UIButton!
-    @IBOutlet weak var descrbtionButton: UIButton!
-    @IBOutlet weak var fromDatePicker: UIDatePicker!
-    @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var searchTimeSelectButton: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var relevancyButton: UIButton!
     @IBOutlet weak var popularityButton: UIButton!
@@ -29,6 +24,56 @@ class SearchSettingViewController: UIViewController {
     var searchSortBy = newsSettingManager.getSearchSortBy()
     var delegate: searchSettingDelegate?
     var isFirstHeightSetting = true
+    var reloadNotificationPost = false
+    
+    lazy var searchTimeActionH1 = UIAction(title: R.string.localizable.hour1(), handler: { _ in
+        newsSettingManager.updateSearchTime(searchTime: .hour1)
+        self.updateSearchTimeMenu(searchTime: .hour1)
+    })
+    lazy var searchTimeActionH6 = UIAction(title: R.string.localizable.hour6(), handler: { _ in
+        newsSettingManager.updateSearchTime(searchTime: .hour6)
+        self.updateSearchTimeMenu(searchTime: .hour6)
+    })
+    lazy var searchTimeActionH12 = UIAction(title: R.string.localizable.hour12(), handler: { _ in
+        newsSettingManager.updateSearchTime(searchTime: .hour12)
+        self.updateSearchTimeMenu(searchTime: .hour12)
+    })
+    lazy var searchTimeActionD1 = UIAction(title: R.string.localizable.day1(), handler: { _ in
+        newsSettingManager.updateSearchTime(searchTime: .day1)
+        self.updateSearchTimeMenu(searchTime: .day1)
+    })
+    lazy var searchTimeActionD7 = UIAction(title: R.string.localizable.day7(), handler: { _ in
+        newsSettingManager.updateSearchTime(searchTime: .day7)
+        self.updateSearchTimeMenu(searchTime: .day7)
+    })
+    lazy var searchTimeActionM1 = UIAction(title: R.string.localizable.month1(), handler: { _ in
+        newsSettingManager.updateSearchTime(searchTime: .month1)
+        self.updateSearchTimeMenu(searchTime: .month1)
+    })
+    lazy var searchTimeActionM3 = UIAction(title: R.string.localizable.month3(), handler: { _ in
+        newsSettingManager.updateSearchTime(searchTime: .month3)
+        self.updateSearchTimeMenu(searchTime: .month3)
+    })
+    lazy var searchTimeActionNone = UIAction(title: R.string.localizable.settingDefault(), handler: { _ in
+        newsSettingManager.updateSearchTime(searchTime: .none)
+        self.updateSearchTimeMenu(searchTime: .none)
+    })
+
+    lazy var searchTimeMenuHour = UIMenu(title: R.string.localizable.hour(), options: [.displayInline, .singleSelection], children: [
+        searchTimeActionH1,
+        searchTimeActionH6,
+        searchTimeActionH12
+    ])
+    
+    lazy var searchTimeMenuDay = UIMenu(title: R.string.localizable.day(), options: [.displayInline, .singleSelection], children: [
+        searchTimeActionD1,
+        searchTimeActionD7
+    ])
+    
+    lazy var searchTimeMenuMonth = UIMenu(title: R.string.localizable.month(), options: [.displayInline, .singleSelection], children: [
+        searchTimeActionM1,
+        searchTimeActionM3
+    ])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +83,15 @@ class SearchSettingViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         guard let delegate else { return }
         delegate.reloadView()
+        if !reloadNotificationPost {
+            NotificationCenter.default.post(name: Notification.Name("ReloadNewsData"), object: nil)
+        }
     }
 
     @IBAction func finishedButtonClick(_ sender: Any) {
         self.dismiss(animated: true)
+        NotificationCenter.default.post(name: Notification.Name("ReloadNewsData"), object: nil)
+        reloadNotificationPost = true
     }
 
     override func viewDidLayoutSubviews() {
@@ -63,40 +113,14 @@ extension SearchSettingViewController {
         pickerView.dataSource = self
         pickerView.selectRow(searchLanguage.firstIndex(of: newsSettingManager.getSearchLanguage()) ?? 0, inComponent: 0, animated: false)
         
-        allSelectButton.getBorderAndRadius()
-        allSelectButton.setSelectedStatus()
-        titleButton.getBorderAndRadius()
-        titleButton.setSelectedStatus()
-        contentButton.setSelectedStatus()
-        contentButton.getBorderAndRadius()
-        descrbtionButton.getBorderAndRadius()
-        descrbtionButton.setSelectedStatus()
+        searchTimeSelectButton.getBorderAndRadius()
+        searchTimeSelectButton.setSelectedStatus()
         publishedAtButton.getBorderAndRadius()
         publishedAtButton.setSelectedStatus()
         popularityButton.getBorderAndRadius()
         popularityButton.setSelectedStatus()
         relevancyButton.getBorderAndRadius()
         relevancyButton.setSelectedStatus()
-
-        let seachIn = newsSettingManager.getSearchInArray()
-        seachIn.forEach { value in
-            switch value {
-            case .title:
-                titleButton.isSelected = true
-                searchInValue.append(.title)
-            case .description:
-                descrbtionButton.isSelected = true
-                searchInValue.append(.description)
-            case .content:
-                contentButton.isSelected = true
-                searchInValue.append(.content)
-            case .all:
-                allSelectButton.isSelected = true
-                searchInValue.append(.title)
-                searchInValue.append(.description)
-                searchInValue.append(.content)
-            }
-        }
 
         let sortBy = newsSettingManager.getSearchSortBy()
         switch sortBy {
@@ -107,6 +131,16 @@ extension SearchSettingViewController {
         case .publishedAt:
             publishedAtButton.isSelected = true
         }
+        
+        searchTimeSelectButton.setTitle("預設", for: .normal)
+        searchTimeSelectButton.showsMenuAsPrimaryAction = true
+        updateSearchTimeMenu(searchTime: newsSettingManager.getSearchTime())
+        searchTimeSelectButton.menu = UIMenu(options: .singleSelection, children: [
+            searchTimeActionNone,
+            searchTimeMenuHour,
+            searchTimeMenuDay,
+            searchTimeMenuMonth
+        ])
     }
 }
 
@@ -130,57 +164,26 @@ extension SearchSettingViewController: UIPickerViewDelegate, UIPickerViewDataSou
 
 // MARK: Button Action
 extension SearchSettingViewController {
+    // 棄用 -> searchTime
     @IBAction func allSelectClick(_ sender: UIButton) {
-        if allSelectButton.isSelected {
+        if searchTimeSelectButton.isSelected {
             print("allSelect")
             return
         }
         sender.isSelected = !sender.isSelected // 切換選中狀態
-        titleButton.isSelected = false
-        contentButton.isSelected = false
-        descrbtionButton.isSelected = false
         newsSettingManager.updateSettingStorage(data: [SearchIn.all])
+    }
+    
+    func updateSearchTimeMenu(searchTime: SearchTime) {
+        searchTimeSelectButton.setTitle(searchTime.name, for: .normal)
     }
 
     @IBAction func searchInSelectClick(_ sender: UIButton) {
-        if searchInValue.count == 1 && sender.isSelected { return }
-        if sender.isSelected {
-            searchInValue.removeAll { value in
-                switch sender {
-                case titleButton:
-                    return value == .title
-                case contentButton:
-                    return value == .content
-                case descrbtionButton:
-                    return value == .description
-                default:
-                    return false
-                }
-            }
-        } else {
-            if newsSettingManager.getSearchIn() == SearchIn.all.rawValue {
-                searchInValue.removeAll()
-            }
-            switch sender {
-            case titleButton:
-                searchInValue.append(.title)
-            case contentButton:
-                searchInValue.append(.content)
-            case descrbtionButton:
-                searchInValue.append(.description)
-            default:
-                break
-            }
-        }
-
         if searchInValue.contains(.content) && searchInValue.contains(.title) && searchInValue.contains(.description) {
-            allSelectButton.isSelected = true
-            titleButton.isSelected = false
-            contentButton.isSelected = false
-            descrbtionButton.isSelected = false
+            searchTimeSelectButton.isSelected = true
             newsSettingManager.updateSettingStorage(data: [SearchIn.all])
         } else {
-            allSelectButton.isSelected = false
+            searchTimeSelectButton.isSelected = false
             newsSettingManager.updateSettingStorage(data: searchInValue)
             sender.isSelected = !sender.isSelected // 切換選中狀態
         }
