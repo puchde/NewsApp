@@ -29,7 +29,7 @@ class NewsCell: UITableViewCell {
             newsUrl = article!.url
             author = article?.author ?? ""
             title = article?.title ?? ""
-            newsDate = String(article?.publishedAt.prefix(10) ?? "")
+            newsDate = String(article?.publishedAt ?? "")
             newsImageUrl = article?.urlToImage ?? ""
             updateMarkIcon()
         }
@@ -107,7 +107,7 @@ class NewsCell: UITableViewCell {
     
     func updateImage() {
         let placeholderImage = UIImage(named: "noPhoto")
-        let placeholderColorImage = placeholderImage?.withTintColor(.secondaryLabel)
+        let placeholderColorImage = placeholderImage
         guard let url = URL(string: newsImageUrl) else {
             cellImage.image = placeholderColorImage
             backgroundImageView.image = nil
