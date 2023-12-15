@@ -252,6 +252,10 @@ class NewsSettingManager {
                 newsMarkList.remove(at: index)
             }
         }
+        var news = news
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy-MM-dd HH:mm"
+        news.article.publishedAt = "🏷️ \(formatter.string(from: Date.now))"
         newsMarkList.append(news)
     }
     
