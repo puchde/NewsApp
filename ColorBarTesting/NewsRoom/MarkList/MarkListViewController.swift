@@ -204,9 +204,6 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row == 0 {
-            return false
-        }
         return true
     }
 
@@ -216,7 +213,19 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let news = newsList[indexPath.row]
+            var dataList = {
+                switch indexPath.section {
+                case 0:
+                    return importantList
+                case 1:
+                    return attentionList
+                case 2:
+                    return normalList
+                default:
+                    return []
+                }
+            }()
+            let news = dataList[indexPath.row]
             newsSettingManager.deleteNewsMarkList(news)
             reloadNewsList()
             tableView.beginUpdates()

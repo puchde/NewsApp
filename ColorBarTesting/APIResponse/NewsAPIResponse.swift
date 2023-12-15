@@ -25,7 +25,7 @@ struct Article: Codable, Equatable {
     let description: String?
     let url: String
     let urlToImage: String?
-    let publishedAt: String
+    var publishedAt: String
     let content: String?
 }
 
@@ -43,5 +43,5 @@ struct NewsAPIProtobufResponse: Codable {
 //MARK: 
 struct MarkedArticle: Codable, Equatable {
     let mark: Mark
-    let article: Article
+    var article: Article
 }
