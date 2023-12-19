@@ -15,9 +15,7 @@ class SearchSettingViewController: UIViewController {
 
     @IBOutlet weak var searchTimeSelectButton: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var relevancyButton: UIButton!
-    @IBOutlet weak var popularityButton: UIButton!
-    @IBOutlet weak var publishedAtButton: UIButton!
+    @IBOutlet weak var searchSortSelectButton: UIButton!
 
     var searchInValue = [SearchIn]()
     let searchLanguage = SearchLanguage.allCases
@@ -26,53 +24,56 @@ class SearchSettingViewController: UIViewController {
     var isFirstHeightSetting = true
     var reloadNotificationPost = false
     
-    lazy var searchTimeActionH1 = UIAction(title: R.string.localizable.hour1(), handler: { _ in
-        newsSettingManager.updateSearchTime(searchTime: .hour1)
-        self.updateSearchTimeMenu(searchTime: .hour1)
-    })
-    lazy var searchTimeActionH6 = UIAction(title: R.string.localizable.hour6(), handler: { _ in
-        newsSettingManager.updateSearchTime(searchTime: .hour6)
-        self.updateSearchTimeMenu(searchTime: .hour6)
-    })
-    lazy var searchTimeActionH12 = UIAction(title: R.string.localizable.hour12(), handler: { _ in
-        newsSettingManager.updateSearchTime(searchTime: .hour12)
-        self.updateSearchTimeMenu(searchTime: .hour12)
-    })
-    lazy var searchTimeActionD1 = UIAction(title: R.string.localizable.day1(), handler: { _ in
-        newsSettingManager.updateSearchTime(searchTime: .day1)
-        self.updateSearchTimeMenu(searchTime: .day1)
-    })
-    lazy var searchTimeActionD7 = UIAction(title: R.string.localizable.day7(), handler: { _ in
-        newsSettingManager.updateSearchTime(searchTime: .day7)
-        self.updateSearchTimeMenu(searchTime: .day7)
-    })
-    lazy var searchTimeActionM1 = UIAction(title: R.string.localizable.month1(), handler: { _ in
-        newsSettingManager.updateSearchTime(searchTime: .month1)
-        self.updateSearchTimeMenu(searchTime: .month1)
-    })
-    lazy var searchTimeActionM3 = UIAction(title: R.string.localizable.month3(), handler: { _ in
-        newsSettingManager.updateSearchTime(searchTime: .month3)
-        self.updateSearchTimeMenu(searchTime: .month3)
-    })
-    lazy var searchTimeActionNone = UIAction(title: R.string.localizable.settingDefault(), handler: { _ in
-        newsSettingManager.updateSearchTime(searchTime: .none)
-        self.updateSearchTimeMenu(searchTime: .none)
-    })
-
-    lazy var searchTimeMenuHour = UIMenu(title: R.string.localizable.hour(), options: [.displayInline, .singleSelection], children: [
-        searchTimeActionH1,
-        searchTimeActionH6,
-        searchTimeActionH12
+    lazy var searchTimeMenu = UIMenu(options: .singleSelection, children: [
+        UIAction(title: R.string.localizable.settingDefault(), handler: { _ in
+            newsSettingManager.updateSearchTime(searchTime: .none)
+            self.updateButtonTitle(searchTime: SearchTime.none)
+        }),
+        UIMenu(title: R.string.localizable.hour(), options: [.displayInline, .singleSelection], children: [
+            UIAction(title: R.string.localizable.hour1(), handler: { _ in
+                newsSettingManager.updateSearchTime(searchTime: .hour1)
+                self.updateButtonTitle(searchTime: .hour1)
+            }),
+            UIAction(title: R.string.localizable.hour6(), handler: { _ in
+                newsSettingManager.updateSearchTime(searchTime: .hour6)
+                self.updateButtonTitle(searchTime: .hour6)
+            }),
+            UIAction(title: R.string.localizable.hour12(), handler: { _ in
+                newsSettingManager.updateSearchTime(searchTime: .hour12)
+                self.updateButtonTitle(searchTime: .hour12)
+            })
+        ]),
+        UIMenu(title: R.string.localizable.day(), options: [.displayInline, .singleSelection], children: [
+            UIAction(title: R.string.localizable.day1(), handler: { _ in
+                newsSettingManager.updateSearchTime(searchTime: .day1)
+                self.updateButtonTitle(searchTime: .day1)
+            }),
+            UIAction(title: R.string.localizable.day7(), handler: { _ in
+                newsSettingManager.updateSearchTime(searchTime: .day7)
+                self.updateButtonTitle(searchTime: .day7)
+            })
+        ]),
+        UIMenu(title: R.string.localizable.month(), options: [.displayInline, .singleSelection], children: [
+            UIAction(title: R.string.localizable.month1(), handler: { _ in
+                newsSettingManager.updateSearchTime(searchTime: .month1)
+                self.updateButtonTitle(searchTime: .month1)
+            }),
+            UIAction(title: R.string.localizable.month3(), handler: { _ in
+                newsSettingManager.updateSearchTime(searchTime: .month3)
+                self.updateButtonTitle(searchTime: .month3)
+            })
+        ])
     ])
     
-    lazy var searchTimeMenuDay = UIMenu(title: R.string.localizable.day(), options: [.displayInline, .singleSelection], children: [
-        searchTimeActionD1,
-        searchTimeActionD7
-    ])
-    
-    lazy var searchTimeMenuMonth = UIMenu(title: R.string.localizable.month(), options: [.displayInline, .singleSelection], children: [
-        searchTimeActionM1,
-        searchTimeActionM3
+    lazy var sortMenu = UIMenu(title: R.string.localizable.month(), options: [.singleSelection], children: [
+        UIAction(title: R.string.localizable.settingDefault(), handler: { _ in
+            newsSettingManager.updateSettingStorage(data: SearchSortBy.none)
+            self.updateButtonTitle(searchSortBy: SearchSortBy.none)
+        }),
+        UIAction(title: R.string.localizable.publishedAt(), handler: { _ in
+            newsSettingManager.updateSettingStorage(data: SearchSortBy.publishedAt)
+            self.updateButtonTitle(searchSortBy: SearchSortBy.publishedAt)
+        })
     ])
 
     override func viewDidLoad() {
@@ -95,7 +96,7 @@ class SearchSettingViewController: UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
-        let viewHeight = pickerView.frame.origin.y + pickerView.frame.size.height
+        let viewHeight = searchSortSelectButton.convert(CGPoint(x: 0, y: searchSortSelectButton.frame.size.height), to: self.parent?.view).y
         if isFirstHeightSetting && self.view.frame.height != viewHeight {
             self.view.frame.origin.y += self.view.frame.height - viewHeight
             self.view.frame.size.height = viewHeight
@@ -115,32 +116,14 @@ extension SearchSettingViewController {
         
         searchTimeSelectButton.getBorderAndRadius()
         searchTimeSelectButton.setSelectedStatus()
-        publishedAtButton.getBorderAndRadius()
-        publishedAtButton.setSelectedStatus()
-        popularityButton.getBorderAndRadius()
-        popularityButton.setSelectedStatus()
-        relevancyButton.getBorderAndRadius()
-        relevancyButton.setSelectedStatus()
-
-        let sortBy = newsSettingManager.getSearchSortBy()
-        switch sortBy {
-        case .relevancy:
-            relevancyButton.isSelected = true
-        case .popularity:
-            popularityButton.isSelected = true
-        case .publishedAt:
-            publishedAtButton.isSelected = true
-        }
+        searchSortSelectButton.getBorderAndRadius()
+        searchSortSelectButton.setSelectedStatus()
         
-        searchTimeSelectButton.setTitle("預設", for: .normal)
         searchTimeSelectButton.showsMenuAsPrimaryAction = true
-        updateSearchTimeMenu(searchTime: newsSettingManager.getSearchTime())
-        searchTimeSelectButton.menu = UIMenu(options: .singleSelection, children: [
-            searchTimeActionNone,
-            searchTimeMenuHour,
-            searchTimeMenuDay,
-            searchTimeMenuMonth
-        ])
+        searchSortSelectButton.showsMenuAsPrimaryAction = true
+        updateButtonTitle(searchTime: newsSettingManager.getSearchTime(), searchSortBy: newsSettingManager.getSearchSortBy())
+        searchTimeSelectButton.menu = searchTimeMenu
+        searchSortSelectButton.menu = sortMenu
     }
 }
 
@@ -164,18 +147,14 @@ extension SearchSettingViewController: UIPickerViewDelegate, UIPickerViewDataSou
 
 // MARK: Button Action
 extension SearchSettingViewController {
-    // 棄用 -> searchTime
-    @IBAction func allSelectClick(_ sender: UIButton) {
-        if searchTimeSelectButton.isSelected {
-            print("allSelect")
-            return
+    func updateButtonTitle(searchTime: SearchTime? = nil, searchSortBy: SearchSortBy? = nil) {
+        if let searchTime {
+            searchTimeSelectButton.setTitle(searchTime.name, for: .normal)
         }
-        sender.isSelected = !sender.isSelected // 切換選中狀態
-        newsSettingManager.updateSettingStorage(data: [SearchIn.all])
-    }
-    
-    func updateSearchTimeMenu(searchTime: SearchTime) {
-        searchTimeSelectButton.setTitle(searchTime.name, for: .normal)
+        
+        if let searchSortBy {
+            searchSortSelectButton.setTitle(searchSortBy.chineseName, for: .normal)
+        }
     }
 
     @IBAction func searchInSelectClick(_ sender: UIButton) {
@@ -187,25 +166,5 @@ extension SearchSettingViewController {
             newsSettingManager.updateSettingStorage(data: searchInValue)
             sender.isSelected = !sender.isSelected // 切換選中狀態
         }
-    }
-
-    @IBAction func sortByButtonClick(_ sender: UIButton) {
-        relevancyButton.isSelected = false
-        popularityButton.isSelected = false
-        publishedAtButton.isSelected = false
-        switch sender {
-        case relevancyButton:
-            searchSortBy = .relevancy
-            newsSettingManager.updateSettingStorage(data: SearchSortBy.relevancy)
-        case popularityButton:
-            searchSortBy = .popularity
-            newsSettingManager.updateSettingStorage(data: SearchSortBy.popularity)
-        case publishedAtButton:
-            searchSortBy = .publishedAt
-            newsSettingManager.updateSettingStorage(data: SearchSortBy.publishedAt)
-        default:
-            break
-        }
-        sender.isSelected = !sender.isSelected
     }
 }
