@@ -70,12 +70,13 @@ extension APIManager {
     static func searchNews(query: String, language: String, completion: @escaping (Result<NewsAPIProtobufResponse, Error>) -> Void) {
         let language = newsSettingManager.getSearchLanguage().rawValue
         let searchTime = newsSettingManager.getSearchTime().apiParameter
-        APIManager.DataRequest(router: NewsRouter.searchNews(type: "search", query: query, language: language, searchTime: searchTime), completion: completion)
+        let sort = newsSettingManager.getSearchSortBy().rawValue
+        APIManager.DataRequest(router: NewsRouter.searchNews(type: "search", query: query, language: language, searchTime: searchTime, sortBy: sort), completion: completion)
     }
 }
 
 enum NewsRouter: APIClientConfig {
-    case searchNews(type: String, query: String, language: String, searchTime: String)
+    case searchNews(type: String, query: String, language: String, searchTime: String, sortBy: String)
     case topHeadlines(type: String,country: String, category: String)
     
     static var apiDomain: APIDomainEnum = .prod
@@ -120,11 +121,12 @@ enum NewsRouter: APIClientConfig {
     
     var queryParameter: [URLQueryItem]? {
         switch self {
-        case .searchNews(let type, let query, let language, let searchTime):
+        case .searchNews(let type, let query, let language, let searchTime, let searchSort):
             let queryItems = [URLQueryItem(name: QueryKey.type, value: type),
                               URLQueryItem(name: QueryKey.q, value: query),
                               URLQueryItem(name: QueryKey.country, value: language),
-                              URLQueryItem(name: QueryKey.searchTime, value: searchTime)]
+                              URLQueryItem(name: QueryKey.searchTime, value: searchTime),
+                              URLQueryItem(name: QueryKey.searchSort, value: searchSort)]
             return queryItems
             
         case .topHeadlines(let type, country: let country, let category):
@@ -151,6 +153,7 @@ struct QueryKey {
     static let category = "category"
     static let type = "type"
     static let searchTime = "searchTime"
+    static let searchSort = "searchSort"
 }
 
 protocol APIClientConfig {

@@ -50,7 +50,7 @@ class NewsSettingManager {
         if let sortBy = userDefaults.getCodableObject(SearchSortBy.self, with: UserdefaultKey.settingSearchSortBy.rawValue) {
             return sortBy
         } else {
-            return .publishedAt
+            return .none
         }
     }()
     

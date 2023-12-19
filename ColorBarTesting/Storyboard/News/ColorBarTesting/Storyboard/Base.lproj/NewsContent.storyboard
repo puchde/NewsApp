@@ -137,7 +137,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前無資料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kQ-P5-xQ8">
-                                        <rect key="frame" x="26" y="402" width="338" height="40"/>
+                                        <rect key="frame" x="95" y="402" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="GL1-p5-PWR"/>
                                         </constraints>
@@ -146,7 +146,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noNews" translatesAutoresizingMaskIntoConstraints="NO" id="7WK-Nu-3Ye">
-                                        <rect key="frame" x="26" y="282" width="338" height="120"/>
+                                        <rect key="frame" x="95" y="282" width="200" height="120"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -536,23 +536,20 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BxJ-ik-Zh0">
-                                <rect key="frame" x="25" y="131" width="340" height="34.333333333333343"/>
+                                <rect key="frame" x="35" y="131" width="320" height="34.333333333333343"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVz-hT-8fj">
-                                        <rect key="frame" x="0.0" y="0.0" width="340" height="34.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="34.333333333333336"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <color key="tintColor" systemColor="secondaryLabelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="全部內容"/>
-                                        <connections>
-                                            <action selector="allSelectClick:" destination="Chb-le-6Yh" eventType="touchUpInside" id="v19-Fe-EOf"/>
-                                        </connections>
                                     </button>
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zrP-V1-t4Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="340" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bem-xn-zkV">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="96.666666666666671" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                 <state key="normal" title="Button"/>
@@ -562,7 +559,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ3-z8-1DS">
-                                                <rect key="frame" x="118.33333333333334" y="0.0" width="103.33333333333334" height="0.0"/>
+                                                <rect key="frame" x="111.66666666666666" y="0.0" width="96.666666666666657" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                 <state key="normal" title="Button"/>
@@ -572,7 +569,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSl-Qm-o1t">
-                                                <rect key="frame" x="236.66666666666671" y="0.0" width="103.33333333333334" height="0.0"/>
+                                                <rect key="frame" x="223.33333333333329" y="0.0" width="96.666666666666657" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                 <state key="normal" title="Button"/>
@@ -586,42 +583,19 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QtV-PW-EIq">
-                                <rect key="frame" x="25" y="374.66666666666669" width="340" height="34.333333333333314"/>
+                                <rect key="frame" x="35" y="526.33333333333337" width="320" height="34.333333333333371"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K75-90-bBI">
-                                        <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="34.333333333333336"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                        <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="相關度"/>
-                                        <connections>
-                                            <action selector="sortByButtonClick:" destination="Chb-le-6Yh" eventType="touchUpInside" id="8vz-kd-YHt"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZL5-Yx-S2O">
-                                        <rect key="frame" x="118.33333333333334" y="0.0" width="103.33333333333334" height="34.333333333333336"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                        <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="熱門排序"/>
-                                        <connections>
-                                            <action selector="sortByButtonClick:" destination="Chb-le-6Yh" eventType="touchUpInside" id="GZd-9T-Fsn"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUZ-5N-DmV">
-                                        <rect key="frame" x="236.66666666666671" y="0.0" width="103.33333333333334" height="34.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="34.333333333333336"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <color key="tintColor" systemColor="secondaryLabelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="最新排序"/>
-                                        <connections>
-                                            <action selector="sortByButtonClick:" destination="Chb-le-6Yh" eventType="touchUpInside" id="Bkc-ON-aTM"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋排序" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0h-Py-ueS">
-                                <rect key="frame" x="15" y="314.66666666666669" width="360" height="40"/>
+                                <rect key="frame" x="15" y="466.33333333333331" width="360" height="40"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="uyH-m6-S1B"/>
@@ -643,12 +617,13 @@
                             <constraint firstItem="QtV-PW-EIq" firstAttribute="top" secondItem="l0h-Py-ueS" secondAttribute="bottom" constant="20" id="1AQ-6v-84G"/>
                             <constraint firstItem="Hz5-47-Op1" firstAttribute="trailing" secondItem="OWz-Ja-mTi" secondAttribute="trailing" id="1tn-Bh-zd2"/>
                             <constraint firstItem="tIx-ME-LGb" firstAttribute="centerX" secondItem="bGr-ib-NBs" secondAttribute="centerX" id="8Z2-YR-UqV"/>
+                            <constraint firstItem="l0h-Py-ueS" firstAttribute="top" secondItem="PyT-8g-p38" secondAttribute="bottom" constant="15" id="Frs-JH-bBl"/>
                             <constraint firstItem="0yy-QX-VUd" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="15" id="Ifw-q0-lZ1"/>
                             <constraint firstItem="l0h-Py-ueS" firstAttribute="top" secondItem="tIx-ME-LGb" secondAttribute="bottom" constant="30" id="Iof-Bn-NAb"/>
                             <constraint firstItem="PyT-8g-p38" firstAttribute="trailing" secondItem="OWz-Ja-mTi" secondAttribute="trailing" id="MYY-K3-sQN"/>
                             <constraint firstItem="Hz5-47-Op1" firstAttribute="top" secondItem="OWz-Ja-mTi" secondAttribute="top" id="Rfe-uv-vht"/>
-                            <constraint firstItem="OWz-Ja-mTi" firstAttribute="trailing" secondItem="QtV-PW-EIq" secondAttribute="trailing" constant="25" id="VAI-EZ-Ccp"/>
-                            <constraint firstItem="BxJ-ik-Zh0" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="25" id="YZ4-Ee-Kn4"/>
+                            <constraint firstItem="OWz-Ja-mTi" firstAttribute="trailing" secondItem="QtV-PW-EIq" secondAttribute="trailing" constant="35" id="VAI-EZ-Ccp"/>
+                            <constraint firstItem="BxJ-ik-Zh0" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="35" id="YZ4-Ee-Kn4"/>
                             <constraint firstItem="o1L-Hl-Ys3" firstAttribute="top" secondItem="BxJ-ik-Zh0" secondAttribute="bottom" constant="30" id="ZkT-rs-78u"/>
                             <constraint firstItem="PyT-8g-p38" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" id="Zot-AF-AS0"/>
                             <constraint firstItem="Hz5-47-Op1" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" id="cdD-hh-DQi"/>
@@ -656,32 +631,27 @@
                             <constraint firstItem="l0h-Py-ueS" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="15" id="hH5-Zq-8mx"/>
                             <constraint firstItem="0yy-QX-VUd" firstAttribute="top" secondItem="BxJ-ik-Zh0" secondAttribute="bottom" constant="30" id="j62-tq-eEF"/>
                             <constraint firstItem="hWv-Kn-WB9" firstAttribute="top" secondItem="Hz5-47-Op1" secondAttribute="bottom" constant="15" id="jsy-Ko-dLa"/>
-                            <constraint firstItem="o1L-Hl-Ys3" firstAttribute="top" secondItem="QtV-PW-EIq" secondAttribute="bottom" constant="30" id="jun-D0-0xn"/>
                             <constraint firstItem="o1L-Hl-Ys3" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="15" id="mDJ-YS-ogH"/>
                             <constraint firstItem="BxJ-ik-Zh0" firstAttribute="centerX" secondItem="bGr-ib-NBs" secondAttribute="centerX" id="muJ-bT-HCS"/>
                             <constraint firstItem="BxJ-ik-Zh0" firstAttribute="top" secondItem="hWv-Kn-WB9" secondAttribute="bottom" constant="20" id="n1X-9y-BsS"/>
                             <constraint firstItem="OWz-Ja-mTi" firstAttribute="trailing" secondItem="o1L-Hl-Ys3" secondAttribute="trailing" constant="15" id="naX-nK-nUW"/>
                             <constraint firstItem="hWv-Kn-WB9" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="15" id="q8S-h1-Bzw"/>
                             <constraint firstItem="hWv-Kn-WB9" firstAttribute="trailing" secondItem="OWz-Ja-mTi" secondAttribute="trailing" constant="-15" id="xYu-iq-D1g"/>
-                            <constraint firstItem="OWz-Ja-mTi" firstAttribute="trailing" secondItem="BxJ-ik-Zh0" secondAttribute="trailing" constant="25" id="xdj-dG-VgP"/>
+                            <constraint firstItem="OWz-Ja-mTi" firstAttribute="trailing" secondItem="BxJ-ik-Zh0" secondAttribute="trailing" constant="35" id="xdj-dG-VgP"/>
                             <constraint firstItem="tIx-ME-LGb" firstAttribute="top" secondItem="0yy-QX-VUd" secondAttribute="bottom" constant="15" id="xeP-SR-tfs"/>
                             <constraint firstItem="PyT-8g-p38" firstAttribute="top" secondItem="o1L-Hl-Ys3" secondAttribute="bottom" id="y64-Kk-zV2"/>
-                            <constraint firstItem="QtV-PW-EIq" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="25" id="yVs-FN-c1Q"/>
+                            <constraint firstItem="QtV-PW-EIq" firstAttribute="leading" secondItem="OWz-Ja-mTi" secondAttribute="leading" constant="35" id="yVs-FN-c1Q"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="0yy-QX-VUd"/>
                                 <exclude reference="tIx-ME-LGb"/>
-                                <exclude reference="QtV-PW-EIq"/>
-                                <exclude reference="l0h-Py-ueS"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="pickerView" destination="PyT-8g-p38" id="pif-zb-DZK"/>
-                        <outlet property="popularityButton" destination="ZL5-Yx-S2O" id="A0e-WX-mDG"/>
-                        <outlet property="publishedAtButton" destination="dUZ-5N-DmV" id="gPP-4i-eIJ"/>
-                        <outlet property="relevancyButton" destination="K75-90-bBI" id="POg-Uh-s81"/>
+                        <outlet property="searchSortSelectButton" destination="dUZ-5N-DmV" id="gPP-4i-eIJ"/>
                         <outlet property="searchTimeSelectButton" destination="iVz-hT-8fj" id="ZuK-E7-dtw"/>
                     </connections>
                 </viewController>
@@ -974,25 +944,25 @@
         <image name="filemenu.and.selection" catalog="system" width="128" height="93"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="noNews" width="338" height="565"/>
+        <image name="noNews" width="200" height="300"/>
         <image name="text.line.first.and.arrowtriangle.forward" catalog="system" width="128" height="97"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -123,18 +123,15 @@ enum SearchIn: String, Codable {
 }
 
 enum SearchSortBy: String, Codable {
-    case relevancy
-    case popularity
     case publishedAt
+    case none
     
     var chineseName: String {
         switch self {
-        case .relevancy:
-            return R.string.localizable.relevancy()
-        case .popularity:
-            return R.string.localizable.popularity()
         case .publishedAt:
             return R.string.localizable.publishedAt()
+        case .none:
+            return R.string.localizable.settingDefault()
         }
     }
 }
