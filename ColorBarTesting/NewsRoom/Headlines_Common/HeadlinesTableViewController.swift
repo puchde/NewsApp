@@ -46,6 +46,7 @@ class HeadlinesTableViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setSearchNotification()
         setupLoadingView()
         loadNewsData()
         tableView.reloadData()
@@ -73,7 +74,7 @@ extension HeadlinesTableViewController {
         defaultCoverView.isUserInteractionEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollToTop), name: Notification.Name("\(displayMode) - ScrollToTop"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataAct), name: Notification.Name("ReloadNewsData"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataAct), name: Notification.Name("\(displayMode) - ReloadNewsData"), object: nil)
     }
     
     func loadCustomRefresh() {
@@ -113,9 +114,16 @@ extension HeadlinesTableViewController {
 extension HeadlinesTableViewController {
     func setDisappear() {
         if displayMode == .search {
-            NotificationCenter.default.removeObserver(self, name: Notification.Name("ReloadNewsData"), object: nil)
+            NotificationCenter.default.removeObserver(self, name: Notification.Name("\(displayMode) - ReloadNewsData"), object: nil)
+            print("setDisappear")
         }
         loadingCoverAction(start: false)
+    }
+
+    func setSearchNotification() {
+        if displayMode == .search {
+            NotificationCenter.default.addObserver(self, selector: #selector(reloadDataAct), name: Notification.Name("\(displayMode) - ReloadNewsData"), object: nil)
+        }
     }
 }
 
