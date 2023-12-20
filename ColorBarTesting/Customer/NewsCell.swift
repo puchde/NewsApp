@@ -24,6 +24,11 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var previewImage: UIImageView!
     
+    @IBOutlet weak var bottomInfoHeightConstraint: NSLayoutConstraint!
+    
+    let paragraphStyle = NSMutableParagraphStyle()
+    let publishedAtFormatter = DateFormatter()
+    
     var article: Article? {
         didSet {
             newsUrl = article!.url
@@ -58,7 +63,13 @@ class NewsCell: UITableViewCell {
     
     var newsDate: String = "" {
         didSet {
-            NewsDateLabel.text = newsDate
+            publishedAtFormatter.timeZone = TimeZone(identifier: "GMT")
+            if !newsDate.contains("\n"), let publishedDate = publishedAtFormatter.date(from: newsDate) {
+                publishedAtFormatter.timeZone = .current
+                newsDate = publishedAtFormatter.string(from: publishedDate)
+            }
+            NewsDateLabel.attributedText = NSAttributedString(string: newsDate, attributes: [.paragraphStyle: paragraphStyle])
+            bottomInfoHeightConstraint.constant = newsDate.contains("\n") ? 50 : 20
         }
     }
     
@@ -84,11 +95,14 @@ class NewsCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        paragraphStyle.lineSpacing = 5
+        paragraphStyle.alignment = .left
         updateMarkMenu()
     }
   
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        publishedAtFormatter.dateFormat = "yyyy-MM-dd HH:mm"
     }
     
     // code init
