@@ -183,6 +183,7 @@ extension HeadlinesTableViewController {
             } else {
                 loadingCoverAction(start: false)
                 self.tableView.refreshControl?.endRefreshing()
+                filterBlockedSource()
             }
         }
     }

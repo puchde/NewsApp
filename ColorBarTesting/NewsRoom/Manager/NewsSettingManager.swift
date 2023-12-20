@@ -8,6 +8,18 @@
 import Foundation
 
 class NewsSettingManager {
+    
+    static let shared = NewsSettingManager()
+
+    init() {
+        publishedAtFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        publishedAtFormatter.timeZone = TimeZone.current
+        publishedAtTransformFormatter.dateFormat = "yy-MM-dd"
+        publishedAtTransformFormatter.timeZone = TimeZone.current
+        tagFormatter.dateFormat = "MM/dd HH:mm"
+        tagFormatter.timeZone = TimeZone.current
+    }
+    
     //MARK: Common Setting
     private var country = {
         if let country = userDefaults.getCodableObject(CountryCode.self, with: UserdefaultKey.settingCountryCode.rawValue) {
@@ -69,6 +81,10 @@ class NewsSettingManager {
         }
     }
     
+    let publishedAtFormatter = DateFormatter()
+    let publishedAtTransformFormatter = DateFormatter()
+    let tagFormatter = DateFormatter()
+    
     // MARK: - Setting
     private var apiKey = {
         return userDefaults.string(forKey: UserdefaultKey.settingApiKey.rawValue)
@@ -88,9 +104,7 @@ class NewsSettingManager {
 
     //MARK: Display Mode
     private var displayMode: DisplayMode = .headline
-    
-    static let shared = NewsSettingManager()
-    
+        
     //MARK: Get Setting
     func getCountry() -> CountryCode {
         return country
@@ -253,9 +267,12 @@ class NewsSettingManager {
             }
         }
         var news = news
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yy-MM-dd HH:mm"
-        news.article.publishedAt = "🏷️ \(formatter.string(from: Date.now))"
+        if let publishedStr = news.article.publishedAt.split(separator: "\n").first,
+           let publishedDate = publishedAtFormatter.date(from: String(publishedStr)) {
+            news.article.publishedAt = "✏️ \(publishedAtTransformFormatter.string(from: publishedDate))\n🏷️ \(tagFormatter.string(from: Date.now))"
+        } else {
+            news.article.publishedAt = "✏️ \(publishedAtTransformFormatter.string(from: Date.now))\n🏷️ \(tagFormatter.string(from: Date.now))"
+            }
         newsMarkList.append(news)
     }
     
