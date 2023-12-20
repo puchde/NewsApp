@@ -11,9 +11,6 @@ import NVActivityIndicatorView
 import Toast
 import SwiftProtobuf
 
-protocol HeadlinesTableViewDelegate {
-    func reloadData()
-}
 
 class HeadlinesTableViewController: UIViewController {
     
@@ -29,23 +26,8 @@ class HeadlinesTableViewController: UIViewController {
     var articlesNumber = 0
     var selectNewsUrl = ""
     var isLoading = false
-    var dataPage = 1
-    var dataPageCount: Int {
-        switch displayMode {
-        case .headline:
-            return 20
-        case .search:
-            return 50
-        }
-    }
-    var needFresh = false
-    var newsCountry: CountryCode = newsSettingManager.getCountry() {
-        willSet {
-            if newValue != self.newsCountry {
-                needFresh = true
-            }
-        }
-    }
+    var newsCountry: CountryCode = newsSettingManager.getCountry()
+
     var searchQuery: String {
         get {
             newsSettingManager.getSearchQuery()
@@ -70,7 +52,7 @@ class HeadlinesTableViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        loadingCoverAction(start: false)
+        setDisappear()
     }
     
     deinit {
@@ -104,14 +86,16 @@ extension HeadlinesTableViewController {
     }
     
     func setupLoadingView() {
-        let centerY = self.parent?.view.center.y ?? self.view.center.y
-        loadingCover = NVActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (UIScreen.main.bounds.size.width / 2) - 50, y: centerY - 50), size: CGSize(width: 100, height: 100)), type: .ballRotateChase, color: traitCollection.userInterfaceStyle == .dark ? .white : .systemGray3)
-        self.view.addSubview(loadingCover!)
-        backgroundView = UIView(frame: tableView.frame)
-        backgroundView?.backgroundColor = .systemBackground
-        backgroundView?.addSubview(loadingCover!)
-        backgroundView?.isHidden = true
-        self.view.addSubview(backgroundView!)
+        if backgroundView == nil {
+            let centerY = self.parent?.view.center.y ?? self.view.center.y
+            loadingCover = NVActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (UIScreen.main.bounds.size.width / 2) - 50, y: centerY - 50), size: CGSize(width: 100, height: 100)), type: .ballRotateChase, color: traitCollection.userInterfaceStyle == .dark ? .white : .systemGray3)
+            self.view.addSubview(loadingCover!)
+            backgroundView = UIView(frame: tableView.frame)
+            backgroundView?.backgroundColor = .systemBackground
+            backgroundView?.addSubview(loadingCover!)
+            backgroundView?.isHidden = true
+            self.view.addSubview(backgroundView!)
+        }
     }
     
     func loadingCoverAction(start: Bool) {
@@ -125,20 +109,24 @@ extension HeadlinesTableViewController {
     }
 }
 
+//MARK: Disappear
+extension HeadlinesTableViewController {
+    func setDisappear() {
+        if displayMode == .search {
+            NotificationCenter.default.removeObserver(self, name: Notification.Name("ReloadNewsData"), object: nil)
+        }
+        loadingCoverAction(start: false)
+    }
+}
+
 //MARK: TableView Data
 extension HeadlinesTableViewController {
 
     @objc func reloadDataAct() {
-        switch displayMode {
-        case .headline:
-            updateReloadSetting()
-        case .search:
-            let searchString = newsSettingManager.getSearchQuery()
-            updateReloadSetting(searchString: searchString)
-        }
+        updateReloadSetting()
     }
 
-    func updateReloadSetting(searchString: String = "") {
+    func updateReloadSetting() {
         switch displayMode {
         case .headline:
             if newsCountry == newsSettingManager.getCountry() {
@@ -155,22 +143,18 @@ extension HeadlinesTableViewController {
             }
             break
         case .search:
-            newsSettingManager.updateSearchQuery(searchString)
             break
         }
-        dataPage = 1
-        needFresh = false
         articles.removeAll()
         loadNewsData()
     }
     
-    func loadNewsData(scrollingLoading: Bool = false) {
+    func loadNewsData() {
         if isLoading {
             print("Loading啦")
-            loadingCoverAction(start: true)
             return
         } else {
-            if (scrollingLoading && articles.count < articlesNumber) || articles.count == 0 {
+            if articles.count < articlesNumber || articles.count == 0 {
                 isLoading = true
                 
                 self.tableView.refreshControl?.endRefreshing()
@@ -224,12 +208,11 @@ extension HeadlinesTableViewController {
             } else {
                 self.view.makeToast("取得資料錯誤")
             }
-            self.isLoading = false
         case .failure(let failure):
             print(failure)
-            self.isLoading = false
             self.view.makeToast("取得資料失敗")
         }
+        self.isLoading = false
         self.tableView.reloadData()
     }
     
@@ -318,7 +301,7 @@ extension HeadlinesTableViewController {
         } else {
             if contentHeight != 0 && offsetY + screenHeight > (contentHeight) {
                 print("一半啦")
-                loadNewsData(scrollingLoading: true)
+                loadNewsData()
             }
         }
     }
