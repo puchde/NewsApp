@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HeadlinesDelegate {
+protocol HeadlinesDelegate: AnyObject {
     func updateClassify(page: Int)
 }
 
@@ -32,7 +32,7 @@ class HeadlinesPageViewController: UIPageViewController {
             }
         }
     }
-    var headlinesDelegate: HeadlinesDelegate?
+    weak var headlinesDelegate: HeadlinesDelegate?
     var tableVCs: [Int: HeadlinesTableViewController] = [:]
 
     override func viewDidLoad() {
