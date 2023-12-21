@@ -12,12 +12,7 @@ class NewsSettingManager {
     static let shared = NewsSettingManager()
 
     init() {
-        publishedAtFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        publishedAtFormatter.timeZone = TimeZone.current
-        publishedAtTransformFormatter.dateFormat = "yy-MM-dd"
-        publishedAtTransformFormatter.timeZone = TimeZone.current
-        tagFormatter.dateFormat = "MM/dd HH:mm"
-        tagFormatter.timeZone = TimeZone.current
+        
     }
     
     //MARK: Common Setting
@@ -80,10 +75,6 @@ class NewsSettingManager {
             }
         }
     }
-    
-    let publishedAtFormatter = DateFormatter()
-    let publishedAtTransformFormatter = DateFormatter()
-    let tagFormatter = DateFormatter()
     
     // MARK: - Setting
     private var apiKey = {
@@ -267,12 +258,7 @@ class NewsSettingManager {
             }
         }
         var news = news
-        if let publishedStr = news.article.publishedAt.split(separator: "\n").first,
-           let publishedDate = publishedAtFormatter.date(from: String(publishedStr)) {
-            news.article.publishedAt = "✏️ \(publishedAtTransformFormatter.string(from: publishedDate))\n🏷️ \(tagFormatter.string(from: Date.now))"
-        } else {
-            news.article.publishedAt = "✏️ \(publishedAtTransformFormatter.string(from: Date.now))\n🏷️ \(tagFormatter.string(from: Date.now))"
-            }
+        news.article.publishedAt = utils.getNewsCellDate(dateStr: news.article.publishedAt, isForMark: true)
         newsMarkList.append(news)
     }
     

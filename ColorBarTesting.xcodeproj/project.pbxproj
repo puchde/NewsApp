@@ -22,6 +22,7 @@
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
 		3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */; };
 		3FEC37E42B22F3E200BAFD84 /* SettingBlockedSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC37E32B22F3E200BAFD84 /* SettingBlockedSourceViewController.swift */; };
+		3FEE017C2B33CB0000FE327F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE017B2B33CB0000FE327F /* Utils.swift */; };
 		3FF0BF9B2B19B6AF00FC84D1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF0BF9A2B19B6AF00FC84D1 /* Toast */; };
 		3FF0BF9D2B19B91E00FC84D1 /* PrintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */; };
 		3FF491222B1864B300CB4B5D /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF491212B1864B300CB4B5D /* FLEX */; };
@@ -88,6 +89,7 @@
 		3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TableViewPreview.swift"; sourceTree = "<group>"; };
 		3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewProtocal.swift; sourceTree = "<group>"; };
 		3FEC37E32B22F3E200BAFD84 /* SettingBlockedSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBlockedSourceViewController.swift; sourceTree = "<group>"; };
+		3FEE017B2B33CB0000FE327F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintExtension.swift; sourceTree = "<group>"; };
 		3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		E7061D0929DB78F100405544 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				E71ED275292696FF00A39F3C /* LocalFileManager.swift */,
 				E73EB51D2933627E00D1F74C /* MLModelManager.swift */,
+				3FEE017B2B33CB0000FE327F /* Utils.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				E74D1FD32930B0270010EE8D /* SheetViewController.swift in Sources */,
 				E75C2F6429D9F65400FBC7B4 /* NewsAPIResponse.swift in Sources */,
 				E74A0AE929DF188E00585387 /* HeadlinesPageViewController.swift in Sources */,
+				3FEE017C2B33CB0000FE327F /* Utils.swift in Sources */,
 				E774013A29E5C2A40052C577 /* UIButtonExtension.swift in Sources */,
 				E77EF8D42906A35600EE94E6 /* AppDelegate.swift in Sources */,
 				E7061D0A29DB78F100405544 /* WebViewViewController.swift in Sources */,
