@@ -79,7 +79,7 @@ extension HeadlinesTableViewController {
     
     func loadCustomRefresh() {
         customFreshControl = UIView(frame: freshControl.frame)
-        let arrowUpImage = UIImageView(frame: CGRect(x: freshControl.frame.width * (0.5 - 0.1), y: freshControl.frame.width * 0.2, width: freshControl.frame.width * 0.2, height: freshControl.frame.width * 0.2))
+        let arrowUpImage = UIImageView(frame: CGRect(x: self.view.frame.width * (0.5 - 0.1), y: freshControl.frame.width * 0.2, width: self.view.frame.width * 0.2, height: self.view.frame.width * 0.2))
         arrowUpImage.image = UIImage(systemName: "arrow.clockwise")?.withTintColor(.systemGray3, renderingMode: .alwaysOriginal)
         customFreshControl.addSubview(arrowUpImage)
         freshControl.addSubview(customFreshControl)
@@ -290,7 +290,9 @@ extension HeadlinesTableViewController: NewsTableViewProtocal {
 extension HeadlinesTableViewController: NewsCellDelegate {
     func reloadCell() {
         filterBlockedSource()
-        tableView.reloadData()
+        if let indexPaths = tableView.indexPathsForVisibleRows {
+            tableView.reloadRows(at: indexPaths, with: .none)
+        }
     }
 }
 
