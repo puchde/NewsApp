@@ -11,6 +11,7 @@ import CloudKit
 let localFileManager = LocalFileManager.shared
 let mlModelManager = MLModelManager.shared
 let newsSettingManager = NewsSettingManager.shared
+let utils = Utils.shared
 let userDefaults = UserDefaults.standard
 let cloudDefaults = NSUbiquitousKeyValueStore.default
 

@@ -330,7 +330,7 @@ extension MarkListViewController {
     func reloadNewsList() {
         if let searchString = searchBar.searchTextField.text, !searchString.isEmpty {
             newsList = newsSettingManager.getNewsMarkList().filter({
-                $0.article.author?.contains(searchString) ?? false || $0.article.content?.contains(searchString) ?? false || $0.article.description?.contains(searchString) ?? false || $0.article.title.contains(searchString)
+                $0.article.author?.contains(searchString) ?? false || $0.article.content?.contains(searchString) ?? false || $0.article.description?.contains(searchString) ?? false || $0.article.title.contains(searchString) || $0.article.publishedAt.contains(searchString)
             })
         } else {
             newsList = newsSettingManager.getNewsMarkList()
