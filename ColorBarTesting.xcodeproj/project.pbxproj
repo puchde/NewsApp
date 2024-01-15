@@ -17,6 +17,7 @@
 		3F3E88B82B2019F700883A55 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3E88B72B2019F700883A55 /* RswiftLibrary */; };
 		3F3E88BA2B2019F700883A55 /* rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3E88B92B2019F700883A55 /* rswift */; };
 		3F3E88C12B201C9D00883A55 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F3E88C32B201C9D00883A55 /* Localizable.strings */; };
+		3FB3768E2B55203C006CEDFD /* UIView+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3768D2B55203C006CEDFD /* UIView+Animate.swift */; };
 		3FD2630B2B26F35400F5E962 /* UIViewController+Icloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */; };
 		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
@@ -84,6 +85,7 @@
 		3F3E88CF2B205AA300883A55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		3F3E88D02B205AA400883A55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3F3E88D12B205AA400883A55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3FB3768D2B55203C006CEDFD /* UIView+Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animate.swift"; sourceTree = "<group>"; };
 		3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Icloud.swift"; sourceTree = "<group>"; };
 		3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
 		3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TableViewPreview.swift"; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */,
 				3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */,
 				3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */,
+				3FB3768D2B55203C006CEDFD /* UIView+Animate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				E7DDB4EA290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel in Sources */,
 				E75555C1292A97B400E35365 /* FileType.swift in Sources */,
 				E7528DEA29E28C9B001169F0 /* SearchContentViewController.swift in Sources */,
+				3FB3768E2B55203C006CEDFD /* UIView+Animate.swift in Sources */,
 				E75555C4292A980300E35365 /* UrlExtention.swift in Sources */,
 				3F079BFF2B16E4AF0076DA20 /* APIDomainEnum.swift in Sources */,
 				E77865DB29DC344500F5ED1C /* NewsSettingManager.swift in Sources */,

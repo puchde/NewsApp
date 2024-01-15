@@ -79,8 +79,9 @@ extension HeadlinesTableViewController {
     
     func loadCustomRefresh() {
         customFreshControl = UIView(frame: freshControl.frame)
-        let arrowUpImage = UIImageView(frame: CGRect(x: self.view.frame.width * (0.5 - 0.1), y: freshControl.frame.width * 0.2, width: self.view.frame.width * 0.2, height: self.view.frame.width * 0.2))
-        arrowUpImage.image = UIImage(systemName: "arrow.clockwise")?.withTintColor(.systemGray3, renderingMode: .alwaysOriginal)
+        let arrowUpImage = UIImageView(frame: CGRect(x: 0, y: freshControl.frame.width * 0.2, width: self.view.frame.width, height: self.view.frame.width * 0.2))
+        arrowUpImage.image = UIImage(systemName: "arrow.triangle.2.circlepath")?.withTintColor(.systemGray3, renderingMode: .alwaysOriginal)
+        arrowUpImage.contentMode = .scaleAspectFit
         customFreshControl.addSubview(arrowUpImage)
         freshControl.addSubview(customFreshControl)
         freshControl.clipsToBounds = true
@@ -330,9 +331,23 @@ extension HeadlinesTableViewController {
         let viewTranslationY = -viewHeight < offsetY ? offsetY : -viewHeight
         let isSwipe = offsetY == 0.0 ? false : true
         let arrowView = self.customFreshControl.subviews[0]
-        UIView.animate(withDuration: 0.15) {
-            arrowView.transform = CGAffineTransform(translationX: 0, y: isSwipe ? viewTranslationY : 0)
-            self.customFreshControl.subviews[0].alpha = isSwipe ? 1 : 0
+        
+        if isSwipe {
+            UIView.animate(withDuration: 0.15) {
+                arrowView.transform = CGAffineTransform(translationX: 0, y: viewTranslationY)
+                self.customFreshControl.subviews[0].alpha = 1
+            }
+            
+            if arrowView.layer.animationKeys() == nil {
+                arrowView.startRotationAnimate()
+            }
+        } else if offsetY == 0 {
+            UIView.animate(withDuration: 0.15) {
+                arrowView.transform = CGAffineTransform(translationX: 0, y: 0)
+                self.customFreshControl.subviews[0].alpha = 0
+            } completion: { _ in
+                arrowView.removeAnimate()
+            }
         }
     }
 }
