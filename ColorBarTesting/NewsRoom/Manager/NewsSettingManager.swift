@@ -95,6 +95,17 @@ class NewsSettingManager {
 
     //MARK: Display Mode
     private var displayMode: DisplayMode = .headline
+    
+    //MARK: Auto Reload
+    private var reloadDate: Date?
+    
+    func getReloadDate() -> Date? {
+        return reloadDate
+    }
+    
+    func updateReloadDate(date: Date) {
+        reloadDate = date
+    }
         
     //MARK: Get Setting
     func getCountry() -> CountryCode {

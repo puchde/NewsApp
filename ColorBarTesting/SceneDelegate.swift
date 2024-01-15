@@ -40,6 +40,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
         checkIcloudState()
+        
+        //MARK: 背景到前景時判斷reload
+        if let reloadDate = newsSettingManager.getReloadDate() {
+            if reloadDate.addingTimeInterval(60 * 20) < Date() {
+                print("back reload")
+                NotificationCenter.default.post(name: Notification.Name("\(DisplayMode.headline) - ReloadNewsData"), object: nil)
+                newsSettingManager.updateReloadDate(date: Date())
+            }
+        } else {
+            newsSettingManager.updateReloadDate(date: Date())
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
