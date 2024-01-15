@@ -41,7 +41,7 @@ struct Utils {
         if isForMark {
             // Mark
             if let publishedStr = dateStr.split(separator: "\n").first,
-               let publishedStr = publishedStr.split(separator: "✏️ ").first,
+               let publishedStr = publishedStr.components(separatedBy: "✏️ ").first,
                let publishedDate = publishedAtTransformFormatter.date(from: String(publishedStr)) {
                 // MarkList Cell進行變更Tag
                 dateStr = "✏️ \(publishedAtTransformFormatter.string(from: publishedDate))\n🏷️ \(tagFormatter.string(from: Date.now))"

@@ -48,7 +48,7 @@ extension ViewController {
     func initStep() {
         tableView.delegate = self
         tableView.dataSource = self
-        mlModelManager.changeModel(name: TabbarColorClassifier1027().model.configuration.modelDisplayName!, model: TabbarColorClassifier1027().model)
+//        mlModelManager.changeModel(name: TabbarColorClassifier1027().model.configuration.modelDisplayName!, model: TabbarColorClassifier1027().model)
         updateModelTitle()
         if localFileManager.urlForUbiquityContainerIdentifier() != nil {
             documentPicker.delegate = self

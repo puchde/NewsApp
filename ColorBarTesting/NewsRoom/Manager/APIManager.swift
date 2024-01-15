@@ -16,13 +16,27 @@ struct APIManager {
     static func DataRequest<T:Decodable>(router: APIClientConfig, completion: @escaping (Result<T, Error>)->Void) {
         var request = URLRequest(url: URL(string: router.path)!)
         request.httpMethod = router.httpMethod
+
         if let query = router.queryParameter {
             let filterQuery = query.filter { item in
                 !item.value!.isEmpty
             }
-            request.url?.append(queryItems: filterQuery)
+
+            if #available(iOS 16.0, *) {
+                request.url?.append(queryItems: filterQuery)
+            } else {
+                if let url = request.url {
+                    var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+                    components?.queryItems = filterQuery.map { URLQueryItem(name: $0.name, value: $0.value) }
+
+                    if let updatedURL = components?.url {
+                        request.url = updatedURL
+                    }
+                }
+
+            }
         }
-        
+
         // 檢查是否已經有相同的 request 正在進行
         if self.shared.requests[request] != nil {
              print("Request in progress: \(router.path)")
