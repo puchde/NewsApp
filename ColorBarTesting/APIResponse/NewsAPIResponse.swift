@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: everything API, Headlines API
 struct NewsAPIResponse: Codable {
@@ -42,6 +43,38 @@ struct NewsAPIProtobufResponse: Codable {
 
 //MARK: 
 struct MarkedArticle: Codable, Equatable {
-    let mark: Mark
+    static func == (lhs: MarkedArticle, rhs: MarkedArticle) -> Bool {
+        lhs.article == rhs.article
+    }
+    
+    let mark: NewsMark
     var article: Article
+}
+
+enum NewsMark: Codable, CaseIterable {
+    case critical
+    case criticality
+    case significantCriticality
+
+    var color: UIColor {
+        switch self {
+        case .critical:
+            return UIColor(red: 1.0, green: 0.8, blue: 0.1, alpha: 1)
+        case .criticality:
+            return UIColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 1)
+        case .significantCriticality:
+            return UIColor(red: 0.863, green: 0.078, blue: 0.235, alpha: 1)
+        }
+    }
+
+    var point: Int {
+        switch self {
+        case .critical:
+            return 3
+        case .criticality:
+            return 2
+        case .significantCriticality:
+            return 1
+        }
+    }
 }

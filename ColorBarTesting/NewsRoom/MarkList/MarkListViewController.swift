@@ -19,9 +19,9 @@ class MarkListViewController: UIViewController, SFSafariViewControllerDelegate {
             newsList.sort {
                 return $0.mark.point < $1.mark.point
             }
-            normalList = newsList.filter({$0.mark.point == Mark.critical.point})
-            attentionList = newsList.filter({$0.mark.point == Mark.criticality.point})
-            importantList = newsList.filter({$0.mark.point == Mark.significantCriticality.point})
+            normalList = newsList.filter({$0.mark.point == NewsMark.critical.point})
+            attentionList = newsList.filter({$0.mark.point == NewsMark.criticality.point})
+            importantList = newsList.filter({$0.mark.point == NewsMark.significantCriticality.point})
         }
     }
     var normalList = [MarkedArticle]()
@@ -121,21 +121,21 @@ extension MarkListViewController {
         switch section {
         case 0:
             label.text = R.string.localizable.important()
-            headerView.backgroundColor = Mark.significantCriticality.color
+            headerView.backgroundColor = NewsMark.significantCriticality.color
             let tap = UITapGestureRecognizer(target: self, action: #selector(toggleImportantListHide))
             tap.delegate = self
             backView.addGestureRecognizer(tap)
             return importantList.isEmpty ? nil : backView
         case 1:
             label.text = R.string.localizable.attention()
-            headerView.backgroundColor = Mark.criticality.color
+            headerView.backgroundColor = NewsMark.criticality.color
             let tap = UITapGestureRecognizer(target: self, action: #selector(toggleAttentionListHide))
             tap.delegate = self
             backView.addGestureRecognizer(tap)
             return attentionList.isEmpty ? nil : backView
         case 2:
             label.text = R.string.localizable.normal()
-            headerView.backgroundColor = Mark.critical.color
+            headerView.backgroundColor = NewsMark.critical.color
             let tap = UITapGestureRecognizer(target: self, action: #selector(togglenormalListHide))
             tap.delegate = self
             backView.addGestureRecognizer(tap)
@@ -149,7 +149,7 @@ extension MarkListViewController {
 //MARK: TableView
 extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Mark.allCases.count
+        return NewsMark.allCases.count
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

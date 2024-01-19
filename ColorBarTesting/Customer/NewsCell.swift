@@ -39,7 +39,7 @@ class NewsCell: UITableViewCell {
         }
     }
     var isMark = false
-    var mark: Mark?
+    var mark: NewsMark?
     var markedArticle: MarkedArticle? {
         get {
             guard let mark = mark, let article = article else { return nil }
@@ -75,15 +75,15 @@ class NewsCell: UITableViewCell {
 
     var delegate: NewsCellDelegate?
 
-    lazy var criticalMenuItem = UIAction(title: R.string.localizable.normal(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.critical.color, renderingMode: .alwaysOriginal)) { _ in
+    lazy var criticalMenuItem = UIAction(title: R.string.localizable.normal(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(NewsMark.critical.color, renderingMode: .alwaysOriginal)) { _ in
         self.changeMark(mark: .critical)
     }
 
-    lazy var criticalityMenuItem = UIAction(title: R.string.localizable.attention(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.criticality.color, renderingMode: .alwaysOriginal)) { _ in
+    lazy var criticalityMenuItem = UIAction(title: R.string.localizable.attention(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(NewsMark.criticality.color, renderingMode: .alwaysOriginal)) { _ in
         self.changeMark(mark: .criticality)
     }
 
-    lazy var significantCriticalityMenuItem = UIAction(title: R.string.localizable.important(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.significantCriticality.color, renderingMode: .alwaysOriginal)) { _ in
+    lazy var significantCriticalityMenuItem = UIAction(title: R.string.localizable.important(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(NewsMark.significantCriticality.color, renderingMode: .alwaysOriginal)) { _ in
         self.changeMark(mark: .significantCriticality)
     }
 
@@ -205,7 +205,7 @@ class NewsCell: UITableViewCell {
         markButton.menu = UIMenu(children: menuActions)
     }
 
-    func changeMark(mark: Mark) {
+    func changeMark(mark: NewsMark) {
         self.mark = mark
         guard let markedArticle = self.markedArticle else { return }
         newsSettingManager.updateNewsMarkList(markedArticle)

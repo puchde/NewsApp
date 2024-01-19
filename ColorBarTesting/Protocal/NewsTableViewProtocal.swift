@@ -25,18 +25,18 @@ extension NewsTableViewProtocal {
 
     func makePreviewMenu(indexPath: IndexPath) -> UIMenu {
         if let newsCell = newsTableView.cellForRow(at: indexPath) as? NewsCell {
-            let markIcon = UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.critical.color, renderingMode: .alwaysOriginal)
+            let markIcon = UIImage(systemName: "bookmark.fill")?.withTintColor(NewsMark.critical.color, renderingMode: .alwaysOriginal)
 
             var menuActions = [UIMenuElement]()
-            var criticalMenuItem = UIAction(title: R.string.localizable.normal(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.critical.color, renderingMode: .alwaysOriginal)) { _ in
+            var criticalMenuItem = UIAction(title: R.string.localizable.normal(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(NewsMark.critical.color, renderingMode: .alwaysOriginal)) { _ in
                 newsCell.changeMark(mark: .critical)
             }
 
-            var criticalityMenuItem = UIAction(title: R.string.localizable.attention(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.criticality.color, renderingMode: .alwaysOriginal)) { _ in
+            var criticalityMenuItem = UIAction(title: R.string.localizable.attention(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(NewsMark.criticality.color, renderingMode: .alwaysOriginal)) { _ in
                 newsCell.changeMark(mark: .criticality)
             }
 
-            var significantCriticalityMenuItem = UIAction(title: R.string.localizable.important(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(Mark.significantCriticality.color, renderingMode: .alwaysOriginal)) { _ in
+            var significantCriticalityMenuItem = UIAction(title: R.string.localizable.important(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(NewsMark.significantCriticality.color, renderingMode: .alwaysOriginal)) { _ in
                 newsCell.changeMark(mark: .significantCriticality)
             }
 

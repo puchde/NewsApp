@@ -175,7 +175,7 @@ class NewsSettingManager {
         return newsMarkList
     }
 
-    func isMarkedArticleTuple(news: Article) -> (isMark: Bool, mark: Mark?) {
+    func isMarkedArticleTuple(news: Article) -> (isMark: Bool, mark: NewsMark?) {
         if let markedArticle = newsMarkList.first(where: { article in
             article.article == news
         }) {
