@@ -22,4 +22,8 @@ enum UserdefaultKey: String {
     //MARK: iCloud use
     case icloudMarkList = "icloudMarkList"
     case icloudMarkListDate = "icloudMarkListDate"
+    
+    //MARK: Widget use
+    case widgetCountry = "widgetCountry"
+    case widgetCategory = "widgetCategory"
 }
