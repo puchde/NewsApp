@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum UserdefaultsGroup: String {
+    case widgetShared = "group.com.widgetSettingData"
+}
+
 enum UserdefaultKey: String {
     case settingCountryCode = "settingCountryCode"
     case settingCategory = "settingCategory"
