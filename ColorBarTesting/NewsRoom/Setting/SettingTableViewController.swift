@@ -13,6 +13,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
     
     let settingSections = [R.string.localizable.settingAppVersionInfo(),
                            R.string.localizable.settingOption(),
+                           "widgetOptions",
                            R.string.localizable.settingOther()
     ]
     let appInfos = [R.string.localizable.settingAppVersion(),]
@@ -20,6 +21,8 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
                       R.string.localizable.settingCleanMarkedNews(),
                       R.string.localizable.settingBlockPublisherSources(),
                       R.string.localizable.settingICloudBackup()]
+    
+    let widgetOptions = ["widget Country / Category"]
     let otherOptions = [R.string.localizable.settingWriteComment(),
                         R.string.localizable.settingSendEmail()]
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
@@ -59,6 +62,8 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         case 1:
             return appOptions.count
         case 2:
+            return widgetOptions.count
+        case 3:
             return otherOptions.count
         default:
             return 0
@@ -75,6 +80,8 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         case 1:
             appOptions[indexPath.row]
         case 2:
+            widgetOptions[indexPath.row]
+        case 3:
             otherOptions[indexPath.row]
         default:
             ""
@@ -97,8 +104,11 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         case (1, 3):
             content.image = UIImage(systemName: "checkmark.icloud")
         case (2, 0):
+            content.image = UIImage(systemName: "checkmark.icloud")
+            cell.accessoryView = getAccessLabel(desc: "cccc")
+        case (3, 0):
             content.image = UIImage(systemName: "star")
-        case (2, 1):
+        case (3, 1):
             content.image = UIImage(systemName: "envelope")
         default:
             break
@@ -183,8 +193,10 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
                 }
                 self.presentAlert(title: R.string.localizable.settingIcloudToSettingTitle(), message: R.string.localizable.settingIcloudToSettingDesc(), action: [cancelAction, settingsAction])
             }
-
-        case (2, 1):
+            
+        case (2, 0):
+            print("category")
+        case (3, 1):
             presentMailVC()
         default:
             return

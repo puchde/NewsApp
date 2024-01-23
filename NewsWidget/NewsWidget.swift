@@ -38,7 +38,7 @@ struct Provider: TimelineProvider {
         // Entry設定各時間所顯示內容
         Task{
             var entries: [NewsEntry] = []
-            var entryDate = Calendar.current.date(byAdding: .second, value: 15, to: Date())!
+            var entryDate = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
             var news: [Article] = []
 //            if let userDefaults = UserDefaults(suiteName: "group.com.widgetSettingData"),
 //               let country = userDefaults.string(forKey: UserdefaultKey.widgetCountry.rawValue),
@@ -58,7 +58,6 @@ struct Provider: TimelineProvider {
                 entries.append(entry)
                 let timeline = Timeline(entries: entries, policy: .atEnd)
                 completion(timeline)
-                WidgetCenter.shared.reloadAllTimelines()
             }
         }
     }
