@@ -38,6 +38,7 @@
 		3FE26B0B2B566A2D0006DC60 /* NewsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3FE26AF92B566A2A0006DC60 /* NewsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01C2B0370B70078D08F /* UIViewController+TableViewPreview.swift */; };
 		3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */; };
+		3FEABCA82B6113320083CEE2 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 3FEABCA72B6113320083CEE2 /* SwiftProtobuf */; };
 		3FEC37E42B22F3E200BAFD84 /* SettingBlockedSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC37E32B22F3E200BAFD84 /* SettingBlockedSourceViewController.swift */; };
 		3FEE017C2B33CB0000FE327F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE017B2B33CB0000FE327F /* Utils.swift */; };
 		3FF0BF9B2B19B6AF00FC84D1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF0BF9A2B19B6AF00FC84D1 /* Toast */; };
@@ -186,6 +187,7 @@
 				3FE26AFE2B566A2A0006DC60 /* SwiftUI.framework in Frameworks */,
 				3FE26AFC2B566A2A0006DC60 /* WidgetKit.framework in Frameworks */,
 				3F747A652B5A4A8600DC4B08 /* RswiftLibrary in Frameworks */,
+				3FEABCA82B6113320083CEE2 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +460,7 @@
 			name = NewsWidgetExtension;
 			packageProductDependencies = (
 				3F747A642B5A4A8600DC4B08 /* RswiftLibrary */,
+				3FEABCA72B6113320083CEE2 /* SwiftProtobuf */,
 			);
 			productName = NewsWidgetExtension;
 			productReference = 3FE26AF92B566A2A0006DC60 /* NewsWidgetExtension.appex */;
@@ -1080,6 +1083,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F3E88B62B2019F700883A55 /* XCRemoteSwiftPackageReference "R" */;
 			productName = RswiftLibrary;
+		};
+		3FEABCA72B6113320083CEE2 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3522562B1EF7FD00457346 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
 		};
 		3FF0BF9A2B19B6AF00FC84D1 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
