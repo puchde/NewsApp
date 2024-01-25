@@ -22,7 +22,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
                       R.string.localizable.settingBlockPublisherSources(),
                       R.string.localizable.settingICloudBackup()]
     
-    let widgetOptions = ["widget Country / Category"]
+    let widgetOptions = ["Widget Category"]
     let otherOptions = [R.string.localizable.settingWriteComment(),
                         R.string.localizable.settingSendEmail()]
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
@@ -72,7 +72,6 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath)
-        
         var content = cell.defaultContentConfiguration()
         content.text = switch indexPath.section {
         case 0:
@@ -105,7 +104,34 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             content.image = UIImage(systemName: "checkmark.icloud")
         case (2, 0):
             content.image = UIImage(systemName: "checkmark.icloud")
-            cell.accessoryView = getAccessLabel(desc: "cccc")
+            let widgetCategory = newsSettingManager.getGroupCategory().chineseName
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width / 3, height: 100))
+            button.setTitleColor(.secondaryLabel, for: .normal)
+            button.setTitle(widgetCategory, for: .normal)
+            button.contentHorizontalAlignment = .right
+            button.showsMenuAsPrimaryAction = true
+            button.menu = UIMenu(title: R.string.localizable.haedlineLocation(), options: [.singleSelection], children: [
+                getActions(category: .general),
+                getActions(category: .business),
+                getActions(category: .health),
+                getActions(category: .science),
+                getActions(category: .technology),
+                getActions(category: .sports),
+                getActions(category: .entertainment)
+            ])
+            
+            func updateWidgetCategory(category: Category) {
+                newsSettingManager.updateGroupCategory(category: category)
+                button.setTitle(category.chineseName, for: .normal)
+            }
+            
+            func getActions(category: Category) -> UIAction {
+                return UIAction(title: category.chineseName, handler: { _ in
+                    updateWidgetCategory(category: category)
+                })
+            }
+            
+            cell.accessoryView = button
         case (3, 0):
             content.image = UIImage(systemName: "star")
         case (3, 1):

@@ -41,6 +41,7 @@
 		3FEABCA82B6113320083CEE2 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 3FEABCA72B6113320083CEE2 /* SwiftProtobuf */; };
 		3FEC37E42B22F3E200BAFD84 /* SettingBlockedSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC37E32B22F3E200BAFD84 /* SettingBlockedSourceViewController.swift */; };
 		3FEE017C2B33CB0000FE327F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE017B2B33CB0000FE327F /* Utils.swift */; };
+		3FEFAFC82B6206F9000E3C08 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E706448529EACBF5009F8C64 /* UserDefaultsExtension.swift */; };
 		3FF0BF9B2B19B6AF00FC84D1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF0BF9A2B19B6AF00FC84D1 /* Toast */; };
 		3FF0BF9D2B19B91E00FC84D1 /* PrintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */; };
 		3FF491222B1864B300CB4B5D /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF491212B1864B300CB4B5D /* FLEX */; };
@@ -576,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FEFAFC82B6206F9000E3C08 /* UserDefaultsExtension.swift in Sources */,
 				3F7B63482B5A5CB5009BE0AF /* APIDomainEnum.swift in Sources */,
 				3F7B634C2B5A61CE009BE0AF /* UserDefaultsKeyEnum.swift in Sources */,
 				3F7B63472B5A5C8E009BE0AF /* WidgetAPIManager.swift in Sources */,

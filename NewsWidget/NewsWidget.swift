@@ -40,24 +40,16 @@ struct Provider: TimelineProvider {
             var entries: [NewsEntry] = []
             var entryDate = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
             var news: [Article] = []
-//            if let userDefaults = UserDefaults(suiteName: "group.com.widgetSettingData"),
-//               let country = userDefaults.string(forKey: UserdefaultKey.widgetCountry.rawValue),
-//               let category = userDefaults.string(forKey: UserdefaultKey.widgetCategory.rawValue) {
-//                await APIManager.topHeadlines(country: country, category: category) { result in
-//                    news = resultCompletion(result: result)
-//                }
-//            }
-            
-            // For Test
-            let country = CountryCode.JP.rawValue
-            let category = Category.health.rawValue
-            
-            APIManager.topHeadlines(country: country, category: category) { result in
-                news = resultCompletion(result: result)
-                let entry = NewsEntry(date: entryDate, news: news)
-                entries.append(entry)
-                let timeline = Timeline(entries: entries, policy: .atEnd)
-                completion(timeline)
+            if let userDefaults = UserDefaults(suiteName: UserdefaultsGroup.widgetShared.rawValue),
+               let country = userDefaults.getCodableObject(CountryCode.self, with: UserdefaultKey.widgetCountry.rawValue)?.rawValue,
+               let category = userDefaults.getCodableObject(Category.self, with: UserdefaultKey.widgetCategory.rawValue)?.rawValue {
+                APIManager.topHeadlines(country: country, category: category) { result in
+                    news = resultCompletion(result: result)
+                    let entry = NewsEntry(date: entryDate, news: news)
+                    entries.append(entry)
+                    let timeline = Timeline(entries: entries, policy: .atEnd)
+                    completion(timeline)
+                }
             }
         }
     }
