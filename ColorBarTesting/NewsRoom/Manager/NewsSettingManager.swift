@@ -34,6 +34,23 @@ class NewsSettingManager {
     
     private var searchPage = 1
     
+    //MARK: App Group
+    private var groupCountry = {
+        if let userdefaultGroup = userDefaultsWidget, let country = userdefaultGroup.getCodableObject(CountryCode.self, with: UserdefaultKey.widgetCountry.rawValue) {
+            return country
+        } else {
+            return .TW
+        }
+    }()
+    
+    private var groupCategory = {
+        if let userdefaultGroup = userDefaultsWidget, let category = userdefaultGroup.getCodableObject(Category.self, with: UserdefaultKey.widgetCategory.rawValue) {
+            return category
+        } else {
+            return .general
+        }
+    }()
+    
     //MARK: Search Setting
     private var searchQuery = ""
     private var searchIn = {
@@ -204,6 +221,9 @@ class NewsSettingManager {
         case let newCountryCode as CountryCode:
             country = newCountryCode
             userDefaults.setCodableObject(newCountryCode, forKey: UserdefaultKey.settingCountryCode.rawValue)
+            if let userDefaultGroup = userDefaultsWidget {
+                userDefaultGroup.setCodableObject(newCountryCode, forKey: UserdefaultKey.widgetCountry.rawValue)
+            }
             print("country Didset: \(country)")
         case let newCategory as Category:
             category = newCategory
@@ -299,5 +319,25 @@ class NewsSettingManager {
     func updateReplaceBlockedSource(source: [String]) {
         blockedSource = Set(source)
         userDefaults.setValue(Array(blockedSource), forKey: UserdefaultKey.settingBlockedSource.rawValue)
+    }
+}
+
+//MARK: App Group
+extension NewsSettingManager {
+    //MARK: Get Setting
+    func getGroupCountry() -> CountryCode {
+        return groupCountry
+    }
+    
+    func getGroupCategory() -> Category {
+        return groupCategory
+    }
+    
+    //MARK: Update Setting
+    // Country 由Headline設定時實作
+    func updateGroupCategory(category: Category) {
+        if let userDefaultGroup = userDefaultsWidget {
+            userDefaultGroup.setCodableObject(category, forKey: UserdefaultKey.widgetCategory.rawValue)
+        }
     }
 }
