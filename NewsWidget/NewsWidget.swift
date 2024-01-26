@@ -10,72 +10,8 @@ import SwiftUI
 import rswift
 import Kingfisher
 import Network
+import AppIntents
 
-
-//MARK: Entry - Model
-struct NewsEntry: TimelineEntry {
-    let date: Date
-    let news: [Article]
-    
-    static func defaultEntry() -> NewsEntry {
-        return NewsEntry(date: Date(), news: [Article(source: Source(id: "", name: ""), author: "", title: "No News", description: "", url: "", urlToImage: "", publishedAt: "", content: "")])
-    }
-}
-
-//MARK: Provider - VM
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> NewsEntry {
-        NewsEntry.defaultEntry()
-    }
-
-    func getSnapshot(in context: Context, completion: @escaping (NewsEntry) -> ()) {
-        let entry = NewsEntry.defaultEntry()
-        completion(entry)
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<NewsEntry>) -> ()) {
-        
-        // Entry設定各時間所顯示內容
-        Task{
-            var entries: [NewsEntry] = []
-            var entryDate = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
-            var news: [Article] = []
-            if let userDefaults = UserDefaults(suiteName: UserdefaultsGroup.widgetShared.rawValue),
-               let country = userDefaults.getCodableObject(CountryCode.self, with: UserdefaultKey.widgetCountry.rawValue)?.rawValue,
-               let category = userDefaults.getCodableObject(Category.self, with: UserdefaultKey.widgetCategory.rawValue)?.rawValue {
-                APIManager.topHeadlines(country: country, category: category) { result in
-                    news = resultCompletion(result: result)
-                    let entry = NewsEntry(date: entryDate, news: news)
-                    entries.append(entry)
-                    let timeline = Timeline(entries: entries, policy: .atEnd)
-                    completion(timeline)
-                }
-            }
-        }
-    }
-    
-    func resultCompletion(result: (Result<NewsAPIProtobufResponse, Error>)) -> [Article] {
-        var widgetArticles: [Article] = []
-        switch result {
-        case .success(let success):
-            if success.status == "OK" {
-                do {
-                    let articles = try ArticlesTotalProtobuf(serializedData: success.articles)
-                    articles.articles.forEach { a in
-                        let source = Source(id: a.source.id, name: a.source.name)
-                        let article = Article(source: source, author: a.author, title: a.title, description: a.description_p, url: a.url, urlToImage: a.urlToImage, publishedAt: a.publishedAt, content: a.content)
-                        widgetArticles.append(article)
-                    }
-                } catch {
-                    print(error)
-                }
-            }
-        case .failure(let failure):
-            print(failure)
-        }
-        return widgetArticles
-    }
-}
 
 //MARK: Widget / View - V
 struct NewsWidgetEntryView : View {
@@ -86,28 +22,51 @@ struct NewsWidgetEntryView : View {
     var body: some View {
         switch family {
         case .systemSmall:
+            Text("Time:")
+        case .systemMedium:
             VStack {
-                Text("Time:")
-                Text(entry.date, style: .time)
-                Text("News Count:")
-                Text("\(entry.news.count)")
-                Text("News:")
-                Text(entry.news.first?.title ?? "No title")
+                HStack {
+                    VStack {
+                        Image("noPhoto")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        //                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                        Text(entry.news[entry.newsNum].publishedAt)
+                            .font(.footnote)
+                    }
+                    VStack {
+                        Text(entry.news[entry.newsNum].author ?? "News")
+                            .font(.caption)
+                            .padding(.top, 5)
+                            .frame(maxHeight: 0)
+                        Text(entry.news[entry.newsNum].title)
+                            .font(.title3)
+//                        .padding(.top, 5)
+//                            .frame(height: .infinity)
+                        
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Button(intent: PreviousNewsIntent()) {
+                                Image(systemName: "arrow.backward")
+//                                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            }
+                            Spacer()
+                            Button(intent: NextNewsIntent()) {
+                                Image(systemName: "arrow.forward")
+                            }
+                            Spacer()
+                        }
+                    }
+//                    Spacer()
+                }
+                
             }
         case .systemLarge:
-            VStack {
-                Text("Time:")
-                Text(entry.date, style: .time)
-                Text("News Count:")
-                Text("\(entry.news.count)")
-                Text("News:")
-                Text(entry.news.first?.title ?? "No title")
-            }
+            Text("Time:")
         case .systemExtraLarge:
-            VStack {
-                Text("EXLarge News:")
-//                Text(entry.news.last?.title ?? "No title")
-            }
+            Text("Time:")
         default:
             VStack {
                 Text("")
@@ -136,9 +95,8 @@ struct NewsWidget: Widget {
     }
 }
 
-//#Preview(as: .systemSmall) {
-//    NewsWidget()
-//} timeline: {
-//    SimpleEntry(date: .now, emoji: "😀")
-//    SimpleEntry(date: .now, emoji: "🤩")
-//}
+#Preview(as: .systemMedium) {
+    NewsWidget()
+} timeline: {
+    NewsEntry.testEntry()
+}

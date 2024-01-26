@@ -8,6 +8,8 @@
 import WidgetKit
 import SwiftUI
 
+let userDefaultGroup = UserDefaults(suiteName: UserdefaultsGroup.widgetShared.rawValue)
+
 @main
 struct NewsWidgetBundle: WidgetBundle {
     var body: some Widget {

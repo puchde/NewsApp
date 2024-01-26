@@ -10,6 +10,9 @@
 		3F079BFF2B16E4AF0076DA20 /* APIDomainEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */; };
 		3F079C022B172C820076DA20 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C012B172C820076DA20 /* NVActivityIndicatorView */; };
 		3F079C042B172C820076DA20 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C032B172C820076DA20 /* NVActivityIndicatorViewExtended */; };
+		3F2B698D2B6393E60037290A /* NewsWidgetIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B698C2B6393E60037290A /* NewsWidgetIntent.swift */; };
+		3F2B69912B6394670037290A /* NewsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B69902B6394670037290A /* NewsEntry.swift */; };
+		3F2B69952B6394DB0037290A /* NewsWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B69942B6394DB0037290A /* NewsWidgetProvider.swift */; };
 		3F3522582B1EF7FD00457346 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3522572B1EF7FD00457346 /* SwiftProtobuf */; };
 		3F35225A2B1EF7FD00457346 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3522592B1EF7FD00457346 /* SwiftProtobufPluginLibrary */; };
 		3F35225C2B1EF7FD00457346 /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F35225B2B1EF7FD00457346 /* protoc-gen-swift */; };
@@ -26,7 +29,6 @@
 		3FB3768E2B55203C006CEDFD /* UIView+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3768D2B55203C006CEDFD /* UIView+Animate.swift */; };
 		3FD2630B2B26F35400F5E962 /* UIViewController+Icloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */; };
 		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
-		3FDB2DC72B5A485B00AFF4CA /* NewsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE26B042B566A2A0006DC60 /* NewsWidget.swift */; };
 		3FDB2DCC2B5A490000AFF4CA /* NewsAPIEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0B29DC240800405544 /* NewsAPIEnum.swift */; };
 		3FDB99EE2B57BF880022B0D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F3E88C32B201C9D00883A55 /* Localizable.strings */; };
 		3FE26AFC2B566A2A0006DC60 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE26AFB2B566A2A0006DC60 /* WidgetKit.framework */; };
@@ -88,6 +90,16 @@
 		E7F38BF429E0F570003E7E6F /* CustomVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F38BF329E0F570003E7E6F /* CustomVIew.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3F2B69862B6357220037290A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E77EF8C82906A35600EE94E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FE26AF82B566A2A0006DC60;
+			remoteInfo = NewsWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		3FE26B0C2B566A2E0006DC60 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -104,6 +116,9 @@
 
 /* Begin PBXFileReference section */
 		3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDomainEnum.swift; sourceTree = "<group>"; };
+		3F2B698C2B6393E60037290A /* NewsWidgetIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWidgetIntent.swift; sourceTree = "<group>"; };
+		3F2B69902B6394670037290A /* NewsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEntry.swift; sourceTree = "<group>"; };
+		3F2B69942B6394DB0037290A /* NewsWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWidgetProvider.swift; sourceTree = "<group>"; };
 		3F35225E2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesTotalProtobuf.pb.swift; sourceTree = "<group>"; };
 		3F3E88C22B201C9D00883A55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3F3E88C42B201CC200883A55 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "ColorBarTesting/Storyboard/zh-Hant.lproj/NewsContent.strings"; sourceTree = "<group>"; };
@@ -238,6 +253,9 @@
 				3FE26B062B566A2D0006DC60 /* Assets.xcassets */,
 				3FE26B082B566A2D0006DC60 /* Info.plist */,
 				3F7B63462B5A5C8E009BE0AF /* WidgetAPIManager.swift */,
+				3F2B698C2B6393E60037290A /* NewsWidgetIntent.swift */,
+				3F2B69902B6394670037290A /* NewsEntry.swift */,
+				3F2B69942B6394DB0037290A /* NewsWidgetProvider.swift */,
 			);
 			path = NewsWidget;
 			sourceTree = "<group>";
@@ -479,6 +497,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3F2B69872B6357220037290A /* PBXTargetDependency */,
 				3F3E88BC2B201A8100883A55 /* PBXTargetDependency */,
 			);
 			name = ColorBarTesting;
@@ -578,10 +597,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FEFAFC82B6206F9000E3C08 /* UserDefaultsExtension.swift in Sources */,
+				3F2B69912B6394670037290A /* NewsEntry.swift in Sources */,
+				3F2B698D2B6393E60037290A /* NewsWidgetIntent.swift in Sources */,
 				3F7B63482B5A5CB5009BE0AF /* APIDomainEnum.swift in Sources */,
 				3F7B634C2B5A61CE009BE0AF /* UserDefaultsKeyEnum.swift in Sources */,
 				3F7B63472B5A5C8E009BE0AF /* WidgetAPIManager.swift in Sources */,
 				3FE26B052B566A2A0006DC60 /* NewsWidget.swift in Sources */,
+				3F2B69952B6394DB0037290A /* NewsWidgetProvider.swift in Sources */,
 				3FE26B012B566A2A0006DC60 /* NewsWidgetBundle.swift in Sources */,
 				3FE26B032B566A2A0006DC60 /* NewsWidgetLiveActivity.swift in Sources */,
 				3F7B634D2B5A62C5009BE0AF /* ArticlesTotalProtobuf.pb.swift in Sources */,
@@ -595,7 +617,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7DDB4EA290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel in Sources */,
-				3FDB2DC72B5A485B00AFF4CA /* NewsWidget.swift in Sources */,
 				3F35225F2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift in Sources */,
 				E75555C1292A97B400E35365 /* FileType.swift in Sources */,
 				E7528DEA29E28C9B001169F0 /* SearchContentViewController.swift in Sources */,
@@ -644,6 +665,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3F2B69872B6357220037290A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FE26AF82B566A2A0006DC60 /* NewsWidgetExtension */;
+			targetProxy = 3F2B69862B6357220037290A /* PBXContainerItemProxy */;
+		};
 		3F3E88BC2B201A8100883A55 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 3F3E88BB2B201A8100883A55 /* RswiftGenerateInternalResources */;

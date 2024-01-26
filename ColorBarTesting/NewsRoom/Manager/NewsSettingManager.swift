@@ -224,7 +224,7 @@ class NewsSettingManager {
             userDefaults.setCodableObject(newCountryCode, forKey: UserdefaultKey.settingCountryCode.rawValue)
             if let userDefaultGroup = userDefaultsWidget {
                 userDefaultGroup.setCodableObject(newCountryCode, forKey: UserdefaultKey.widgetCountry.rawValue)
-                WidgetCenter.shared.reloadAllTimelines()
+                cleanWidgetNews()
             }
             print("country Didset: \(country)")
         case let newCategory as Category:
@@ -340,6 +340,12 @@ extension NewsSettingManager {
     func updateGroupCategory(category: Category) {
         if let userDefaultGroup = userDefaultsWidget {
             userDefaultGroup.setCodableObject(category, forKey: UserdefaultKey.widgetCategory.rawValue)
+            cleanWidgetNews()
+        }
+    }
+    
+    func cleanWidgetNews() {
+        if let userDefaultGroup = userDefaultsWidget {
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNews.rawValue)
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsTotalCount.rawValue)
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsCount.rawValue)
