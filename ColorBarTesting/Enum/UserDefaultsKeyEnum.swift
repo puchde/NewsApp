@@ -30,4 +30,8 @@ enum UserdefaultKey: String {
     //MARK: Widget use
     case widgetCountry = "widgetCountry"
     case widgetCategory = "widgetCategory"
+    case widgetReloadTime = "widgetReloadTime"
+    case widgetNews = "widgetNews"
+    case widgetNewsTotalCount = "widgetNewsTotalCount"
+    case widgetNewsCount = "widgetNewsCount"
 }

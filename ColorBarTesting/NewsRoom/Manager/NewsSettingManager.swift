@@ -340,6 +340,9 @@ extension NewsSettingManager {
     func updateGroupCategory(category: Category) {
         if let userDefaultGroup = userDefaultsWidget {
             userDefaultGroup.setCodableObject(category, forKey: UserdefaultKey.widgetCategory.rawValue)
+            userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNews.rawValue)
+            userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsTotalCount.rawValue)
+            userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsCount.rawValue)
             WidgetCenter.shared.reloadAllTimelines()
         }
     }
