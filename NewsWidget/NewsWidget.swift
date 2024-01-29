@@ -26,30 +26,33 @@ struct NewsWidgetEntryView : View {
         case .systemMedium:
             VStack(alignment: .leading) {
                 HStack(alignment: .top) {
-                    VStack {
-                        Image("noPhoto")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 90, height: 80, alignment: .center)
-                        VStack(alignment: .center) {
-                            Text(entry.news[entry.newsNum].author ?? "News")
+                    Link(destination: URL(string: "cbtesting://open-news?url=\(entry.news[entry.newsNum].url)")!) {
+                        VStack {
+                            Image("noPhoto")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 90, height: 80, alignment: .center)
+                            VStack(alignment: .center) {
+                                Text(entry.news[entry.newsNum].author ?? "News")
+                                    .font(.caption2)
+                                    .padding(.bottom, 5)
+                                    .frame(alignment: .center)
+                                    .background(Color.yellow)
+                            }
+                            Text(entry.news[entry.newsNum].publishedAt)
                                 .font(.caption2)
-                                .padding(.bottom, 5)
-                                .frame(alignment: .center)
-                                .background(Color.yellow)
+                                .background()
                         }
-                        Text(entry.news[entry.newsNum].publishedAt)
-                            .font(.caption2)
-                            .background()
+                        .frame(maxWidth: 90)
+                        .padding(.trailing, 8)
                     }
-                    .frame(maxWidth: 90)
-                    .padding(.trailing, 8)
                     VStack(alignment: .leading) {
-                        Text(entry.news[entry.newsNum].title)
-                            .font(.caption)
-                            .frame(alignment: .leading)
-                            .background(Color.green)
-                        
+                        Link(destination: URL(string: "cbtesting://open-news?url=\(entry.news[entry.newsNum].url)")!) {
+                            Text(entry.news[entry.newsNum].title)
+                                .font(.caption)
+                                .frame(alignment: .leading)
+                                .background(Color.green)
+                        }
                         Spacer()
                         VStack(alignment: .trailing) {
                             HStack(alignment: .bottom, content: {

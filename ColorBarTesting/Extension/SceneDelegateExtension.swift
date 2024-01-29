@@ -34,3 +34,35 @@ extension SceneDelegate {
         }
     }
 }
+
+//MARK: URL Open Handler
+extension SceneDelegate {
+    func urlOpenHandle(url: URL) {
+        guard let host = url.host(),
+              let query = url.query(),
+        let openType = UrlHandleTypeEnum(rawValue: host) else {
+            return
+        }
+        
+        switch openType {
+        case .openNews:
+            if let urlStr = query.split(separator: "url=").first,
+               let newsUrl = URL(string: String(urlStr)),
+               let rootVC = window?.rootViewController,
+               let vc = getCurrentViewController(rootVC) {
+                let safariVC = getSafariVC(url: newsUrl, delegateVC: nil)
+                safariVC.modalPresentationStyle = .fullScreen
+                
+                if let vc = vc as? SFSafariViewController, let parentVC = vc.presentingViewController {
+                    vc.dismiss(animated: true)
+                    parentVC.present(safariVC, animated: true)
+                } else {
+                    rootVC.present(safariVC, animated: true)
+                }
+            }
+        default:
+            break
+        }
+
+    }
+}
