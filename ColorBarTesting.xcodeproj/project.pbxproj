@@ -48,6 +48,8 @@
 		3FF0BF9D2B19B91E00FC84D1 /* PrintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */; };
 		3FF491222B1864B300CB4B5D /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF491212B1864B300CB4B5D /* FLEX */; };
 		3FF497682B01B21F007DA1DB /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */; };
+		3FFC50BA2B67515300D7CEE9 /* SceneDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */; };
+		3FFC50BE2B67525100D7CEE9 /* UrlHandleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC50BD2B67525100D7CEE9 /* UrlHandleTypeEnum.swift */; };
 		E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E7061D0729DB6A6800405544 /* Kingfisher */; };
 		E7061D0A29DB78F100405544 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0929DB78F100405544 /* WebViewViewController.swift */; };
 		E7061D0C29DC240800405544 /* NewsAPIEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0B29DC240800405544 /* NewsAPIEnum.swift */; };
@@ -151,6 +153,8 @@
 		3FEE017B2B33CB0000FE327F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintExtension.swift; sourceTree = "<group>"; };
 		3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateExtension.swift; sourceTree = "<group>"; };
+		3FFC50BD2B67525100D7CEE9 /* UrlHandleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlHandleTypeEnum.swift; sourceTree = "<group>"; };
 		E7061D0929DB78F100405544 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		E7061D0B29DC240800405544 /* NewsAPIEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIEnum.swift; sourceTree = "<group>"; };
 		E706448529EACBF5009F8C64 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
@@ -349,6 +353,7 @@
 				E706448829EACCAC009F8C64 /* UserDefaultsKeyEnum.swift */,
 				3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */,
 				3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */,
+				3FFC50BD2B67525100D7CEE9 /* UrlHandleTypeEnum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 				3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */,
 				3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */,
 				3FB3768D2B55203C006CEDFD /* UIView+Animate.swift */,
+				3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -641,6 +647,7 @@
 				3FF0BF9D2B19B91E00FC84D1 /* PrintExtension.swift in Sources */,
 				3FEC37E42B22F3E200BAFD84 /* SettingBlockedSourceViewController.swift in Sources */,
 				E74A0AEB29DF18CC00585387 /* HeadlinesTableViewController.swift in Sources */,
+				3FFC50BA2B67515300D7CEE9 /* SceneDelegateExtension.swift in Sources */,
 				3FF497682B01B21F007DA1DB /* SettingTableViewController.swift in Sources */,
 				3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */,
 				E77EF8D62906A35600EE94E6 /* SceneDelegate.swift in Sources */,
@@ -652,6 +659,7 @@
 				E7528DEC29E29749001169F0 /* NewsTabBarViewController.swift in Sources */,
 				3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */,
 				3FD2630B2B26F35400F5E962 /* UIViewController+Icloud.swift in Sources */,
+				3FFC50BE2B67525100D7CEE9 /* UrlHandleTypeEnum.swift in Sources */,
 				E75C2F6729D9F6B900FBC7B4 /* APIManager.swift in Sources */,
 				E75C2F6129D9F51D00FBC7B4 /* SearchNewsViewController.swift in Sources */,
 				E75B1BAD29335570004CA82C /* ImageViewController.swift in Sources */,
