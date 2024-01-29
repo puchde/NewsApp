@@ -40,7 +40,13 @@ class NewsSettingManager {
         if let userdefaultGroup = userDefaultsWidget, let country = userdefaultGroup.getCodableObject(CountryCode.self, with: UserdefaultKey.widgetCountry.rawValue) {
             return country
         } else {
-            return .TW
+            if let country = userDefaults.getCodableObject(CountryCode.self, with: UserdefaultKey.settingCountryCode.rawValue) {
+                userDefaultsWidget?.setCodableObject(country, forKey: UserdefaultKey.widgetCountry.rawValue)
+                return country
+            } else {
+                userDefaultsWidget?.setCodableObject(CountryCode.TW, forKey: UserdefaultKey.widgetCountry.rawValue)
+                return .TW
+            }
         }
     }()
     
@@ -48,7 +54,13 @@ class NewsSettingManager {
         if let userdefaultGroup = userDefaultsWidget, let category = userdefaultGroup.getCodableObject(Category.self, with: UserdefaultKey.widgetCategory.rawValue) {
             return category
         } else {
-            return .general
+            if let category = userDefaults.getCodableObject(Category.self, with: UserdefaultKey.settingCategory.rawValue) {
+                userDefaultsWidget?.setCodableObject(category, forKey: UserdefaultKey.widgetCategory.rawValue)
+                return category
+            } else {
+                userDefaultsWidget?.setCodableObject(Category.general, forKey: UserdefaultKey.widgetCategory.rawValue)
+                return .general
+            }
         }
     }()
     
