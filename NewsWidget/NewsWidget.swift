@@ -24,45 +24,51 @@ struct NewsWidgetEntryView : View {
         case .systemSmall:
             Text("Time:")
         case .systemMedium:
-            VStack {
-                HStack {
+            VStack(alignment: .leading) {
+                HStack(alignment: .top) {
                     VStack {
                         Image("noPhoto")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        //                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                            .frame(width: 90, height: 80, alignment: .center)
+                        VStack(alignment: .center) {
+                            Text(entry.news[entry.newsNum].author ?? "News")
+                                .font(.caption2)
+                                .padding(.bottom, 5)
+                                .frame(alignment: .center)
+                                .background(Color.yellow)
+                        }
                         Text(entry.news[entry.newsNum].publishedAt)
-                            .font(.footnote)
+                            .font(.caption2)
+                            .background()
                     }
-                    VStack {
-                        Text(entry.news[entry.newsNum].author ?? "News")
-                            .font(.caption)
-                            .padding(.top, 5)
-                            .frame(maxHeight: 0)
+                    .frame(maxWidth: 90)
+                    .padding(.trailing, 8)
+                    VStack(alignment: .leading) {
                         Text(entry.news[entry.newsNum].title)
-                            .font(.title3)
-//                        .padding(.top, 5)
-//                            .frame(height: .infinity)
+                            .font(.caption)
+                            .frame(alignment: .leading)
+                            .background(Color.green)
                         
                         Spacer()
-                        HStack {
-                            Spacer()
-                            Button(intent: PreviousNewsIntent()) {
-                                Image(systemName: "arrow.backward")
-//                                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            }
-                            Spacer()
-                            Button(intent: NextNewsIntent()) {
-                                Image(systemName: "arrow.forward")
-                            }
-                            Spacer()
+                        VStack(alignment: .trailing) {
+                            HStack(alignment: .bottom, content: {
+                                Spacer()
+                                Button(intent: PreviousNewsIntent()) {
+                                    Image(systemName: "arrow.backward")
+                                }
+                                Spacer()
+                                Button(intent: NextNewsIntent()) {
+                                    Image(systemName: "arrow.forward")
+                                }
+                                Spacer()
+                            })
                         }
+                        .background(Color.gray)
                     }
-//                    Spacer()
                 }
-                
             }
+            .background(Color.red)
         case .systemLarge:
             Text("Time:")
         case .systemExtraLarge:
