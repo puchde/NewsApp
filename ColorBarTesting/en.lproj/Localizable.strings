@@ -247,3 +247,12 @@
 "month" = "Month";
 "searchTime" = "Search Time";
 "sortBy" = "Sort By";
+
+"Setting.widgetOption" = "Widget Options";
+"Setting.widgetOption.category" = "Category";
+"Setting.widgetOption.Info.Title" = "Widget";
+"Setting.widgetOption.Info.Desc" = "\nThis setting and the headline displaying the country will affect the content shown in the widget.";
+
+"Widget.Default.DisplayName" = "Snapper Widget";
+"Widget.Default.Desc" = "Display according to the country and category you have set.";
+

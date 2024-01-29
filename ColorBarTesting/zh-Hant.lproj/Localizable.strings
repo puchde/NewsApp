@@ -96,7 +96,25 @@
 "Setting.uploadMarkSuccess" = "上傳完成";
 
 /*  */
+"Setting.widgetOption" = "小工具設定";
+
+/*  */
+"Setting.widgetOption.Info.Desc" = "\n此項設定與頭條顯示國家將會影響小工具顯示的內容";
+
+/*  */
+"Setting.widgetOption.Info.Title" = "桌面小工具";
+
+/*  */
+"Setting.widgetOption.category" = "分類";
+
+/*  */
 "Setting.writeComment" = "寫評論";
+
+/*  */
+"Widget.Default.Desc" = "根據你設定的國家與分類進行顯示";
+
+/*  */
+"Widget.Default.DisplayName" = "Snapper Widget";
 
 /*  */
 "addMark" = "新增標記";

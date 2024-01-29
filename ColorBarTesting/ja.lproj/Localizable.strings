@@ -92,7 +92,25 @@
 "Setting.uploadMarkSuccess" = "アップロード完了";
 
 /*  */
+"Setting.widgetOption" = "ウィジェットオプション";
+
+/*  */
+"Setting.widgetOption.Info.Desc" = "\nこの設定とヘッドラインに表示されている国は、ウィジェットに表示されるコンテンツに影響を与えます。";
+
+/*  */
+"Setting.widgetOption.Info.Title" = "ウィジェット";
+
+/*  */
+"Setting.widgetOption.category" = "分類";
+
+/*  */
 "Setting.writeComment" = "コメントを書く";
+
+/*  */
+"Widget.Default.Desc" = "この設定とヘッドラインに表示されている国は、ウィジェットに表示されるコンテンツに影響を与えます。";
+
+/*  */
+"Widget.Default.DisplayName" = "Snapper ウィジェット";
 
 /*  */
 "addMark" = "タグを追加";

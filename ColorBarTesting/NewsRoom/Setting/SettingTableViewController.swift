@@ -13,7 +13,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
     
     let settingSections = [R.string.localizable.settingAppVersionInfo(),
                            R.string.localizable.settingOption(),
-                           "widgetOptions",
+                           R.string.localizable.settingWidgetOption(),
                            R.string.localizable.settingOther()
     ]
     let appInfos = [R.string.localizable.settingAppVersion(),]
@@ -22,7 +22,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
                       R.string.localizable.settingBlockPublisherSources(),
                       R.string.localizable.settingICloudBackup()]
     
-    let widgetOptions = ["Widget Category"]
+    let widgetOptions = [R.string.localizable.settingWidgetOptionCategory()]
     let otherOptions = [R.string.localizable.settingWriteComment(),
                         R.string.localizable.settingSendEmail()]
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
@@ -110,7 +110,7 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             button.setTitle(widgetCategory, for: .normal)
             button.contentHorizontalAlignment = .right
             button.showsMenuAsPrimaryAction = true
-            button.menu = UIMenu(title: R.string.localizable.haedlineLocation(), options: [.singleSelection], children: [
+            button.menu = UIMenu(title: R.string.localizable.settingWidgetOptionCategory(), options: [.singleSelection], children: [
                 getActions(category: .general),
                 getActions(category: .business),
                 getActions(category: .health),
@@ -221,7 +221,7 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             }
             
         case (2, 0):
-            print("category")
+            self.presentNoActionAlert(title: R.string.localizable.settingWidgetOptionInfoTitle(), message: R.string.localizable.settingWidgetOptionInfoDesc())
         case (3, 1):
             presentMailVC()
         default:
