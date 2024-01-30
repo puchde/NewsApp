@@ -15,7 +15,7 @@ struct NewsEntry: TimelineEntry {
     var newsNum = 0
     
     static func defaultEntry() -> NewsEntry {
-        return NewsEntry(date: Date(), news: [Article(source: Source(id: "", name: ""), author: "", title: "No News", description: "", url: "", urlToImage: "", publishedAt: "", content: "")])
+        return NewsEntry(date: Date(), news: [Article(source: Source(id: "", name: ""), author: "News author", title: "News Title ＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯＯ", description: "", url: "", urlToImage: "", publishedAt: "", content: "")])
     }
     
     static func testEntry() -> NewsEntry {
