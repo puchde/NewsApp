@@ -50,6 +50,10 @@
 		3FF497682B01B21F007DA1DB /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */; };
 		3FFC50BA2B67515300D7CEE9 /* SceneDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */; };
 		3FFC50BE2B67525100D7CEE9 /* UrlHandleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC50BD2B67525100D7CEE9 /* UrlHandleTypeEnum.swift */; };
+		3FFC68192B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC68182B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift */; };
+		3FFC68252B68FC2600D4E6D4 /* guildStep1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3FFC68222B68FC2600D4E6D4 /* guildStep1.gif */; };
+		3FFC68262B68FC2600D4E6D4 /* guildStep3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3FFC68232B68FC2600D4E6D4 /* guildStep3.gif */; };
+		3FFC68272B68FC2600D4E6D4 /* guildStep2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3FFC68242B68FC2600D4E6D4 /* guildStep2.gif */; };
 		E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E7061D0729DB6A6800405544 /* Kingfisher */; };
 		E7061D0A29DB78F100405544 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0929DB78F100405544 /* WebViewViewController.swift */; };
 		E7061D0C29DC240800405544 /* NewsAPIEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0B29DC240800405544 /* NewsAPIEnum.swift */; };
@@ -155,6 +159,10 @@
 		3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateExtension.swift; sourceTree = "<group>"; };
 		3FFC50BD2B67525100D7CEE9 /* UrlHandleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlHandleTypeEnum.swift; sourceTree = "<group>"; };
+		3FFC68182B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SwiftUI.swift"; sourceTree = "<group>"; };
+		3FFC68222B68FC2600D4E6D4 /* guildStep1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = guildStep1.gif; sourceTree = "<group>"; };
+		3FFC68232B68FC2600D4E6D4 /* guildStep3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = guildStep3.gif; sourceTree = "<group>"; };
+		3FFC68242B68FC2600D4E6D4 /* guildStep2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = guildStep2.gif; sourceTree = "<group>"; };
 		E7061D0929DB78F100405544 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		E7061D0B29DC240800405544 /* NewsAPIEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIEnum.swift; sourceTree = "<group>"; };
 		E706448529EACBF5009F8C64 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
@@ -281,6 +289,24 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		3FFC68202B68FC1200D4E6D4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3FFC68212B68FC2600D4E6D4 /* GuildStepGif */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		3FFC68212B68FC2600D4E6D4 /* GuildStepGif */ = {
+			isa = PBXGroup;
+			children = (
+				3FFC68222B68FC2600D4E6D4 /* guildStep1.gif */,
+				3FFC68232B68FC2600D4E6D4 /* guildStep3.gif */,
+				3FFC68242B68FC2600D4E6D4 /* guildStep2.gif */,
+			);
+			path = GuildStepGif;
+			sourceTree = "<group>";
+		};
 		E73EB51F2933834E00D1F74C /* CoreDataRoom */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +395,7 @@
 				3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */,
 				3FB3768D2B55203C006CEDFD /* UIView+Animate.swift */,
 				3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */,
+				3FFC68182B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -445,6 +472,7 @@
 		E77EF8D22906A35600EE94E6 /* ColorBarTesting */ = {
 			isa = PBXGroup;
 			children = (
+				3FFC68202B68FC1200D4E6D4 /* Assets */,
 				3F35225D2B1EF82900457346 /* Protobuf */,
 				3FE5F01E2B0376FB0078D08F /* Protocal */,
 				E75C2F6229D9F58D00FBC7B4 /* APIResponse */,
@@ -588,9 +616,12 @@
 				E77EF8E02906A35800EE94E6 /* LaunchScreen.storyboard in Resources */,
 				E7CF424129DB317D006F41C2 /* NewsCell.xib in Resources */,
 				E76A86E529DD9F39008B781F /* ClassifyCollectionViewCell.xib in Resources */,
+				3FFC68262B68FC2600D4E6D4 /* guildStep3.gif in Resources */,
 				E77EF8DD2906A35800EE94E6 /* Assets.xcassets in Resources */,
+				3FFC68252B68FC2600D4E6D4 /* guildStep1.gif in Resources */,
 				3F3E88C12B201C9D00883A55 /* Localizable.strings in Resources */,
 				E7528DE829E1DCD6001169F0 /* NewsContent.storyboard in Resources */,
+				3FFC68272B68FC2600D4E6D4 /* guildStep2.gif in Resources */,
 				E77EF8DB2906A35600EE94E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +671,7 @@
 				E74D1FD32930B0270010EE8D /* SheetViewController.swift in Sources */,
 				E75C2F6429D9F65400FBC7B4 /* NewsAPIResponse.swift in Sources */,
 				E74A0AE929DF188E00585387 /* HeadlinesPageViewController.swift in Sources */,
+				3FFC68192B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift in Sources */,
 				3FEE017C2B33CB0000FE327F /* Utils.swift in Sources */,
 				E774013A29E5C2A40052C577 /* UIButtonExtension.swift in Sources */,
 				E77EF8D42906A35600EE94E6 /* AppDelegate.swift in Sources */,

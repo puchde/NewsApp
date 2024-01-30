@@ -256,3 +256,8 @@
 "Widget.Default.DisplayName" = "Snapper Widget";
 "Widget.Default.Desc" = "Display according to the country and category you have set.";
 
+"guildStep1" = "";
+"guildStep2" = "";
+"guildStep3" = "";
+
+"OK" = "OK";
