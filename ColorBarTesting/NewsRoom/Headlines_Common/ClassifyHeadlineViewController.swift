@@ -23,6 +23,7 @@ class ClassifyHeadlineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstUsedGuild()
         initView()
         setupClassifyWidths()
         
@@ -128,5 +129,15 @@ extension ClassifyHeadlineViewController: HeadlinesDelegate {
         let indexPath = IndexPath(row: page, section: 0)
         classifyCollectionView.reloadData()
         classifyCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+}
+
+//MARK: Guild
+extension ClassifyHeadlineViewController {
+    func firstUsedGuild() {
+        if !newsSettingManager.getHasVisitedGuild() {
+            let vc = getGuildViewSwiftUI()
+            self.present(vc, animated: false)
+        }
     }
 }

@@ -11,13 +11,21 @@ import Kingfisher
 
 extension UIViewController {
     func getGuildViewSwiftUI() -> UIViewController {
-        return UIHostingController(rootView: GuildView(dismissAction: {
+        let vc = UIHostingController(rootView: GuildView(dismissAction: {
             self.dismiss(animated: true)
+            newsSettingManager.updateHasVisitedGuild(true)
         }))
+        vc.modalPresentationStyle = .fullScreen
+        return vc
     }
     
     struct GuildView: View {
-        var guildDesc: [String] = [ "👻", "", ""]
+        var guildTitle: [String] = [R.string.localizable.headlines(),
+                                    R.string.localizable.search(),
+                                    R.string.localizable.markList()]
+        var guildDesc: [String] = [ R.string.localizable.guildStep1(),
+                                    R.string.localizable.guildStep2(),
+                                    R.string.localizable.guildStep3()]
         var gifsName: [String] = ["guildStep1", "guildStep2", "guildStep3"]
         var dismissAction: (() -> Void)
         @State var isHide = false
@@ -26,9 +34,16 @@ extension UIViewController {
             GeometryReader { geo in
             VStack {
                     TabView() {
-                        ForEach(0 ..< guildDesc.count) { index in
+                        ForEach(0 ..< 3) { index in
                             VStack() {
+                                Text(guildTitle[index])
+                                    .font(.title3)
+                                    .fontWeight(.medium)
+                                    .padding()
                                 Text(guildDesc[index])
+                                    .fontWeight(.light)
+                                    .lineSpacing(8)
+                                    .padding(.horizontal)
                                 Spacer()
                                 Divider()
                                 KFAnimatedImage(getGifUrl(fileName: gifsName[index]))
@@ -43,8 +58,9 @@ extension UIViewController {
                                 Spacer()
                                     .frame(maxHeight: geo.size.height * 0.05)
                             }
+                            .background(Color(uiColor: .white))
+                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)), style: FillStyle())
                             .frame(alignment: .top)
-                            .padding()
                         }
                     }
                     .tabViewStyle(PageTabViewStyle())
@@ -56,19 +72,20 @@ extension UIViewController {
                         HStack {
                             Image(systemName: "checkmark.square")
                                 .foregroundColor(Color.black)
-                            Text("got it")
+                            Text(R.string.localizable.oK())
                                 .foregroundColor(Color.black)
                         }
                         .frame(width: 130, height: 40)
-                        .background(.orange.opacity(0.1))
+                        .background(Color(uiColor: .white))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .overlay(content: {
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(.orange.opacity(0.3), lineWidth: 1.5)
+                                .stroke(Color(uiColor: .systemGray5), lineWidth: 1.5)
                         })
                         .padding()
                     })
                 }
+            .background(Color(uiColor: .systemGray6))
             }
         }
         
@@ -78,7 +95,9 @@ extension UIViewController {
         }
         
         func getGifUrl(fileName: String) -> URL {
-            guard let filePath = Bundle.main.path(forResource: fileName, ofType: "gif") else { return URL(string: "") ?? .cachesDirectory}
+            guard let bundleUrl = Bundle.main.url(forResource: "GuildStepGif", withExtension: "bundle"),
+                  let bundle = Bundle(url: bundleUrl),
+                  let filePath = bundle.path(forResource: fileName, ofType: "gif") else { return .cachesDirectory }
             let fileUrl = URL(fileURLWithPath: filePath)
             return fileUrl
         }

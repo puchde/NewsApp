@@ -136,6 +136,19 @@ class NewsSettingManager {
     func updateReloadDate(date: Date) {
         reloadDate = date
     }
+    
+    //MARK: Guild
+    private var hasVisitedGuild: Bool {
+        return userDefaults.bool(forKey: UserdefaultKey.hasVisitedGuild.rawValue)
+    }
+    
+    func getHasVisitedGuild() -> Bool {
+        return hasVisitedGuild
+    }
+    
+    func updateHasVisitedGuild(_ isFirstUsed: Bool) {
+        userDefaults.setValue(isFirstUsed, forKey: UserdefaultKey.hasVisitedGuild.rawValue)
+    }
         
     //MARK: Get Setting
     func getCountry() -> CountryCode {

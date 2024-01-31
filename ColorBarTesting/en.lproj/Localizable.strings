@@ -1,10 +1,27 @@
+
+
+"Headlines" = "Headlines";
+
 /*  */
 "Important" = "Important";
 
-/*
+
+"Mark List" = "Mark List";
+
+
+"OK" = "OK";
+
+
+"Search" = "Search";
+
+/* 
  
  */
 "Setting" = "Settings";
+
+
+"Setting.
+UsageGuide" = "User Guide";
 
 /*  */
 "Setting.NewsAPIKey" = "API Key";
@@ -90,8 +107,26 @@
 /*  */
 "Setting.uploadMarkSuccess" = "Upload Completed";
 
+
+"Setting.widgetOption" = "Widget Options";
+
+
+"Setting.widgetOption.Info.Desc" = "\nThis setting and the headline displaying the country will affect the content shown in the widget.";
+
+
+"Setting.widgetOption.Info.Title" = "Widget";
+
+
+"Setting.widgetOption.category" = "Category";
+
 /*  */
 "Setting.writeComment" = "Write Comment";
+
+
+"Widget.Default.Desc" = "Display according to the country and category you have set.";
+
+
+"Widget.Default.DisplayName" = "Snapper Widget";
 
 /*  */
 "addMark" = "Add Tag";
@@ -168,6 +203,15 @@
 /*  */
 "country.us" = "United States";
 
+
+"day" = "Day";
+
+
+"day1" = "within 1 day";
+
+
+"day7" = "within 7 days";
+
 /*  */
 "delete" = "Delete";
 
@@ -183,17 +227,50 @@
 /*  */
 "go" = "Go";
 
+
+"guildStep1" = "Swipe left or right to choose news categories, and select the region you want to view.";
+
+
+"guildStep2" = "Set the search time and region for the search keyword.";
+
+
+"guildStep3" = "Long-press on the icon or news for additional functionalities.";
+
 /*  */
 "haedlineLocation" = "News Region";
 
 /*  */
 "headlineSetting" = "Headline Display Settings";
 
+
+"hour" = "Hour";
+
+
+"hour1" = "within 1 hour";
+
+
+"hour12" = "within 12 hours";
+
+
+"hour6" = "within 6 hours";
+
 /*  */
 "list" = "Menu";
 
+
+"month" = "Month";
+
+
+"month1" = "within 1 month";
+
+
+"month3" = "within 3 months";
+
 /*  */
 "more" = "More";
+
+
+"none" = "none";
 
 /*  */
 "normal" = "Normal";
@@ -216,8 +293,14 @@
 /*  */
 "searchOrder" = "Search Sort";
 
+
+"searchTime" = "Search Time";
+
 /*  */
 "share" = "Share";
+
+
+"sortBy" = "Sort By";
 
 /*  */
 "title" = "Title";
@@ -233,31 +316,3 @@
 
 /*  */
 "unblockDesc" = "Manage Blocked News Sources";
-
-"hour1" = "within 1 hour";
-"hour6" = "within 6 hours";
-"hour12" = "within 12 hours";
-"day1" = "within 1 day";
-"day7" = "within 7 days";
-"month1" = "within 1 month";
-"month3" = "within 3 months";
-"none" = "none";
-"hour" = "Hour";
-"day" = "Day";
-"month" = "Month";
-"searchTime" = "Search Time";
-"sortBy" = "Sort By";
-
-"Setting.widgetOption" = "Widget Options";
-"Setting.widgetOption.category" = "Category";
-"Setting.widgetOption.Info.Title" = "Widget";
-"Setting.widgetOption.Info.Desc" = "\nThis setting and the headline displaying the country will affect the content shown in the widget.";
-
-"Widget.Default.DisplayName" = "Snapper Widget";
-"Widget.Default.Desc" = "Display according to the country and category you have set.";
-
-"guildStep1" = "";
-"guildStep2" = "";
-"guildStep3" = "";
-
-"OK" = "OK";

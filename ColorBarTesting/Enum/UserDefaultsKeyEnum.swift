@@ -34,4 +34,7 @@ enum UserdefaultKey: String {
     case widgetNews = "widgetNews"
     case widgetNewsTotalCount = "widgetNewsTotalCount"
     case widgetNewsCount = "widgetNewsCount"
+    
+    //MARK: Guild
+    case hasVisitedGuild = "hasVisitedGuild"
 }

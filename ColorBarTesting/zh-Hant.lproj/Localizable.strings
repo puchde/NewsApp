@@ -1,6 +1,18 @@
 
 /*  */
+"Headlines" = "Headlines";
+
+/*  */
 "Important" = "重要";
+
+/*  */
+"Mark List" = "Mark List";
+
+/*  */
+"OK" = "OK";
+
+/*  */
+"Search" = "Search";
 
 /* 
   Localizable.strings
@@ -10,6 +22,10 @@
   
  */
 "Setting" = "設定";
+
+/*  */
+"Setting.
+UsageGuide" = "使用導引";
 
 /*  */
 "Setting.NewsAPIKey" = "API密鑰";
@@ -214,6 +230,15 @@
 
 /*  */
 "go" = "前往設置";
+
+/*  */
+"guildStep1" = "左右滑動選擇新聞分類，並選擇想要查看的地區。";
+
+/*  */
+"guildStep2" = "設定搜尋關鍵字的搜尋時間與地區";
+
+/*  */
+"guildStep3" = "長按圖示或是新聞進行功能操作";
 
 /*  */
 "haedlineLocation" = "新聞地區";

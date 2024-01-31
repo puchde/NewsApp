@@ -23,7 +23,8 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
                       R.string.localizable.settingICloudBackup()]
     
     let widgetOptions = [R.string.localizable.settingWidgetOptionCategory()]
-    let otherOptions = [R.string.localizable.settingWriteComment(),
+    let otherOptions = [R.string.localizable.settingUsageGuide(),
+                        R.string.localizable.settingWriteComment(),
                         R.string.localizable.settingSendEmail()]
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     
@@ -133,8 +134,10 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             
             cell.accessoryView = button
         case (3, 0):
-            content.image = UIImage(systemName: "star")
+            content.image = UIImage(systemName: "rectangle.and.hand.point.up.left")
         case (3, 1):
+            content.image = UIImage(systemName: "star")
+        case (3, 2):
             content.image = UIImage(systemName: "envelope")
         default:
             break
@@ -222,7 +225,10 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             
         case (2, 0):
             self.presentNoActionAlert(title: R.string.localizable.settingWidgetOptionInfoTitle(), message: R.string.localizable.settingWidgetOptionInfoDesc())
-        case (3, 1):
+        case (3, 0):
+            let vc = getGuildViewSwiftUI()
+            present(vc, animated: true)
+        case (3, 2):
             presentMailVC()
         default:
             return

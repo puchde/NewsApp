@@ -1,11 +1,24 @@
 
 /*  */
+"Headlines" = "Headlines";
+
+/*  */
 "Important" = "重要";
+
+/*  */
+"Mark List" = "Mark List";
+
+/*  */
+"OK" = "OK";
 
 /* 
  
  */
 "Setting" = "設定";
+
+/*  */
+"Setting.
+UsageGuide" = "ユーザーガイド";
 
 /*  */
 "Setting.NewsAPIKey" = "APIキー";
@@ -210,6 +223,15 @@
 
 /*  */
 "go" = "進む";
+
+/*  */
+"guildStep1" = "左右にスワイプしてニュースのカテゴリを選択し、表示したい地域を選択してください。";
+
+/*  */
+"guildStep2" = "検索キーワードの検索時間と地域を設定してください。";
+
+/*  */
+"guildStep3" = "アイコンまたはニュースを長押しして機能を操作してください。";
 
 /*  */
 "haedlineLocation" = "ニュース地域";

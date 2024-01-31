@@ -11,6 +11,7 @@
 		3F079BFF2B16E4AF0076DA20 /* APIDomainEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */; };
 		3F079C022B172C820076DA20 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C012B172C820076DA20 /* NVActivityIndicatorView */; };
 		3F079C042B172C820076DA20 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C032B172C820076DA20 /* NVActivityIndicatorViewExtended */; };
+		3F288BD22B69F6350080D7FC /* GuildStepGif.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F288BD12B69F6350080D7FC /* GuildStepGif.bundle */; };
 		3F2B698D2B6393E60037290A /* NewsWidgetIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B698C2B6393E60037290A /* NewsWidgetIntent.swift */; };
 		3F2B69912B6394670037290A /* NewsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B69902B6394670037290A /* NewsEntry.swift */; };
 		3F2B69952B6394DB0037290A /* NewsWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B69942B6394DB0037290A /* NewsWidgetProvider.swift */; };
@@ -52,9 +53,6 @@
 		3FFC50BA2B67515300D7CEE9 /* SceneDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */; };
 		3FFC50BE2B67525100D7CEE9 /* UrlHandleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC50BD2B67525100D7CEE9 /* UrlHandleTypeEnum.swift */; };
 		3FFC68192B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC68182B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift */; };
-		3FFC68252B68FC2600D4E6D4 /* guildStep1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3FFC68222B68FC2600D4E6D4 /* guildStep1.gif */; };
-		3FFC68262B68FC2600D4E6D4 /* guildStep3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3FFC68232B68FC2600D4E6D4 /* guildStep3.gif */; };
-		3FFC68272B68FC2600D4E6D4 /* guildStep2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3FFC68242B68FC2600D4E6D4 /* guildStep2.gif */; };
 		E7061D0829DB6A6800405544 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E7061D0729DB6A6800405544 /* Kingfisher */; };
 		E7061D0A29DB78F100405544 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0929DB78F100405544 /* WebViewViewController.swift */; };
 		E7061D0C29DC240800405544 /* NewsAPIEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0B29DC240800405544 /* NewsAPIEnum.swift */; };
@@ -123,6 +121,7 @@
 
 /* Begin PBXFileReference section */
 		3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDomainEnum.swift; sourceTree = "<group>"; };
+		3F288BD12B69F6350080D7FC /* GuildStepGif.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GuildStepGif.bundle; sourceTree = "<group>"; };
 		3F2B698C2B6393E60037290A /* NewsWidgetIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWidgetIntent.swift; sourceTree = "<group>"; };
 		3F2B69902B6394670037290A /* NewsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEntry.swift; sourceTree = "<group>"; };
 		3F2B69942B6394DB0037290A /* NewsWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWidgetProvider.swift; sourceTree = "<group>"; };
@@ -161,9 +160,6 @@
 		3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateExtension.swift; sourceTree = "<group>"; };
 		3FFC50BD2B67525100D7CEE9 /* UrlHandleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlHandleTypeEnum.swift; sourceTree = "<group>"; };
 		3FFC68182B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SwiftUI.swift"; sourceTree = "<group>"; };
-		3FFC68222B68FC2600D4E6D4 /* guildStep1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = guildStep1.gif; sourceTree = "<group>"; };
-		3FFC68232B68FC2600D4E6D4 /* guildStep3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = guildStep3.gif; sourceTree = "<group>"; };
-		3FFC68242B68FC2600D4E6D4 /* guildStep2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = guildStep2.gif; sourceTree = "<group>"; };
 		E7061D0929DB78F100405544 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		E7061D0B29DC240800405544 /* NewsAPIEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIEnum.swift; sourceTree = "<group>"; };
 		E706448529EACBF5009F8C64 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
@@ -294,19 +290,9 @@
 		3FFC68202B68FC1200D4E6D4 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				3FFC68212B68FC2600D4E6D4 /* GuildStepGif */,
+				3F288BD12B69F6350080D7FC /* GuildStepGif.bundle */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		3FFC68212B68FC2600D4E6D4 /* GuildStepGif */ = {
-			isa = PBXGroup;
-			children = (
-				3FFC68222B68FC2600D4E6D4 /* guildStep1.gif */,
-				3FFC68232B68FC2600D4E6D4 /* guildStep3.gif */,
-				3FFC68242B68FC2600D4E6D4 /* guildStep2.gif */,
-			);
-			path = GuildStepGif;
 			sourceTree = "<group>";
 		};
 		E73EB51F2933834E00D1F74C /* CoreDataRoom */ = {
@@ -619,12 +605,10 @@
 				E77EF8E02906A35800EE94E6 /* LaunchScreen.storyboard in Resources */,
 				E7CF424129DB317D006F41C2 /* NewsCell.xib in Resources */,
 				E76A86E529DD9F39008B781F /* ClassifyCollectionViewCell.xib in Resources */,
-				3FFC68262B68FC2600D4E6D4 /* guildStep3.gif in Resources */,
 				E77EF8DD2906A35800EE94E6 /* Assets.xcassets in Resources */,
-				3FFC68252B68FC2600D4E6D4 /* guildStep1.gif in Resources */,
+				3F288BD22B69F6350080D7FC /* GuildStepGif.bundle in Resources */,
 				3F3E88C12B201C9D00883A55 /* Localizable.strings in Resources */,
 				E7528DE829E1DCD6001169F0 /* NewsContent.storyboard in Resources */,
-				3FFC68272B68FC2600D4E6D4 /* guildStep2.gif in Resources */,
 				E77EF8DB2906A35600EE94E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
