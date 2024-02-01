@@ -123,7 +123,7 @@ struct WidgetNewsView: View {
         if hasNews {
             VStack {
                 HStack(alignment: .top) {
-                    Link(destination: URL(string: "cbtesting://open-news?url=\(entry.news[index].url)")!) {
+                    Link(destination: URL(string: "\(LinkUrlEnum.testOpenNews(url: entry.news[index].url).urlStr)")!) {
                         VStack {
                             Spacer()
                             KFImage(URL(string: entry.news[index].urlToImage ?? ""))
@@ -149,7 +149,7 @@ struct WidgetNewsView: View {
                     }
                     VStack(alignment: .center) {
                         VStack(alignment: .center) {
-                            Link(destination: URL(string: "cbtesting://open-news?url=\(entry.news[index].url)")!) {
+                            Link(destination: URL(string: "\(LinkUrlEnum.testOpenNews(url: entry.news[index].url).urlStr)")!) {
                                 HStack(alignment: .center) {
                                     Spacer()
                                     Text(entry.news[index].author ?? "News")

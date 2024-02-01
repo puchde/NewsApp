@@ -48,6 +48,7 @@
 		3FEFAFC82B6206F9000E3C08 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E706448529EACBF5009F8C64 /* UserDefaultsExtension.swift */; };
 		3FF0BF9B2B19B6AF00FC84D1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF0BF9A2B19B6AF00FC84D1 /* Toast */; };
 		3FF0BF9D2B19B91E00FC84D1 /* PrintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */; };
+		3FF0CD572B6B7887005A0DE6 /* LinkUrlEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0CD562B6B7887005A0DE6 /* LinkUrlEnum.swift */; };
 		3FF491222B1864B300CB4B5D /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF491212B1864B300CB4B5D /* FLEX */; };
 		3FF497682B01B21F007DA1DB /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */; };
 		3FFC50BA2B67515300D7CEE9 /* SceneDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */; };
@@ -156,6 +157,7 @@
 		3FEC37E32B22F3E200BAFD84 /* SettingBlockedSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBlockedSourceViewController.swift; sourceTree = "<group>"; };
 		3FEE017B2B33CB0000FE327F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3FF0BF9C2B19B91E00FC84D1 /* PrintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintExtension.swift; sourceTree = "<group>"; };
+		3FF0CD562B6B7887005A0DE6 /* LinkUrlEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkUrlEnum.swift; sourceTree = "<group>"; };
 		3FF497672B01B21F007DA1DB /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateExtension.swift; sourceTree = "<group>"; };
 		3FFC50BD2B67525100D7CEE9 /* UrlHandleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlHandleTypeEnum.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		3FE26AFF2B566A2A0006DC60 /* NewsWidget */ = {
 			isa = PBXGroup;
 			children = (
+				3FF0CD552B6B7854005A0DE6 /* Enum */,
 				3FE26B002B566A2A0006DC60 /* NewsWidgetBundle.swift */,
 				3FE26B022B566A2A0006DC60 /* NewsWidgetLiveActivity.swift */,
 				3FE26B042B566A2A0006DC60 /* NewsWidget.swift */,
@@ -276,6 +279,14 @@
 				3FE5F01F2B0377340078D08F /* NewsTableViewProtocal.swift */,
 			);
 			path = Protocal;
+			sourceTree = "<group>";
+		};
+		3FF0CD552B6B7854005A0DE6 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				3FF0CD562B6B7887005A0DE6 /* LinkUrlEnum.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		3FF497662B01B1DE007DA1DB /* Setting */ = {
@@ -622,6 +633,7 @@
 			files = (
 				3FEFAFC82B6206F9000E3C08 /* UserDefaultsExtension.swift in Sources */,
 				3F2B69912B6394670037290A /* NewsEntry.swift in Sources */,
+				3FF0CD572B6B7887005A0DE6 /* LinkUrlEnum.swift in Sources */,
 				3F2B698D2B6393E60037290A /* NewsWidgetIntent.swift in Sources */,
 				3F7B63482B5A5CB5009BE0AF /* APIDomainEnum.swift in Sources */,
 				3F7B634C2B5A61CE009BE0AF /* UserDefaultsKeyEnum.swift in Sources */,
