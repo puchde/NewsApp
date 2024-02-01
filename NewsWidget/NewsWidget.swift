@@ -20,7 +20,7 @@ struct NewsWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
                 NewsWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
+                    .containerBackground(Color("WidgetBackground").tertiary, for: .widget)
             } else {
                 NewsWidgetEntryView(entry: entry)
                     .padding()
@@ -70,73 +70,165 @@ struct WidgetMediumView: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            HStack(alignment: .top) {
-                Link(destination: URL(string: "cbtesting://open-news?url=\(entry.news[entry.newsNum].url)")!) {
-                    VStack {
-                        KFImage(URL(string: entry.news[entry.newsNum].urlToImage ?? ""))
-                            .placeholder { _ in
-                                Image("noPhoto")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 90, height: 80, alignment: .center)
-                            }
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 90, height: 80, alignment: .center)
-                        Text(entry.news[entry.newsNum].publishedAt)
-                            .font(.caption2)
-                    }
-                    .frame(maxWidth: 90)
-                    .padding(.trailing, 8)
-                }
-                VStack(alignment: .leading) {
-                    Spacer()
-                    Link(destination: URL(string: "cbtesting://open-news?url=\(entry.news[entry.newsNum].url)")!) {
-                        HStack(alignment: .top) {
-                            Text(entry.news[entry.newsNum].author ?? "News")
-                                .font(.caption2)
-                                .padding(.bottom, 5)
-                                .frame(alignment: .center)
-                        }
-                        
-                        Text(entry.news[entry.newsNum].title)
-                            .font(.caption)
-                            .lineSpacing(5)
-                            .frame(alignment: .leading)
-                        
-                    }
-                    Spacer()
-                }
-            }
-            VStack(alignment: .trailing) {
-                HStack(alignment: .bottom, content: {
-                    Button(intent: PreviousNewsIntent()) {
-                        Image(systemName: "arrow.backward")
-                            .frame(maxWidth: .infinity)
-
-                    }
-                    Button(intent: NextNewsIntent()) {
-                        Image(systemName: "arrow.forward")
-                            .frame(maxWidth: .infinity)
-                    }
-                })
-            }
+            WidgetNewsView(entry: entry)
+            
+            WidgetButtonView()
         }
     }
 }
 
 struct WidgetLargeView: View {
     var entry: NewsEntry
+    
     var body: some View {
         
         VStack(alignment: .leading) {
+            VStack {
+                WidgetNewsView(entry: entry, isLargeWidget: true)
+                Divider()
+                    .background(Color("WidgetBackground"))
+                    .padding(.bottom, 6)
+                WidgetNewsView(entry: entry, isLargeWidget: true, nextNum: 1)
+                Divider()
+                    .background(Color("WidgetBackground"))
+                    .padding(.bottom, 6)
+                WidgetNewsView(entry: entry, isLargeWidget: true, nextNum: 2)
+            }
+            WidgetButtonView(isLargeWidge: true)
         }
-        .background(Color.red)
     }
 }
 
+//MARK: 共用View
+//MARK: 共用Widget News
+/// Medium, Large顯示模式相同
+/// 根據isLargeWidget, nextNum顯示Large資料
 
-#Preview(as: .systemMedium) {
+struct WidgetNewsView: View {
+    var entry: NewsEntry
+    var isLargeWidget = false
+    var nextNum: Int = 0
+    var index: Int {
+        if isLargeWidget {
+            (entry.newsNum * 3) + nextNum
+        } else {
+            entry.newsNum + nextNum
+        }
+    }
+    var hasNews: Bool {
+        index > entry.news.count - 1 ? false : true
+    }
+
+    var body: some View {
+        if hasNews {
+            VStack {
+                HStack(alignment: .top) {
+                    Link(destination: URL(string: "cbtesting://open-news?url=\(entry.news[index].url)")!) {
+                        VStack {
+                            Spacer()
+                            KFImage(URL(string: entry.news[index].urlToImage ?? ""))
+                                .placeholder { _ in
+                                    Image("noPhoto")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 90, alignment: .center)
+                                }
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 90, alignment: .center)
+                            Spacer()
+                            Text(entry.news[index].publishedAt)
+                                .font(.caption2)
+                                .frame(maxWidth: .infinity)
+                                .background(Color.white.opacity(0.8))
+                                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
+                            
+                        }
+                        .frame(maxWidth: 90)
+                        .padding(.trailing, 8)
+                    }
+                    VStack(alignment: .center) {
+                        VStack(alignment: .center) {
+                            Link(destination: URL(string: "cbtesting://open-news?url=\(entry.news[index].url)")!) {
+                                HStack(alignment: .center) {
+                                    Spacer()
+                                    Text(entry.news[index].author ?? "News")
+                                        .font(.caption2)
+                                        .padding(.top, 5)
+                                        .frame(alignment: .center)
+                                    Spacer()
+                                }
+                                Divider()
+                                HStack {
+                                    Spacer()
+                                    Text(entry.news[index].title)
+                                        .font(.caption)
+                                        .lineSpacing(5)
+                                        .frame(alignment: .leading)
+                                    Spacer()
+                                }
+                            }
+                        }
+                        Spacer()
+                    }
+                    .frame(width: .infinity)
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
+                }
+            }
+        } else {
+            Spacer()
+                .frame(maxHeight: .infinity)
+        }
+    }
+}
+
+//MARK: 共用Widget Button
+struct WidgetButtonView: View {
+    var isLargeWidge: Bool = false
+    
+    var body: some View {
+        VStack(alignment: .trailing) {
+            HStack(alignment: .bottom, content: {
+                if isLargeWidge {
+                    Button(intent: PreviousNewsIntentLarge()) {
+                        Image(systemName: "arrowshape.backward.fill")
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(Color.orange.secondary)
+                    }
+                    .tint(Color.white.opacity(0.9))
+                    .buttonStyle(.borderedProminent)
+                    
+                    Button(intent: NextNewsIntentLarge()) {
+                        Image(systemName: "arrowshape.forward.fill")
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(Color.orange.secondary)
+                    }
+                    .tint(Color.white.opacity(0.9))
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button(intent: PreviousNewsIntent()) {
+                        Image(systemName: "arrowshape.backward.fill")
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(Color.orange.secondary)
+                    }
+                    .tint(Color.white.opacity(0.9))
+                    .buttonStyle(.borderedProminent)
+                    
+                    Button(intent: NextNewsIntent()) {
+                        Image(systemName: "arrowshape.forward.fill")
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(Color.orange.secondary)
+                    }
+                    .tint(Color.white.opacity(0.9))
+                    .buttonStyle(.borderedProminent)
+                }
+            })
+        }
+    }
+}
+
+#Preview(as: .systemLarge) {
     NewsWidget()
 } timeline: {
     NewsEntry.testEntry()
