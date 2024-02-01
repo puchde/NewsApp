@@ -33,7 +33,8 @@ enum UserdefaultKey: String {
     case widgetReloadTime = "widgetReloadTime"
     case widgetNews = "widgetNews"
     case widgetNewsTotalCount = "widgetNewsTotalCount"
-    case widgetNewsCount = "widgetNewsCount"
+    case widgetNewsPage = "widgetNewsPage"
+    case widgetNewsPageLarge = "widgetNewsPageLarge"
     
     //MARK: Guild
     case hasVisitedGuild = "hasVisitedGuild"

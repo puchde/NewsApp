@@ -17,11 +17,11 @@ struct PreviousNewsIntent: AppIntent {
     func perform() async throws -> some IntentResult {
         // Widget顯示上一則(newsCount)
         if let newsTotal = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsTotalCount.rawValue),
-        var newsCount = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsCount.rawValue) {
+        var newsCount = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsPage.rawValue) {
             if 0 < newsCount {
                 newsCount -= 1
                 print(newsCount)
-                userDefaultGroup?.set(newsCount, forKey: UserdefaultKey.widgetNewsCount.rawValue)
+                userDefaultGroup?.set(newsCount, forKey: UserdefaultKey.widgetNewsPage.rawValue)
             }
         }
         return .result()
@@ -34,11 +34,11 @@ struct NextNewsIntent: AppIntent {
     func perform() async throws -> some IntentResult {
         // Widget顯示下一則(newsCount)
         if let newsTotal = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsTotalCount.rawValue),
-        var newsCount = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsCount.rawValue) {
+        var newsCount = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsPage.rawValue) {
             if newsCount < newsTotal {
                 newsCount += 1
                 print(newsCount)
-                userDefaultGroup?.set(newsCount, forKey: UserdefaultKey.widgetNewsCount.rawValue)
+                userDefaultGroup?.set(newsCount, forKey: UserdefaultKey.widgetNewsPage.rawValue)
             }
         }
         return .result()

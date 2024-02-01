@@ -31,7 +31,7 @@ struct Provider: TimelineProvider {
         
         // Entry設定各時間所顯示內容
         if let news = userDefaultGroup?.getCodableObject([Article].self, with: UserdefaultKey.widgetNews.rawValue),
-           let newsCount = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsCount.rawValue) {
+           let newsCount = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsPage.rawValue) {
             print("Get UserDefaults News")
             let entry = NewsEntry(date: entryDate, news: news, newsNum: newsCount)
             let timeline = Timeline(entries: [entry], policy: .atEnd)
@@ -47,7 +47,7 @@ struct Provider: TimelineProvider {
                         
                         userDefaultGroup?.setCodableObject(news, forKey: UserdefaultKey.widgetNews.rawValue)
                         userDefaultGroup?.setValue(news.count, forKey: UserdefaultKey.widgetNewsTotalCount.rawValue)
-                        userDefaultGroup?.setValue(0, forKey: UserdefaultKey.widgetNewsCount.rawValue)
+                        userDefaultGroup?.setValue(0, forKey: UserdefaultKey.widgetNewsPage.rawValue)
                         
                         userDefaultGroup?.setValue(getReloadDateString(date: Date()), forKey: UserdefaultKey.widgetReloadTime.rawValue)
                         
@@ -102,7 +102,7 @@ extension Provider {
         if let userDefaultGroup = userDefaultGroup {
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNews.rawValue)
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsTotalCount.rawValue)
-            userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsCount.rawValue)
+            userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsPage.rawValue)
         }
     }
 }

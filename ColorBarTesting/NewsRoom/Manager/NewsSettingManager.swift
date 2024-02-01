@@ -373,7 +373,8 @@ extension NewsSettingManager {
         if let userDefaultGroup = userDefaultsWidget {
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNews.rawValue)
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsTotalCount.rawValue)
-            userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsCount.rawValue)
+            userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsPage.rawValue)
+            userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsPageLarge.rawValue)
             WidgetCenter.shared.reloadAllTimelines()
         }
     }
