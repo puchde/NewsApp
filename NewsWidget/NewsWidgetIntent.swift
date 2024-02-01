@@ -44,3 +44,36 @@ struct NextNewsIntent: AppIntent {
         return .result()
     }
 }
+
+struct PreviousNewsIntentLarge: AppIntent {
+    static var title: LocalizedStringResource = "PreviousNews"
+    
+    func perform() async throws -> some IntentResult {
+        // Widget顯示上一則(newsCount)
+        if let newsTotal = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsTotalCount.rawValue),
+        var newsPage = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsPageLarge.rawValue) {
+            if 0 < newsPage {
+                newsPage -= 1
+                userDefaultGroup?.set(newsPage, forKey: UserdefaultKey.widgetNewsPageLarge.rawValue)
+            }
+        }
+        return .result()
+    }
+}
+
+struct NextNewsIntentLarge: AppIntent {
+    static var title: LocalizedStringResource = "NextNews"
+    
+    func perform() async throws -> some IntentResult {
+        // Widget顯示下一則(newsCount)
+        if let newsTotal = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsTotalCount.rawValue),
+        var newsPage = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsPageLarge.rawValue) {
+            if (newsPage + 1) * 3 < newsTotal {
+                newsPage += 1
+                userDefaultGroup?.set(newsPage, forKey: UserdefaultKey.widgetNewsPageLarge.rawValue)
+            }
+        }
+        return .result()
+    }
+}
+

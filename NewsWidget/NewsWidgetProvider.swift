@@ -28,10 +28,18 @@ struct Provider: TimelineProvider {
            reloadTime.addingTimeInterval(50 * 60) < Date() {
             cleanDefaultsData()
         }
-        
+                
         // Entry設定各時間所顯示內容
+        var widgetPageKey = UserdefaultKey.widgetNewsPage.rawValue
+        switch context.family {
+        case .systemLarge:
+            widgetPageKey = UserdefaultKey.widgetNewsPageLarge.rawValue
+        default:
+            break
+        }
+        
         if let news = userDefaultGroup?.getCodableObject([Article].self, with: UserdefaultKey.widgetNews.rawValue),
-           let newsCount = userDefaultGroup?.integer(forKey: UserdefaultKey.widgetNewsPage.rawValue) {
+           let newsCount = userDefaultGroup?.integer(forKey: widgetPageKey) {
             print("Get UserDefaults News")
             let entry = NewsEntry(date: entryDate, news: news, newsNum: newsCount)
             let timeline = Timeline(entries: [entry], policy: .atEnd)
@@ -48,6 +56,7 @@ struct Provider: TimelineProvider {
                         userDefaultGroup?.setCodableObject(news, forKey: UserdefaultKey.widgetNews.rawValue)
                         userDefaultGroup?.setValue(news.count, forKey: UserdefaultKey.widgetNewsTotalCount.rawValue)
                         userDefaultGroup?.setValue(0, forKey: UserdefaultKey.widgetNewsPage.rawValue)
+                        userDefaultGroup?.setValue(0, forKey: UserdefaultKey.widgetNewsPageLarge.rawValue)
                         
                         userDefaultGroup?.setValue(getReloadDateString(date: Date()), forKey: UserdefaultKey.widgetReloadTime.rawValue)
                         
@@ -103,6 +112,7 @@ extension Provider {
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNews.rawValue)
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsTotalCount.rawValue)
             userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsPage.rawValue)
+            userDefaultGroup.removeObject(forKey: UserdefaultKey.widgetNewsPageLarge.rawValue)
         }
     }
 }
