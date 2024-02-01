@@ -60,8 +60,8 @@ struct WidgetSmallView: View {
     var body: some View {
         
         VStack(alignment: .leading) {
+            
         }
-        .background(Color.red)
     }
 }
 
@@ -151,19 +151,17 @@ struct WidgetNewsView: View {
                         VStack(alignment: .center) {
                             Link(destination: URL(string: "\(LinkUrlEnum.testOpenNews(url: entry.news[index].url).urlStr)")!) {
                                 HStack(alignment: .center) {
-                                    Spacer()
                                     Text(entry.news[index].author ?? "News")
-                                        .font(.caption2)
+                                        .font(.system(size: 10))
                                         .padding(.top, 5)
                                         .frame(alignment: .center)
-                                    Spacer()
                                 }
                                 Divider()
                                 HStack {
                                     Spacer()
                                     Text(entry.news[index].title)
                                         .font(.caption)
-                                        .lineSpacing(5)
+                                        .lineSpacing(3)
                                         .frame(alignment: .leading)
                                     Spacer()
                                 }
