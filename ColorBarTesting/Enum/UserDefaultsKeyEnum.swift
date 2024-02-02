@@ -38,4 +38,7 @@ enum UserdefaultKey: String {
     
     //MARK: Guild
     case hasVisitedGuild = "hasVisitedGuild"
+    
+    //MARK: Update
+    case appStoreVersion = "appStoreVersion"
 }

@@ -133,6 +133,11 @@ class NewsSettingManager {
     private var hasVisitedGuild: Bool {
         return userDefaults.bool(forKey: UserdefaultKey.hasVisitedGuild.rawValue)
     }
+    
+    //MARK: Check App Update
+    private var appStoreVersion: String {
+        return userDefaults.string(forKey: UserdefaultKey.appStoreVersion.rawValue) ?? "1.0"
+    }
 }
 
 //MARK: Get Setting
@@ -232,6 +237,10 @@ extension NewsSettingManager {
     
     func getHasVisitedGuild() -> Bool {
         return hasVisitedGuild
+    }
+    
+    func getAppStoreVersion() -> String {
+        return appStoreVersion
     }
 }
 
@@ -349,6 +358,10 @@ extension NewsSettingManager {
     
     func updateHasVisitedGuild(_ isFirstUsed: Bool) {
         userDefaults.setValue(isFirstUsed, forKey: UserdefaultKey.hasVisitedGuild.rawValue)
+    }
+    
+    func updateAppStoreVersion(_ version: String) {
+        userDefaults.setValue(version, forKey: UserdefaultKey.appStoreVersion.rawValue)
     }
 }
 

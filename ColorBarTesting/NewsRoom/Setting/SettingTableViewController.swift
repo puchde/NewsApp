@@ -26,9 +26,13 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
     let otherOptions = [R.string.localizable.settingUsageGuide(),
                         R.string.localizable.settingWriteComment(),
                         R.string.localizable.settingSendEmail()]
-    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    
+    var appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+    lazy var appVersionInfo = appVersion
     
     let formatter = DateFormatter()
+    
+    var checkVersionDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +40,10 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
         settingTableView.dataSource = self
         navigationItem.title = R.string.localizable.setting()
         formatter.dateFormat = "yyyy-MM-dd-HH:mm"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        checkAppVersionUpdate()
     }
 }
 
@@ -89,8 +97,11 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
                 
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
+            let hasUpdate = newsSettingManager.getAppStoreVersion() > appVersion
             content.image = UIImage(systemName: "info.circle")
-            cell.accessoryView = getAccessLabel(desc: appVersion)
+            content.imageProperties.tintColor = hasUpdate ? .orange : nil
+            self.appVersionInfo = hasUpdate ? "(Update) \(appVersion)" : appVersion
+            cell.accessoryView = getAccessLabel(desc: appVersionInfo)
         case (1, 0):
             content.image = UIImage(systemName: "hand.raised")
             let switchButton = UISwitch()
@@ -286,6 +297,67 @@ extension SettingTableViewController {
             return
         default:
             dismiss(animated: true)
+        }
+    }
+}
+
+//MARK: Check AppStore Update
+extension SettingTableViewController {
+    func checkAppVersionUpdate() {
+        appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        if checkVersionDate.addingTimeInterval(24*60*60) < Date() {
+            checkVersionDate = Date()
+            _ = try? getAppStoreVersion { (versionNum, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    let version = versionNum ?? "1.0"
+                    newsSettingManager.updateAppStoreVersion(version)
+                    DispatchQueue.main.async {
+                        self.settingTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                    }
+                }
+            }
+        } else {
+            settingTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        }
+        
+        enum VersionError: Error {
+            case invalidResponse, invalidBundleInfo
+        }
+
+        @discardableResult
+        func getAppStoreVersion(completion: @escaping (String?, Error?) -> Void) throws -> URLSessionDataTask {
+            // For Test
+//            var identifier = ""
+
+            guard let info = Bundle.main.infoDictionary,
+                let identifier = info["CFBundleIdentifier"] as? String,
+                let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(identifier)") else {
+                    throw VersionError.invalidBundleInfo
+            }
+                
+            let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalCacheData)
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                do {
+                    if let error = error { throw error }
+                    
+                    guard let data = data else { throw VersionError.invalidResponse }
+                                
+                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any]
+                                
+                    guard let result = (json?["results"] as? [Any])?.first as? [String: Any], let lastVersion = result["version"] as? String else {
+                        throw VersionError.invalidResponse
+                    }
+                    completion(lastVersion, nil)
+                } catch {
+                    completion(nil, error)
+                }
+            }
+            
+            task.resume()
+            return task
         }
     }
 }
