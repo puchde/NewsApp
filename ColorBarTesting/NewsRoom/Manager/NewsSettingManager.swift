@@ -129,28 +129,14 @@ class NewsSettingManager {
     //MARK: Auto Reload
     private var reloadDate: Date?
     
-    func getReloadDate() -> Date? {
-        return reloadDate
-    }
-    
-    func updateReloadDate(date: Date) {
-        reloadDate = date
-    }
-    
     //MARK: Guild
     private var hasVisitedGuild: Bool {
         return userDefaults.bool(forKey: UserdefaultKey.hasVisitedGuild.rawValue)
     }
-    
-    func getHasVisitedGuild() -> Bool {
-        return hasVisitedGuild
-    }
-    
-    func updateHasVisitedGuild(_ isFirstUsed: Bool) {
-        userDefaults.setValue(isFirstUsed, forKey: UserdefaultKey.hasVisitedGuild.rawValue)
-    }
-        
-    //MARK: Get Setting
+}
+
+//MARK: Get Setting
+extension NewsSettingManager {
     func getCountry() -> CountryCode {
         return country
     }
@@ -240,8 +226,17 @@ class NewsSettingManager {
         return blockedSource
     }
     
+    func getReloadDate() -> Date? {
+        return reloadDate
+    }
     
-    //MARK: Update Setting
+    func getHasVisitedGuild() -> Bool {
+        return hasVisitedGuild
+    }
+}
+
+//MARK: Update Setting
+extension NewsSettingManager {
     func updateSettingStorage<T>(data: T) {
         switch data {
         case let newCountryCode as CountryCode:
@@ -346,6 +341,14 @@ class NewsSettingManager {
     func updateReplaceBlockedSource(source: [String]) {
         blockedSource = Set(source)
         userDefaults.setValue(Array(blockedSource), forKey: UserdefaultKey.settingBlockedSource.rawValue)
+    }
+    
+    func updateReloadDate(date: Date) {
+        reloadDate = date
+    }
+    
+    func updateHasVisitedGuild(_ isFirstUsed: Bool) {
+        userDefaults.setValue(isFirstUsed, forKey: UserdefaultKey.hasVisitedGuild.rawValue)
     }
 }
 
