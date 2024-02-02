@@ -78,31 +78,19 @@ extension MarkListViewController {
     @objc
     func toggleImportantListHide(section: Int) {
         importantListHide.toggle()
-        UIView.animate(withDuration: 0.3) {
-            self.tableView.beginUpdates()
-            self.tableView.reloadSections(IndexSet(integer: 0), with: .right)
-            self.tableView.endUpdates()
-        }
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
     }
 
     @objc
     func toggleAttentionListHide(section: Int) {
         attentionListHide.toggle()
-        UIView.animate(withDuration: 0.3) {
-            self.tableView.beginUpdates()
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .right)
-            self.tableView.endUpdates()
-        }
+        self.tableView.reloadSections(IndexSet(integer: 1), with: .fade)
     }
 
     @objc
     func togglenormalListHide(section: Int) {
         normalListHide.toggle()
-        UIView.animate(withDuration: 0.3) {
-            self.tableView.beginUpdates()
-            self.tableView.reloadSections(IndexSet(integer: 2), with: .right)
-            self.tableView.endUpdates()
-        }
+        self.tableView.reloadSections(IndexSet(integer: 2), with: .fade)
     }
 
     func setupHeader(section: Int) -> UIView? {
