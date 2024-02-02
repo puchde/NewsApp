@@ -139,8 +139,9 @@ struct WidgetNewsView: View {
                             Spacer()
                             Text(entry.news[index].publishedAt)
                                 .font(.caption2)
+                                .tint(.primary)
                                 .frame(maxWidth: .infinity)
-                                .background(Color.white.opacity(0.8))
+                                .background(Color(uiColor: .systemBackground).opacity(0.8))
                                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
                             
                         }
@@ -153,6 +154,7 @@ struct WidgetNewsView: View {
                                 HStack(alignment: .center) {
                                     Text(entry.news[index].author ?? "News")
                                         .font(.system(size: 10))
+                                        .tint(.primary)
                                         .padding(.top, 5)
                                         .frame(alignment: .center)
                                 }
@@ -161,6 +163,7 @@ struct WidgetNewsView: View {
                                     Spacer()
                                     Text(entry.news[index].title)
                                         .font(.caption)
+                                        .tint(.primary)
                                         .lineSpacing(3)
                                         .frame(alignment: .leading)
                                     Spacer()
@@ -170,7 +173,7 @@ struct WidgetNewsView: View {
                         Spacer()
                     }
                     .frame(width: .infinity)
-                    .background(Color.white)
+                    .background(Color(uiColor: .systemBackground))
                     .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
                 }
             }
