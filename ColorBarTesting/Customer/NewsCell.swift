@@ -220,11 +220,28 @@ extension UIViewController {
             alert.addAction(act)
         }
         
-        self.present(alert, animated: true, completion: {
-            alert.view.superview?.isUserInteractionEnabled = true
-            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.presentAlertDismiss)))
-        })
+        DispatchQueue.main.async {            
+            self.present(alert, animated: true, completion: {
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.presentAlertDismiss)))
+            })
+        }
     }
+    
+    func presentSheetAlert(title: String = "", message: String = "", action: [UIAlertAction] = []) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        action.forEach { act in
+            alert.addAction(act)
+        }
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: {
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.presentAlertDismiss)))
+            })
+        }
+    }
+    
     
     @objc func presentAlertDismiss() {
         self.dismiss(animated: true, completion: nil)
