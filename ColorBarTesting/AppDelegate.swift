@@ -7,6 +7,7 @@
 
 import UIKit
 import CloudKit
+import UserNotifications
 
 let localFileManager = LocalFileManager.shared
 let mlModelManager = MLModelManager.shared
@@ -15,6 +16,7 @@ let utils = Utils.shared
 let userDefaults = UserDefaults.standard
 let userDefaultsWidget = UserDefaults(suiteName: UserdefaultsGroup.widgetShared.rawValue)
 let cloudDefaults = NSUbiquitousKeyValueStore.default
+let localNotification = UNUserNotificationCenter.current()
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         cloudDefaults.synchronize()
         checkIcloudState()
+        
+        localNotification.requestAuthorization(options: [.alert, .badge]) { isGet, error in
+            print(isGet, error)
+        }
         
         return true
     }

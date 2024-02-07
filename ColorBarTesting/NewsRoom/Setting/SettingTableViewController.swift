@@ -7,6 +7,7 @@
 
 import UIKit
 import MessageUI
+import UserNotifications
 
 class SettingTableViewController: UIViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var settingTableView: UITableView!
@@ -20,7 +21,8 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
     let appOptions = [ R.string.localizable.settingAutoReaderMode(),
                       R.string.localizable.settingCleanMarkedNews(),
                       R.string.localizable.settingBlockPublisherSources(),
-                      R.string.localizable.settingICloudBackup()]
+                       R.string.localizable.settingICloudBackup(),
+                       "Notification"]
     
     let widgetOptions = [R.string.localizable.settingWidgetOptionCategory()]
     let otherOptions = [R.string.localizable.settingUsageGuide(),
@@ -122,7 +124,7 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             button.setTitle(widgetCategory, for: .normal)
             button.contentHorizontalAlignment = .right
             button.showsMenuAsPrimaryAction = true
-            button.menu = UIMenu(title: R.string.localizable.settingWidgetOptionCategory(), options: [.singleSelection], children: [
+            button.menu = UIMenu(title: R.string.localizable.settingWidgetOptionCategory(), options: [], children: [
                 getActions(category: .general),
                 getActions(category: .business),
                 getActions(category: .health),
@@ -233,7 +235,70 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
                 }
                 self.presentAlert(title: R.string.localizable.settingIcloudToSettingTitle(), message: R.string.localizable.settingIcloudToSettingDesc(), action: [cancelAction, settingsAction])
             }
+        case (1, 4):
+            localNotification.getNotificationSettings { setting in
+                print(setting)
+                let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel)
+                switch setting.authorizationStatus {
+                case .denied, .notDetermined, .ephemeral:
+                    let settingsAction = UIAlertAction(title: R.string.localizable.go(), style: .default) { _ in
+                        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+                              UIApplication.shared.canOpenURL(settingsUrl) else {
+                            return
+                        }
+
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)") // Prints true
+                        })
+                    }
+                    // TODO: R String
+                    self.presentAlert(title: "沒權限", message: R.string.localizable.settingIcloudToSettingDesc(), action: [cancelAction, settingsAction])
+                default:
+                    // TODO: R String、To Notification Setting View
+                    self.presentSheetAlert(title: "AAA", message: R.string.localizable.settingIcloudToSettingDesc(), action: [cancelAction])
+                    addNotificationTrigger(time: 10)
+                }
+            }
             
+            func addNotificationTrigger(time: Int) {
+                let content = UNMutableNotificationContent()
+                content.title = "title:\(time)"
+                var dateComponents = DateComponents()
+//                dateComponents.hour = time
+                dateComponents.second = time
+
+                
+//                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//                let request = UNNotificationRequest(identifier: "NewsNotificationID_\(time)", content: content, trigger: trigger)
+//                localNotification.add(request)
+                
+                APIManager.topHeadlines(country: CountryCode.TW.rawValue, category: Category.technology.rawValue) { result in
+                    switch result {
+                    case .success(let success):
+                        if success.status == "OK" {
+                            do {
+                                let articles = try ArticlesTotalProtobuf(serializedData: success.articles)
+                                let article = articles.articles.first
+                                
+                                let content = UNMutableNotificationContent()
+                                content.title = "title:\(article?.title)"
+                                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                                let request = UNNotificationRequest(identifier: "NewsNotificationID_\(time)", content: content, trigger: trigger)
+                                localNotification.add(request)
+
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            self.view.makeToast("取得資料錯誤")
+                        }
+                    case .failure(let failure):
+                        print(failure)
+                    }
+                }
+            }
+            
+            break
         case (2, 0):
             self.presentNoActionAlert(title: R.string.localizable.settingWidgetOptionInfoTitle(), message: R.string.localizable.settingWidgetOptionInfoDesc())
         case (3, 0):
