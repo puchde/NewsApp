@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E77EF8CF2906A35600EE94E6"
-               BuildableName = "ColorBarTesting.app"
-               BlueprintName = "ColorBarTesting"
-               ReferencedContainer = "container:ColorBarTesting.xcodeproj">
+               BuildableName = "NewsApp.app"
+               BlueprintName = "NewsApp"
+               ReferencedContainer = "container:NewsApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E77EF8CF2906A35600EE94E6"
-            BuildableName = "ColorBarTesting.app"
-            BlueprintName = "ColorBarTesting"
-            ReferencedContainer = "container:ColorBarTesting.xcodeproj">
+            BuildableName = "NewsApp.app"
+            BlueprintName = "NewsApp"
+            ReferencedContainer = "container:NewsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E77EF8CF2906A35600EE94E6"
-            BuildableName = "ColorBarTesting.app"
-            BlueprintName = "ColorBarTesting"
-            ReferencedContainer = "container:ColorBarTesting.xcodeproj">
+            BuildableName = "NewsApp.app"
+            BlueprintName = "NewsApp"
+            ReferencedContainer = "container:NewsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -64,8 +64,6 @@
 		E73EB5222933873F00D1F74C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E73EB5212933873F00D1F74C /* .gitignore */; };
 		E74A0AE929DF188E00585387 /* HeadlinesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74A0AE829DF188D00585387 /* HeadlinesPageViewController.swift */; };
 		E74A0AEB29DF18CC00585387 /* HeadlinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74A0AEA29DF18CC00585387 /* HeadlinesTableViewController.swift */; };
-		E74D1FD32930B0270010EE8D /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D1FD22930B0270010EE8D /* SheetViewController.swift */; };
-		E751979B2931D73B00582258 /* ModelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E751979A2931D73B00582258 /* ModelSelectViewController.swift */; };
 		E7528DE829E1DCD6001169F0 /* NewsContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7528DE629E1DCD6001169F0 /* NewsContent.storyboard */; };
 		E7528DEA29E28C9B001169F0 /* SearchContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7528DE929E28C9B001169F0 /* SearchContentViewController.swift */; };
 		E7528DEC29E29749001169F0 /* NewsTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7528DEB29E29749001169F0 /* NewsTabBarViewController.swift */; };
@@ -74,7 +72,6 @@
 		E75555C4292A980300E35365 /* UrlExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75555C3292A980300E35365 /* UrlExtention.swift */; };
 		E75654A229EC506C009A123B /* MarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75654A129EC506C009A123B /* MarkListViewController.swift */; };
 		E75B1BAB2933544D004CA82C /* ZoomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B1BAA2933544D004CA82C /* ZoomImageView.swift */; };
-		E75B1BAD29335570004CA82C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B1BAC29335570004CA82C /* ImageViewController.swift */; };
 		E75C2F5F29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C2F5E29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift */; };
 		E75C2F6129D9F51D00FBC7B4 /* SearchNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C2F6029D9F51D00FBC7B4 /* SearchNewsViewController.swift */; };
 		E75C2F6429D9F65400FBC7B4 /* NewsAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C2F6329D9F65400FBC7B4 /* NewsAPIResponse.swift */; };
@@ -86,13 +83,11 @@
 		E77865DD29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77865DC29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift */; };
 		E77EF8D42906A35600EE94E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77EF8D32906A35600EE94E6 /* AppDelegate.swift */; };
 		E77EF8D62906A35600EE94E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77EF8D52906A35600EE94E6 /* SceneDelegate.swift */; };
-		E77EF8D82906A35600EE94E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77EF8D72906A35600EE94E6 /* ViewController.swift */; };
 		E77EF8DB2906A35600EE94E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77EF8D92906A35600EE94E6 /* Main.storyboard */; };
 		E77EF8DD2906A35800EE94E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E77EF8DC2906A35800EE94E6 /* Assets.xcassets */; };
 		E77EF8E02906A35800EE94E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77EF8DE2906A35800EE94E6 /* LaunchScreen.storyboard */; };
 		E7CF424129DB317D006F41C2 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CF424029DB317D006F41C2 /* NewsCell.xib */; };
 		E7CF424329DB48ED006F41C2 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CF424229DB48ED006F41C2 /* NewsCell.swift */; };
-		E7DDB4EA290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E7DDB4E9290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel */; };
 		E7F38BF429E0F570003E7E6F /* CustomVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F38BF329E0F570003E7E6F /* CustomVIew.swift */; };
 /* End PBXBuildFile section */
 
@@ -171,8 +166,6 @@
 		E73EB5212933873F00D1F74C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E74A0AE829DF188D00585387 /* HeadlinesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesPageViewController.swift; sourceTree = "<group>"; };
 		E74A0AEA29DF18CC00585387 /* HeadlinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesTableViewController.swift; sourceTree = "<group>"; };
-		E74D1FD22930B0270010EE8D /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
-		E751979A2931D73B00582258 /* ModelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectViewController.swift; sourceTree = "<group>"; };
 		E7528DE729E1DCD6001169F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ColorBarTesting/Storyboard/Base.lproj/NewsContent.storyboard; sourceTree = "<group>"; };
 		E7528DE929E28C9B001169F0 /* SearchContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentViewController.swift; sourceTree = "<group>"; };
 		E7528DEB29E29749001169F0 /* NewsTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTabBarViewController.swift; sourceTree = "<group>"; };
@@ -181,7 +174,6 @@
 		E75555C3292A980300E35365 /* UrlExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlExtention.swift; sourceTree = "<group>"; };
 		E75654A129EC506C009A123B /* MarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkListViewController.swift; sourceTree = "<group>"; };
 		E75B1BAA2933544D004CA82C /* ZoomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageView.swift; sourceTree = "<group>"; };
-		E75B1BAC29335570004CA82C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		E75C2F5E29D9F51000FBC7B4 /* ClassifyHeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyHeadlineViewController.swift; sourceTree = "<group>"; };
 		E75C2F6029D9F51D00FBC7B4 /* SearchNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNewsViewController.swift; sourceTree = "<group>"; };
 		E75C2F6329D9F65400FBC7B4 /* NewsAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIResponse.swift; sourceTree = "<group>"; };
@@ -191,18 +183,16 @@
 		E774013929E5C2A40052C577 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		E77865DA29DC344500F5ED1C /* NewsSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSettingManager.swift; sourceTree = "<group>"; };
 		E77865DC29DC4CBA00F5ED1C /* HeadlinesSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesSettingViewController.swift; sourceTree = "<group>"; };
-		E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorBarTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E77EF8D02906A35600EE94E6 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E77EF8D32906A35600EE94E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E77EF8D52906A35600EE94E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E77EF8D72906A35600EE94E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E77EF8DA2906A35600EE94E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E77EF8DC2906A35800EE94E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E77EF8DF2906A35800EE94E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E77EF8E12906A35800EE94E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E77EF8E92906AAAD00EE94E6 /* ColorBarTesting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ColorBarTesting.entitlements; sourceTree = "<group>"; };
+		E77EF8E92906AAAD00EE94E6 /* NewsApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NewsApp.entitlements; sourceTree = "<group>"; };
 		E7CF424029DB317D006F41C2 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		E7CF424229DB48ED006F41C2 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
-		E7DDB4E9290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TabbarColorClassifier1027.mlmodel; sourceTree = "<group>"; };
 		E7F38BF329E0F570003E7E6F /* CustomVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVIew.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,17 +294,6 @@
 				3F288BD12B69F6350080D7FC /* GuildStepGif.bundle */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		E73EB51F2933834E00D1F74C /* CoreDataRoom */ = {
-			isa = PBXGroup;
-			children = (
-				E77EF8D72906A35600EE94E6 /* ViewController.swift */,
-				E74D1FD22930B0270010EE8D /* SheetViewController.swift */,
-				E751979A2931D73B00582258 /* ModelSelectViewController.swift */,
-				E75B1BAC29335570004CA82C /* ImageViewController.swift */,
-			);
-			path = CoreDataRoom;
 			sourceTree = "<group>";
 		};
 		E73EB5202933838A00D1F74C /* Customer */ = {
@@ -452,7 +431,7 @@
 			children = (
 				3F7B63492B5A5D9E009BE0AF /* NewsWidgetExtension.entitlements */,
 				E73EB5212933873F00D1F74C /* .gitignore */,
-				E77EF8D22906A35600EE94E6 /* ColorBarTesting */,
+				E77EF8D22906A35600EE94E6 /* NewsApp */,
 				3FE26AFF2B566A2A0006DC60 /* NewsWidget */,
 				3FE26AFA2B566A2A0006DC60 /* Frameworks */,
 				E77EF8D12906A35600EE94E6 /* Products */,
@@ -462,13 +441,13 @@
 		E77EF8D12906A35600EE94E6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */,
+				E77EF8D02906A35600EE94E6 /* NewsApp.app */,
 				3FE26AF92B566A2A0006DC60 /* NewsWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E77EF8D22906A35600EE94E6 /* ColorBarTesting */ = {
+		E77EF8D22906A35600EE94E6 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
 				3FFC68202B68FC1200D4E6D4 /* Assets */,
@@ -477,20 +456,18 @@
 				E75C2F6229D9F58D00FBC7B4 /* APIResponse */,
 				E75C2F5929D9F44200FBC7B4 /* NewsRoom */,
 				E73EB5202933838A00D1F74C /* Customer */,
-				E73EB51F2933834E00D1F74C /* CoreDataRoom */,
 				E75555C2292A97D200E35365 /* Extension */,
 				E75555BF292A978C00E35365 /* Enum */,
 				E75555C5292A98A200E35365 /* Manager */,
 				E74B508229DB2F8000888EAC /* Storyboard */,
-				E77EF8E92906AAAD00EE94E6 /* ColorBarTesting.entitlements */,
+				E77EF8E92906AAAD00EE94E6 /* NewsApp.entitlements */,
 				E77EF8D32906A35600EE94E6 /* AppDelegate.swift */,
 				E77EF8D52906A35600EE94E6 /* SceneDelegate.swift */,
 				E77EF8DC2906A35800EE94E6 /* Assets.xcassets */,
 				E77EF8E12906A35800EE94E6 /* Info.plist */,
-				E7DDB4E9290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel */,
 				3F3E88C32B201C9D00883A55 /* Localizable.strings */,
 			);
-			path = ColorBarTesting;
+			path = NewsApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,9 +496,9 @@
 			productReference = 3FE26AF92B566A2A0006DC60 /* NewsWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		E77EF8CF2906A35600EE94E6 /* ColorBarTesting */ = {
+		E77EF8CF2906A35600EE94E6 /* NewsApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E77EF8E42906A35800EE94E6 /* Build configuration list for PBXNativeTarget "ColorBarTesting" */;
+			buildConfigurationList = E77EF8E42906A35800EE94E6 /* Build configuration list for PBXNativeTarget "NewsApp" */;
 			buildPhases = (
 				E77EF8CC2906A35600EE94E6 /* Sources */,
 				E77EF8CD2906A35600EE94E6 /* Frameworks */,
@@ -534,7 +511,7 @@
 				3F2B69872B6357220037290A /* PBXTargetDependency */,
 				3F3E88BC2B201A8100883A55 /* PBXTargetDependency */,
 			);
-			name = ColorBarTesting;
+			name = NewsApp;
 			packageProductDependencies = (
 				E7061D0729DB6A6800405544 /* Kingfisher */,
 				3F079C012B172C820076DA20 /* NVActivityIndicatorView */,
@@ -548,7 +525,7 @@
 				3F3E88B92B2019F700883A55 /* rswift */,
 			);
 			productName = ColorBarTesting;
-			productReference = E77EF8D02906A35600EE94E6 /* ColorBarTesting.app */;
+			productReference = E77EF8D02906A35600EE94E6 /* NewsApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -569,7 +546,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E77EF8CB2906A35600EE94E6 /* Build configuration list for PBXProject "ColorBarTesting" */;
+			buildConfigurationList = E77EF8CB2906A35600EE94E6 /* Build configuration list for PBXProject "NewsApp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -592,7 +569,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E77EF8CF2906A35600EE94E6 /* ColorBarTesting */,
+				E77EF8CF2906A35600EE94E6 /* NewsApp */,
 				3FE26AF82B566A2A0006DC60 /* NewsWidgetExtension */,
 			);
 		};
@@ -652,7 +629,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7DDB4EA290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel in Sources */,
 				3F35225F2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift in Sources */,
 				E75555C1292A97B400E35365 /* FileType.swift in Sources */,
 				E7528DEA29E28C9B001169F0 /* SearchContentViewController.swift in Sources */,
@@ -661,13 +637,10 @@
 				3F079BFF2B16E4AF0076DA20 /* APIDomainEnum.swift in Sources */,
 				E77865DB29DC344500F5ED1C /* NewsSettingManager.swift in Sources */,
 				3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */,
-				E77EF8D82906A35600EE94E6 /* ViewController.swift in Sources */,
 				E73EB51E2933627E00D1F74C /* MLModelManager.swift in Sources */,
 				E7061D0C29DC240800405544 /* NewsAPIEnum.swift in Sources */,
-				E751979B2931D73B00582258 /* ModelSelectViewController.swift in Sources */,
 				E7F38BF429E0F570003E7E6F /* CustomVIew.swift in Sources */,
 				E706448629EACBF6009F8C64 /* UserDefaultsExtension.swift in Sources */,
-				E74D1FD32930B0270010EE8D /* SheetViewController.swift in Sources */,
 				E75C2F6429D9F65400FBC7B4 /* NewsAPIResponse.swift in Sources */,
 				E74A0AE929DF188E00585387 /* HeadlinesPageViewController.swift in Sources */,
 				3FFC68192B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift in Sources */,
@@ -693,7 +666,6 @@
 				3FFC50BE2B67525100D7CEE9 /* UrlHandleTypeEnum.swift in Sources */,
 				E75C2F6729D9F6B900FBC7B4 /* APIManager.swift in Sources */,
 				E75C2F6129D9F51D00FBC7B4 /* SearchNewsViewController.swift in Sources */,
-				E75B1BAD29335570004CA82C /* ImageViewController.swift in Sources */,
 				E706448929EACCAC009F8C64 /* UserDefaultsKeyEnum.swift in Sources */,
 				E75654A229EC506C009A123B /* MarkListViewController.swift in Sources */,
 				E75B1BAB2933544D004CA82C /* ZoomImageView.swift in Sources */,
@@ -791,7 +763,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ZW.ColorBarTesting.NewsWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = ZW.NewsApp.NewsWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -826,7 +798,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ZW.ColorBarTesting.NewsWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = ZW.NewsApp.NewsWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -957,14 +929,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ColorBarTesting/ColorBarTesting.entitlements;
+				CODE_SIGN_ENTITLEMENTS = NewsApp/NewsApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KA7XQAFX2W;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ColorBarTesting/Info.plist;
+				INFOPLIST_FILE = NewsApp/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -976,7 +948,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ZW.ColorBarTesting;
+				PRODUCT_BUNDLE_IDENTIFIER = ZW.NewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -991,14 +963,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ColorBarTesting/ColorBarTesting.entitlements;
+				CODE_SIGN_ENTITLEMENTS = NewsApp/NewsApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KA7XQAFX2W;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ColorBarTesting/Info.plist;
+				INFOPLIST_FILE = NewsApp/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1010,7 +982,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ZW.ColorBarTesting;
+				PRODUCT_BUNDLE_IDENTIFIER = ZW.NewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1031,7 +1003,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E77EF8CB2906A35600EE94E6 /* Build configuration list for PBXProject "ColorBarTesting" */ = {
+		E77EF8CB2906A35600EE94E6 /* Build configuration list for PBXProject "NewsApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E77EF8E22906A35800EE94E6 /* Debug */,
@@ -1040,7 +1012,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E77EF8E42906A35800EE94E6 /* Build configuration list for PBXNativeTarget "ColorBarTesting" */ = {
+		E77EF8E42906A35800EE94E6 /* Build configuration list for PBXNativeTarget "NewsApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E77EF8E52906A35800EE94E6 /* Debug */,
