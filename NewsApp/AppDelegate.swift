@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         // Override point for customization after application launch.
         
         cloudDefaults.synchronize()
-        checkIcloudState()
+        checkAuthorizationState()
         FirebaseApp.configure()
         
         UNUserNotificationCenter.current().delegate = self

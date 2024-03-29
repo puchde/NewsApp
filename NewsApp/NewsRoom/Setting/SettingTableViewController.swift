@@ -14,6 +14,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
     let settingSections = [R.string.localizable.settingAppVersionInfo(),
                            R.string.localizable.settingOption(),
                            R.string.localizable.settingWidgetOption(),
+                           R.string.localizable.settingWidgetOption(),
                            R.string.localizable.settingOther()
     ]
     let appInfos = [R.string.localizable.settingAppVersion(),]
@@ -21,7 +22,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
                       R.string.localizable.settingCleanMarkedNews(),
                       R.string.localizable.settingBlockPublisherSources(),
                       R.string.localizable.settingICloudBackup()]
-    
+    let notificationOptions = [R.string.localizable.settingICloudBackup()]
     let widgetOptions = [R.string.localizable.settingWidgetOptionCategory()]
     let otherOptions = [R.string.localizable.settingUsageGuide(),
                         R.string.localizable.settingWriteComment(),
@@ -71,8 +72,10 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         case 1:
             return appOptions.count
         case 2:
-            return widgetOptions.count
+            return notificationOptions.count
         case 3:
+            return widgetOptions.count
+        case 4:
             return otherOptions.count
         default:
             return 0
@@ -88,8 +91,10 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         case 1:
             appOptions[indexPath.row]
         case 2:
-            widgetOptions[indexPath.row]
+            notificationOptions[indexPath.row]
         case 3:
+            widgetOptions[indexPath.row]
+        case 4:
             otherOptions[indexPath.row]
         default:
             ""
@@ -115,6 +120,8 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
         case (1, 3):
             content.image = UIImage(systemName: "checkmark.icloud")
         case (2, 0):
+            content.image = UIImage(systemName: "bell")
+        case (3, 0):
             content.image = UIImage(systemName: "checkmark.icloud")
             let widgetCategory = newsSettingManager.getGroupCategory().chineseName
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width / 3, height: 100))
@@ -144,11 +151,11 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             }
             
             cell.accessoryView = button
-        case (3, 0):
+        case (4, 0):
             content.image = UIImage(systemName: "rectangle.and.hand.point.up.left")
-        case (3, 1):
+        case (4, 1):
             content.image = UIImage(systemName: "star")
-        case (3, 2):
+        case (4, 2):
             content.image = UIImage(systemName: "envelope")
         default:
             break
@@ -233,13 +240,20 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
                 }
                 self.presentAlert(title: R.string.localizable.settingIcloudToSettingTitle(), message: R.string.localizable.settingIcloudToSettingDesc(), action: [cancelAction, settingsAction])
             }
-            
         case (2, 0):
-            self.presentNoActionAlert(title: R.string.localizable.settingWidgetOptionInfoTitle(), message: R.string.localizable.settingWidgetOptionInfoDesc())
+            if let vc = R.storyboard.newsContent.settingNotificationViewController() {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         case (3, 0):
-            let vc = getGuildViewSwiftUI()
+            self.presentNoActionAlert(title: R.string.localizable.settingWidgetOptionInfoTitle(), message: R.string.localizable.settingWidgetOptionInfoDesc())
+        case (4, 0):
+            let vc = getGuideViewSwiftUI()
             present(vc, animated: true)
-        case (3, 2):
+        case (4, 1):
+            if let url = URL(string: "itms-apps://itunes.apple.com/app/id6474076097") {
+                UIApplication.shared.open(url)
+            }
+        case (4, 2):
             presentMailVC()
         default:
             return

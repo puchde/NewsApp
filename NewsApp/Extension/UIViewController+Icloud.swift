@@ -7,8 +7,10 @@
 
 import Foundation
 import CloudKit
+import UserNotifications
 
-func checkIcloudState() {
+func checkAuthorizationState() {
+    // MARK: - iCloud
     if FileManager.default.ubiquityIdentityToken != nil {
         print("iCloud Available")
     } else {
@@ -30,6 +32,17 @@ func checkIcloudState() {
             break
         @unknown default:
             break
+        }
+    }
+    
+    // MARK: - Notification
+    UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+        if(settings.authorizationStatus == .authorized) {
+            print("Push notification is enabled")
+            newsSettingManager.notificationState = true
+        } else {
+            print("Push notification is not enabled")
+            newsSettingManager.notificationState = false
         }
     }
 }

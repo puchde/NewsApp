@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -13,8 +12,8 @@
         <!--Headlines Setting View Controller-->
         <scene sceneID="zIk-zx-Dnr">
             <objects>
-                <viewController id="sxf-OO-35T" customClass="HeadlinesSettingViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="s2I-Fh-L8Y" customClass="CustomVIew" customModule="ColorBarTesting" customModuleProvider="target">
+                <viewController id="sxf-OO-35T" customClass="HeadlinesSettingViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s2I-Fh-L8Y" customClass="CustomVIew" customModule="NewsApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -89,7 +88,7 @@
         <!--Headlines Page View Controller-->
         <scene sceneID="VNk-yg-ySg">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Pjf-io-REM" customClass="HeadlinesPageViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Pjf-io-REM" customClass="HeadlinesPageViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWM-tb-iqh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3775" y="-1995"/>
@@ -97,7 +96,7 @@
         <!--Headlines Table View Controller-->
         <scene sceneID="Bej-Vt-ojw">
             <objects>
-                <viewController storyboardIdentifier="headlinesTableViewController" id="Ik5-PA-UTR" customClass="HeadlinesTableViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="headlinesTableViewController" id="Ik5-PA-UTR" customClass="HeadlinesTableViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vHO-xH-rKb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,7 +105,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsCell" textLabel="rQW-av-JxX" detailTextLabel="eWI-xX-any" style="IBUITableViewCellStyleSubtitle" id="dei-BM-LwQ" customClass="NewsCell" customModule="ColorBarTesting" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsCell" textLabel="rQW-av-JxX" detailTextLabel="eWI-xX-any" style="IBUITableViewCellStyleSubtitle" id="dei-BM-LwQ" customClass="NewsCell" customModule="NewsApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dei-BM-LwQ" id="cgt-CH-aLV">
@@ -186,7 +185,7 @@
         <!--Classify Headline View Controller-->
         <scene sceneID="nOd-XO-AFx">
             <objects>
-                <viewController id="lFj-Ci-1j7" customClass="ClassifyHeadlineViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lFj-Ci-1j7" customClass="ClassifyHeadlineViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cn4-XU-p5M">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,7 +271,7 @@
         <!--Web View View Controller-->
         <scene sceneID="Poo-9A-v6Z">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="24s-99-IvH" customClass="WebViewViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="24s-99-IvH" customClass="WebViewViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nUi-L1-Q1z">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -346,7 +345,7 @@
         <!--Search News View Controller-->
         <scene sceneID="IPT-L2-tJJ">
             <objects>
-                <viewController id="rTz-Mg-7ga" customClass="SearchNewsViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rTz-Mg-7ga" customClass="SearchNewsViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ta4-Io-t1Q">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,8 +451,8 @@
         <!--Search Setting View Controller-->
         <scene sceneID="rAc-S1-TwV">
             <objects>
-                <viewController storyboardIdentifier="SearchSettingViewController" id="Chb-le-6Yh" customClass="SearchSettingViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bGr-ib-NBs" customClass="CustomVIew" customModule="ColorBarTesting" customModuleProvider="target">
+                <viewController storyboardIdentifier="SearchSettingViewController" id="Chb-le-6Yh" customClass="SearchSettingViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bGr-ib-NBs" customClass="CustomVIew" customModule="NewsApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -642,7 +641,7 @@
         <!--Headlines Page View Controller-->
         <scene sceneID="Nnc-NN-5RP">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="he0-Lr-nij" customClass="HeadlinesPageViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="he0-Lr-nij" customClass="HeadlinesPageViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0g-Ic-al1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4843.0769230769229" y="-1318.3649289099526"/>
@@ -650,7 +649,7 @@
         <!--Search Content View Controller-->
         <scene sceneID="lsC-Ki-pVo">
             <objects>
-                <viewController storyboardIdentifier="SearchContentViewController" id="NFC-gn-kWu" customClass="SearchContentViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchContentViewController" id="NFC-gn-kWu" customClass="SearchContentViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TyJ-cy-qpu">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -745,7 +744,7 @@
         <!--Mark List View Controller-->
         <scene sceneID="PYB-bz-Z6m">
             <objects>
-                <viewController id="qNE-Yv-G59" customClass="MarkListViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qNE-Yv-G59" customClass="MarkListViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wba-tQ-7ic">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -792,7 +791,7 @@
         <!--Setting Table View Controller-->
         <scene sceneID="MN1-PU-Twt">
             <objects>
-                <viewController storyboardIdentifier="SettingTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PKS-sY-9X3" customClass="SettingTableViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PKS-sY-9X3" customClass="SettingTableViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jpu-Ew-H6V">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -826,7 +825,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="settingTableView" destination="oDB-Yq-0dA" id="EpS-v2-1UO"/>
-                        <segue destination="6yL-B7-J6f" kind="show" id="Pf1-Yf-2CK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryy-Ov-etF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -836,7 +834,7 @@
         <!--Setting Blocked Source View Controller-->
         <scene sceneID="21U-dL-b5p">
             <objects>
-                <viewController storyboardIdentifier="SettingBlockedSourceViewController" id="6yL-B7-J6f" customClass="SettingBlockedSourceViewController" customModule="ColorBarTesting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingBlockedSourceViewController" id="6yL-B7-J6f" customClass="SettingBlockedSourceViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k4l-vn-hdS">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -911,6 +909,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DR1-M7-5mz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2168" y="-50"/>
+        </scene>
+        <!--Setting Notification View Controller-->
+        <scene sceneID="YtT-Fe-y84">
+            <objects>
+                <viewController storyboardIdentifier="SettingNotificationViewController" id="2xH-JQ-VrO" customClass="SettingNotificationViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RFz-JH-xEd">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MMb-GD-5Mu">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockedCell" id="RiN-k1-tgt">
+                                        <rect key="frame" x="20" y="55.333332061767578" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RiN-k1-tgt" id="esx-nj-Wvw">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bGo-N0-ezd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MMb-GD-5Mu" firstAttribute="leading" secondItem="bGo-N0-ezd" secondAttribute="leading" id="iMf-IN-43n"/>
+                            <constraint firstItem="MMb-GD-5Mu" firstAttribute="top" secondItem="bGo-N0-ezd" secondAttribute="top" id="pVE-kk-12i"/>
+                            <constraint firstItem="bGo-N0-ezd" firstAttribute="trailing" secondItem="MMb-GD-5Mu" secondAttribute="trailing" id="qFL-yE-h0y"/>
+                            <constraint firstItem="bGo-N0-ezd" firstAttribute="bottom" secondItem="MMb-GD-5Mu" secondAttribute="bottom" id="u1m-Zx-6u2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="QPf-Yz-FrZ"/>
+                    <connections>
+                        <outlet property="tableView" destination="MMb-GD-5Mu" id="pWU-as-kg3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mSC-96-dS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3831" y="606"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -121,7 +121,14 @@ class NewsSettingManager {
         return set
     }()
     
+    private var subscribeCategory: Set<String> {
+        let arr = userDefaults.array(forKey: UserdefaultKey.settingSubscribeCategory.rawValue) as? [String] ?? []
+        let set: Set<String> = Set(arr)
+        return set
+    }
+    
     var icloudState = false
+    var notificationState = false
 
     //MARK: Display Mode
     private var displayMode: DisplayMode = .headline
@@ -229,6 +236,10 @@ extension NewsSettingManager {
     
     func getBlockedSource() -> Set<String> {
         return blockedSource
+    }
+    
+    func getSubscribeCategory() -> Set<String> {
+        return subscribeCategory
     }
     
     func getReloadDate() -> Date? {
@@ -350,6 +361,11 @@ extension NewsSettingManager {
     func updateReplaceBlockedSource(source: [String]) {
         blockedSource = Set(source)
         userDefaults.setValue(Array(blockedSource), forKey: UserdefaultKey.settingBlockedSource.rawValue)
+    }
+    
+    func updateSubscribeCategory(category: [String]) {
+        blockedSource = Set(category)
+        userDefaults.setValue(Array(blockedSource), forKey: UserdefaultKey.settingSubscribeCategory.rawValue)
     }
     
     func updateReloadDate(date: Date) {
