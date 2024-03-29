@@ -7,6 +7,7 @@
 
 import UIKit
 import CloudKit
+import Firebase
 
 let localFileManager = LocalFileManager.shared
 let mlModelManager = MLModelManager.shared
@@ -17,7 +18,7 @@ let userDefaultsWidget = UserDefaults(suiteName: UserdefaultsGroup.widgetShared.
 let cloudDefaults = NSUbiquitousKeyValueStore.default
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 
 
@@ -26,6 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         cloudDefaults.synchronize()
         checkIcloudState()
+        FirebaseApp.configure()
+        
+        UNUserNotificationCenter.current().delegate = self
+
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+          options: authOptions,
+          completionHandler: { _, _ in }
+        )
+
+        application.registerForRemoteNotifications()
         
         return true
     }
@@ -44,6 +56,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+    }
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    /// App 在前景時，推播送出時即會觸發的 delegate
+    ///
+    /// - Parameters:
+    ///   - center: _
+    ///   - notification: _
+    ///   - completionHandler: _
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        // 印出後台送出的推播訊息(JOSN 格式)
+        let userInfo = notification.request.content.userInfo
+        print("userInfo: \(userInfo)")
+        
+        // 可設定要收到什麼樣式的推播訊息，至少要打開 alert，不然會收不到推播訊息
+        completionHandler([.badge, .sound, .banner, .list])
+    }
+    
+    /// App 在關掉的狀態下或 App 在背景或前景的狀態下，點擊推播訊息時所會觸發的 delegate
+    ///
+    /// - Parameters:
+    ///   - center: _
+    ///   - response: _
+    ///   - completionHandler: _
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        // 印出後台送出的推播訊息(JOSN 格式)
+        let userInfo = response.notification.request.content.userInfo
+        print("userInfo: \(userInfo)")
+        
+        completionHandler()
+    }
+}
