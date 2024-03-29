@@ -22,6 +22,7 @@ enum UserdefaultKey: String {
     case articles = "articles"
     case searchQuery = "searchQuery"
     case settingBlockedSource = "settingBlockedSource"
+    case settingSubscribeCategory = "settingSubscribeCategory"
     
     //MARK: iCloud use
     case icloudMarkList = "icloudMarkList"
@@ -36,8 +37,8 @@ enum UserdefaultKey: String {
     case widgetNewsPage = "widgetNewsPage"
     case widgetNewsPageLarge = "widgetNewsPageLarge"
     
-    //MARK: Guild
-    case hasVisitedGuild = "hasVisitedGuild"
+    //MARK: Guide
+    case hasVisitedGuide = "hasVisitedGuide"
     
     //MARK: Update
     case appStoreVersion = "appStoreVersion"

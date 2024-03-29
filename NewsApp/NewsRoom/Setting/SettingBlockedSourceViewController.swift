@@ -10,12 +10,12 @@ import UIKit
 class SettingBlockedSourceViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var comfirmButton: UIBarButtonItem!
+    var confirmButton: UIBarButtonItem!
     
     var blockedSource = Array(newsSettingManager.getBlockedSource()).sorted{ $0 < $1 }
     var selectedRow = Set<Int>() {
         didSet {
-            comfirmButton.isEnabled = selectedRow.isEmpty ? false : true
+            confirmButton.isEnabled = selectedRow.isEmpty ? false : true
         }
     }
     
@@ -34,9 +34,9 @@ extension SettingBlockedSourceViewController {
     func initView() {
         tableView.delegate = self
         tableView.dataSource = self
-        comfirmButton = UIBarButtonItem(title: R.string.localizable.unblock(), style: .done, target: self, action: #selector(unblockSource))
-        comfirmButton.isEnabled = false
-        navigationItem.rightBarButtonItem = comfirmButton
+        confirmButton = UIBarButtonItem(title: R.string.localizable.unblock(), style: .done, target: self, action: #selector(unblockSource))
+        confirmButton.isEnabled = false
+        navigationItem.rightBarButtonItem = confirmButton
     }
     
     @objc

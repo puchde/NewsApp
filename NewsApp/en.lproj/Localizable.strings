@@ -228,13 +228,13 @@ UsageGuide" = "User Guide";
 "go" = "Go";
 
 
-"guildStep1" = "Swipe left or right to choose news categories, and select the region you want to view.";
+"guideStep1" = "Swipe left or right to choose news categories, and select the region you want to view.";
 
 
-"guildStep2" = "Set the search time and region for the search keyword.";
+"guideStep2" = "Set the search time and region for the search keyword.";
 
 
-"guildStep3" = "Long-press on the icon or news for additional functionalities.";
+"guideStep3" = "Long-press on the icon or news for additional functionalities.";
 
 /*  */
 "haedlineLocation" = "News Region";

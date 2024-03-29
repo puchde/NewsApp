@@ -10,23 +10,23 @@ import SwiftUI
 import Kingfisher
 
 extension UIViewController {
-    func getGuildViewSwiftUI() -> UIViewController {
-        let vc = UIHostingController(rootView: GuildView(dismissAction: {
+    func getGuideViewSwiftUI() -> UIViewController {
+        let vc = UIHostingController(rootView: GuideView(dismissAction: {
             self.dismiss(animated: true)
-            newsSettingManager.updateHasVisitedGuild(true)
+            newsSettingManager.updateHasVisitedGuide(true)
         }))
         vc.modalPresentationStyle = .fullScreen
         return vc
     }
     
-    struct GuildView: View {
-        var guildTitle: [String] = [R.string.localizable.headlines(),
+    struct GuideView: View {
+        var guideTitle: [String] = [R.string.localizable.headlines(),
                                     R.string.localizable.search(),
                                     R.string.localizable.markList()]
-        var guildDesc: [String] = [ R.string.localizable.guildStep1(),
-                                    R.string.localizable.guildStep2(),
-                                    R.string.localizable.guildStep3()]
-        var gifsName: [String] = ["guildStep1", "guildStep2", "guildStep3"]
+        var guideDesc: [String] = [ R.string.localizable.guideStep1(),
+                                    R.string.localizable.guideStep2(),
+                                    R.string.localizable.guideStep3()]
+        var gifsName: [String] = ["guideStep1", "guideStep2", "guideStep3"]
         var dismissAction: (() -> Void)
         @State var isHide = false
      
@@ -36,11 +36,11 @@ extension UIViewController {
                     TabView() {
                         ForEach(0 ..< 3) { index in
                             VStack() {
-                                Text(guildTitle[index])
+                                Text(guideTitle[index])
                                     .font(.title3)
                                     .fontWeight(.medium)
                                     .padding()
-                                Text(guildDesc[index])
+                                Text(guideDesc[index])
                                     .fontWeight(.light)
                                     .lineSpacing(8)
                                     .padding(.horizontal)
@@ -53,7 +53,7 @@ extension UIViewController {
                                     .cornerRadius(20)
                                     .padding()
                                     .tabItem {
-                                        Text(guildDesc[index])
+                                        Text(guideDesc[index])
                                     }
                                 Spacer()
                                     .frame(maxHeight: geo.size.height * 0.05)
@@ -95,7 +95,7 @@ extension UIViewController {
         }
         
         func getGifUrl(fileName: String) -> URL {
-            guard let bundleUrl = Bundle.main.url(forResource: "GuildStepGif", withExtension: "bundle"),
+            guard let bundleUrl = Bundle.main.url(forResource: "GuideStepGif", withExtension: "bundle"),
                   let bundle = Bundle(url: bundleUrl),
                   let filePath = bundle.path(forResource: fileName, ofType: "gif") else { return .cachesDirectory }
             let fileUrl = URL(fileURLWithPath: filePath)
@@ -106,7 +106,7 @@ extension UIViewController {
 }
 
 #Preview(body: {
-    UIViewController.GuildView {
+    UIViewController.GuideView {
         
     }
 })

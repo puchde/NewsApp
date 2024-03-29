@@ -139,14 +139,14 @@ class NewsCell: UITableViewCell {
             let cancelAct = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel) { _ in
                 self.activeVC?.presentAlertDismiss()
             }
-            let comfirm = UIAlertAction(title: R.string.localizable.delete(), style: .destructive) { _ in
+            let confirm = UIAlertAction(title: R.string.localizable.delete(), style: .destructive) { _ in
                 guard let markedArticle = self.markedArticle else { return }
                 newsSettingManager.deleteNewsMarkList(markedArticle)
                 self.mark = nil
                 self.updateMarkIcon()
                 self.delegate?.reloadCell()
             }
-            activeVC?.presentAlert(title: R.string.localizable.deleteMark(), message: "", action: [cancelAct, comfirm])
+            activeVC?.presentAlert(title: R.string.localizable.deleteMark(), message: "", action: [cancelAct, confirm])
         } else {
             changeMark(mark: .critical)
             if (activeVC?.presentedViewController) != nil {

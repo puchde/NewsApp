@@ -23,7 +23,7 @@ class ClassifyHeadlineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstUsedGuild()
+        firstUsedGuide()
         initView()
         setupClassifyWidths()
         
@@ -132,11 +132,11 @@ extension ClassifyHeadlineViewController: HeadlinesDelegate {
     }
 }
 
-//MARK: Guild
+//MARK: Guide
 extension ClassifyHeadlineViewController {
-    func firstUsedGuild() {
-        if !newsSettingManager.getHasVisitedGuild() {
-            let vc = getGuildViewSwiftUI()
+    func firstUsedGuide() {
+        if !newsSettingManager.getHasVisitedGuide() {
+            let vc = getGuideViewSwiftUI()
             self.present(vc, animated: false)
         }
     }

@@ -129,9 +129,9 @@ class NewsSettingManager {
     //MARK: Auto Reload
     private var reloadDate: Date?
     
-    //MARK: Guild
-    private var hasVisitedGuild: Bool {
-        return userDefaults.bool(forKey: UserdefaultKey.hasVisitedGuild.rawValue)
+    //MARK: Guide
+    private var hasVisitedGuide: Bool {
+        return userDefaults.bool(forKey: UserdefaultKey.hasVisitedGuide.rawValue)
     }
     
     //MARK: Check App Update
@@ -235,8 +235,8 @@ extension NewsSettingManager {
         return reloadDate
     }
     
-    func getHasVisitedGuild() -> Bool {
-        return hasVisitedGuild
+    func getHasVisitedGuide() -> Bool {
+        return hasVisitedGuide
     }
     
     func getAppStoreVersion() -> String {
@@ -356,8 +356,8 @@ extension NewsSettingManager {
         reloadDate = date
     }
     
-    func updateHasVisitedGuild(_ isFirstUsed: Bool) {
-        userDefaults.setValue(isFirstUsed, forKey: UserdefaultKey.hasVisitedGuild.rawValue)
+    func updateHasVisitedGuide(_ isFirstUsed: Bool) {
+        userDefaults.setValue(isFirstUsed, forKey: UserdefaultKey.hasVisitedGuide.rawValue)
     }
     
     func updateAppStoreVersion(_ version: String) {
