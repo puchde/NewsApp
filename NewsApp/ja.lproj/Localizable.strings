@@ -294,10 +294,25 @@ UsageGuide" = "ユーザーガイド";
 "searchTime" = "検索時間";
 
 /*  */
+"setting.notification" = "通知設定";
+
+/*  */
+"setting.notification.management" = "通知管理";
+
+/*  */
 "share" = "共有";
 
 /*  */
 "sortBy" = "並べ替え";
+
+/*  */
+"subscribeAlertDesc" = "選択されたカテゴリに更新されます。";
+
+/*  */
+"subscribeAlertDescUnsub" = "通知機能が解除されます。";
+
+/*  */
+"subscribeAlertTitle" = "通知カテゴリを更新する";
 
 /*  */
 "title" = "タイトル";
@@ -313,3 +328,6 @@ UsageGuide" = "ユーザーガイド";
 
 /*  */
 "unblockDesc" = "ブロックされたニュースソースの管理";
+
+/*  */
+"update" = "更新";

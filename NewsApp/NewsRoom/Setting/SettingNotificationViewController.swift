@@ -35,14 +35,14 @@ extension SettingNotificationViewController {
     func initView() {
         tableView.delegate = self
         tableView.dataSource = self
-        confirmButton = UIBarButtonItem(title: R.string.localizable.unblock(), style: .done, target: self, action: #selector(subscribeAction))
+        confirmButton = UIBarButtonItem(title: R.string.localizable.update(), style: .done, target: self, action: #selector(subscribeAction))
         navigationItem.rightBarButtonItem = confirmButton
     }
     
     @objc
     func subscribeAction() {
         let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel)
-        let confirmAction = UIAlertAction(title: R.string.localizable.confirm(), style: .default) { _ in
+        let confirmAction = UIAlertAction(title: R.string.localizable.update(), style: .default) { _ in
             var selected = [Category]()
             self.selectedRow.sorted{ $0 > $1 }.forEach { num in
                 selected.append(self.category[num])
@@ -70,7 +70,8 @@ extension SettingNotificationViewController {
             self.navigationController?.popViewController(animated: true)
         }
         
-        self.presentAlert(title: "", message: "", action: [cancelAction, confirmAction])
+        var desc = selectedRow.isEmpty ? R.string.localizable.subscribeAlertDescUnsub() : R.string.localizable.subscribeAlertDesc()
+        self.presentAlert(title: R.string.localizable.subscribeAlertTitle(), message: desc, action: [cancelAction, confirmAction])
     }
 }
 

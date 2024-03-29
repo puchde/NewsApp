@@ -13,7 +13,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
     
     let settingSections = [R.string.localizable.settingAppVersionInfo(),
                            R.string.localizable.settingOption(),
-                           R.string.localizable.settingWidgetOption(),
+                           R.string.localizable.settingNotification(),
                            R.string.localizable.settingWidgetOption(),
                            R.string.localizable.settingOther()
     ]
@@ -22,7 +22,7 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
                       R.string.localizable.settingCleanMarkedNews(),
                       R.string.localizable.settingBlockPublisherSources(),
                       R.string.localizable.settingICloudBackup()]
-    let notificationOptions = [R.string.localizable.settingICloudBackup()]
+    let notificationOptions = [R.string.localizable.settingNotificationManagement()]
     let widgetOptions = [R.string.localizable.settingWidgetOptionCategory()]
     let otherOptions = [R.string.localizable.settingUsageGuide(),
                         R.string.localizable.settingWriteComment(),

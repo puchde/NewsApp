@@ -87,6 +87,9 @@ UsageGuide" = "使用導引";
 /*  */
 "Setting.icloudToSettingTitle" = "失敗";
 
+
+"Setting.notification" = "通知設定";
+
 /*  */
 "Setting.option" = "功能選項";
 
@@ -300,11 +303,26 @@ UsageGuide" = "使用導引";
 /*  */
 "searchTime" = "搜尋時間";
 
+
+"setting.notification" = "通知設定";
+
+/*  */
+"setting.notification.management" = "通知管理";
+
 /*  */
 "share" = "分享";
 
 /*  */
 "sortBy" = "排序方式";
+
+
+"subscribeAlertDesc" = "將會更新為所選分類";
+
+
+"subscribeAlertDescUnsub" = "將會解除通知功能";
+
+
+"subscribeAlertTitle" = "更新通知分類";
 
 /*  */
 "title" = "標題";
@@ -320,3 +338,6 @@ UsageGuide" = "使用導引";
 
 /*  */
 "unblockDesc" = "管理阻擋新聞來源";
+
+
+"update" = "更新";

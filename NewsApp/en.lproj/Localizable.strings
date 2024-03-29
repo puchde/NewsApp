@@ -5,6 +5,9 @@
 /*  */
 "Important" = "Important";
 
+/*  */
+"Important" = "Important";
+
 
 "Mark List" = "Mark List";
 
@@ -207,7 +210,16 @@ UsageGuide" = "User Guide";
 "day" = "Day";
 
 
+"day" = "Day";
+
+
 "day1" = "within 1 day";
+
+
+"day1" = "within 1 day";
+
+
+"day7" = "within 7 days";
 
 
 "day7" = "within 7 days";
@@ -246,10 +258,22 @@ UsageGuide" = "User Guide";
 "hour" = "Hour";
 
 
+"hour" = "Hour";
+
+
+"hour1" = "within 1 hour";
+
+
 "hour1" = "within 1 hour";
 
 
 "hour12" = "within 12 hours";
+
+
+"hour12" = "within 12 hours";
+
+
+"hour6" = "within 6 hours";
 
 
 "hour6" = "within 6 hours";
@@ -261,13 +285,25 @@ UsageGuide" = "User Guide";
 "month" = "Month";
 
 
+"month" = "Month";
+
+
 "month1" = "within 1 month";
+
+
+"month1" = "within 1 month";
+
+
+"month3" = "within 3 months";
 
 
 "month3" = "within 3 months";
 
 /*  */
 "more" = "More";
+
+
+"none" = "none";
 
 
 "none" = "none";
@@ -296,11 +332,32 @@ UsageGuide" = "User Guide";
 
 "searchTime" = "Search Time";
 
+
+"searchTime" = "Search Time";
+
+
+"setting.notification" = "Notification Settings";
+
+
+"setting.notification.management" = "Notification Management";
+
 /*  */
 "share" = "Share";
 
 
 "sortBy" = "Sort By";
+
+
+"sortBy" = "Sort By";
+
+
+"subscribeAlertDesc" = "Will be updated to the selected category.";
+
+
+"subscribeAlertDescUnsub" = "Notification functionality will be unsubscribed.";
+
+
+"subscribeAlertTitle" = "Update Notification Category";
 
 /*  */
 "title" = "Title";
@@ -316,3 +373,6 @@ UsageGuide" = "User Guide";
 
 /*  */
 "unblockDesc" = "Manage Blocked News Sources";
+
+
+"update" = "Update";
