@@ -88,6 +88,8 @@
 		3FB3768E2B55203C006CEDFD /* UIView+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3768D2B55203C006CEDFD /* UIView+Animate.swift */; };
 		3FB6167F2BB69867006D28BF /* SettingNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB6167E2BB69867006D28BF /* SettingNotificationViewController.swift */; };
 		3FB616802BB69867006D28BF /* SettingNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB6167E2BB69867006D28BF /* SettingNotificationViewController.swift */; };
+		3FCE30012BBB97F700F017D4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3FCE30002BBB97F700F017D4 /* PrivacyInfo.xcprivacy */; };
+		3FCE30022BBB97F700F017D4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3FCE30002BBB97F700F017D4 /* PrivacyInfo.xcprivacy */; };
 		3FD2630B2B26F35400F5E962 /* UIViewController+Icloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */; };
 		3FD5D0F12B04909400DF02B5 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */; };
 		3FDB2DCC2B5A490000AFF4CA /* NewsAPIEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7061D0B29DC240800405544 /* NewsAPIEnum.swift */; };
@@ -204,6 +206,7 @@
 		3F7B63492B5A5D9E009BE0AF /* NewsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NewsWidgetExtension.entitlements; sourceTree = "<group>"; };
 		3FB3768D2B55203C006CEDFD /* UIView+Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animate.swift"; sourceTree = "<group>"; };
 		3FB6167E2BB69867006D28BF /* SettingNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewController.swift; sourceTree = "<group>"; };
+		3FCE30002BBB97F700F017D4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3FD2630A2B26F35400F5E962 /* UIViewController+Icloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Icloud.swift"; sourceTree = "<group>"; };
 		3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
 		3FE26AF92B566A2A0006DC60 /* NewsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NewsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -564,6 +567,7 @@
 				E7B3D9C12B2585AD0033EFF7 /* NewsSnapper.plist */,
 				E7DDB4E9290A99B200AF3A4C /* TabbarColorClassifier1027.mlmodel */,
 				3F3E88C32B201C9D00883A55 /* Localizable.strings */,
+				3FCE30002BBB97F700F017D4 /* PrivacyInfo.xcprivacy */,
 			);
 			path = NewsApp;
 			sourceTree = "<group>";
@@ -717,6 +721,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E73EB5222933873F00D1F74C /* .gitignore in Resources */,
+				3FCE30012BBB97F700F017D4 /* PrivacyInfo.xcprivacy in Resources */,
 				E77EF8E02906A35800EE94E6 /* LaunchScreen.storyboard in Resources */,
 				E7CF424129DB317D006F41C2 /* NewsCell.xib in Resources */,
 				E76A86E529DD9F39008B781F /* ClassifyCollectionViewCell.xib in Resources */,
