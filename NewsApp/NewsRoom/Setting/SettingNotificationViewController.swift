@@ -42,36 +42,52 @@ extension SettingNotificationViewController {
     @objc
     func subscribeAction() {
         let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel)
-        let confirmAction = UIAlertAction(title: R.string.localizable.update(), style: .default) { _ in
-            var selected = [Category]()
-            self.selectedRow.sorted{ $0 > $1 }.forEach { num in
-                selected.append(self.category[num])
-            }
-            
-            // 篩選解除訂閱 (已訂閱 && 此次未選中)
-            selected.forEach { c in
-                if self.subscribedCategory.contains(c.rawValue) {
-                    self.subscribedCategory = self.subscribedCategory.filter({ $0 != c.rawValue})
+        if newsSettingManager.notificationState {
+            let confirmAction = UIAlertAction(title: R.string.localizable.update(), style: .default) { _ in
+                var selected = [Category]()
+                self.selectedRow.sorted{ $0 > $1 }.forEach { num in
+                    selected.append(self.category[num])
                 }
-                print(self.subscribedCategory)
+                
+                // 篩選解除訂閱 (已訂閱 && 此次未選中)
+                selected.forEach { c in
+                    if self.subscribedCategory.contains(c.rawValue) {
+                        self.subscribedCategory = self.subscribedCategory.filter({ $0 != c.rawValue})
+                    }
+                    print(self.subscribedCategory)
+                }
+                
+                self.subscribedCategory.forEach { categoryStr in
+                    print("unsub", categoryStr)
+                    Messaging.messaging().unsubscribe(fromTopic: categoryStr)
+                }
+                
+                selected.forEach { category in
+                    print("sub", category)
+                    Messaging.messaging().subscribe(toTopic: category.rawValue)
+                }
+                
+                Messaging.messaging().subscribe(toTopic: newsSettingManager.getCountry().rawValue)
+                
+                newsSettingManager.updateSubscribeCategory(category: selected.map({$0.rawValue}))
+                self.navigationController?.popViewController(animated: true)
             }
             
-            self.subscribedCategory.forEach { categoryStr in
-                print("unsub", categoryStr)
-                Messaging.messaging().unsubscribe(fromTopic: categoryStr)
+            var desc = selectedRow.isEmpty ? R.string.localizable.subscribeAlertDescUnsub() : R.string.localizable.subscribeAlertDesc()
+            self.presentAlert(title: R.string.localizable.subscribeAlertTitle(), message: desc, action: [cancelAction, confirmAction])
+        } else {
+            let settingsAction = UIAlertAction(title: R.string.localizable.go(), style: .default) { _ in
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+                      UIApplication.shared.canOpenURL(settingsUrl) else {
+                    return
+                }
+
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
             }
-            
-            selected.forEach { category in
-                print("sub", category)
-                Messaging.messaging().subscribe(toTopic: category.rawValue)
-            }
-            
-            newsSettingManager.updateSubscribeCategory(category: selected.map({$0.rawValue}))
-            self.navigationController?.popViewController(animated: true)
+            self.presentAlert(title: R.string.localizable.settingNotificationToSettingTitle(), message: R.string.localizable.settingNotificationToSettingDesc(), action: [cancelAction, settingsAction])
         }
-        
-        var desc = selectedRow.isEmpty ? R.string.localizable.subscribeAlertDescUnsub() : R.string.localizable.subscribeAlertDesc()
-        self.presentAlert(title: R.string.localizable.subscribeAlertTitle(), message: desc, action: [cancelAction, confirmAction])
     }
 }
 

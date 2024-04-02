@@ -241,8 +241,23 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
                 self.presentAlert(title: R.string.localizable.settingIcloudToSettingTitle(), message: R.string.localizable.settingIcloudToSettingDesc(), action: [cancelAction, settingsAction])
             }
         case (2, 0):
-            if let vc = R.storyboard.newsContent.settingNotificationViewController() {
-                self.navigationController?.pushViewController(vc, animated: true)
+            if newsSettingManager.notificationState {
+                if let vc = R.storyboard.newsContent.settingNotificationViewController() {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            } else {
+                let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel)
+                let settingsAction = UIAlertAction(title: R.string.localizable.go(), style: .default) { _ in
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+                          UIApplication.shared.canOpenURL(settingsUrl) else {
+                        return
+                    }
+
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+                self.presentAlert(title: R.string.localizable.settingNotificationToSettingTitle(), message: R.string.localizable.settingNotificationToSettingDesc(), action: [cancelAction, settingsAction])
             }
         case (3, 0):
             self.presentNoActionAlert(title: R.string.localizable.settingWidgetOptionInfoTitle(), message: R.string.localizable.settingWidgetOptionInfoDesc())

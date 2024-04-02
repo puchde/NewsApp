@@ -86,6 +86,12 @@ UsageGuide" = "User Guide";
 /*  */
 "Setting.icloudToSettingTitle" = "Failed";
 
+
+"Setting.notificationToSettingDesc" = "Please go to\nSettings to enable permissions for this app.";
+
+
+"Setting.notificationToSettingTitle" = "Failed";
+
 /*  */
 "Setting.option" = "Feature Options";
 
@@ -114,7 +120,7 @@ UsageGuide" = "User Guide";
 "Setting.widgetOption" = "Widget Options";
 
 
-"Setting.widgetOption.Info.Desc" = "\nThis setting and the headline displaying the country will affect the content shown in the widget.";
+"Setting.widgetOption.Info.Desc" = "\nThis setting and the headline displaying the region will affect the content shown in the widget.";
 
 
 "Setting.widgetOption.Info.Title" = "Widget";
@@ -126,7 +132,7 @@ UsageGuide" = "User Guide";
 "Setting.writeComment" = "Write Comment";
 
 
-"Widget.Default.Desc" = "Display according to the country and category you have set.";
+"Widget.Default.Desc" = "Display according to the region and category you have set.";
 
 
 "Widget.Default.DisplayName" = "Snapper Widget";
@@ -339,7 +345,7 @@ UsageGuide" = "User Guide";
 "setting.notification" = "Notification Settings";
 
 
-"setting.notification.management" = "Notification Management";
+"setting.notification.management" = "Subscribe to interested categories";
 
 /*  */
 "share" = "Share";
@@ -376,3 +382,5 @@ UsageGuide" = "User Guide";
 
 
 "update" = "Update";
+
+"region" = "Region";

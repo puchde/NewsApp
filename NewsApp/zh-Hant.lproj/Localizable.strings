@@ -82,13 +82,19 @@ UsageGuide" = "使用導引";
 "Setting.icloudTitle" = "iCloud紀錄";
 
 /*  */
-"Setting.icloudToSettingDesc" = "請至\n設定> AppleID > iCloud開啟此APP權限";
+"Setting.icloudToSettingDesc" = "請至\n設定> AppleID > iCloud 開啟此APP權限";
 
 /*  */
 "Setting.icloudToSettingTitle" = "失敗";
 
 
 "Setting.notification" = "通知設定";
+
+/*  */
+"Setting.notificationToSettingDesc" = "請至\n設定開啟此APP權限";
+
+/*  */
+"Setting.notificationToSettingTitle" = "失敗";
 
 /*  */
 "Setting.option" = "功能選項";
@@ -118,7 +124,7 @@ UsageGuide" = "使用導引";
 "Setting.widgetOption" = "小工具設定";
 
 /*  */
-"Setting.widgetOption.Info.Desc" = "\n此項設定與頭條顯示國家將會影響小工具顯示的內容";
+"Setting.widgetOption.Info.Desc" = "\n此項設定與頭條顯示地區將會影響小工具顯示的內容";
 
 /*  */
 "Setting.widgetOption.Info.Title" = "桌面小工具";
@@ -130,7 +136,7 @@ UsageGuide" = "使用導引";
 "Setting.writeComment" = "寫評論";
 
 /*  */
-"Widget.Default.Desc" = "根據你設定的國家與分類進行顯示";
+"Widget.Default.Desc" = "根據你設定的地區與分類進行顯示";
 
 /*  */
 "Widget.Default.DisplayName" = "Snapper Widget";
@@ -289,6 +295,9 @@ UsageGuide" = "使用導引";
 "publishedAt" = "最新排序";
 
 /*  */
+"region" = "地區";
+
+/*  */
 "relevancy" = "相關度";
 
 /*  */
@@ -307,7 +316,7 @@ UsageGuide" = "使用導引";
 "setting.notification" = "通知設定";
 
 /*  */
-"setting.notification.management" = "通知管理";
+"setting.notification.management" = "訂閱感興趣的分類";
 
 /*  */
 "share" = "分享";

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseMessaging
 
 class HeadlinesSettingViewController: UIViewController {
 
@@ -17,6 +18,8 @@ class HeadlinesSettingViewController: UIViewController {
     
     var isFirstHeightSetting = true
     var reloadNotificationPost = false
+    
+    var unsubscribeCountry: CountryCode = newsSettingManager.getCountry()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,11 @@ class HeadlinesSettingViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        // MARK: - FCM 重新訂閱地區
+        Messaging.messaging().unsubscribe(fromTopic: unsubscribeCountry.rawValue)
+        Messaging.messaging().subscribe(toTopic: newsSettingManager.getCountry().rawValue)
+        print("sub", unsubscribeCountry.rawValue, "unsub", newsSettingManager.getCountry().rawValue)
+        
         if !reloadNotificationPost {
             NotificationCenter.default.post(name: Notification.Name("\(DisplayMode.headline) - ReloadNewsData"), object: nil)
         }

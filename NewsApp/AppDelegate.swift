@@ -8,6 +8,7 @@
 import UIKit
 import CloudKit
 import Firebase
+import FirebaseMessaging
 
 let localFileManager = LocalFileManager.shared
 let mlModelManager = MLModelManager.shared
@@ -31,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         
         UNUserNotificationCenter.current().delegate = self
 
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        let authOptions: UNAuthorizationOptions = [.alert, .badge]
         UNUserNotificationCenter.current().requestAuthorization(
           options: authOptions,
           completionHandler: { _, _ in }
@@ -64,11 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
     /// App 在前景時，推播送出時即會觸發的 delegate
-    ///
-    /// - Parameters:
-    ///   - center: _
-    ///   - notification: _
-    ///   - completionHandler: _
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         // 印出後台送出的推播訊息(JOSN 格式)
@@ -76,20 +72,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         print("userInfo: \(userInfo)")
         
         // 可設定要收到什麼樣式的推播訊息，至少要打開 alert，不然會收不到推播訊息
-        completionHandler([.badge, .sound, .banner, .list])
+        completionHandler([.badge, .banner, .list])
     }
     
     /// App 在關掉的狀態下或 App 在背景或前景的狀態下，點擊推播訊息時所會觸發的 delegate
-    ///
-    /// - Parameters:
-    ///   - center: _
-    ///   - response: _
-    ///   - completionHandler: _
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         // 印出後台送出的推播訊息(JOSN 格式)
         let userInfo = response.notification.request.content.userInfo
-        print("userInfo: \(userInfo)")
+        if let urlStr = userInfo["url"] as? String, let url = URL(string: urlStr) {
+            UIApplication.shared.urlOpenHandle(url: url)
+        }
         
         completionHandler()
     }

@@ -81,6 +81,12 @@ UsageGuide" = "ユーザーガイド";
 "Setting.icloudToSettingTitle" = "失敗";
 
 /*  */
+"Setting.notificationToSettingDesc" = "次に進んでください\n設定でこのアプリに対する権限を有効にします。";
+
+/*  */
+"Setting.notificationToSettingTitle" = "失敗";
+
+/*  */
 "Setting.option" = "機能オプション";
 
 /*  */
@@ -108,7 +114,7 @@ UsageGuide" = "ユーザーガイド";
 "Setting.widgetOption" = "ウィジェットオプション";
 
 /*  */
-"Setting.widgetOption.Info.Desc" = "\nこの設定とヘッドラインに表示されている国は、ウィジェットに表示されるコンテンツに影響を与えます。";
+"Setting.widgetOption.Info.Desc" = "\nこの設定とヘッドラインに表示されている地域は、ウィジェットに表示されるコンテンツに影響を与えます。";
 
 /*  */
 "Setting.widgetOption.Info.Title" = "ウィジェット";
@@ -120,7 +126,7 @@ UsageGuide" = "ユーザーガイド";
 "Setting.writeComment" = "コメントを書く";
 
 /*  */
-"Widget.Default.Desc" = "この設定とヘッドラインに表示されている国は、ウィジェットに表示されるコンテンツに影響を与えます。";
+"Widget.Default.Desc" = "この設定とヘッドラインに表示されている地域は、ウィジェットに表示されるコンテンツに影響を与えます。";
 
 /*  */
 "Widget.Default.DisplayName" = "Snapper ウィジェット";
@@ -279,6 +285,9 @@ UsageGuide" = "ユーザーガイド";
 "publishedAt" = "最新の並び替え";
 
 /*  */
+"region" = "地域";
+
+/*  */
 "relevancy" = "関連性";
 
 /*  */
@@ -297,7 +306,7 @@ UsageGuide" = "ユーザーガイド";
 "setting.notification" = "通知設定";
 
 /*  */
-"setting.notification.management" = "通知管理";
+"setting.notification.management" = "興味のあるカテゴリに登録する";
 
 /*  */
 "share" = "共有";
