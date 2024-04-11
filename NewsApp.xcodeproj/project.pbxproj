@@ -22,6 +22,8 @@
 		3F3E88B82B2019F700883A55 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3E88B72B2019F700883A55 /* RswiftLibrary */; };
 		3F3E88BA2B2019F700883A55 /* rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3E88B92B2019F700883A55 /* rswift */; };
 		3F3E88C12B201C9D00883A55 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F3E88C32B201C9D00883A55 /* Localizable.strings */; };
+		3F4C519C2BC5124700169160 /* NewsContentImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4C519B2BC5124700169160 /* NewsContentImageCell.xib */; };
+		3F4C519D2BC5124700169160 /* NewsContentImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4C519B2BC5124700169160 /* NewsContentImageCell.xib */; };
 		3F6846962BB173B7008E410E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F6846952BB173B7008E410E /* GoogleService-Info.plist */; };
 		3F6846972BB173B7008E410E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F6846952BB173B7008E410E /* GoogleService-Info.plist */; };
 		3F6846982BB173B7008E410E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F6846952BB173B7008E410E /* GoogleService-Info.plist */; };
@@ -153,6 +155,7 @@
 		3F3E88CF2B205AA300883A55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		3F3E88D02B205AA400883A55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3F3E88D12B205AA400883A55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3F4C519B2BC5124700169160 /* NewsContentImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsContentImageCell.xib; sourceTree = "<group>"; };
 		3F6846952BB173B7008E410E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F7B63462B5A5C8E009BE0AF /* WidgetAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAPIManager.swift; sourceTree = "<group>"; };
 		3F7B63492B5A5D9E009BE0AF /* NewsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NewsWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -327,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				E7CF424029DB317D006F41C2 /* NewsCell.xib */,
+				3F4C519B2BC5124700169160 /* NewsContentImageCell.xib */,
 				E7CF424229DB48ED006F41C2 /* NewsCell.swift */,
 				E75B1BAA2933544D004CA82C /* ZoomImageView.swift */,
 				E7061D0929DB78F100405544 /* WebViewViewController.swift */,
@@ -624,6 +628,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4C519C2BC5124700169160 /* NewsContentImageCell.xib in Resources */,
 				E73EB5222933873F00D1F74C /* .gitignore in Resources */,
 				3FCE30012BBB97F700F017D4 /* PrivacyInfo.xcprivacy in Resources */,
 				E77EF8E02906A35800EE94E6 /* LaunchScreen.storyboard in Resources */,

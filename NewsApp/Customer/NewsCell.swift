@@ -21,7 +21,6 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var cellImage: UIImageView!
 
-    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var previewImage: UIImageView!
     
     @IBOutlet weak var bottomInfoHeightConstraint: NSLayoutConstraint!
@@ -92,6 +91,8 @@ class NewsCell: UITableViewCell {
         paragraphStyle.lineSpacing = 5
         paragraphStyle.alignment = .left
         updateMarkMenu()
+        cellImage.layer.cornerRadius = 20
+        cellImage.layer.masksToBounds = true
     }
   
     required init?(coder aDecoder: NSCoder) {
@@ -117,7 +118,6 @@ class NewsCell: UITableViewCell {
         let placeholderColorImage = placeholderImage
         guard let url = URL(string: newsImageUrl) else {
             cellImage.image = placeholderColorImage
-            backgroundImageView.image = nil
             previewImage.image = nil
             return
         }
@@ -126,7 +126,6 @@ class NewsCell: UITableViewCell {
         cellImage.kf.setImage(with: url, placeholder: placeholderColorImage) { result in
             switch result {
             case .success(_):
-                self.backgroundImageView.kf.setImage(with: url, placeholder: placeholderColorImage)
                 self.previewImage.kf.setImage(with: url, placeholder: placeholderColorImage)
             case .failure(let error):
                 print("News Image Download error: \(error)")
@@ -203,13 +202,16 @@ class NewsCell: UITableViewCell {
             menuActions.append(significantCriticalityMenuItem)
         }
         markButton.menu = UIMenu(children: menuActions)
+        markButton.menu?.preferredElementSize = .large
     }
 
     func changeMark(mark: NewsMark) {
         self.mark = mark
         guard let markedArticle = self.markedArticle else { return }
         newsSettingManager.updateNewsMarkList(markedArticle)
-        delegate?.reloadCell()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.delegate?.reloadCell()
+        }
     }
 }
 
@@ -256,5 +258,25 @@ extension UIViewController {
     
     func presentNoActionAlert(title: String = "", message: String = "") {
         presentAlert(title: title, message: message, action: [])
+    }
+}
+
+extension UIImage {
+    // image with rounded corners
+    public func withRoundedCorners(radius: CGFloat? = nil) -> UIImage? {
+        let maxRadius = min(size.width, size.height) / 2
+        let cornerRadius: CGFloat
+        if let radius = radius, radius > 0 && radius <= maxRadius {
+            cornerRadius = radius
+        } else {
+            cornerRadius = maxRadius
+        }
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        let rect = CGRect(origin: .zero, size: size)
+        UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
+        draw(in: rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 }

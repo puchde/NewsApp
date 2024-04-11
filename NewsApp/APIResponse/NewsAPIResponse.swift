@@ -28,6 +28,9 @@ struct Article: Codable, Equatable {
     let urlToImage: String?
     var publishedAt: String
     let content: String?
+    
+    // Headline 分類
+    var group: Int = 0
 }
 
 struct Source: Codable {

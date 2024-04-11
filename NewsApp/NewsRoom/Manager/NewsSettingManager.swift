@@ -77,7 +77,12 @@ class NewsSettingManager {
         if let language = userDefaults.getCodableObject(SearchLanguage.self, with: UserdefaultKey.settingSearchLanguage.rawValue) {
             return language
         } else {
-            return .TW
+            if let country = userDefaults.getCodableObject(CountryCode.self, with: UserdefaultKey.settingCountryCode.rawValue),
+               let language = SearchLanguage(rawValue: country.rawValue) {
+                return language
+            } else {
+                return .TW
+            }
         }
     }()
     private var searchDateFrom: Date?

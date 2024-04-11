@@ -22,6 +22,7 @@ class HeadlinesTableViewController: UIViewController {
     var freshControlAct = false
     var articles = [Article]()
     var filterArticles = [Article]()
+    var tableViewArticles = [[Article]]()
     var page: Int?
     var articlesNumber = 0
     var selectNewsUrl = ""
@@ -39,6 +40,9 @@ class HeadlinesTableViewController: UIViewController {
     var loadingCover: NVActivityIndicatorView?
     
     var dataReloadTime: Date = Date()
+    
+    let baseCellHeight = CGFloat(142)
+    lazy var width = self.view.bounds.size.width
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +71,8 @@ extension HeadlinesTableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
+        tableView.register(UINib(nibName: "NewsContentImageCell", bundle: nil), forCellReuseIdentifier: "NewsContentImageCell")
+        tableView.sectionHeaderTopPadding = 0
         freshControl.tintColor = .clear
         freshControl.backgroundColor = .clear
         tableView.refreshControl = freshControl
@@ -141,7 +147,7 @@ extension HeadlinesTableViewController {
             if newsCountry == newsSettingManager.getCountry() {
                 if Date.now < dataReloadTime.addingTimeInterval(3 * 60) {
                     print("reload time return")
-                    filterBlockedSource()
+                    setupTableViewArticles()
                     self.tableView.reloadData()
                     self.tableView.refreshControl?.endRefreshing()
                     return
@@ -155,6 +161,8 @@ extension HeadlinesTableViewController {
             break
         }
         articles.removeAll()
+        filterArticles.removeAll()
+        tableViewArticles.removeAll()
         loadNewsData()
     }
     
@@ -192,7 +200,7 @@ extension HeadlinesTableViewController {
             } else {
                 loadingCoverAction(start: false)
                 self.tableView.refreshControl?.endRefreshing()
-                filterBlockedSource()
+                setupTableViewArticles()
             }
         }
     }
@@ -203,13 +211,23 @@ extension HeadlinesTableViewController {
             if success.status == "OK" {
                 self.articlesNumber = success.totalResults
                 do {
-                    let articles = try ArticlesTotalProtobuf(serializedData: success.articles)
-                    articles.articles.forEach { a in
+                    let articlesData = try ArticlesTotalProtobuf(serializedData: success.articles)
+                    let isFirstImage: Bool = {
+                        if let f = articlesData.articles.first, !f.urlToImage.isEmpty {
+                            return true
+                        }
+                        return false
+                    }()
+                    var groupID = isFirstImage ? -1 : 0
+                    articlesData.articles.forEach { a in
+                        if !a.urlToImage.isEmpty {
+                            groupID += 1
+                        }
                         let source = Source(id: a.source.id, name: a.source.name)
-                        let article = Article(source: source, author: a.author, title: a.title, description: a.description_p, url: a.url, urlToImage: a.urlToImage, publishedAt: a.publishedAt, content: a.content)
+                        let article = Article(source: source, author: a.author, title: a.title, description: a.description_p, url: a.url, urlToImage: a.urlToImage, publishedAt: a.publishedAt, content: a.content, group: groupID)
                         self.articles.append(article)
                     }
-                    filterBlockedSource()
+                    setupTableViewArticles()
                 } catch {
                     print(error)
                 }
@@ -226,32 +244,49 @@ extension HeadlinesTableViewController {
         self.tableView.reloadData()
     }
     
+    func setupTableViewArticles() {
+        filterBlockedSource()
+        tableViewArticles.removeAll()
+        let maxGroup = articles.last?.group ?? 1
+        for i in 0 ... maxGroup {
+            let a = filterArticles.filter({$0.group == i})
+            tableViewArticles.append(a)
+        }
+    }
+    
     func filterBlockedSource() {
         let source = newsSettingManager.getBlockedSource()
         filterArticles = articles.filter{!source.contains($0.author ?? "")}
     }
 }
 
-//MARK: TableView
+//MARK: TableView Cell
 extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filterArticles.count
+        return tableViewArticles[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell, !articles.isEmpty {
-            let newsData = filterArticles[indexPath.row]
-            cell.updateArticleInfo(activeVC: self, article: newsData)
-            tableView.deselectRow(at: indexPath, animated: false)
-            return cell
+        let newsData = tableViewArticles[indexPath.section][indexPath.row]
+        if let imageUrl = newsData.urlToImage, !imageUrl.isEmpty {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsContentImageCell", for: indexPath) as? NewsCell, !articles.isEmpty {
+                cell.updateArticleInfo(activeVC: self, article: newsData)
+                tableView.deselectRow(at: indexPath, animated: false)
+                return cell
+            }
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell, !articles.isEmpty {
+                cell.updateArticleInfo(activeVC: self, article: newsData)
+                tableView.deselectRow(at: indexPath, animated: false)
+                return cell
+            }
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        selectNewsUrl = filterArticles[indexPath.row].url
-//        performSegue(withIdentifier: "toWebView", sender: self)
+        selectNewsUrl = tableViewArticles[indexPath.section][indexPath.row].url
         if let url = URL(string: selectNewsUrl) {
             let vc = getSafariVC(url: url, delegateVC: self)
             self.present(vc, animated: true)
@@ -259,10 +294,38 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let newsData = tableViewArticles[indexPath.section][indexPath.row]
+        if let imageUrl = newsData.urlToImage, !imageUrl.isEmpty {
+            return baseCellHeight + width * 0.6
+        }
+            return baseCellHeight
+    }
+    
     @objc func scrollToTop() {
         if !articles.isEmpty {
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
+    }
+}
+
+//MARK: TableView Section
+extension HeadlinesTableViewController {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        tableViewArticles.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 || tableViewArticles[section].isEmpty {
+            return 0
+        }
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .systemGray6
+        return view
     }
 }
 
@@ -290,10 +353,8 @@ extension HeadlinesTableViewController: NewsTableViewProtocal {
 //MARK: News Cell Delegate
 extension HeadlinesTableViewController: NewsCellDelegate {
     func reloadCell() {
-        filterBlockedSource()
-        if let indexPaths = tableView.indexPathsForVisibleRows {
-            tableView.reloadRows(at: indexPaths, with: .none)
-        }
+        setupTableViewArticles()
+        tableView.reloadData()
     }
 }
 
@@ -312,7 +373,6 @@ extension HeadlinesTableViewController {
             freshControlAct = false
         } else {
             if contentHeight != 0 && offsetY + screenHeight > (contentHeight) {
-                print("一半啦")
                 loadNewsData()
             }
         }
