@@ -36,9 +36,6 @@ class HeadlinesTableViewController: UIViewController {
     }
     var apiLoading = false
     
-    var backgroundView: UIView?
-    var loadingCover: NVActivityIndicatorView?
-    
     var dataReloadTime: Date = Date()
     
     let baseCellHeight = CGFloat(142)
@@ -51,7 +48,6 @@ class HeadlinesTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setSearchNotification()
-        setupLoadingView()
         loadNewsData()
         tableView.reloadData()
     }
@@ -73,47 +69,15 @@ extension HeadlinesTableViewController {
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         tableView.register(UINib(nibName: "NewsContentImageCell", bundle: nil), forCellReuseIdentifier: "NewsContentImageCell")
         tableView.sectionHeaderTopPadding = 0
-        freshControl.tintColor = .clear
-        freshControl.backgroundColor = .clear
         tableView.refreshControl = freshControl
-        loadCustomRefresh()
         defaultCoverView.isUserInteractionEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollToTop), name: Notification.Name("\(displayMode) - ScrollToTop"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataAct), name: Notification.Name("\(displayMode) - ReloadNewsData"), object: nil)
     }
     
-    func loadCustomRefresh() {
-        customFreshControl = UIView(frame: freshControl.frame)
-        let arrowUpImage = UIImageView(frame: CGRect(x: 0, y: freshControl.frame.width * 0.2, width: self.view.frame.width, height: self.view.frame.width * 0.2))
-        arrowUpImage.image = UIImage(systemName: "arrow.triangle.2.circlepath")?.withTintColor(.systemGray3, renderingMode: .alwaysOriginal)
-        arrowUpImage.contentMode = .scaleAspectFit
-        customFreshControl.addSubview(arrowUpImage)
-        freshControl.addSubview(customFreshControl)
-        freshControl.clipsToBounds = true
-    }
-    
-    func setupLoadingView() {
-        if backgroundView == nil {
-            let centerY = self.parent?.view.center.y ?? self.view.center.y
-            loadingCover = NVActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (UIScreen.main.bounds.size.width / 2) - 50, y: centerY - 50), size: CGSize(width: 100, height: 100)), type: .ballRotateChase, color: traitCollection.userInterfaceStyle == .dark ? .white : .systemGray3)
-            self.view.addSubview(loadingCover!)
-            backgroundView = UIView(frame: tableView.frame)
-            backgroundView?.backgroundColor = .systemBackground
-            backgroundView?.addSubview(loadingCover!)
-            backgroundView?.isHidden = true
-            self.view.addSubview(backgroundView!)
-        }
-    }
-    
     func loadingCoverAction(start: Bool) {
-        if start {
-            loadingCover?.startAnimating()
-        } else {
-            loadingCover?.stopAnimating()
-        }
         tableView.isScrollEnabled = start ? false : true
-        backgroundView?.isHidden = start ? false : true
     }
 }
 
@@ -149,7 +113,9 @@ extension HeadlinesTableViewController {
                     print("reload time return")
                     setupTableViewArticles()
                     self.tableView.reloadData()
-                    self.tableView.refreshControl?.endRefreshing()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.tableView.refreshControl?.endRefreshing()
+                    }
                     return
                 }
             } else {
@@ -174,7 +140,6 @@ extension HeadlinesTableViewController {
             if articles.count < articlesNumber || articles.count == 0 {
                 isLoading = true
                 
-                self.tableView.refreshControl?.endRefreshing()
                 loadingCoverAction(start: true)
                 self.defaultCoverView.isHidden = true
                 
@@ -182,11 +147,13 @@ extension HeadlinesTableViewController {
                 case .headline:
                     guard let page, let category = Category.fromOrder(page)?.rawValue else {
                         loadingCoverAction(start: false)
+                        self.tableView.refreshControl?.endRefreshing()
                         return
                     }
                     APIManager.topHeadlines(country: newsCountry.rawValue, category: category) { result in
                         self.resultCompletion(result: result)
                         self.loadingCoverAction(start: false)
+                        self.tableView.refreshControl?.endRefreshing()
                     }
                     break
                 case .search:
@@ -194,6 +161,7 @@ extension HeadlinesTableViewController {
                     APIManager.searchNews(query: searchQuery, language: language) { result in
                         self.resultCompletion(result: result)
                         self.loadingCoverAction(start: false)
+                        self.tableView.refreshControl?.endRefreshing()
                     }
                     break
                 }
@@ -319,13 +287,17 @@ extension HeadlinesTableViewController {
         if section == 0 || tableViewArticles[section].isEmpty {
             return 0
         }
-        return 8
+        return 15
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .systemGray6
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        .leastNormalMagnitude
     }
 }
 
@@ -365,10 +337,7 @@ extension HeadlinesTableViewController {
         let screenHeight = scrollView.frame.size.height
         let contentHeight = scrollView.contentSize.height
         
-        if offsetY < 0 && !freshControlAct {
-            // MARK: - 下拉動畫
-            customFreshAnimation(offsetY: offsetY)
-        } else if -1 <= offsetY && freshControlAct {
+        if -1 <= offsetY && freshControlAct {
             // MARK: - 動畫結束重設參數
             freshControlAct = false
         } else {
@@ -381,33 +350,7 @@ extension HeadlinesTableViewController {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if freshControl.isRefreshing {
             reloadDataAct()
-            customFreshAnimation()
             freshControlAct = true
-        }
-    }
-    
-    func customFreshAnimation(offsetY: CGFloat = 0) {
-        let viewHeight = self.customFreshControl.frame.height
-        let viewTranslationY = -viewHeight < offsetY ? offsetY : -viewHeight
-        let isSwipe = offsetY == 0.0 ? false : true
-        let arrowView = self.customFreshControl.subviews[0]
-        
-        if isSwipe {
-            UIView.animate(withDuration: 0.15) {
-                arrowView.transform = CGAffineTransform(translationX: 0, y: viewTranslationY)
-                self.customFreshControl.subviews[0].alpha = 1
-            }
-            
-            if arrowView.layer.animationKeys() == nil {
-                arrowView.startRotationAnimate()
-            }
-        } else if offsetY == 0 {
-            UIView.animate(withDuration: 0.15) {
-                arrowView.transform = CGAffineTransform(translationX: 0, y: 0)
-                self.customFreshControl.subviews[0].alpha = 0
-            } completion: { _ in
-                arrowView.removeAnimate()
-            }
         }
     }
 }
