@@ -10,6 +10,7 @@ import MessageUI
 
 class SettingTableViewController: UIViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var settingTableView: UITableView!
+    @IBOutlet weak var leftButtonItem: UIBarButtonItem!
     
     let settingSections = [R.string.localizable.settingAppVersionInfo(),
                            R.string.localizable.settingOption(),
@@ -39,10 +40,12 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
         super.viewDidLoad()
         settingTableView.delegate = self
         settingTableView.dataSource = self
-        navigationItem.title = R.string.localizable.setting()
         formatter.dateFormat = "yyyy-MM-dd-HH:mm"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.calendar = Calendar(identifier: .gregorian)
+        leftButtonItem.title = R.string.localizable.setting()
+        leftButtonItem.setTitleTextAttributes([.font: UIFont.boldSystemFont(ofSize: 25), .foregroundColor: UIColor.label], for: .disabled)
+        leftButtonItem.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
