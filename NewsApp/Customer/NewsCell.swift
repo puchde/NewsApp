@@ -216,8 +216,8 @@ class NewsCell: UITableViewCell {
 }
 
 extension UIViewController {
-    func presentAlert(title: String = "", message: String = "", action: [UIAlertAction] = []) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    func presentAlert(title: String = "", message: String = "", action: [UIAlertAction] = [], preferredStyle: UIAlertController.Style = .alert) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         action.forEach { act in
             alert.addAction(act)
         }

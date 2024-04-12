@@ -41,6 +41,8 @@ class SettingTableViewController: UIViewController, MFMailComposeViewControllerD
         settingTableView.dataSource = self
         navigationItem.title = R.string.localizable.setting()
         formatter.dateFormat = "yyyy-MM-dd-HH:mm"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.calendar = Calendar(identifier: .gregorian)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -187,59 +189,7 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         case (1, 3):
-            let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel)
-            if newsSettingManager.icloudState {
-                let uploadAction = UIAlertAction(title: R.string.localizable.settingUploadMark(), style: .default) { _ in
-                    let markList = newsSettingManager.getNewsMarkList()
-                    do {
-                        let data = try JSONEncoder().encode(markList)
-                        cloudDefaults.set(data, forKey: UserdefaultKey.icloudMarkList.rawValue)
-                        cloudDefaults.set(self.formatter.string(from: Date.now), forKey: UserdefaultKey.icloudMarkListDate.rawValue)
-                        print("upload")
-                        self.view.makeToast(R.string.localizable.settingUploadMarkSuccess())
-                    } catch {
-                        return
-                    }
-                }
-                
-                let syncAction = UIAlertAction(title: R.string.localizable.settingDownloadMark(), style: .default) { _ in
-                    if let data = cloudDefaults.data(forKey: UserdefaultKey.icloudMarkList.rawValue),
-                       let dateStr = cloudDefaults.string(forKey: UserdefaultKey.icloudMarkListDate.rawValue),
-                       let date = self.formatter.date(from: dateStr) {
-                        do {
-                            let markList = try JSONDecoder().decode([MarkedArticle].self, from: data)
-                            guard !markList.isEmpty else {
-                                self.view.makeToast(R.string.localizable.settingDownloadMarkFailure())
-                                return
-                            }
-                            
-                            let confirmAction = UIAlertAction(title: R.string.localizable.confirm(), style: .default) { _ in
-                                newsSettingManager.overwriteNewsMarkList(markList)
-                                self.view.makeToast(R.string.localizable.settingDownloadMarkSuccess())
-                            }
-                            
-                            self.presentAlert(title: R.string.localizable.settingSyncMarkCheckTitle(), message: R.string.localizable.settingSyncMarkCheckDesc(self.formatter.string(from: date)), action: [cancelAction, confirmAction])
-                        } catch {
-                            return
-                        }                        
-                    } else {
-                        self.view.makeToast(R.string.localizable.settingDownloadMarkFailure())
-                    }
-                }
-                self.presentAlert(title: R.string.localizable.settingIcloudTitle(), message: R.string.localizable.settingIcloudDesc(), action: [uploadAction, syncAction, cancelAction])
-            } else {
-                let settingsAction = UIAlertAction(title: R.string.localizable.go(), style: .default) { _ in
-                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
-                          UIApplication.shared.canOpenURL(settingsUrl) else {
-                        return
-                    }
-
-                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        print("Settings opened: \(success)") // Prints true
-                    })
-                }
-                self.presentAlert(title: R.string.localizable.settingIcloudToSettingTitle(), message: R.string.localizable.settingIcloudToSettingDesc(), action: [cancelAction, settingsAction])
-            }
+            iCloudBackup()
         case (2, 0):
             if newsSettingManager.notificationState {
                 if let vc = R.storyboard.newsContent.settingNotificationViewController() {
@@ -272,6 +222,97 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
             presentMailVC()
         default:
             return
+        }
+    }
+}
+
+// MARK: - Cell Selected Action
+extension SettingTableViewController {
+    func iCloudBackup() {
+        let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel)
+        if newsSettingManager.icloudState {
+            let iCloudData = cloudDefaults.data(forKey: UserdefaultKey.icloudMarkList.rawValue)
+            let iCloudDateStr = cloudDefaults.string(forKey: UserdefaultKey.icloudMarkListDate.rawValue)
+            let iCloudDate = {
+                if let dateStr = iCloudDateStr,
+                   let date = self.formatter.date(from: dateStr) {
+                    return self.formatter.string(from: date)
+                }
+                return "-"
+            }()
+            
+            // iCloud List Preview
+            let showListAction = UIAlertAction(title: "list", style: .default) { _ in
+                if let data = iCloudData,
+                   let markList = try? JSONDecoder().decode([MarkedArticle].self, from: data) {
+                    guard !markList.isEmpty else {
+                        self.view.makeToast(R.string.localizable.settingDownloadMarkFailure())
+                        return
+                    }
+                    let list = markList.map({MarkedArticleSUI(mark: $0.mark, article: $0.article)})
+                    let vc = self.getiCloudNewsListSwiftUI(news: list)
+                    vc.modalPresentationStyle = .pageSheet
+                    vc.isModalInPresentation = true
+                    self.present(vc, animated: true)
+                } else {
+                    self.view.makeToast("no icloud data")
+                }
+            }
+            
+            let uploadAction = UIAlertAction(title: R.string.localizable.settingUploadMark(), style: .default) { _ in
+                let confirmAction = UIAlertAction(title: R.string.localizable.confirm(), style: .destructive) { _ in
+                    let markList = newsSettingManager.getNewsMarkList()
+                    do {
+                        let data = try JSONEncoder().encode(markList)
+                        cloudDefaults.set(data, forKey: UserdefaultKey.icloudMarkList.rawValue)
+                        cloudDefaults.set(self.formatter.string(from: Date.now), forKey: UserdefaultKey.icloudMarkListDate.rawValue)
+                        print("upload")
+                        self.view.makeToast(R.string.localizable.settingUploadMarkSuccess())
+                    } catch {
+                        return
+                    }
+                }
+                                        
+                self.presentAlert(title: R.string.localizable.settingSyncMarkCheckTitle(), message: iCloudDate, action: [cancelAction, confirmAction], preferredStyle: .actionSheet)
+            }
+            
+            let syncAction = UIAlertAction(title: R.string.localizable.settingDownloadMark(), style: .default) { _ in
+                if let data = iCloudData {
+                    do {
+                        let markList = try JSONDecoder().decode([MarkedArticle].self, from: data)
+                        guard !markList.isEmpty else {
+                            self.view.makeToast(R.string.localizable.settingDownloadMarkFailure())
+                            return
+                        }
+                        
+                        let confirmAction = UIAlertAction(title: R.string.localizable.confirm(), style: .destructive) { _ in
+                            newsSettingManager.overwriteNewsMarkList(markList)
+                            self.view.makeToast(R.string.localizable.settingDownloadMarkSuccess())
+                        }
+                                                
+                        self.presentAlert(title: R.string.localizable.settingSyncMarkCheckTitle(), message: R.string.localizable.settingSyncMarkCheckDesc(iCloudDate), action: [cancelAction, confirmAction], preferredStyle: .actionSheet)
+                    } catch {
+                        print(error)
+                        return
+                    }
+                } else {
+                    self.view.makeToast(R.string.localizable.settingDownloadMarkFailure())
+                }
+            }
+
+            self.presentAlert(title: R.string.localizable.settingIcloudTitle(), message: R.string.localizable.settingIcloudDesc(), action: [showListAction, uploadAction, syncAction, cancelAction], preferredStyle: .actionSheet)
+        } else {
+            let settingsAction = UIAlertAction(title: R.string.localizable.go(), style: .default) { _ in
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+                      UIApplication.shared.canOpenURL(settingsUrl) else {
+                    return
+                }
+
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+            self.presentAlert(title: R.string.localizable.settingIcloudToSettingTitle(), message: R.string.localizable.settingIcloudToSettingDesc(), action: [cancelAction, settingsAction], preferredStyle: .actionSheet)
         }
     }
 }

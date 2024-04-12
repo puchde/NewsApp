@@ -28,7 +28,6 @@ extension UIViewController {
                                     R.string.localizable.guideStep3()]
         var gifsName: [String] = ["guideStep1", "guideStep2", "guideStep3"]
         var dismissAction: (() -> Void)
-        @State var isHide = false
      
         var body: some View {
             GeometryReader { geo in
@@ -50,7 +49,7 @@ extension UIViewController {
                                     .scaledToFit()
                                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: geo.size.height * 0.6)
                                     .background(.black)
-                                    .cornerRadius(20)
+                                    .cornerRadius(10)
                                     .padding()
                                     .tabItem {
                                         Text(guideDesc[index])
@@ -105,8 +104,86 @@ extension UIViewController {
     
 }
 
+extension UIViewController {
+    func getiCloudNewsListSwiftUI(news: [MarkedArticleSUI]) -> UIViewController {
+        let vc = UIHostingController(rootView: NewsListView(news: news, dismissAction: {
+            self.dismiss(animated: true) {
+                if let parent = self.parent, let settingVC = parent.children.first as? SettingTableViewController {
+                    settingVC.iCloudBackup()
+                }
+            }
+        }))
+        return vc
+    }
+    
+    struct NewsListView: View {
+        @State var news = [MarkedArticleSUI]()
+        var dismissAction: (() -> Void)
+        
+        var normalMarked: [MarkedArticleSUI] {
+            news.filter({$0.mark == .critical})
+        }
+        var attentionMarked: [MarkedArticleSUI] {
+            news.filter({$0.mark == .criticality})
+        }
+        var importantMarked: [MarkedArticleSUI] {
+            news.filter({$0.mark == .significantCriticality})
+        }
+     
+        var body: some View {
+            NavigationStack {
+                List {
+                    NewsListSection(news: importantMarked, mark: .significantCriticality)
+                    NewsListSection(news: attentionMarked, mark: .criticality)
+                    NewsListSection(news: normalMarked, mark: .critical)
+                }
+                .disabled(false)
+                .listStyle(.insetGrouped)
+                .navigationTitle("data")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(R.string.localizable.cancel()) {
+                            dismissAction()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    struct NewsListSection: View {
+        @State var news = [MarkedArticleSUI]()
+        var mark: NewsMark
+        var body: some View {
+            if !news.isEmpty {
+                Section(content: {
+                    ForEach(news) { news in
+                        VStack {
+                            Text(news.article.author ?? "")
+                                .font(.caption2)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Text(news.article.title)
+                                .font(.headline)
+                                .lineLimit(2)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Text(news.article.publishedAt)
+                                .font(.caption2)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }, header: {
+                    Text(mark.desc)
+                        .frame(maxWidth: .infinity, maxHeight: 35, alignment: .leading)
+                })
+            }
+        }
+    }
+}
+
 #Preview(body: {
-    UIViewController.GuideView {
+    UIViewController.NewsListView.init(news: [MarkedArticleSUI(mark: .significantCriticality, article: Article(source: .init(id: "", name: ""), author: "a", title: "ㄇssssss", description: "", url: "", urlToImage: "", publishedAt: "adssss\nssss", content: ""))]) {
         
     }
 })

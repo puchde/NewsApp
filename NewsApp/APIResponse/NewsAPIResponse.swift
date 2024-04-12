@@ -21,7 +21,7 @@ struct Article: Codable, Equatable {
     }
 
     let source: Source
-    let author: String?
+    var author: String? = ""
     let title: String
     let description: String?
     let url: String
@@ -30,7 +30,7 @@ struct Article: Codable, Equatable {
     let content: String?
     
     // Headline 分類
-    var group: Int = 0
+    var group: Int? = 0
 }
 
 struct Source: Codable {
@@ -46,18 +46,39 @@ struct NewsAPIProtobufResponse: Codable {
 
 //MARK: 
 struct MarkedArticle: Codable, Equatable {
+    let mark: NewsMark
+    var article: Article
+    
     static func == (lhs: MarkedArticle, rhs: MarkedArticle) -> Bool {
         lhs.article == rhs.article
     }
-    
+}
+
+struct MarkedArticleSUI: Codable, Equatable, Identifiable {
     let mark: NewsMark
     var article: Article
+    var id = UUID()
+    
+    static func == (lhs: MarkedArticleSUI, rhs: MarkedArticleSUI) -> Bool {
+        lhs.article == rhs.article
+    }
 }
 
 enum NewsMark: Codable, CaseIterable {
     case critical
     case criticality
     case significantCriticality
+    
+    var desc: String {
+        switch self {
+        case .critical:
+            R.string.localizable.normal()
+        case .criticality:
+            R.string.localizable.attention()
+        case .significantCriticality:
+            R.string.localizable.important()
+        }
+    }
 
     var color: UIColor {
         switch self {
