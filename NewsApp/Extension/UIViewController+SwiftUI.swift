@@ -139,7 +139,7 @@ extension UIViewController {
                 }
                 .disabled(false)
                 .listStyle(.insetGrouped)
-                .navigationTitle("data")
+                .navigationTitle(R.string.localizable.settingICloudMarkList())
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

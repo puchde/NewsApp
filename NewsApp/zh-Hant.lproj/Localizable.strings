@@ -37,6 +37,9 @@ UsageGuide" = "使用導引";
 "Setting.SyncMarkCheckTitle" = "同步Mark列表";
 
 /*  */
+"Setting.UploadMarkCheckDesc" = "發現紀錄\n此操作會覆蓋iCloud Mark列表\n\n紀錄時間\n%s";
+
+/*  */
 "Setting.appVersion" = "版本";
 
 /*  */
@@ -64,7 +67,7 @@ UsageGuide" = "使用導引";
 "Setting.default" = "預設";
 
 /*  */
-"Setting.downloadMark" = "下載並覆蓋Mark列表";
+"Setting.downloadMark" = "下載";
 
 /*  */
 "Setting.downloadMarkFailure" = "無法取得紀錄";
@@ -74,6 +77,9 @@ UsageGuide" = "使用導引";
 
 /*  */
 "Setting.iCloudBackup" = "iCloud備份Mark列表";
+
+/*  */
+"Setting.iCloudMarkList" = "iCloud Mark列表";
 
 /*  */
 "Setting.icloudDesc" = "";
@@ -113,6 +119,15 @@ UsageGuide" = "使用導引";
 
 /*  */
 "Setting.sendEmailFail" = "發送失敗";
+
+/*  */
+"Setting.showMark" = "顯示";
+
+/*  */
+"Setting.showMarkFailure" = "取得錯誤";
+
+/*  */
+"Setting.showMarkFailure.noData" = "尚無資料";
 
 /*  */
 "Setting.uploadMark" = "上傳";

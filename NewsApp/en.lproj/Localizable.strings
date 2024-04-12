@@ -30,10 +30,13 @@ UsageGuide" = "User Guide";
 "Setting.NewsAPIKey" = "API Key";
 
 /*  */
-"Setting.SyncMarkCheckDesc" = "Discovery Records\nThis operation will overwrite the current Mark list.\n\nRecord Time\n%s";
+"Setting.SyncMarkCheckDesc" = "Discovery Records\nThis action will overwrite the current App Mark list.\n\nRecord Time\n%s";
 
 /*  */
 "Setting.SyncMarkCheckTitle" = "Sync Mark List";
+
+
+"Setting.UploadMarkCheckDesc" = "Discovery Records\nThis action will overwrite the iCloud Mark list.\n\nRecord Time\n%s";
 
 /*  */
 "Setting.appVersion" = "Version";
@@ -63,7 +66,7 @@ UsageGuide" = "User Guide";
 "Setting.default" = "Default";
 
 /*  */
-"Setting.downloadMark" = "Download and Overwrite Mark List";
+"Setting.downloadMark" = "Download";
 
 /*  */
 "Setting.downloadMarkFailure" = "Failed to Retrieve Records";
@@ -73,6 +76,9 @@ UsageGuide" = "User Guide";
 
 /*  */
 "Setting.iCloudBackup" = "iCloud Backup Mark List";
+
+
+"Setting.iCloudMarkList" = "iCloud Mark List";
 
 /*  */
 "Setting.icloudDesc" = "";
@@ -109,6 +115,15 @@ UsageGuide" = "User Guide";
 
 /*  */
 "Setting.sendEmailFail" = "Sending Failed";
+
+
+"Setting.showMark" = "Show List";
+
+
+"Setting.showMarkFailure" = "Failed to retrieve";
+
+
+"Setting.showMarkFailure.noData" = "No data available";
 
 /*  */
 "Setting.uploadMark" = "Upload";
@@ -323,6 +338,9 @@ UsageGuide" = "User Guide";
 /*  */
 "publishedAt" = "Latest Sort";
 
+
+"region" = "Region";
+
 /*  */
 "relevancy" = "Relevancy";
 
@@ -382,5 +400,3 @@ UsageGuide" = "User Guide";
 
 
 "update" = "Update";
-
-"region" = "Region";

@@ -30,6 +30,9 @@ UsageGuide" = "ユーザーガイド";
 "Setting.SyncMarkCheckTitle" = "マークリストを同期";
 
 /*  */
+"Setting.UploadMarkCheckDesc" = "発見記録\nこの操作はiCloudマークリストを上書きします。\n\n記録時間\n%s";
+
+/*  */
 "Setting.appVersion" = "バージョン";
 
 /*  */
@@ -57,7 +60,7 @@ UsageGuide" = "ユーザーガイド";
 "Setting.default" = "デフォルト";
 
 /*  */
-"Setting.downloadMark" = "ダウンロードしてマークリストを上書き";
+"Setting.downloadMark" = "ダウンロード";
 
 /*  */
 "Setting.downloadMarkFailure" = "記録の取得に失敗しました";
@@ -67,6 +70,9 @@ UsageGuide" = "ユーザーガイド";
 
 /*  */
 "Setting.iCloudBackup" = "iCloud バックアップ マークリスト";
+
+/*  */
+"Setting.iCloudMarkList" = "iCloudマークリスト";
 
 /*  */
 "Setting.icloudDesc" = "";
@@ -103,6 +109,15 @@ UsageGuide" = "ユーザーガイド";
 
 /*  */
 "Setting.sendEmailFail" = "送信に失敗しました";
+
+/*  */
+"Setting.showMark" = "iCloudマークリスト";
+
+/*  */
+"Setting.showMarkFailure" = "取得に失敗しました";
+
+/*  */
+"Setting.showMarkFailure.noData" = "データがありません";
 
 /*  */
 "Setting.uploadMark" = "アップロード";

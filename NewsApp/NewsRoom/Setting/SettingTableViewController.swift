@@ -242,11 +242,11 @@ extension SettingTableViewController {
             }()
             
             // iCloud List Preview
-            let showListAction = UIAlertAction(title: "list", style: .default) { _ in
+            let showListAction = UIAlertAction(title: R.string.localizable.settingShowMark(), style: .default) { _ in
                 if let data = iCloudData,
                    let markList = try? JSONDecoder().decode([MarkedArticle].self, from: data) {
                     guard !markList.isEmpty else {
-                        self.view.makeToast(R.string.localizable.settingDownloadMarkFailure())
+                        self.view.makeToast(R.string.localizable.settingShowMarkFailure())
                         return
                     }
                     let list = markList.map({MarkedArticleSUI(mark: $0.mark, article: $0.article)})
@@ -255,7 +255,7 @@ extension SettingTableViewController {
                     vc.isModalInPresentation = true
                     self.present(vc, animated: true)
                 } else {
-                    self.view.makeToast("no icloud data")
+                    self.view.makeToast(R.string.localizable.settingShowMarkFailure())
                 }
             }
             
@@ -273,7 +273,7 @@ extension SettingTableViewController {
                     }
                 }
                                         
-                self.presentAlert(title: R.string.localizable.settingSyncMarkCheckTitle(), message: iCloudDate, action: [cancelAction, confirmAction], preferredStyle: .actionSheet)
+                self.presentAlert(title: R.string.localizable.settingSyncMarkCheckTitle(), message: R.string.localizable.settingUploadMarkCheckDesc(iCloudDate), action: [cancelAction, confirmAction], preferredStyle: .actionSheet)
             }
             
             let syncAction = UIAlertAction(title: R.string.localizable.settingDownloadMark(), style: .default) { _ in
