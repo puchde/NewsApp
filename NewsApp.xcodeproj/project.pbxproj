@@ -11,6 +11,16 @@
 		3F079BFF2B16E4AF0076DA20 /* APIDomainEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */; };
 		3F079C022B172C820076DA20 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C012B172C820076DA20 /* NVActivityIndicatorView */; };
 		3F079C042B172C820076DA20 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 3F079C032B172C820076DA20 /* NVActivityIndicatorViewExtended */; };
+		3F0B357A2BCCC87C0031201E /* UIViewController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B35792BCCC87C0031201E /* UIViewController+NotificationCenter.swift */; };
+		3F0B357B2BCCC87C0031201E /* UIViewController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B35792BCCC87C0031201E /* UIViewController+NotificationCenter.swift */; };
+		3F0B357F2BCCDB740031201E /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B357E2BCCDB740031201E /* UIViewController+Alert.swift */; };
+		3F0B35802BCCDB740031201E /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B357E2BCCDB740031201E /* UIViewController+Alert.swift */; };
+		3F0B35842BCCDBFE0031201E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B35832BCCDBFE0031201E /* UIImageExtension.swift */; };
+		3F0B35852BCCDBFE0031201E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B35832BCCDBFE0031201E /* UIImageExtension.swift */; };
+		3F0B35872BCCDC3F0031201E /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B35862BCCDC3F0031201E /* UITableViewCellExtension.swift */; };
+		3F0B35882BCCDC3F0031201E /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B35862BCCDC3F0031201E /* UITableViewCellExtension.swift */; };
+		3F0B358A2BCCF7580031201E /* NotificationNameEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B35892BCCF7580031201E /* NotificationNameEnum.swift */; };
+		3F0B358B2BCCF7580031201E /* NotificationNameEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0B35892BCCF7580031201E /* NotificationNameEnum.swift */; };
 		3F288BD22B69F6350080D7FC /* GuideStepGif.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F288BD12B69F6350080D7FC /* GuideStepGif.bundle */; };
 		3F2B698D2B6393E60037290A /* NewsWidgetIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B698C2B6393E60037290A /* NewsWidgetIntent.swift */; };
 		3F2B69912B6394670037290A /* NewsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B69902B6394670037290A /* NewsEntry.swift */; };
@@ -138,6 +148,11 @@
 
 /* Begin PBXFileReference section */
 		3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDomainEnum.swift; sourceTree = "<group>"; };
+		3F0B35792BCCC87C0031201E /* UIViewController+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NotificationCenter.swift"; sourceTree = "<group>"; };
+		3F0B357E2BCCDB740031201E /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		3F0B35832BCCDBFE0031201E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		3F0B35862BCCDC3F0031201E /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
+		3F0B35892BCCF7580031201E /* NotificationNameEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameEnum.swift; sourceTree = "<group>"; };
 		3F288BD12B69F6350080D7FC /* GuideStepGif.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GuideStepGif.bundle; sourceTree = "<group>"; };
 		3F2B698C2B6393E60037290A /* NewsWidgetIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWidgetIntent.swift; sourceTree = "<group>"; };
 		3F2B69902B6394670037290A /* NewsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEntry.swift; sourceTree = "<group>"; };
@@ -389,6 +404,7 @@
 				3FD5D0F02B04909400DF02B5 /* ModelEnum.swift */,
 				3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */,
 				3FFC50BD2B67525100D7CEE9 /* UrlHandleTypeEnum.swift */,
+				3F0B35892BCCF7580031201E /* NotificationNameEnum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -406,6 +422,10 @@
 				3FFC50B92B67515300D7CEE9 /* SceneDelegateExtension.swift */,
 				3FFC68182B68DAE800D4E6D4 /* UIViewController+SwiftUI.swift */,
 				3FCE30072BBBFF7F00F017D4 /* UIApplicationExtension.swift */,
+				3F0B35792BCCC87C0031201E /* UIViewController+NotificationCenter.swift */,
+				3F0B357E2BCCDB740031201E /* UIViewController+Alert.swift */,
+				3F0B35832BCCDBFE0031201E /* UIImageExtension.swift */,
+				3F0B35862BCCDC3F0031201E /* UITableViewCellExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -694,14 +714,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F35225F2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift in Sources */,
+				3F0B35842BCCDBFE0031201E /* UIImageExtension.swift in Sources */,
+				3F0B35872BCCDC3F0031201E /* UITableViewCellExtension.swift in Sources */,
 				E75555C1292A97B400E35365 /* FileType.swift in Sources */,
 				E7528DEA29E28C9B001169F0 /* SearchContentViewController.swift in Sources */,
 				3FB6167F2BB69867006D28BF /* SettingNotificationViewController.swift in Sources */,
+				3F0B357F2BCCDB740031201E /* UIViewController+Alert.swift in Sources */,
 				3FB3768E2B55203C006CEDFD /* UIView+Animate.swift in Sources */,
 				3FCE30082BBBFF7F00F017D4 /* UIApplicationExtension.swift in Sources */,
 				E75555C4292A980300E35365 /* UrlExtention.swift in Sources */,
 				3F079BFF2B16E4AF0076DA20 /* APIDomainEnum.swift in Sources */,
 				E77865DB29DC344500F5ED1C /* NewsSettingManager.swift in Sources */,
+				3F0B358A2BCCF7580031201E /* NotificationNameEnum.swift in Sources */,
 				3FE5F01D2B0370B70078D08F /* UIViewController+TableViewPreview.swift in Sources */,
 				E73EB51E2933627E00D1F74C /* MLModelManager.swift in Sources */,
 				E7061D0C29DC240800405544 /* NewsAPIEnum.swift in Sources */,
@@ -719,6 +743,7 @@
 				E74A0AEB29DF18CC00585387 /* HeadlinesTableViewController.swift in Sources */,
 				3FFC50BA2B67515300D7CEE9 /* SceneDelegateExtension.swift in Sources */,
 				3FF497682B01B21F007DA1DB /* SettingTableViewController.swift in Sources */,
+				3F0B357A2BCCC87C0031201E /* UIViewController+NotificationCenter.swift in Sources */,
 				3FE5F0202B0377340078D08F /* NewsTableViewProtocal.swift in Sources */,
 				E77EF8D62906A35600EE94E6 /* SceneDelegate.swift in Sources */,
 				E76A86E429DD9F39008B781F /* ClassifyCollectionViewCell.swift in Sources */,

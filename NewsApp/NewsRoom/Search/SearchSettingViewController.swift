@@ -86,13 +86,13 @@ class SearchSettingViewController: UIViewController {
             delegate.reloadView()
         }
         if !reloadNotificationPost {
-            NotificationCenter.default.post(name: Notification.Name("\(DisplayMode.search) - ReloadNewsData"), object: nil)
+            postNotification(name: NotificationName.reload(displayMode: .search).name)
         }
     }
 
     @IBAction func finishedButtonClick(_ sender: Any) {
         self.dismiss(animated: true)
-        NotificationCenter.default.post(name: Notification.Name("\(DisplayMode.search) - ReloadNewsData"), object: nil)
+        postNotification(name: NotificationName.reload(displayMode: .search).name)
         reloadNotificationPost = true
     }
 

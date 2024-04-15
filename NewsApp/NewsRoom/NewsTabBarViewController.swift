@@ -23,13 +23,13 @@ class NewsTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         case is ClassifyHeadlineViewController:
             newsSettingManager.updateDisplayMode(.headline)
             if self.selectedIndex == 0 {
-                NotificationCenter.default.post(name: Notification.Name("\(DisplayMode.headline.rawValue) - ScrollToTop"), object: nil)
+                postNotification(name: NotificationName.scrollToTop(displayMode: .headline).name)
             }
             print("Headlines Mode")
         case is SearchNewsViewController:
             newsSettingManager.updateDisplayMode(.search)
             if self.selectedIndex == 1 {
-                NotificationCenter.default.post(name: Notification.Name("\(DisplayMode.search.rawValue) - ScrollToTop"), object: nil)
+                postNotification(name: NotificationName.scrollToTop(displayMode: .search).name)
             }
             print("Search Mode")
         default:

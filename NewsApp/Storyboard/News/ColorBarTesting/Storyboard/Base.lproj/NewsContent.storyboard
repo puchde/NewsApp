@@ -722,7 +722,7 @@
                             </barButtonItem>
                             <barButtonItem title="Search" id="lII-NB-5JK"/>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="item" image="gearshape" catalog="system" id="JHC-UF-U7g">
+                        <barButtonItem key="rightBarButtonItem" title="item" image="filemenu.and.selection" catalog="system" id="JHC-UF-U7g">
                             <connections>
                                 <segue destination="Chb-le-6Yh" kind="presentation" id="9Up-LL-r8X"/>
                             </connections>

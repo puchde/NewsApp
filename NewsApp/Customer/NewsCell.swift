@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-protocol NewsCellDelegate {
+protocol NewsCellDelegate: AnyObject {
     func reloadCell()
 }
 
@@ -45,7 +45,7 @@ class NewsCell: UITableViewCell {
             return MarkedArticle(mark: mark, article: article)
         }
     }
-    var activeVC: UIViewController?
+    weak var activeVC: UIViewController?
     var newsUrl: String = ""
     var author: String = "" {
         didSet {
@@ -72,7 +72,7 @@ class NewsCell: UITableViewCell {
         }
     }
 
-    var delegate: NewsCellDelegate?
+    weak var delegate: NewsCellDelegate?
 
     lazy var criticalMenuItem = UIAction(title: R.string.localizable.normal(), image: UIImage(systemName: "bookmark.fill")?.withTintColor(NewsMark.critical.color, renderingMode: .alwaysOriginal)) { _ in
         self.changeMark(mark: .critical)
@@ -215,68 +215,6 @@ class NewsCell: UITableViewCell {
     }
 }
 
-extension UIViewController {
-    func presentAlert(title: String = "", message: String = "", action: [UIAlertAction] = [], preferredStyle: UIAlertController.Style = .alert) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-        action.forEach { act in
-            alert.addAction(act)
-        }
-        
-        DispatchQueue.main.async {            
-            self.present(alert, animated: true, completion: {
-                alert.view.superview?.isUserInteractionEnabled = true
-                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.presentAlertDismiss)))
-            })
-        }
-    }
+class NewsContentImageCell: NewsCell {
     
-    func presentSheetAlert(title: String = "", message: String = "", action: [UIAlertAction] = []) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        action.forEach { act in
-            alert.addAction(act)
-        }
-        
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: {
-                alert.view.superview?.isUserInteractionEnabled = true
-                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.presentAlertDismiss)))
-            })
-        }
-    }
-    
-    
-    @objc func presentAlertDismiss() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func presentConfirmAlert(title: String = "", message: String = "") {
-        let confirm = UIAlertAction(title: R.string.localizable.confirm(), style: .default) { _ in
-            self.dismiss(animated: true)
-        }
-        presentAlert(title: title, message: message, action: [confirm])
-    }
-    
-    func presentNoActionAlert(title: String = "", message: String = "") {
-        presentAlert(title: title, message: message, action: [])
-    }
-}
-
-extension UIImage {
-    // image with rounded corners
-    public func withRoundedCorners(radius: CGFloat? = nil) -> UIImage? {
-        let maxRadius = min(size.width, size.height) / 2
-        let cornerRadius: CGFloat
-        if let radius = radius, radius > 0 && radius <= maxRadius {
-            cornerRadius = radius
-        } else {
-            cornerRadius = maxRadius
-        }
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        let rect = CGRect(origin: .zero, size: size)
-        UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
-        draw(in: rect)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
-    }
 }

@@ -49,7 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let reloadDate = newsSettingManager.getReloadDate() {
             if reloadDate.addingTimeInterval(60 * 20) < Date() {
                 print("back reload")
-                NotificationCenter.default.post(name: Notification.Name("\(DisplayMode.headline) - ReloadNewsData"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name(NotificationName.reload(displayMode: .headline).name), object: nil)
                 newsSettingManager.updateReloadDate(date: Date())
                 newsSettingManager.cleanWidgetNews()
             }

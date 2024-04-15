@@ -45,7 +45,7 @@ class HeadlinesSettingViewController: UIViewController {
     
     @IBAction func finishedButtonClick(_ sender: Any) {
         self.dismiss(animated: true)
-        NotificationCenter.default.post(name: Notification.Name("\(DisplayMode.headline) - ReloadNewsData"), object: nil)
+        postNotification(name: NotificationName.reload(displayMode: .headline).name)
         reloadNotificationPost = true
     }
     
@@ -56,7 +56,7 @@ class HeadlinesSettingViewController: UIViewController {
         print("sub", unsubscribeCountry.rawValue, "unsub", newsSettingManager.getCountry().rawValue)
         
         if !reloadNotificationPost {
-            NotificationCenter.default.post(name: Notification.Name("\(DisplayMode.headline) - ReloadNewsData"), object: nil)
+            postNotification(name: NotificationName.reload(displayMode: .headline).name)
         }
     }
 }
