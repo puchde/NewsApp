@@ -23,8 +23,14 @@ class NewsCell: UITableViewCell {
 
     @IBOutlet weak var previewImage: UIImageView!
     
+    @IBOutlet weak var titleLabelHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomInfoHeightConstraint: NSLayoutConstraint!
     
+    let padding = 60.0
+    lazy var width = self.frame.width - padding
+    let lineSpacing = 8.0
+    lazy var maxHeight = utils.getLineSizeFromString(string: "", withFont: .boldSystemFont(ofSize: 20)).height * 4.0 + lineSpacing * 3
+
     let paragraphStyle = NSMutableParagraphStyle()
     
     var article: Article? {
@@ -88,7 +94,7 @@ class NewsCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        paragraphStyle.lineSpacing = 5
+        paragraphStyle.lineSpacing = lineSpacing
         paragraphStyle.alignment = .left
         updateMarkMenu()
         cellImage.layer.cornerRadius = 20
@@ -111,6 +117,16 @@ class NewsCell: UITableViewCell {
         self.activeVC = activeVC
         self.delegate = activeVC as? any NewsCellDelegate
         self.article = article
+    }
+    
+    func updateImageArticleInfo(activeVC: UIViewController, article: Article) {
+        self.activeVC = activeVC
+        self.delegate = activeVC as? any NewsCellDelegate
+        self.article = article
+        titleLabel.numberOfLines = 0
+        let h = utils.getHeightForView(text: article.title, font: .boldSystemFont(ofSize: 20), width: width)
+        let height = h > maxHeight ? maxHeight : h
+        titleLabelHeightConstraint.constant = height
     }
     
     func updateImage() {

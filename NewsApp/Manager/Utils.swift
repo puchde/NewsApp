@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Utils {
     
@@ -17,13 +18,18 @@ struct Utils {
     
     init() {
         publishedAtFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        publishedAtFormatter.locale = Locale(identifier: "en_US_POSIX")
         publishedAtTransformFormatter.dateFormat = "yy-MM-dd"
         publishedAtTransformFormatter.timeZone = TimeZone.current
+        publishedAtTransformFormatter.locale = Locale(identifier: "en_US_POSIX")
         tagFormatter.dateFormat = "MM-dd HH:mm"
         tagFormatter.timeZone = TimeZone.current
+        tagFormatter.locale = Locale(identifier: "en_US_POSIX")
     }
-    
-    
+}
+
+// MARK: - Cell DateFormatter
+extension Utils {
     func getNewsCellDate(dateStr: String, isForMark: Bool) -> String {
         // Input
         // 1. Search Cell: "yyyy-MM-dd HH:mm" (GMT)
@@ -31,7 +37,7 @@ struct Utils {
         // 3. Headline Cell: String
         //
         // Output
-        // 1. isMark (MarkList Cell) 
+        // 1. isMark (MarkList Cell)
         //      -> "✏️ yy-MM-dd\n🏷️ MM-dd HH:mm" (current, current)
         // 2. !isMark (Headline/Search Cell)
         //      -> String
@@ -61,4 +67,23 @@ struct Utils {
         }
         return dateStr
     }
+}
+
+// MARK: - Text Size
+extension Utils {
+    func getLineSizeFromString(string:String, withFont font:UIFont)->CGSize{
+        let textSize = string.size(withAttributes: [ NSAttributedString.Key.font:font ])
+        return textSize
+    }
+    
+    func getHeightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+       let label = UILabel(frame: CGRectMake(0, 0, width, CGFloat.greatestFiniteMagnitude))
+       label.numberOfLines = 0
+       label.lineBreakMode = NSLineBreakMode.byWordWrapping
+       label.font = font
+       label.text = text
+
+       label.sizeToFit()
+       return label.frame.height
+   }
 }

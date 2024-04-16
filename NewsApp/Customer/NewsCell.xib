@@ -149,8 +149,8 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="32.666666666666664" height="20"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain">
-                                                                    <imageReference key="image" image="bookmark" catalog="system" symbolScale="medium"/>
-                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium"/>
+                                                                    <imageReference key="image" image="bookmark" catalog="system" symbolScale="large"/>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="saveNews:" destination="EBM-kM-q9z" eventType="touchUpInside" id="noL-kr-HiF"/>
@@ -160,8 +160,8 @@
                                                                 <rect key="frame" x="37.666666666666686" y="0.0" width="32.333333333333343" height="20"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain">
-                                                                    <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="medium"/>
-                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium"/>
+                                                                    <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large"/>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="shareNews:" destination="EBM-kM-q9z" eventType="touchUpInside" id="fsK-vd-fX9"/>
@@ -223,6 +223,7 @@
                 <outlet property="previewImage" destination="UfZ-vf-HIr" id="O82-Kg-9I1"/>
                 <outlet property="shareButton" destination="Pg8-Fx-VSm" id="tno-84-b26"/>
                 <outlet property="titleLabel" destination="Edy-m5-aM1" id="LkP-zg-7de"/>
+                <outlet property="titleLabelHeightConstraint" destination="Zp9-b8-rAE" id="qtl-9U-uTP"/>
             </connections>
             <point key="canvasLocation" x="-118.32061068702289" y="-144.36619718309859"/>
         </tableViewCell>
@@ -231,10 +232,10 @@
         <image name="bookmark" catalog="system" width="110" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

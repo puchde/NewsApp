@@ -44,6 +44,8 @@ class HeadlinesTableViewController: UIViewController {
     // MARK: - Cell
     let baseCellHeight = CGFloat(142)
     lazy var width = self.view.bounds.size.width
+    let lineSpacing = 8.0
+    lazy var maxHeight = utils.getLineSizeFromString(string: "", withFont: .boldSystemFont(ofSize: 20)).height * 4.0 + lineSpacing * 3
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -208,7 +210,7 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
         let newsData = tableViewArticles[indexPath.section][indexPath.row]
         if let imageUrl = newsData.urlToImage, !imageUrl.isEmpty {
             if let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentImageCell.ClassID, for: indexPath) as? NewsContentImageCell, !articles.isEmpty {
-                cell.updateArticleInfo(activeVC: self, article: newsData)
+                cell.updateImageArticleInfo(activeVC: self, article: newsData)
                 tableView.deselectRow(at: indexPath, animated: false)
                 return cell
             }
@@ -236,7 +238,10 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
         if !tableViewArticles.isEmpty,
            let imageUrl = tableViewArticles[indexPath.section][indexPath.row].urlToImage,
            !imageUrl.isEmpty {
-            return baseCellHeight + width * 0.5
+            let title = tableViewArticles[indexPath.section][indexPath.row].title
+            let h = utils.getHeightForView(text: title, font: .boldSystemFont(ofSize: 20), width: width)
+            let height = h > maxHeight ? maxHeight : h
+            return baseCellHeight + width * 0.5 + (height - 60)
         }
             return baseCellHeight
     }

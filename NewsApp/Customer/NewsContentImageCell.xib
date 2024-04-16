@@ -152,8 +152,8 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="32.666666666666664" height="10"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain">
-                                                                    <imageReference key="image" image="bookmark" catalog="system" symbolScale="default"/>
-                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium"/>
+                                                                    <imageReference key="image" image="bookmark" catalog="system" symbolScale="large"/>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="saveNews:" destination="MJq-am-b86" eventType="touchUpInside" id="xbW-Od-P4X"/>
@@ -163,8 +163,8 @@
                                                                 <rect key="frame" x="37.666666666666629" y="0.0" width="32.333333333333343" height="10"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain">
-                                                                    <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
-                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium"/>
+                                                                    <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large"/>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="shareNews:" destination="MJq-am-b86" eventType="touchUpInside" id="rd1-Ye-MX9"/>
@@ -223,12 +223,13 @@
             <connections>
                 <outlet property="NewsDateLabel" destination="tUI-br-YzM" id="foL-bW-vCY"/>
                 <outlet property="authorLabel" destination="Tyd-0l-eBk" id="vT5-c8-aUD"/>
-                <outlet property="bottomInfoHeightConstraint" destination="5jx-g5-qTM" id="e9m-0t-rgl"/>
+                <outlet property="bottomInfoHeightConstraint" destination="7Fd-TE-geP" id="OVP-F0-MSy"/>
                 <outlet property="cellImage" destination="2IU-Oy-0yL" id="R3e-me-BnC"/>
                 <outlet property="markButton" destination="dWx-10-lKQ" id="fON-m6-loR"/>
                 <outlet property="previewImage" destination="OUn-9P-1S2" id="I5n-aW-33n"/>
                 <outlet property="shareButton" destination="YVy-3z-gwW" id="XVI-4x-xTm"/>
                 <outlet property="titleLabel" destination="gn7-5M-Rs3" id="cTD-pY-riD"/>
+                <outlet property="titleLabelHeightConstraint" destination="7Fd-TE-geP" id="ECb-AA-bDX"/>
             </connections>
             <point key="canvasLocation" x="267.17557251908397" y="-52.112676056338032"/>
         </tableViewCell>

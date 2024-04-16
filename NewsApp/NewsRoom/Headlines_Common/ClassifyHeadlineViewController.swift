@@ -61,7 +61,7 @@ extension ClassifyHeadlineViewController {
     func setupClassifyWidths() {
         var labelTotalWidth = CGFloat(0)
         for category in Category.allCases {
-            let size = getSizeFromString(string: category.chineseName, withFont: UIFont.systemFont(ofSize: 15))
+            let size = utils.getLineSizeFromString(string: category.chineseName, withFont: UIFont.systemFont(ofSize: 15))
             labelTotalWidth += (size.width + 5)
             classifyLabelWidths.append((size.width + 5))
         }
@@ -114,11 +114,6 @@ extension ClassifyHeadlineViewController: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: classifyLabelWidths[indexPath.row], height: 45)
-    }
-    
-    func getSizeFromString(string:String, withFont font:UIFont)->CGSize{
-        let textSize = string.size(withAttributes: [ NSAttributedString.Key.font:font ])
-        return textSize
     }
 }
 
