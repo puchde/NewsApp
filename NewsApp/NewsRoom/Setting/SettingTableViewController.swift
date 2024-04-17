@@ -7,8 +7,9 @@
 
 import UIKit
 import MessageUI
+import StoreKit
 
-class SettingTableViewController: UIViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
+class SettingTableViewController: UIViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, SKStoreProductViewControllerDelegate {
     @IBOutlet var settingTableView: UITableView!
     @IBOutlet weak var leftButtonItem: UIBarButtonItem!
     
@@ -173,6 +174,21 @@ extension SettingTableViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
+        case (0, 0):
+            let id = "6474076097"
+            if self.appVersionInfo.contains("Update"),
+               let url = URL(string: "itms-apps://itunes.apple.com/app/id1629135515/id\(id)") {
+                let storeVC = SKStoreProductViewController()
+                storeVC.delegate = self
+                let parameters = [SKStoreProductParameterITunesItemIdentifier: id]
+                storeVC.loadProduct(withParameters: parameters) { _, error in
+                    if error != nil {
+                        UIApplication.shared.open(url)
+                    } else {
+                        self.present(storeVC, animated: true)
+                    }
+                }
+            }
         case (1, 0):
             self.presentNoActionAlert(title: R.string.localizable.settingReaderModeTitle(), message: R.string.localizable.settingReaderModeDesc())
         case (1, 1):
