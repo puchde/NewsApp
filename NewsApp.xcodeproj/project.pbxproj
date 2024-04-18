@@ -43,6 +43,7 @@
 		3F7B63482B5A5CB5009BE0AF /* APIDomainEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F079BFE2B16E4AE0076DA20 /* APIDomainEnum.swift */; };
 		3F7B634C2B5A61CE009BE0AF /* UserDefaultsKeyEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E706448829EACCAC009F8C64 /* UserDefaultsKeyEnum.swift */; };
 		3F7B634D2B5A62C5009BE0AF /* ArticlesTotalProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35225E2B1EF83B00457346 /* ArticlesTotalProtobuf.pb.swift */; };
+		3F89169E2BD118DB00EADF3D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3FCE30002BBB97F700F017D4 /* PrivacyInfo.xcprivacy */; };
 		3FB3768E2B55203C006CEDFD /* UIView+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3768D2B55203C006CEDFD /* UIView+Animate.swift */; };
 		3FB6167F2BB69867006D28BF /* SettingNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB6167E2BB69867006D28BF /* SettingNotificationViewController.swift */; };
 		3FB616802BB69867006D28BF /* SettingNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB6167E2BB69867006D28BF /* SettingNotificationViewController.swift */; };
@@ -640,6 +641,7 @@
 			files = (
 				3FE26B072B566A2D0006DC60 /* Assets.xcassets in Resources */,
 				3FDB99EE2B57BF880022B0D9 /* Localizable.strings in Resources */,
+				3F89169E2BD118DB00EADF3D /* PrivacyInfo.xcprivacy in Resources */,
 				3F6846982BB173B7008E410E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
