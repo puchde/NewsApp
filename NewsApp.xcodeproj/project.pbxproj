@@ -1128,7 +1128,7 @@
 			repositoryURL = "https://github.com/apple/swift-protobuf.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.25.2;
+				minimumVersion = 1.26.0;
 			};
 		};
 		3F3E88B62B2019F700883A55 /* XCRemoteSwiftPackageReference "R" */ = {
@@ -1144,7 +1144,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.23.0;
+				minimumVersion = 10.24.0;
 			};
 		};
 		3FF0BF992B19B6AF00FC84D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
