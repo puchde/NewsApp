@@ -13,8 +13,7 @@ import SwiftProtobuf
 
 
 class HeadlinesTableViewController: UIViewController {
-    
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var defaultCoverView: UIView!
     private let displayMode: DisplayMode = newsSettingManager.getDisplayMode()
     let freshControl = UIRefreshControl()
@@ -27,9 +26,9 @@ class HeadlinesTableViewController: UIViewController {
     var isLoading = false {
         willSet {
             if newValue {
-                tableView.refreshControl?.beginRefreshing()
+                collectionView.refreshControl?.beginRefreshing()
             } else {
-                tableView.refreshControl?.endRefreshing()
+                collectionView.refreshControl?.endRefreshing()
             }
         }
     }
@@ -54,7 +53,11 @@ class HeadlinesTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadNewsData()
-        tableView.reloadData()
+        collectionView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        configureCellSize()
     }
     
     deinit {
@@ -65,12 +68,12 @@ class HeadlinesTableViewController: UIViewController {
 //MARK: Init
 extension HeadlinesTableViewController {
     func initView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: NewsCell.ClassID, bundle: nil), forCellReuseIdentifier: NewsCell.ClassID)
-        tableView.register(UINib(nibName: NewsContentImageCell.ClassID, bundle: nil), forCellReuseIdentifier: NewsContentImageCell.ClassID)
-        tableView.sectionHeaderTopPadding = 0
-        tableView.refreshControl = freshControl
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: NewsHeadlinesCell.ClassID, bundle: nil), forCellWithReuseIdentifier: NewsHeadlinesCell.ClassID)
+        collectionView.register(UINib(nibName: NewsHeadlinesImageCell.ClassID, bundle: nil), forCellWithReuseIdentifier: NewsHeadlinesImageCell.ClassID)
+        collectionView.refreshControl = freshControl
+        collectionView.backgroundColor = .systemGroupedBackground
         defaultCoverView.isUserInteractionEnabled = false
         
         addNotification(selector: #selector(scrollToTop), name: NotificationName.scrollToTop(displayMode: displayMode).name)
@@ -78,7 +81,7 @@ extension HeadlinesTableViewController {
     }
 }
 
-//MARK: TableView Data
+//MARK: CollectionView Data
 extension HeadlinesTableViewController {
 
     @objc func reloadDataAct() {
@@ -93,9 +96,9 @@ extension HeadlinesTableViewController {
                 if Date.now < dataReloadTime.addingTimeInterval(3 * 60) {
                     print("reload time return")
                     setupTableViewArticles()
-                    self.tableView.reloadData()
+                    self.collectionView.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.tableView.refreshControl?.endRefreshing()
+                        self.collectionView.refreshControl?.endRefreshing()
                     }
                     return
                 }
@@ -110,7 +113,7 @@ extension HeadlinesTableViewController {
         }
         articles.removeAll()
         tableViewArticles.removeAll()
-        tableView.reloadData()
+        collectionView.reloadData()
         loadNewsData()
     }
     
@@ -182,7 +185,7 @@ extension HeadlinesTableViewController {
             self.view.makeToast("Data Failure")
         }
         self.isLoading = false
-        self.tableView.reloadData()
+        self.collectionView.reloadData()
     }
     
     func setupTableViewArticles() {
@@ -199,33 +202,34 @@ extension HeadlinesTableViewController {
     }
 }
 
-//MARK: TableView Cell
-extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableViewArticles[section].count
+//MARK: CollectionView Cell
+extension HeadlinesTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tableViewArticles.isEmpty ? 0 : tableViewArticles[section].count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard !tableViewArticles.isEmpty else { return UITableViewCell() }
-        let newsData = tableViewArticles[indexPath.section][indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard !tableViewArticles.isEmpty else { return UICollectionViewCell() }
+        let sectionNewsData = tableViewArticles[indexPath.section]
+        let newsData = sectionNewsData[indexPath.row]
+        let cornerSetting = CellCornerSetting(indexPath.row == 0 ? true : false,
+                                              indexPath.row == sectionNewsData.count - 1 ? true : false)
         if let imageUrl = newsData.urlToImage, !imageUrl.isEmpty {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentImageCell.ClassID, for: indexPath) as? NewsContentImageCell, !articles.isEmpty {
-                cell.updateImageArticleInfo(activeVC: self, article: newsData)
-                tableView.deselectRow(at: indexPath, animated: false)
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsHeadlinesImageCell.ClassID, for: indexPath) as? NewsHeadlinesImageCell, !articles.isEmpty {
+                cell.updateImageArticleInfo(activeVC: self, article: newsData, cornerSetting: cornerSetting)
                 return cell
             }
         } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.ClassID, for: indexPath) as? NewsCell, !articles.isEmpty {
-                cell.updateArticleInfo(activeVC: self, article: newsData)
-                tableView.deselectRow(at: indexPath, animated: false)
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsHeadlinesCell.ClassID, for: indexPath) as? NewsHeadlinesCell, !articles.isEmpty {
+                cell.updateArticleInfo(activeVC: self, article: newsData, cornerSetting: cornerSetting)
                 return cell
             }
         }
-        return UITableViewCell()
+        return UICollectionViewCell()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.isSelected = false
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.isSelected = false
         let selectNewsUrl = tableViewArticles[indexPath.section][indexPath.row].url
         if let url = URL(string: selectNewsUrl) {
             let vc = getSafariVC(url: url, delegateVC: self)
@@ -234,67 +238,70 @@ extension HeadlinesTableViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    @objc func scrollToTop() {
+        if !articles.isEmpty {
+            collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
+    }
+}
+
+//MARK: Collection View
+extension HeadlinesTableViewController {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        tableViewArticles.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    // MARK: - CollectionView Padding
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .init(top: 8, left: 0, bottom: 8, right: 0)
+    }
+    
+    // MARK: - CollectionView layout
+    func configureCellSize() {
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.estimatedItemSize = .zero
+        layout?.minimumInteritemSpacing = 0
+        layout?.scrollDirection = .vertical
+    }
+    
+    // MARK: - Cell Size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = floor(collectionView.bounds.width - 36)
         if !tableViewArticles.isEmpty,
            let imageUrl = tableViewArticles[indexPath.section][indexPath.row].urlToImage,
            !imageUrl.isEmpty {
             let title = tableViewArticles[indexPath.section][indexPath.row].title
             let h = utils.getHeightForView(text: title, font: .boldSystemFont(ofSize: 20), width: width)
             let height = h > maxHeight ? maxHeight : h
-            return baseCellHeight + width * 0.5 + (height - 60)
+            let cellHeight = baseCellHeight + width * 0.5 + (height - 60)
+            return CGSize(width: cellWidth, height: cellHeight)
         }
-            return baseCellHeight
-    }
-    
-    @objc func scrollToTop() {
-        if !articles.isEmpty {
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-        }
-    }
-}
-
-//MARK: TableView Section
-extension HeadlinesTableViewController {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        tableViewArticles.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 || tableViewArticles[section].isEmpty {
-            return .leastNormalMagnitude + 8
-        }
-        return 15
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .systemGray6
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        .leastNormalMagnitude
+        return CGSize(width: cellWidth, height: baseCellHeight)
     }
 }
 
 // MARK: - TableView Cell Preview
-extension HeadlinesTableViewController: NewsTableViewProtocal {
-    var newsTableView: UITableView {
-        self.tableView
+extension HeadlinesTableViewController: NewsCollectionViewCellDelegate {
+    var newsCollectionView: UICollectionView {
+        self.collectionView
     }
     
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { _ in
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let preview: UIContextMenuContentPreviewProvider = {
+            collectionView.cellForItem(at: indexPath)?.isSelected = false
+            let selectNewsUrl = self.tableViewArticles[indexPath.section][indexPath.row].url
+            if let url = URL(string: selectNewsUrl) {
+                return self.getSafariVC(url: url, delegateVC: self)
+            }
+            return nil
+        }
+        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: preview) { _ in
             self.makePreviewMenu(indexPath: indexPath)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-        return makeTargetedPreview(for: configuration, isShow: true)
-    }
-
-    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-        return makeTargetedPreview(for: configuration, isShow: false)
     }
 }
 
@@ -302,7 +309,7 @@ extension HeadlinesTableViewController: NewsTableViewProtocal {
 extension HeadlinesTableViewController: NewsCellDelegate {
     func reloadCell() {
         setupTableViewArticles()
-        tableView.reloadData()
+        collectionView.reloadData()
     }
 }
 

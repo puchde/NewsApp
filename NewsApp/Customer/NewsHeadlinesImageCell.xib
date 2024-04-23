@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NewsContentImageCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsContentImageCell" rowHeight="538" id="MJq-am-b86" customClass="NewsContentImageCell" customModule="NewsApp" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NewsHeadlinesImageCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsHeadlinesImageCell" rowHeight="538" id="MJq-am-b86" customClass="NewsHeadlinesImageCell" customModule="NewsApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="784" height="538"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MJq-am-b86" id="BvJ-yK-GC4">
@@ -220,13 +220,13 @@
                     <constraint firstAttribute="top" secondItem="OUn-9P-1S2" secondAttribute="bottom" constant="10" id="zyZ-uG-y1b"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <connections>
                 <outlet property="NewsDateLabel" destination="tUI-br-YzM" id="foL-bW-vCY"/>
                 <outlet property="authorLabel" destination="Tyd-0l-eBk" id="vT5-c8-aUD"/>
                 <outlet property="bottomInfoHeightConstraint" destination="7Fd-TE-geP" id="OVP-F0-MSy"/>
                 <outlet property="cellImage" destination="2IU-Oy-0yL" id="R3e-me-BnC"/>
                 <outlet property="markButton" destination="dWx-10-lKQ" id="fON-m6-loR"/>
-                <outlet property="previewImage" destination="OUn-9P-1S2" id="I5n-aW-33n"/>
                 <outlet property="shareButton" destination="YVy-3z-gwW" id="XVI-4x-xTm"/>
                 <outlet property="titleLabel" destination="gn7-5M-Rs3" id="cTD-pY-riD"/>
                 <outlet property="titleLabelHeightConstraint" destination="7Fd-TE-geP" id="ECb-AA-bDX"/>
@@ -239,6 +239,9 @@
         <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

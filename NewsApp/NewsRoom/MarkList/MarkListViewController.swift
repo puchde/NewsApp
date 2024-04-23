@@ -58,7 +58,7 @@ extension MarkListViewController: UIGestureRecognizerDelegate {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
+        tableView.register(UINib(nibName: NewsMarkListCell.ClassID, bundle: nil), forCellReuseIdentifier: NewsMarkListCell.ClassID)
         tableView.refreshControl = freshControl
         tableView.sectionHeaderTopPadding = 8
 
@@ -171,7 +171,7 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: NewsMarkListCell.ClassID, for: indexPath) as? NewsMarkListCell {
             let newsData: MarkedArticle = {
                 switch indexPath.section {
                 case 0:
@@ -224,7 +224,7 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        if let cell = tableView.cellForRow(at: indexPath) as? NewsCell,
+        if let cell = tableView.cellForRow(at: indexPath) as? NewsHeadlinesCell,
            let article = cell.article {
             selectNewsUrl = article.url
         }
@@ -238,7 +238,7 @@ extension MarkListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - TableView Cell Preview
-extension MarkListViewController: NewsTableViewProtocal {
+extension MarkListViewController: NewsTableViewCellDelegate {
     var newsTableView: UITableView {
         self.tableView
     }

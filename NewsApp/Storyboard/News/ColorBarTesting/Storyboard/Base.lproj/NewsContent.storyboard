@@ -101,36 +101,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lbB-QS-e5O">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aVl-2g-RQm">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsCell" textLabel="rQW-av-JxX" detailTextLabel="eWI-xX-any" style="IBUITableViewCellStyleSubtitle" id="dei-BM-LwQ" customClass="NewsCell" customModule="NewsApp" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="55.333332061767578" width="350" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dei-BM-LwQ" id="cgt-CH-aLV">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jBC-zV-r8l">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MRJ-3i-E9e">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="QeL-jE-2FS">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rQW-av-JxX">
-                                                    <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eWI-xX-any">
-                                                    <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                            </tableView>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWy-c2-92j">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
@@ -161,19 +151,19 @@
                         <viewLayoutGuide key="safeArea" id="hvb-8h-3KQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lbB-QS-e5O" firstAttribute="top" secondItem="vHO-xH-rKb" secondAttribute="top" id="1Jn-Qa-aPB"/>
                             <constraint firstItem="dWy-c2-92j" firstAttribute="trailing" secondItem="hvb-8h-3KQ" secondAttribute="trailing" id="1QN-UT-8Gi"/>
-                            <constraint firstAttribute="bottom" secondItem="lbB-QS-e5O" secondAttribute="bottom" id="6Bz-mQ-ETf"/>
+                            <constraint firstItem="aVl-2g-RQm" firstAttribute="trailing" secondItem="hvb-8h-3KQ" secondAttribute="trailing" id="3S0-RA-bcC"/>
                             <constraint firstItem="dWy-c2-92j" firstAttribute="top" secondItem="vHO-xH-rKb" secondAttribute="top" id="6h8-WH-5UE"/>
                             <constraint firstAttribute="bottom" secondItem="dWy-c2-92j" secondAttribute="bottom" id="9I5-0B-y6x"/>
-                            <constraint firstItem="lbB-QS-e5O" firstAttribute="leading" secondItem="vHO-xH-rKb" secondAttribute="leading" id="aco-mW-K0T"/>
+                            <constraint firstAttribute="bottom" secondItem="aVl-2g-RQm" secondAttribute="bottom" id="Bcc-sb-M8q"/>
+                            <constraint firstItem="aVl-2g-RQm" firstAttribute="top" secondItem="vHO-xH-rKb" secondAttribute="top" id="Dy8-Wh-F8x"/>
+                            <constraint firstItem="aVl-2g-RQm" firstAttribute="leading" secondItem="hvb-8h-3KQ" secondAttribute="leading" id="Xti-vu-9wJ"/>
                             <constraint firstItem="dWy-c2-92j" firstAttribute="leading" secondItem="hvb-8h-3KQ" secondAttribute="leading" id="l5L-DN-8n7"/>
-                            <constraint firstAttribute="trailing" secondItem="lbB-QS-e5O" secondAttribute="trailing" id="q71-q2-aKR"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="defaultCoverView" destination="dWy-c2-92j" id="Iaa-ZS-4Kw"/>
-                        <outlet property="tableView" destination="lbB-QS-e5O" id="jaY-bN-Syj"/>
+                        <outlet property="collectionView" destination="aVl-2g-RQm" id="mEm-iu-NtI"/>
+                        <outlet property="defaultCoverView" destination="dWy-c2-92j" id="QWy-bm-Fho"/>
                         <segue destination="24s-99-IvH" kind="show" identifier="toWebView" id="a7D-Xe-EFX"/>
                     </connections>
                 </viewController>
@@ -272,11 +262,11 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="24s-99-IvH" customClass="WebViewViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nUi-L1-Q1z">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwq-D5-WJP">
-                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -954,7 +944,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3aA-ug-hW0"/>
+        <segue reference="a7D-Xe-EFX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
