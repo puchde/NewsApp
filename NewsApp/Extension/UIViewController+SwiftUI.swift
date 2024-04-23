@@ -58,7 +58,6 @@ extension UIViewController {
                                     .frame(maxHeight: geo.size.height * 0.05)
                             }
                             .background(Color(uiColor: .white))
-                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)), style: FillStyle())
                             .frame(alignment: .top)
                         }
                     }

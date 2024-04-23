@@ -308,8 +308,15 @@ extension HeadlinesTableViewController: NewsCollectionViewCellDelegate {
 //MARK: News Cell Delegate
 extension HeadlinesTableViewController: NewsCellDelegate {
     func reloadCell() {
+        let oldValue = tableViewArticles
         setupTableViewArticles()
-        collectionView.reloadData()
+        if oldValue == tableViewArticles,
+           let min = collectionView.indexPathsForVisibleItems.min()?.section,
+           let max = collectionView.indexPathsForVisibleItems.max()?.section {
+            collectionView.reloadSections(IndexSet(min...max))
+        } else {
+            collectionView.reloadData()
+        }
     }
 }
 
