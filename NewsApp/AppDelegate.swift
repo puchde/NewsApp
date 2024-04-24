@@ -28,7 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         
         cloudDefaults.synchronize()
         checkAuthorizationState()
-        FirebaseApp.configure()
+        
+        // Firebase file add - GoogleService-Info.plist
+//        FirebaseApp.configure()
         
         UNUserNotificationCenter.current().delegate = self
 
